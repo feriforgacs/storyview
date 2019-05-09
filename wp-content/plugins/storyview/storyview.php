@@ -35,3 +35,48 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+class StoryView {
+
+    function __construct(){
+        add_action('init', array( $this, 'custom_post_type' ) );
+    }
+
+    /**
+     * Plugin has been activated
+     */
+    function activate(){
+        // generate cpt
+        $this->custom_post_type();
+        // flush rewrite rules
+        flush_rewrite_rules();
+    }
+
+    /**
+     * Plugin has been deactivated
+     */
+    function deactivate(){
+        // flush rewrite rules
+    }
+
+    /**
+     * Plugin has been uninstalled
+     */
+    function uninstall(){
+        // delete cpt
+        // delete data from the db
+    }
+
+    function custom_post_type(){
+        register_post_type('book', ['public' => true, 'label' => 'Books']);
+    }
+}
+
+if( class_exists( 'StoryView' ) ){
+    $storyView = new StoryView();
+}
+
+// on activation
+register_activation_hook( __FILE__ , array($storyView, "activate") );
+
+// on deactivation
+register_deactivation_hook( __FILE__ , array($storyView, "deactivate") );
