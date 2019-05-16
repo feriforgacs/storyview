@@ -179,7 +179,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                         <div class="ff_storyview_block_item_settings_block">
                             <div class="ff_storyview_block_item_image_upload">
                                 <input type="button" class="ff_storyview_image_upload button" data-blockid="1" value="Select Story Block Image" />
-                                <input type="hidden" name="ff_storyview_image_block_1" value="" />
+                                <input type="hidden" name="ff_storyview_image_block_1" id="ff_storyview_image_block_1" value="" />
                                 <br /><small>Ideal size 1080x1920px. For better performance, try to optimize the size of the image.</small>
                             </div>
                         </div>
