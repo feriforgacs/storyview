@@ -35,6 +35,8 @@ by Ferenc Forgacs - @feriforgacs
 .ff_storyview_block_item{
     display: flex;
     border: 1px solid #eee;
+    margin-bottom: 1rem;
+    background: #fff;
 }
 
 .ff_storyview_block_item_move{
@@ -121,7 +123,6 @@ by Ferenc Forgacs - @feriforgacs
 
 #ff_storyview_add_block_button{
     width: 100%;
-    margin-top: 1rem;
     line-height: 40px;
     height: 40px;
 }
@@ -214,4 +215,12 @@ by Ferenc Forgacs - @feriforgacs
     border-radius: 3px;
     margin: .5rem auto;
     display: none;
+}
+
+.ui-state-highlight {
+    border: 2px dashed #ccc;
+    background: #f7f7f7;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 1rem;
 }

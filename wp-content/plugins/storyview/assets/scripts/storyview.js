@@ -5,6 +5,11 @@ by Ferenc Forgacs - @feriforgacs
 */
 
 jQuery(document).ready(function($){
+    $("#ff_storyview_blocks_list").sortable({
+        placeholder: "ui-state-highlight",
+        axis: "y"
+    });
+
     // file selector
     let file_frame;
     let wp_media_post_id = wp.media.model.settings.post.id;
@@ -60,7 +65,7 @@ jQuery(document).ready(function($){
     });
 
     /**
-     * Display story vew block preview with uploaded or selected image
+     * Display story view block preview with uploaded or selected image
      * @param {string} image_url uploaded or selected attachment url
      * @param {int} block_id selected storyview block id
      */
@@ -72,6 +77,51 @@ jQuery(document).ready(function($){
         });
 
         $("#ff_storyview_block_item_" + block_id + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").show();
+    }
+
+    /**
+     * Set story view block text position for preview
+     * @param {int} blockId selected block id
+     */
+    function setTextPosition(blockId){
+        // get text position
+        // set text position
+    }
+
+    /**
+     * Set story view block text background for preview
+     * @param {int} blockId selected block id
+     */
+    function setTextBackground(blockId){
+        // get text background
+        // set text background
+    }
+
+    /**
+     * Set story view block text color for preview
+     * @param {int} blockId selected block id
+     */
+    function setTextColor(blockId){
+        // get text color
+        // set text color
+    }
+
+    /**
+     * Set story view block text font family for preview
+     * @param {int} blockId selected block id
+     */
+    function setTextFontFamily(blockId){
+        // get text font family
+        // set text font family
+    }
+
+    /**
+     * Set story view block text font color for preview
+     * @param {int} blockId selected block id
+     */
+    function setTextFontColor(blockId){
+        // get text font color
+        // set text font color
     }
 
 });
