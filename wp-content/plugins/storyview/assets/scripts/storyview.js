@@ -115,6 +115,24 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content").removeClass("ff_storyview_text_block_top ff_storyview_text_block_middle ff_storyview_text_block_bottom").addClass(position);
     }
 
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_align_label", function(){
+        let alignmentValue = $(this).children("input[type=radio]").val();
+        let blockId = $(this).data("blockid");
+
+        $('.ff_storyview_block_item_text_align_label.activ[data-blockid="' + blockId + '"]').removeClass("activ");
+        $(this).addClass("activ");
+        
+        setTextAlignment(blockId, alignmentValue);
+    });
+    /**
+     * Set story block text alignment for preview
+     * @param {int} blockId selected block id
+     * @param {string} alignment selected text alignment css class
+     */
+    function setTextAlignment(blockId, alignment){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content").removeClass("ff_storyview_text_align_left ff_storyview_text_align_center ff_storyview_text_align_right").addClass(alignment);
+    }
+
     /**
      * Set story view block text background for preview
      * @param {int} blockId selected block id

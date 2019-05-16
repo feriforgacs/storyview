@@ -229,7 +229,6 @@ by Ferenc Forgacs - @feriforgacs
 .ff_storyview_block_item_content .block_item_text{
     width: 90%;
     line-height: 120%;
-    text-align: left;
     padding: .5rem;
     align-self: center;
     border-radius: 3px;
