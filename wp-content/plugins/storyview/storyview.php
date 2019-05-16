@@ -169,8 +169,8 @@ function ff_storyview_post_class_meta_box( $post ) {
 
                     <div class="ff_storyview_block_item_preview">
                         <p class="preview_text">preview</p>
-                        <div class="ff_storyview_block_item_content">
-                            <p class="block_item_text"></p>
+                        <div class="ff_storyview_block_item_content ff_storyview_text_block_top ff_storyview_text_align_left">
+                            <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white"></p>
                         </div>
                     </div>
 
@@ -195,8 +195,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Block Position</label>
                                     <div class="ff_storyview_button_group">
-                                        <label class="ff_storyview_block_item_text_position_label activ">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="top" />
+                                        <label class="ff_storyview_block_item_text_position_label activ" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="ff_storyview_text_block_top" />
                                             <span>Top</span>
                                             <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -205,8 +205,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                             </i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_position_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="middle" />
+                                        <label class="ff_storyview_block_item_text_position_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="ff_storyview_text_block_middle" />
                                             <span>Middle</span>
                                             <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -215,8 +215,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                             </i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_position_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="bottom" />
+                                        <label class="ff_storyview_block_item_text_position_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_1" value="ff_storyview_text_block_bottom" />
                                             <span>Bottom</span>
                                             <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -230,20 +230,20 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Alignment</label>
                                     <div class="ff_storyview_button_group">
-                                        <label class="ff_storyview_block_item_text_align_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="left" />
+                                        <label class="ff_storyview_block_item_text_align_label activ" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="ff_storyview_text_align_left" />
                                             <span>Left</span>
                                             <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_align_label activ">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="center" />
+                                        <label class="ff_storyview_block_item_text_align_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="ff_storyview_text_align_center" />
                                             <span>Center</span>
                                             <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_align_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="right" />
+                                        <label class="ff_storyview_block_item_text_align_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_1" value="ff_storyview_text_align_right" />
                                             <span>Right</span>
                                             <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
                                         </label>
@@ -372,8 +372,8 @@ function ff_storyview_post_class_meta_box( $post ) {
 
                     <div class="ff_storyview_block_item_preview">
                         <p class="preview_text">preview</p>
-                        <div class="ff_storyview_block_item_content">
-                            <p class="block_item_text"></p>
+                        <div class="ff_storyview_block_item_content ff_storyview_text_block_top ff_storyview_text_align_left">
+                            <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white"></p>
                         </div>
                     </div>
 
@@ -398,8 +398,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Block Position</label>
                                     <div class="ff_storyview_button_group">
-                                        <label class="ff_storyview_block_item_text_position_label activ">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="top" />
+                                        <label class="ff_storyview_block_item_text_position_label activ" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="ff_storyview_text_block_top" />
                                             <span>Top</span>
                                             <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -408,8 +408,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                             </i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_position_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="middle" />
+                                        <label class="ff_storyview_block_item_text_position_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="ff_storyview_text_block_middle" />
                                             <span>Middle</span>
                                             <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -418,8 +418,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                             </i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_position_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="bottom" />
+                                        <label class="ff_storyview_block_item_text_position_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_position_2" value="ff_storyview_text_block_bottom" />
                                             <span>Bottom</span>
                                             <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -433,20 +433,20 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Alignment</label>
                                     <div class="ff_storyview_button_group">
-                                        <label class="ff_storyview_block_item_text_align_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="left" />
+                                        <label class="ff_storyview_block_item_text_align_label activ" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="ff_storyview_text_align_left" />
                                             <span>Left</span>
                                             <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_align_label activ">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="center" />
+                                        <label class="ff_storyview_block_item_text_align_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="ff_storyview_text_align_center" />
                                             <span>Center</span>
                                             <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_align_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="right" />
+                                        <label class="ff_storyview_block_item_text_align_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_align_2" value="ff_storyview_text_align_right" />
                                             <span>Right</span>
                                             <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
                                         </label>

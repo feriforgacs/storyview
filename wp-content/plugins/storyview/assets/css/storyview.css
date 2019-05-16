@@ -235,6 +235,58 @@ by Ferenc Forgacs - @feriforgacs
     border-radius: 3px;
 }
 
-.text_top{
+.ff_storyview_text_block_top{
+    justify-content: flex-start;
+}
 
+.ff_storyview_text_block_middle{
+    justify-content: center;
+}
+
+.ff_storyview_text_block_bottom{
+    justify-content: flex-end;
+}
+
+.ff_storyview_text_align_left{
+    text-align: left;
+}
+
+.ff_storyview_text_align_center{
+    text-align: center;
+}
+
+.ff_storyview_text_align_right{
+    text-align: right;
+}
+
+.ff_storyview_block_background_black{
+    background: rgba(0, 0, 0, .8);
+}
+
+.ff_storyview_block_background_gray{
+    background: rgba(51, 51, 51, .8)
+}
+
+.ff_storyview_block_background_red{
+    background: rgba(201, 44, 44, .8)
+}
+
+.ff_storyview_block_background_white{
+    background: rgba(255, 255, 255, .8)
+}
+
+.ff_storyview_block_color_black{
+    color: #000;
+}
+
+.ff_storyview_block_color_gray{
+    color: #333;
+}
+
+.ff_storyview_block_color_red{
+    color: #c92c2c;
+}
+
+.ff_storyview_block_color_white{
+    color: #fff;
 }

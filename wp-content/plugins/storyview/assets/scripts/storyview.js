@@ -93,17 +93,26 @@ jQuery(document).ready(function($){
         let text = $("#ff_storyview_block_item_text_" + blockId).val();
         // set text content
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").text(text);
-        
+
         displayStoryPreview(blockId);
     }
 
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_position_label", function(){
+        let positionValue = $(this).children("input[type=radio]").val();
+        let blockId = $(this).data("blockid");
+
+        $('.ff_storyview_block_item_text_position_label.activ[data-blockid="' + blockId + '"]').removeClass("activ");
+        $(this).addClass("activ");
+        
+        setTextPosition(blockId, positionValue);
+    });
     /**
      * Set story view block text position for preview
      * @param {int} blockId selected block id
+     * @param {string} position selected block position css class
      */
-    function setTextPosition(blockId){
-        // get text position
-        // set text position
+    function setTextPosition(blockId, position){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content").removeClass("ff_storyview_text_block_top ff_storyview_text_block_middle ff_storyview_text_block_bottom").addClass(position);
     }
 
     /**
