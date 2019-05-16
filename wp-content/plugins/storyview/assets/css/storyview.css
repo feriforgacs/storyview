@@ -215,6 +215,7 @@ by Ferenc Forgacs - @feriforgacs
     border-radius: 3px;
     margin: .5rem auto;
     display: none;
+    flex-direction: column;
 }
 
 .ui-state-highlight {
@@ -223,4 +224,17 @@ by Ferenc Forgacs - @feriforgacs
     height: 100px;
     width: 100%;
     margin-bottom: 1rem;
+}
+
+.ff_storyview_block_item_content .block_item_text{
+    width: 90%;
+    line-height: 120%;
+    text-align: left;
+    padding: .5rem;
+    align-self: center;
+    border-radius: 3px;
+}
+
+.text_top{
+
 }

@@ -5,6 +5,9 @@ by Ferenc Forgacs - @feriforgacs
 */
 
 jQuery(document).ready(function($){
+    /**
+     * Sortable story view blocks
+     */
     $("#ff_storyview_blocks_list").sortable({
         placeholder: "ui-state-highlight",
         axis: "y"
@@ -14,15 +17,15 @@ jQuery(document).ready(function($){
     let file_frame;
     let wp_media_post_id = wp.media.model.settings.post.id;
     let set_to_post_id = wp_media_post_id;
-    let block_id = 0;
+    let blockId = 0;
 
     /**
-     * Handle story view block image upload
+     * Handle story view block image select
      */
     $("#ff_storyview_blocks_list").on("click", ".ff_storyview_image_upload", function( event ){
         event.preventDefault();
         // get selected block id
-        block_id = $(this).data("blockid");
+        blockId = $(this).data("blockid");
 
         // open the file frame if exists
         if (file_frame) {
@@ -49,10 +52,10 @@ jQuery(document).ready(function($){
             wp.media.model.settings.post.id = wp_media_post_id;
 
             // add image url value to the story view block hidden image field
-            $("#ff_storyview_image_block_" + block_id).val(attachment.url);
+            $("#ff_storyview_image_block_" + blockId).val(attachment.url);
 
             // set image for preview
-            setImage(attachment.url, block_id);
+            setImage(attachment.url, blockId);
         });
         
         // open the file frame
@@ -67,16 +70,31 @@ jQuery(document).ready(function($){
     /**
      * Display story view block preview with uploaded or selected image
      * @param {string} image_url uploaded or selected attachment url
-     * @param {int} block_id selected storyview block id
+     * @param {int} blockId selected storyview block id
      */
-    function setImage(image_url, block_id){
-        $("#ff_storyview_block_item_" + block_id + " .ff_storyview_block_item_preview .preview_text").hide();
-        
-        $("#ff_storyview_block_item_" + block_id + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").css({
+    function setImage(image_url, blockId){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").css({
             "background-image": "url(" + image_url + ")"
         });
 
-        $("#ff_storyview_block_item_" + block_id + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").show();
+        displayStoryPreview(blockId);
+    }
+
+    $("#ff_storyview_blocks_list").on("keyup", ".ff_storyview_block_item_text_textarea", function(){
+        setTextContent($(this).data("blockid"));
+    });
+
+    /**
+     * Display text in preview section
+     * @param {int} blockId selected block id
+     */
+    function setTextContent(blockId){
+        // get text content
+        let text = $("#ff_storyview_block_item_text_" + blockId).val();
+        // set text content
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").text(text);
+        
+        displayStoryPreview(blockId);
     }
 
     /**
@@ -122,6 +140,18 @@ jQuery(document).ready(function($){
     function setTextFontColor(blockId){
         // get text font color
         // set text font color
+    }
+
+    /**
+     * Display story preview for selected block
+     * @param {int} blockId selected block id
+     */
+    function displayStoryPreview(blockId){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview .preview_text").hide();
+
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").css({
+            "display": "flex"
+        });
     }
 
 });

@@ -188,7 +188,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <h3>Text Settings</h3>
 
                             <label class="ff_storyview_label" for="ff_storyview_block_item_text_1">Story Block Text</label>
-                            <textarea name="ff_storyview_block_item_text_1" id="ff_storyview_block_item_text_1" class="components-textarea-control__input" cols="30" rows="3"></textarea><br />
+                            <textarea name="ff_storyview_block_item_text_1" id="ff_storyview_block_item_text_1" class="components-textarea-control__input ff_storyview_block_item_text_textarea" data-blockid="1" cols="30" rows="3"></textarea><br />
                             <small>Try to keep it under 160 characters</small>
 
                             <div class="ff_storyview_row">
@@ -391,7 +391,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <h3>Text Settings</h3>
 
                             <label class="ff_storyview_label" for="ff_storyview_block_item_text_2">Story Block Text</label>
-                            <textarea name="ff_storyview_block_item_text_2" id="ff_storyview_block_item_text_2" class="components-textarea-control__input" cols="30" rows="3"></textarea><br />
+                            <textarea name="ff_storyview_block_item_text_2" id="ff_storyview_block_item_text_2" class="components-textarea-control__input ff_storyview_block_item_text_textarea" data-blockid="2" cols="30" rows="3"></textarea><br />
                             <small>Try to keep it under 160 characters</small>
 
                             <div class="ff_storyview_row">
