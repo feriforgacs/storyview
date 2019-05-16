@@ -38,17 +38,14 @@ if ( !function_exists( 'add_action' ) ) {
 class StoryView {
 
     function __construct(){
-        add_action('init', array( $this, 'custom_post_type' ) );
+        
     }
 
     /**
      * Plugin has been activated
      */
     function activate(){
-        // generate cpt
-        $this->custom_post_type();
-        // flush rewrite rules
-        flush_rewrite_rules();
+        
     }
 
     /**
@@ -65,15 +62,9 @@ class StoryView {
         // delete cpt
         // delete data from the db
     }
-
-    function custom_post_type(){
-        register_post_type('book', ['public' => true, 'label' => 'Books']);
-    }
 }
 
-if( class_exists( 'StoryView' ) ){
-    $storyView = new StoryView();
-}
+$storyView = new StoryView();
 
 // on activation
 register_activation_hook( __FILE__ , array($storyView, "activate") );
@@ -84,14 +75,21 @@ register_deactivation_hook( __FILE__ , array($storyView, "deactivate") );
 
 /* Meta box setup function. */
 function ff_storyview_setup() {
-    /* Add meta boxes on the 'add_meta_boxes' hook. */
-    add_action( 'add_meta_boxes', 'ff_storyview_add_post_meta_boxes' );
-    /* Save post meta on the 'save_post' hook. */
-    add_action( 'save_post', 'ff_storyview_save_post_class_meta', 10, 2 );
+    /* Add meta boxes*/
+    add_action( 'add_meta_boxes', 'ff_storyview_display_storyview_editor' );
+
+    /* Save data */
+    add_action( 'save_post', 'ff_storyview_save_storyview_data', 10, 2 );
+
+    /* Add custom css */
+    add_action( 'admin_head', 'ff_storyview_css');
+
+    /* Add custom JS */
+    add_action( 'admin_footer', 'ff_storyview_js' );
 }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
-function ff_storyview_add_post_meta_boxes() {
+function ff_storyview_display_storyview_editor() {
     add_meta_box(
         'ff_storyview-post-class',
         esc_html__( 'Story View', 'example' ),
@@ -112,46 +110,47 @@ function ff_storyview_post_class_meta_box( $post ) {
             <h3 class="ff_storyview_block_header">Story View Post Settings</h3>
             <div class="ff_storyview_block_content">
                 <input id="ff_storyview_activ" class="components-checkbox-control__input" type="checkbox" value="1" />
-                <label class="components-checkbox-control__label" for="ff_storyview_activ">Enable Story View for this post</label>
+                <label for="ff_storyview_activ">Enable Story View for this post</label>
             </div>
 
             <div class="ff_storyview_block_content">
                 <h4>Story View Button</h4>
 
-                <label class="components-base-control__label" for="ff_storyview_button_text">Button Text</label>
+                <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
                 <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="" />
 
                 <div id="ff_storyview_button_types">
-                    <label class="components-base-control__label">Button Type</label><br />
+                    <label class="ff_storyview_label">Button Type</label>
                     <label class="ff_storyview_button_type_label">
                         <input type="radio" name="ff_storyview_button_type" value="1" />
-                        Type 1
+                        <i>type 1</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
                         <input type="radio" name="ff_storyview_button_type" value="2" />
-                        Type 2
+                        <i>type 2</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
                         <input type="radio" name="ff_storyview_button_type" value="3" />
-                        Type 3
+                        <i>type 3</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
                         <input type="radio" name="ff_storyview_button_type" value="4" />
-                        Type 4
+                        <i>type 4</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
                         <input type="radio" name="ff_storyview_button_type" value="5" />
-                        Other
+                        Custom
                     </label>
                 </div>
 
                 <div id="ff_storyview_button_types_other">
-                    <label class="components-base-control__label" for="ff_storyview_button_type_other_code">Custom Code for Story View Button</label>
-                    <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="" />
+                    <label class="ff_storyview_label" for="ff_storyview_button_type_other_url">Custom Button for Story View Button (You can add custom HTML code)</label>
+                    <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_url" name="ff_storyview_button_type_other_code" value="" />
+                    <br /><small>Don't use "a" or "button" tags in your code.</small>
                 </div>
             </div>
         </div>
@@ -161,7 +160,7 @@ function ff_storyview_post_class_meta_box( $post ) {
 
             <div id="ff_storyview_blocks_list">
 
-                <div class="ff_storyview_block_item">
+                <div class="ff_storyview_block_item" id="ff_storyview_block_item_1">
                     <div class="ff_storyview_block_item_move">
                         <i>
                             <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="img" aria-hidden="true" focusable="false"><path d="M13,8c0.6,0,1-0.4,1-1s-0.4-1-1-1s-1,0.4-1,1S12.4,8,13,8z M5,6C4.4,6,4,6.4,4,7s0.4,1,1,1s1-0.4,1-1S5.6,6,5,6z M5,10 c-0.6,0-1,0.4-1,1s0.4,1,1,1s1-0.4,1-1S5.6,10,5,10z M13,10c-0.6,0-1,0.4-1,1s0.4,1,1,1s1-0.4,1-1S13.6,10,13,10z M9,6 C8.4,6,8,6.4,8,7s0.4,1,1,1s1-0.4,1-1S9.6,6,9,6z M9,10c-0.6,0-1,0.4-1,1s0.4,1,1,1s1-0.4,1-1S9.6,10,9,10z"></path></svg>
@@ -169,33 +168,37 @@ function ff_storyview_post_class_meta_box( $post ) {
                     </div>
 
                     <div class="ff_storyview_block_item_preview">
-                        preview
+                        <p class="preview_text">preview</p>
+                        <div class="ff_storyview_block_item_content">
+                            <p class="block_item_text"></p>
+                        </div>
                     </div>
 
                     <div class="ff_storyview_block_item_settings">
 
                         <div class="ff_storyview_block_item_settings_block">
                             <div class="ff_storyview_block_item_image_upload">
-                                <input type="button" class="ff_storyview_image_upload button" value="<?php _e('Select Story Block Image'); ?>" />
+                                <input type="button" class="ff_storyview_image_upload button" data-blockid="1" value="Select Story Block Image" />
                                 <input type="hidden" name="ff_storyview_image_block_1" value="" />
+                                <br /><small>Ideal size 1080x1920px. For better performance, try to optimize the size of the image.</small>
                             </div>
                         </div>
 
                         <div class="ff_storyview_block_item_settings_block">
-                            <h4>Text Settings</h4>
+                            <h3>Text Settings</h3>
 
-                            <label class="components-checkbox-control__label" for="ff_storyview_block_item_text_1">Story Block Text</label><br />
-                            <small>Try to keep it under 160 characters</small><br />
+                            <label class="ff_storyview_label" for="ff_storyview_block_item_text_1">Story Block Text</label>
                             <textarea name="ff_storyview_block_item_text_1" id="ff_storyview_block_item_text_1" class="components-textarea-control__input" cols="30" rows="3"></textarea><br />
+                            <small>Try to keep it under 160 characters</small>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label">Text Position</label><br />
+                            <div class="ff_storyview_row">
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label">Text Block Position</label>
                                     <div class="ff_storyview_button_group">
-                                        <label class="ff_storyview_block_item_text_position_label">
+                                        <label class="ff_storyview_block_item_text_position_label activ">
                                             <input type="radio" name="ff_storyview_block_item_text_position_1" value="top" />
                                             <span>Top</span>
-                                            <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
                                             <rect x="7" y="4" width="6" height="3" fill="#444B54"/>
                                             </svg>
@@ -205,7 +208,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                                         <label class="ff_storyview_block_item_text_position_label">
                                             <input type="radio" name="ff_storyview_block_item_text_position_1" value="middle" />
                                             <span>Middle</span>
-                                            <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
                                             <rect x="7" y="9" width="6" height="3" fill="#444B54"/>
                                             </svg>
@@ -215,7 +218,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                                         <label class="ff_storyview_block_item_text_position_label">
                                             <input type="radio" name="ff_storyview_block_item_text_position_1" value="bottom" />
                                             <span>Bottom</span>
-                                            <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
                                             <rect x="7" y="13" width="6" height="3" fill="#444B54"/>
                                             </svg>
@@ -224,33 +227,33 @@ function ff_storyview_post_class_meta_box( $post ) {
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label">Text Alignment</label><br />
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label">Text Alignment</label>
                                     <div class="ff_storyview_button_group">
                                         <label class="ff_storyview_block_item_text_align_label">
                                             <input type="radio" name="ff_storyview_block_item_text_align_1" value="left" />
                                             <span>Left</span>
-                                            <i><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
+                                            <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_align_label">
+                                        <label class="ff_storyview_block_item_text_align_label activ">
                                             <input type="radio" name="ff_storyview_block_item_text_align_1" value="center" />
                                             <span>Center</span>
-                                            <i><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
+                                            <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
                                         </label>
 
                                         <label class="ff_storyview_block_item_text_align_label">
                                             <input type="radio" name="ff_storyview_block_item_text_align_1" value="right" />
                                             <span>Right</span>
-                                            <i><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
+                                            <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label" for="ff_storyview_block_item_text_font_family_1">Font Family</label><br />
+                            <div class="ff_storyview_row">
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_1">Font Family</label>
                                     <select name="ff_storyview_block_item_text_font_family_1" id="ff_storyview_block_item_text_font_family_1">
                                         <option value="">Font 1</option>
                                         <option value="">Font 2</option>
@@ -260,8 +263,8 @@ function ff_storyview_post_class_meta_box( $post ) {
                                     </select>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label" for="ff_storyview_block_item_text_font_size_1">Font Size</label><br />
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_1">Font Size</label>
                                     <select name="ff_storyview_block_item_text_font_size_1" id="ff_storyview_block_item_text_font_size_1">
                                         <option value="12">12px</option>
                                         <option value="14">14px</option>
@@ -272,43 +275,76 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label">Text Block Background Color</label><br />
-                                    <div class="ff_storyview_button_group">
+                            <div class="ff_storyview_row">
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label">Text Block Background</label>
+                                    <div class="ff_storyview_color_group">
+                                        <label class="ff_storyview_block_item_text_background_color_label">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="black" />
+                                            <span class="color-preview black activ" title="black">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
+                                        </label>
+
+                                        <label class="ff_storyview_block_item_text_background_color_label">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="dark-gray" />
+                                            <span class="color-preview dark-gray selected" title="dark gray">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
+                                        </label>
+
                                         <label class="ff_storyview_block_item_text_background_color_label">
                                             <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="red" />
-                                            <span class="color-preview">red</span>
+                                            <span class="color-preview red" title="red">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
                                         </label>
 
                                         <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="green" />
-                                            <span class="color-preview">green</span>
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="white" />
+                                            <span class="color-preview white" title="white">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
                                         </label>
 
                                         <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="blue" />
-                                            <span class="color-preview">blue</span>
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="transparent" />
+                                            <span class="color-preview transparent" title="transparent, no background">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label class="components-checkbox-control__label">Font Color</label><br />
-                                    <div class="ff_storyview_button_group">
+                                <div class="ff_storyview_col_md_6">
+                                    <label class="ff_storyview_label">Font Color</label>
+                                    <div class="ff_storyview_color_group">
+                                        <label class="ff_storyview_block_item_text_font_color_label">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="black" />
+                                            <span class="color-preview black">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
+                                        </label>
+
+                                        <label class="ff_storyview_block_item_text_font_color_label">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="dark-gray" />
+                                            <span class="color-preview dark-gray">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
+                                        </label>
+
                                         <label class="ff_storyview_block_item_text_font_color_label">
                                             <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="red" />
-                                            <span class="color-preview">red</span>
+                                            <span class="color-preview red">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">>
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="green" />
-                                            <span class="color-preview">green</span>
-                                        </label>
-
-                                        <label class="ff_storyview_block_item_text_font_color_label">>
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="blue" />
-                                            <span class="color-preview">blue</span>
+                                        <label class="ff_storyview_block_item_text_font_color_label">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="white" />
+                                            <span class="color-preview white activ">
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
@@ -316,7 +352,7 @@ function ff_storyview_post_class_meta_box( $post ) {
 
                         </div>
 
-                        <div class="ff_storyview_block_item_settings_block">
+                        <div class="ff_storyview_block_item_settings_block delete_block">
                             <button class="ff_storyview_block_delete_button" data-block="1">
                                 <i><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-trash" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 4h3c.6 0 1 .4 1 1v1H3V5c0-.6.5-1 1-1h3c.2-1.1 1.3-2 2.5-2s2.3.9 2.5 2zM8 4h3c-.2-.6-.9-1-1.5-1S8.2 3.4 8 4zM4 7h11l-.9 10.1c0 .5-.5.9-1 .9H5.9c-.5 0-.9-.4-1-.9L4 7z"></path></svg></i>
                                 <span>Remove Block</span>
@@ -329,74 +365,14 @@ function ff_storyview_post_class_meta_box( $post ) {
 
             </div>
         </div>
-
-
-
+        <button class="button" id="ff_storyview_add_block_button"><strong>&plus;</strong> Add block</button>
     </div><!-- end #ff_storyview_container -->
-
-    <p>
-    <div class='image-preview-wrapper'>
-		<img id='image-preview' src='' width='100' height='100' style='max-height: 100px; width: 100px;'>
-	</div>
-	<input id="upload_image_button" type="button" class="button" value="<?php _e( 'Set story image' ); ?>" />
-	<input type='hidden' name='image_attachment_id' id='image_attachment_id' value=''>
-        <label for="ff_storyview-post-class"><?php _e( "Add a custom CSS class, which will be applied to WordPress' post class.", 'example' ); ?></label>
-        <br />
-        <input class="widefat" type="text" name="ff_storyview-post-class" id="ff_storyview-post-class" value="<?php echo esc_attr( get_post_meta( $post->ID, 'ff_storyview_post_class', true ) ); ?>" size="30" />
-    </p>
-
-    <script type='text/javascript'>
-		jQuery( document ).ready( function( $ ) {
-			// Uploading files
-			var file_frame;
-			var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
-			var set_to_post_id = <?php echo (isset($my_saved_attachment_post_id)) ? $my_saved_attachment_post_id : 0; ?>; // Set this
-			jQuery('#upload_image_button').on('click', function( event ){
-				event.preventDefault();
-				// If the media frame already exists, reopen it.
-				if ( file_frame ) {
-					// Set the post ID to what we want
-					file_frame.uploader.uploader.param( 'post_id', set_to_post_id );
-					// Open frame
-					file_frame.open();
-					return;
-				} else {
-					// Set the wp.media post id so the uploader grabs the ID we want when initialised
-					wp.media.model.settings.post.id = set_to_post_id;
-				}
-				// Create the media frame.
-				file_frame = wp.media.frames.file_frame = wp.media({
-					title: 'Select a image to upload',
-					button: {
-						text: 'Use this image',
-					},
-					multiple: false	// Set to true to allow multiple files to be selected
-				});
-				// When an image is selected, run a callback.
-				file_frame.on( 'select', function() {
-					// We set multiple to false so only get one image from the uploader
-					attachment = file_frame.state().get('selection').first().toJSON();
-					// Do something with attachment.id and/or attachment.url here
-					$( '#image-preview' ).attr( 'src', attachment.url ).css( 'width', 'auto' );
-					$( '#image_attachment_id' ).val( attachment.id );
-					// Restore the main post ID
-					wp.media.model.settings.post.id = wp_media_post_id;
-				});
-					// Finally, open the modal
-					file_frame.open();
-			});
-			// Restore the main ID when the add media button is pressed
-			jQuery( 'a.add_media' ).on( 'click', function() {
-				wp.media.model.settings.post.id = wp_media_post_id;
-			});
-		});
-	</script>
 
     <?php
 }
 
 /* Save the meta box's post metadata. */
-function ff_storyview_save_post_class_meta( $post_id, $post ) {
+function ff_storyview_save_storyview_data( $post_id, $post ) {
     /* Verify the nonce before proceeding. */
     if ( !isset( $_POST['ff_storyview_post_class_nonce'] ) || !wp_verify_nonce( $_POST['ff_storyview_post_class_nonce'], basename( __FILE__ ) ) )
         return $post_id;
@@ -451,4 +427,17 @@ function ff_storyview_post_class( $classes ) {
     }
 
     return $classes;
+}
+
+function ff_storyview_css(){
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
+}
+
+function ff_storyview_js(){
+    /*$my_saved_attachment_post_id = get_option( 'media_selector_attachment_id', 0 );
+    echo '<script> let set_to_post_id = ';
+    echo ($my_saved_attachment_post_id) ? $my_saved_attachment_post_id : 'null';
+    echo ';</script>';*/
+
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
 }
