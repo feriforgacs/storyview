@@ -8,24 +8,28 @@ jQuery(document).ready(function($){
     /**
      * Custom dropdown for font and font size
      */
-    $(".custom-select").selectric({
-        optionsItemBuilder: function(itemData) {
-            return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
-        },
-
-        onChange: function(element){
-            let blockId = $(element).data("blockid");
-            let selectedOption = $(element).val();
-
-            if(element.classList.contains("font-family-select")){
-                // change font family in preview
-                setTextFontFamily(blockId, selectedOption);
-            } else if(element.classList.contains("font-size-select")){
-                // change font size in preview
-                setTextFontSize(blockId, selectedOption);
+    function customSelect(){
+        $(".custom-select").selectric({
+            optionsItemBuilder: function(itemData) {
+                return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
+            },
+    
+            onChange: function(element){
+                let blockId = $(element).data("blockid");
+                let selectedOption = $(element).val();
+    
+                if(element.classList.contains("font-family-select")){
+                    // change font family in preview
+                    setTextFontFamily(blockId, selectedOption);
+                } else if(element.classList.contains("font-size-select")){
+                    // change font size in preview
+                    setTextFontSize(blockId, selectedOption);
+                }
             }
-        }
-    });
+        });
+    }
+
+    customSelect();
 
     /**
      * Sortable story view blocks
@@ -238,6 +242,20 @@ jQuery(document).ready(function($){
      */
     function deleteStoryBlock(blockId){
         $("#ff_storyview_block_item_" + blockId).remove();
+    }
+
+    /**
+     * Add new story block item to the list
+     */
+    $("#ff_storyview_add_block_button").on("click", addStoryBlockItem);
+    function addStoryBlockItem(){
+        let storyBlockItems = $(".ff_storyview_block_item").length;
+        storyBlockItems += 1;
+        let storyBlockTemplate = $("#storyview_block_template").html();
+        let newStoryBlockItem = storyBlockTemplate.replace(/%BLOCKID%/gi, storyBlockItems);
+        $(newStoryBlockItem).appendTo("#ff_storyview_blocks_list");
+
+        customSelect();
     }
 
 });
