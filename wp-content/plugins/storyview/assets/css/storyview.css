@@ -212,7 +212,7 @@ by Ferenc Forgacs - @feriforgacs
     height: 672px;
     background-size: cover;
     background-position: center center;
-    border-radius: 3px;
+    border-radius: 5px;
     margin: .5rem auto;
     display: none;
     flex-direction: column;
@@ -273,6 +273,10 @@ by Ferenc Forgacs - @feriforgacs
 
 .ff_storyview_block_background_white{
     background: rgba(255, 255, 255, .8)
+}
+
+.ff_storyview_block_background_transparent{
+    background: none;
 }
 
 .ff_storyview_block_color_black{

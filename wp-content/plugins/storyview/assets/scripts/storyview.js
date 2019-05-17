@@ -83,7 +83,6 @@ jQuery(document).ready(function($){
         // open the file frame
         file_frame.open();
     });
-
     
     $("a.add_media").on("click", function() {
         wp.media.model.settings.post.id = wp_media_post_id;
@@ -155,22 +154,43 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content").removeClass("ff_storyview_text_align_left ff_storyview_text_align_center ff_storyview_text_align_right").addClass(alignment);
     }
 
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_background_color_label", function(){
+        let backgroundColorValue = $(this).children("input[type=radio]").val();
+        let blockId = $(this).data("blockid");
+
+        $('.ff_storyview_block_item_text_background_color_label[data-blockid="' + blockId + '"] .activ').removeClass("activ");
+        $(this).children(".color-preview").addClass("activ");
+        
+        setTextBackgroundColor(blockId, backgroundColorValue);
+    });
+
     /**
      * Set story view block text background for preview
      * @param {int} blockId selected block id
+     * @param {string} backgroundColor selected background color css class
      */
-    function setTextBackground(blockId){
-        // get text background
+    function setTextBackgroundColor(blockId, backgroundColor){
         // set text background
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white ff_storyview_block_background_transparent").addClass(backgroundColor);
     }
 
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_font_color_label", function(){
+        let fontColorValue = $(this).children("input[type=radio]").val();
+        let blockId = $(this).data("blockid");
+
+        $('.ff_storyview_block_item_text_font_color_label[data-blockid="' + blockId + '"] .activ').removeClass("activ");
+        $(this).children(".color-preview").addClass("activ");
+        
+        setTextColor(blockId, fontColorValue);
+    });
     /**
      * Set story view block text color for preview
      * @param {int} blockId selected block id
+     * @param {string} fontColor selected text color css class
      */
-    function setTextColor(blockId){
-        // get text color
+    function setTextColor(blockId, fontColor){
         // set text color
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("ff_storyview_block_color_black ff_storyview_block_color_gray ff_storyview_block_color_red ff_storyview_block_color_white").addClass(fontColor);
     }
 
     /**

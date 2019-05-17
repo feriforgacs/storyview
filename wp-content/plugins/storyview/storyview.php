@@ -280,36 +280,36 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Block Background</label>
                                     <div class="ff_storyview_color_group">
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="black" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_black" />
                                             <span class="color-preview black activ" title="black">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="dark-gray" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_gray" />
                                             <span class="color-preview dark-gray selected" title="dark gray">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="red" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_red" />
                                             <span class="color-preview red" title="red">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="white" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_white" />
                                             <span class="color-preview white" title="white">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="transparent" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_transparent" />
                                             <span class="color-preview transparent" title="transparent, no background">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
@@ -320,29 +320,29 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Font Color</label>
                                     <div class="ff_storyview_color_group">
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="black" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_black" />
                                             <span class="color-preview black">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="dark-gray" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_gray" />
                                             <span class="color-preview dark-gray">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="red" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_red" />
                                             <span class="color-preview red">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="white" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="1">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_white" />
                                             <span class="color-preview white activ">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
@@ -484,36 +484,36 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Text Block Background</label>
                                     <div class="ff_storyview_color_group">
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="black" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="ff_storyview_block_background_black" />
                                             <span class="color-preview black activ" title="black">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="dark-gray" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="ff_storyview_block_background_gray" />
                                             <span class="color-preview dark-gray selected" title="dark gray">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="red" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="ff_storyview_block_background_red" />
                                             <span class="color-preview red" title="red">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="white" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="ff_storyview_block_background_white" />
                                             <span class="color-preview white" title="white">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_background_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="transparent" />
+                                        <label class="ff_storyview_block_item_text_background_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_background_color_2" value="ff_storyview_block_background_transparent" />
                                             <span class="color-preview transparent" title="transparent, no background">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
@@ -524,29 +524,29 @@ function ff_storyview_post_class_meta_box( $post ) {
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label">Font Color</label>
                                     <div class="ff_storyview_color_group">
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="black" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="ff_storyview_block_color_black" />
                                             <span class="color-preview black">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="dark-gray" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="ff_storyview_block_color_gray" />
                                             <span class="color-preview dark-gray">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="red" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="ff_storyview_block_color_red" />
                                             <span class="color-preview red">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
                                         </label>
 
-                                        <label class="ff_storyview_block_item_text_font_color_label">
-                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="white" />
+                                        <label class="ff_storyview_block_item_text_font_color_label" data-blockid="2">
+                                            <input type="radio" name="ff_storyview_block_item_text_font_color_2" value="ff_storyview_block_color_white" />
                                             <span class="color-preview white activ">
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                             </span>
