@@ -214,16 +214,6 @@ jQuery(document).ready(function($){
     }
 
     /**
-     * Set story view block text font color for preview
-     * @param {int} blockId selected block id
-     * @param {string} selected font color css class
-     */
-    function setTextFontColor(blockId, fontColorClass){
-        // get text font color
-        // set text font color
-    }
-
-    /**
      * Display story preview for selected block
      * @param {int} blockId selected block id
      */
@@ -233,6 +223,21 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").css({
             "display": "flex"
         });
+    }
+
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_delete_button", function(){
+        let blockId = $(this).data("blockid");
+        if(confirm("Are you sure you want to remove the selected story block?")){
+            deleteStoryBlock(blockId);
+        }
+    });
+
+    /**
+     * Remove selected story block from the list
+     * @param {int} blockId selected block id
+     */
+    function deleteStoryBlock(blockId){
+        $("#ff_storyview_block_item_" + blockId).remove();
     }
 
 });
