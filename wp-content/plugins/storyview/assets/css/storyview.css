@@ -216,6 +216,7 @@ by Ferenc Forgacs - @feriforgacs
     margin: .5rem auto;
     display: none;
     flex-direction: column;
+    border: 1px solid #eee;
 }
 
 .ui-state-highlight {

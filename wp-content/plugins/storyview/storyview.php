@@ -254,7 +254,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <div class="ff_storyview_row">
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_1">Font Family</label>
-                                    <select name="ff_storyview_block_item_text_font_family_1" class="custom-select" id="ff_storyview_block_item_text_font_family_1">
+                                    <select name="ff_storyview_block_item_text_font_family_1" class="custom-select font-family-select" data-blockid="1" id="ff_storyview_block_item_text_font_family_1">
                                         <option value="arial">Arial</option>    
                                         <option value="courier">Courier</option>
                                         <option value="roboto">Roboto</option>
@@ -266,7 +266,7 @@ function ff_storyview_post_class_meta_box( $post ) {
 
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_1">Font Size</label>
-                                    <select name="ff_storyview_block_item_text_font_size_1" class="custom-select" id="ff_storyview_block_item_text_font_size_1">
+                                    <select name="ff_storyview_block_item_text_font_size_1" class="custom-select font-size-select" data-blockid="1" id="ff_storyview_block_item_text_font_size_1">
                                         <option value="f12">12px</option>
                                         <option value="f14">14px</option>
                                         <option value="f18">18px</option>
@@ -458,7 +458,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <div class="ff_storyview_row">
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_2">Font Family</label>
-                                    <select name="ff_storyview_block_item_text_font_family_2" class="custom-select" id="ff_storyview_block_item_text_font_family_2">
+                                    <select name="ff_storyview_block_item_text_font_family_2" class="custom-select font-family-select" data-blockid="2" id="ff_storyview_block_item_text_font_family_2">
                                         <option value="arial">Arial</option>    
                                         <option value="courier">Courier</option>
                                         <option value="roboto">Roboto</option>
@@ -470,7 +470,7 @@ function ff_storyview_post_class_meta_box( $post ) {
 
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_2">Font Size</label>
-                                    <select name="ff_storyview_block_item_text_font_size_2" class="custom-select" id="ff_storyview_block_item_text_font_size_2">
+                                    <select name="ff_storyview_block_item_text_font_size_2" class="custom-select font-size-select" data-blockid="2" id="ff_storyview_block_item_text_font_size_2">
                                         <option value="f12">12px</option>
                                         <option value="f14">14px</option>
                                         <option value="f18">18px</option>
@@ -638,7 +638,7 @@ function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
-    echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';

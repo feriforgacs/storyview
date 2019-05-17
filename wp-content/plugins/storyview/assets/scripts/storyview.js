@@ -11,6 +11,19 @@ jQuery(document).ready(function($){
     $(".custom-select").selectric({
         optionsItemBuilder: function(itemData) {
             return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
+        },
+
+        onChange: function(element){
+            let blockId = $(element).data("blockid");
+            let selectedOption = $(element).val();
+
+            if(element.classList.contains("font-family-select")){
+                // change font family in preview
+                setTextFontFamily(blockId, selectedOption);
+            } else if(element.classList.contains("font-size-select")){
+                // change font size in preview
+                setTextFontSize(blockId, selectedOption);
+            }
         }
     });
 
@@ -163,17 +176,29 @@ jQuery(document).ready(function($){
     /**
      * Set story view block text font family for preview
      * @param {int} blockId selected block id
+     * @param {string} fontFamilyClass selected font family css class
      */
-    function setTextFontFamily(blockId){
-        // get text font family
+    function setTextFontFamily(blockId, fontFamilyClass){
         // set text font family
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("arial courier roboto rounded montserrat lily").addClass(fontFamilyClass);
+    }
+
+    /**
+     * Set story view block text font size for preview
+     * @param {int} blockId selected block id
+     * @param {string} fontSizeClass selected font size css class
+     */
+    function setTextFontSize(blockId, fontSizeClass){
+        // set text font family
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("f12 f14 f18 f24 f36").addClass(fontSizeClass);
     }
 
     /**
      * Set story view block text font color for preview
      * @param {int} blockId selected block id
+     * @param {string} selected font color css class
      */
-    function setTextFontColor(blockId){
+    function setTextFontColor(blockId, fontColorClass){
         // get text font color
         // set text font color
     }
