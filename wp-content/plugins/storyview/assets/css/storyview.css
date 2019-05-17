@@ -289,3 +289,76 @@ by Ferenc Forgacs - @feriforgacs
 .ff_storyview_block_color_white{
     color: #fff;
 }
+
+#ff_storyview_blocks .selectric{
+    border-color: #ccc;
+    border-radius: 3px;
+    background: #f7f7f7;
+    box-shadow: 0 1px 0 #ccc;
+    width: 90%;
+}
+
+#ff_storyview_blocks .selectric .button{
+    border: none;
+}
+
+#ff_storyview_blocks .selectric-items li.highlighted{
+    background: #11a0d2;
+    color: #fff;
+}
+
+#ff_storyview_blocks .selectric-items li, #ff_storyview_blocks .selectric-items ul{
+    font-size: 16px;
+    line-height: 30px;
+    min-height: 30px;
+}
+
+.courier{
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+    font-weight: bold;
+}
+
+.roboto{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.rounded{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bold;
+}
+
+.lily{
+    font-family: 'Lily Script One', cursive;
+    font-weight: bold;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.arial{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.f12{
+    font-size: 12px;
+}
+
+.f14{
+    font-size: 14px;
+}
+
+.f18{
+    font-size: 18px;
+}
+
+.f24{
+    font-size: 24px;
+}
+
+.f36{
+    font-size: 36px;
+}

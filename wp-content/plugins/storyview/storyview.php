@@ -254,23 +254,24 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <div class="ff_storyview_row">
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_1">Font Family</label>
-                                    <select name="ff_storyview_block_item_text_font_family_1" id="ff_storyview_block_item_text_font_family_1">
-                                        <option value="">Font 1</option>
-                                        <option value="">Font 2</option>
-                                        <option value="">Font 3</option>
-                                        <option value="">Font 4</option>
-                                        <option value="">Font 5</option>
+                                    <select name="ff_storyview_block_item_text_font_family_1" class="custom-select" id="ff_storyview_block_item_text_font_family_1">
+                                        <option value="arial">Arial</option>    
+                                        <option value="courier">Courier</option>
+                                        <option value="roboto">Roboto</option>
+                                        <option value="rounded">Rounded</option>
+                                        <option value="lily">Lily</option>
+                                        <option value="montserrat">Montserrat</option>
                                     </select>
                                 </div>
 
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_1">Font Size</label>
-                                    <select name="ff_storyview_block_item_text_font_size_1" id="ff_storyview_block_item_text_font_size_1">
-                                        <option value="12">12px</option>
-                                        <option value="14">14px</option>
-                                        <option value="18">18px</option>
-                                        <option value="24">24px</option>
-                                        <option value="36">36px</option>
+                                    <select name="ff_storyview_block_item_text_font_size_1" class="custom-select" id="ff_storyview_block_item_text_font_size_1">
+                                        <option value="f12">12px</option>
+                                        <option value="f14">14px</option>
+                                        <option value="f18">18px</option>
+                                        <option value="f24">24px</option>
+                                        <option value="f36">36px</option>
                                     </select>
                                 </div>
                             </div>
@@ -457,23 +458,24 @@ function ff_storyview_post_class_meta_box( $post ) {
                             <div class="ff_storyview_row">
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_2">Font Family</label>
-                                    <select name="ff_storyview_block_item_text_font_family_2" id="ff_storyview_block_item_text_font_family_2">
-                                        <option value="">Font 1</option>
-                                        <option value="">Font 2</option>
-                                        <option value="">Font 3</option>
-                                        <option value="">Font 4</option>
-                                        <option value="">Font 5</option>
+                                    <select name="ff_storyview_block_item_text_font_family_2" class="custom-select" id="ff_storyview_block_item_text_font_family_2">
+                                        <option value="arial">Arial</option>    
+                                        <option value="courier">Courier</option>
+                                        <option value="roboto">Roboto</option>
+                                        <option value="rounded">Rounded</option>
+                                        <option value="lily">Lily</option>
+                                        <option value="montserrat">Montserrat</option>
                                     </select>
                                 </div>
 
                                 <div class="ff_storyview_col_md_6">
                                     <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_2">Font Size</label>
-                                    <select name="ff_storyview_block_item_text_font_size_2" id="ff_storyview_block_item_text_font_size_2">
-                                        <option value="12">12px</option>
-                                        <option value="14">14px</option>
-                                        <option value="18">18px</option>
-                                        <option value="24">24px</option>
-                                        <option value="36">36px</option>
+                                    <select name="ff_storyview_block_item_text_font_size_2" class="custom-select" id="ff_storyview_block_item_text_font_size_2">
+                                        <option value="f12">12px</option>
+                                        <option value="f14">14px</option>
+                                        <option value="f18">18px</option>
+                                        <option value="f24">24px</option>
+                                        <option value="f36">36px</option>
                                     </select>
                                 </div>
                             </div>
@@ -633,14 +635,16 @@ function ff_storyview_post_class( $classes ) {
 }
 
 function ff_storyview_css(){
+    echo '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap&subset=latin-ext" rel="stylesheet">';
+
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_js(){
-    /*$my_saved_attachment_post_id = get_option( 'media_selector_attachment_id', 0 );
-    echo '<script> let set_to_post_id = ';
-    echo ($my_saved_attachment_post_id) ? $my_saved_attachment_post_id : 'null';
-    echo ';</script>';*/
-
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
 }

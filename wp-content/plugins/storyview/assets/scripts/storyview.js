@@ -6,6 +6,15 @@ by Ferenc Forgacs - @feriforgacs
 
 jQuery(document).ready(function($){
     /**
+     * Custom dropdown for font and font size
+     */
+    $(".custom-select").selectric({
+        optionsItemBuilder: function(itemData) {
+            return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
+        }
+    });
+
+    /**
      * Sortable story view blocks
      */
     $("#ff_storyview_blocks_list").sortable({
