@@ -125,6 +125,7 @@ by Ferenc Forgacs - @feriforgacs
     width: 100%;
     line-height: 40px;
     height: 40px;
+    display: none;
 }
 
 .ff_storyview_block_item_text_position_label.activ, .ff_storyview_block_item_text_align_label.activ{
@@ -366,4 +367,8 @@ by Ferenc Forgacs - @feriforgacs
 
 .f36{
     font-size: 36px;
+}
+
+#ff_storyview_basic_settings, #ff_storyview_blocks{
+    display: none;
 }

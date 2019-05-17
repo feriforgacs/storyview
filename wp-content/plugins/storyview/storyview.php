@@ -113,7 +113,7 @@ function ff_storyview_post_class_meta_box( $post ) {
                 <label for="ff_storyview_activ">Enable Story View for this post</label>
             </div>
 
-            <div class="ff_storyview_block_content">
+            <div class="ff_storyview_block_content" id="ff_storyview_basic_settings">
                 <h4>Story View Button</h4>
 
                 <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
