@@ -4,6 +4,7 @@ if ( !function_exists( 'add_action' ) ) {
 	echo "No direct access";
 	exit;
 }
+
 ?>
 <div id="ff_storyview_container">
     <div class="ff_storyview_block">
@@ -71,6 +72,8 @@ if ( !function_exists( 'add_action' ) ) {
 
         <div id="ff_storyview_blocks_list">
 
+                
+
             <div class="ff_storyview_block_item" id="ff_storyview_block_item_1" data-blockid="1">
                 <div class="ff_storyview_block_item_move">
                     <i>
@@ -107,7 +110,7 @@ if ( !function_exists( 'add_action' ) ) {
                                 <label class="ff_storyview_label">Text Block Position</label>
                                 <div class="ff_storyview_button_group">
                                     <label class="ff_storyview_block_item_text_position_label activ" data-blockid="1">
-                                        <input type="radio" name="ff_storyview_block_item_text_position_1" value="ff_storyview_text_block_top" />
+                                        <input type="radio" name="ff_storyview_block_item_text_position_1" value="ff_storyview_text_block_top" checked="checked" />
                                         <span>Top</span>
                                         <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -142,7 +145,7 @@ if ( !function_exists( 'add_action' ) ) {
                                 <label class="ff_storyview_label">Text Alignment</label>
                                 <div class="ff_storyview_button_group">
                                     <label class="ff_storyview_block_item_text_align_label activ" data-blockid="1">
-                                        <input type="radio" name="ff_storyview_block_item_text_align_1" value="ff_storyview_text_align_left" />
+                                        <input type="radio" name="ff_storyview_block_item_text_align_1" value="ff_storyview_text_align_left" checked="checked" />
                                         <span>Left</span>
                                         <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                                     </label>
@@ -166,7 +169,7 @@ if ( !function_exists( 'add_action' ) ) {
                             <div class="ff_storyview_col_md_6">
                                 <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_1">Font Family</label>
                                 <select name="ff_storyview_block_item_text_font_family_1" class="custom-select font-family-select" data-blockid="1" id="ff_storyview_block_item_text_font_family_1">
-                                    <option value="arial">Arial</option>    
+                                    <option value="arial" selected="selected">Arial</option>    
                                     <option value="courier">Courier</option>
                                     <option value="roboto">Roboto</option>
                                     <option value="rounded">Rounded</option>
@@ -178,7 +181,7 @@ if ( !function_exists( 'add_action' ) ) {
                             <div class="ff_storyview_col_md_6">
                                 <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_1">Font Size</label>
                                 <select name="ff_storyview_block_item_text_font_size_1" class="custom-select font-size-select" data-blockid="1" id="ff_storyview_block_item_text_font_size_1">
-                                    <option value="f12">12px</option>
+                                    <option value="f12" checked="checked">12px</option>
                                     <option value="f14">14px</option>
                                     <option value="f18">18px</option>
                                     <option value="f24">24px</option>
@@ -192,7 +195,7 @@ if ( !function_exists( 'add_action' ) ) {
                                 <label class="ff_storyview_label">Text Block Background</label>
                                 <div class="ff_storyview_color_group">
                                     <label class="ff_storyview_block_item_text_background_color_label" data-blockid="1">
-                                        <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_black" />
+                                        <input type="radio" name="ff_storyview_block_item_text_background_color_1" value="ff_storyview_block_background_black" checked="checked" />
                                         <span class="color-preview black activ" title="black">
                                             <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                         </span>
@@ -253,7 +256,7 @@ if ( !function_exists( 'add_action' ) ) {
                                     </label>
 
                                     <label class="ff_storyview_block_item_text_font_color_label" data-blockid="1">
-                                        <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_white" />
+                                        <input type="radio" name="ff_storyview_block_item_text_font_color_1" value="ff_storyview_block_color_white" checked="checked" />
                                         <span class="color-preview white activ">
                                             <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                         </span>
@@ -317,7 +320,7 @@ if ( !function_exists( 'add_action' ) ) {
                         <label class="ff_storyview_label">Text Block Position</label>
                         <div class="ff_storyview_button_group">
                             <label class="ff_storyview_block_item_text_position_label activ" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_top" />
+                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_top" checked="checked" />
                                 <span>Top</span>
                                 <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -352,7 +355,7 @@ if ( !function_exists( 'add_action' ) ) {
                         <label class="ff_storyview_label">Text Alignment</label>
                         <div class="ff_storyview_button_group">
                             <label class="ff_storyview_block_item_text_align_label activ" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_left" />
+                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_left" checked="checked" />
                                 <span>Left</span>
                                 <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                             </label>
@@ -376,7 +379,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_%BLOCKID%">Font Family</label>
                         <select name="ff_storyview_block_item_text_font_family_%BLOCKID%" class="custom-select font-family-select" data-blockid="%BLOCKID%" id="ff_storyview_block_item_text_font_family_%BLOCKID%">
-                            <option value="arial">Arial</option>    
+                            <option value="arial" selected="selected">Arial</option>    
                             <option value="courier">Courier</option>
                             <option value="roboto">Roboto</option>
                             <option value="rounded">Rounded</option>
@@ -388,7 +391,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_%BLOCKID%">Font Size</label>
                         <select name="ff_storyview_block_item_text_font_size_%BLOCKID%" class="custom-select font-size-select" data-blockid="%BLOCKID%" id="ff_storyview_block_item_text_font_size_%BLOCKID%">
-                            <option value="f12">12px</option>
+                            <option value="f12" checked="checked">12px</option>
                             <option value="f14">14px</option>
                             <option value="f18">18px</option>
                             <option value="f24">24px</option>
@@ -402,7 +405,7 @@ if ( !function_exists( 'add_action' ) ) {
                         <label class="ff_storyview_label">Text Block Background</label>
                         <div class="ff_storyview_color_group">
                             <label class="ff_storyview_block_item_text_background_color_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_background_color_%BLOCKID%" value="ff_storyview_block_background_black" />
+                                <input type="radio" name="ff_storyview_block_item_text_background_color_%BLOCKID%" value="ff_storyview_block_background_black" checked="checked" />
                                 <span class="color-preview black activ" title="black">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
@@ -484,4 +487,4 @@ if ( !function_exists( 'add_action' ) ) {
         </div>
     </div><!-- end .ff_storyview_block_item -->
 </script><!-- end #storyview_block_template -->
-<input type="hidden" name="story_blocks_count" id="story_block_ids" value="1" />
+<input type="hidden" name="story_block_ids" id="story_block_ids" value="1," />

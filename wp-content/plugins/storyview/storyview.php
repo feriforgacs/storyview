@@ -35,42 +35,33 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-class StoryView {
-
-    function __construct(){
-        
-    }
-
-    /**
-     * Plugin has been activated
-     */
-    function activate(){
-        
-    }
-
-    /**
-     * Plugin has been deactivated
-     */
-    function deactivate(){
-        // flush rewrite rules
-    }
-
-    /**
-     * Plugin has been uninstalled
-     */
-    function uninstall(){
-        // delete cpt
-        // delete data from the db
-    }
+/**
+ * Plugin has been activated
+ */
+function activate(){
+    
 }
 
-$storyView = new StoryView();
+/**
+ * Plugin has been deactivated
+ */
+function deactivate(){
+    // flush rewrite rules
+}
+
+/**
+ * Plugin has been uninstalled
+ */
+function uninstall(){
+    // delete cpt
+    // delete data from the db
+}
 
 // on activation
-register_activation_hook(__FILE__ , array($storyView, "activate"));
+register_activation_hook(__FILE__ , "activate");
 
 // on deactivation
-register_deactivation_hook(__FILE__ , array($storyView, "deactivate"));
+register_deactivation_hook(__FILE__ , "deactivate");
 
 
 /* Story view meta box setup function. */
@@ -140,22 +131,27 @@ function ff_storyview_save_storyview_data($post_id, $post) {
 
     // process story blocks data
     $story_blocks_data = [];
-    // TODO
+    $story_block_ids = explode(",", $_POST["story_block_ids"]);
+    for($i = 0; $i < count($story_block_ids) - 1; $i++) {
+        $current_block_id = $story_block_ids[$i];
+        $story_blocks_data[$current_block_id] = array(
+            "ff_storyview_image_block"                      => $_POST["ff_storyview_image_block_" . $current_block_id],
+            "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),
+            "ff_storyview_block_item_text_position"         => sanitize_text_field($_POST["ff_storyview_block_item_text_position_" . $current_block_id]),
+            "ff_storyview_block_item_text_align"            => sanitize_text_field($_POST["ff_storyview_block_item_text_align_" . $current_block_id]),
+            "ff_storyview_block_item_text_font_family"      => sanitize_text_field($_POST["ff_storyview_block_item_text_font_family_" . $current_block_id]),
+            "ff_storyview_block_item_text_font_size"        => sanitize_text_field($_POST["ff_storyview_block_item_text_font_size_" . $current_block_id]),
+            "ff_storyview_block_item_text_background_color" => sanitize_text_field($_POST["ff_storyview_block_item_text_background_color_" . $current_block_id]),
+            "ff_storyview_block_item_text_font_color"       => sanitize_text_field($_POST["ff_storyview_block_item_text_font_color_" . $current_block_id])
+        );
+    }
 
-    /* Get the posted data and sanitize it for use as an HTML class. */
-    //$new_meta_value = ( isset( $_POST['ff_storyview-post-class'] ) ? sanitize_html_class( $_POST['ff_storyview-post-class'] ) : '' );
-
+    $storyview_data["story_blocks_data"] = $story_blocks_data;
     $new_meta_value = json_encode($storyview_data);
-
-
   
-    /* Get the meta key. */
     $meta_key = 'ff_storyview_data';
-  
-    /* Get the meta value of the custom field key. */
     $meta_value = get_post_meta($post_id, $meta_key, true);
-  
-    /* If a new meta value was added and there was no previous value, add it. */
+
     if($new_meta_value && '' == $meta_value){
         add_post_meta($post_id, $meta_key, $new_meta_value, true);
     } elseif ($new_meta_value && $new_meta_value != $meta_value) {
@@ -181,6 +177,11 @@ function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
 }
 
+
+
+
+
+// TEMP
 /* Filter the post class hook with our custom post class function. */
 add_filter( 'post_class', 'ff_storyview_post_class' );
 
