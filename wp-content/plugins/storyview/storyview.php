@@ -135,7 +135,8 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     for($i = 0; $i < count($story_block_ids) - 1; $i++) {
         $current_block_id = $story_block_ids[$i];
         $story_blocks_data[$current_block_id] = array(
-            "ff_storyview_image_block"                      => $_POST["ff_storyview_image_block_" . $current_block_id],
+            "ff_storyview_block_id"                         => $current_block_id,
+            "ff_storyview_block_image"                      => urlencode($_POST["ff_storyview_block_image_" . $current_block_id]),
             "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),
             "ff_storyview_block_item_text_position"         => sanitize_text_field($_POST["ff_storyview_block_item_text_position_" . $current_block_id]),
             "ff_storyview_block_item_text_align"            => sanitize_text_field($_POST["ff_storyview_block_item_text_align_" . $current_block_id]),
@@ -147,7 +148,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     }
 
     $storyview_data["story_blocks_data"] = $story_blocks_data;
-    $new_meta_value = json_encode($storyview_data);
+    $new_meta_value = json_encode($storyview_data, JSON_UNESCAPED_UNICODE);
   
     $meta_key = 'ff_storyview_data';
     $meta_value = get_post_meta($post_id, $meta_key, true);

@@ -80,7 +80,7 @@ jQuery(document).ready(function($){
             wp.media.model.settings.post.id = wp_media_post_id;
 
             // add image url value to the story view block hidden image field
-            $("#ff_storyview_image_block_" + blockId).val(attachment.url);
+            $("#ff_storyview_block_image_" + blockId).val(attachment.url);
 
             // set image for preview
             setImage(attachment.url, blockId);
