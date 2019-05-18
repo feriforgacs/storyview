@@ -67,25 +67,25 @@ class StoryView {
 $storyView = new StoryView();
 
 // on activation
-register_activation_hook( __FILE__ , array($storyView, "activate") );
+register_activation_hook(__FILE__ , array($storyView, "activate"));
 
 // on deactivation
-register_deactivation_hook( __FILE__ , array($storyView, "deactivate") );
+register_deactivation_hook(__FILE__ , array($storyView, "deactivate"));
 
 
-/* Meta box setup function. */
+/* Story view meta box setup function. */
 function ff_storyview_setup() {
     /* Add meta boxes*/
-    add_action( 'add_meta_boxes', 'ff_storyview_display_storyview_editor' );
+    add_action('add_meta_boxes', 'ff_storyview_display_storyview_editor');
 
     /* Save data */
-    add_action( 'save_post', 'ff_storyview_save_storyview_data', 10, 2 );
+    add_action('save_post', 'ff_storyview_save_storyview_data', 10, 2);
 
     /* Add custom css */
-    add_action( 'admin_head', 'ff_storyview_css');
+    add_action('admin_head', 'ff_storyview_css');
 
     /* Add custom JS */
-    add_action( 'admin_footer', 'ff_storyview_js' );
+    add_action('admin_footer', 'ff_storyview_js');
 }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
@@ -101,7 +101,16 @@ function ff_storyview_display_storyview_editor() {
 }
 
 /* Display the post meta box. */
-function ff_storyview_post_class_meta_box( $post ) {
+function ff_storyview_post_class_meta_box($post) {
+    // get current story view data if exitst
+    $storyview_data_temp = get_post_meta($post->ID, "ff_storyview_data", true);
+
+    $storyview_data = [];
+    $storyview_activ = false;
+    if($storyview_data_temp){
+        $storyview_data = json_decode($storyview_data_temp);
+    }
+
     wp_nonce_field( basename( __FILE__ ), 'ff_storyview_post_class_nonce' ); ?>
 
     <div id="ff_storyview_container">
@@ -109,53 +118,64 @@ function ff_storyview_post_class_meta_box( $post ) {
         <div class="ff_storyview_block">
             <h3 class="ff_storyview_block_header">Story View Post Settings</h3>
             <div class="ff_storyview_block_content">
-                <input id="ff_storyview_activ" class="components-checkbox-control__input" type="checkbox" value="1" />
+                <input id="ff_storyview_activ" name="ff_storyview_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
+                if(isset($storyview_data->activ) && $storyview_data->activ == 1){
+                    $storyview_activ = true;
+                    ?>checked="checked"<?php
+                }
+                ?> />
                 <label for="ff_storyview_activ">Enable Story View for this post</label>
             </div>
 
-            <div class="ff_storyview_block_content" id="ff_storyview_basic_settings">
+            <div class="ff_storyview_block_content" id="ff_storyview_basic_settings" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
                 <h4>Story View Button</h4>
 
                 <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
-                <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="" />
+                <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="<?php
+                if(isset($storyview_data->button_text)){
+                    echo $storyview_data->button_text;
+                }
+                ?>" />
 
                 <div id="ff_storyview_button_types">
                     <label class="ff_storyview_label">Button Type</label>
                     <label class="ff_storyview_button_type_label">
-                        <input type="radio" name="ff_storyview_button_type" value="1" />
+                        <input type="radio" name="ff_storyview_button_type" value="1" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 1){ ?>checked="checked"<?php } ?> />
                         <i>type 1</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
-                        <input type="radio" name="ff_storyview_button_type" value="2" />
+                        <input type="radio" name="ff_storyview_button_type" value="2" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 2){ ?>checked="checked"<?php } ?> />
                         <i>type 2</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
-                        <input type="radio" name="ff_storyview_button_type" value="3" />
+                        <input type="radio" name="ff_storyview_button_type" value="3" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 3){ ?>checked="checked"<?php } ?> />
                         <i>type 3</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
-                        <input type="radio" name="ff_storyview_button_type" value="4" />
+                        <input type="radio" name="ff_storyview_button_type" value="4" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 4){ ?>checked="checked"<?php } ?> />
                         <i>type 4</i>
                     </label>
 
                     <label class="ff_storyview_button_type_label">
-                        <input type="radio" name="ff_storyview_button_type" value="5" />
+                        <input type="radio" name="ff_storyview_button_type" value="5" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 5){ ?>checked="checked"<?php } ?> />
                         Custom
                     </label>
                 </div>
 
                 <div id="ff_storyview_button_types_other">
-                    <label class="ff_storyview_label" for="ff_storyview_button_type_other_url">Custom Button for Story View Button (You can add custom HTML code)</label>
-                    <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_url" name="ff_storyview_button_type_other_code" value="" />
+                    <label class="ff_storyview_label" for="ff_storyview_button_type_other_code">Custom Button for Story View Button (You can add custom HTML code)</label>
+                    <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(isset($storyview_data->button_other_code)){
+                        echo esc_html($storyview_data->button_other_code);
+                    } ?>" />
                     <br /><small>Don't use "a" or "button" tags in your code.</small>
                 </div>
             </div>
         </div>
 
-        <div id="ff_storyview_blocks">
+        <div id="ff_storyview_blocks" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
             <h3 class="ff_storyview_block_header">Story View Blocks</h3>
 
             <div id="ff_storyview_blocks_list">
@@ -366,7 +386,7 @@ function ff_storyview_post_class_meta_box( $post ) {
 
             </div>
         </div>
-        <button class="button" id="ff_storyview_add_block_button"><strong>&plus;</strong> Add block</button>
+        <button class="button" id="ff_storyview_add_block_button" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>><strong>&plus;</strong> Add block</button>
     </div><!-- end #ff_storyview_container -->
 
     <script type="text/template" id="storyview_block_template">
@@ -573,48 +593,76 @@ function ff_storyview_post_class_meta_box( $post ) {
             </div>
         </div><!-- end .ff_storyview_block_item -->
     </script><!-- end #storyview_block_template -->
-
+    <input type="hidden" name="story_blocks_count" id="story_block_ids" value="1" />
     <?php
+
 }
 
 /* Save the meta box's post metadata. */
-function ff_storyview_save_storyview_data( $post_id, $post ) {
-    /* Verify the nonce before proceeding. */
-    if ( !isset( $_POST['ff_storyview_post_class_nonce'] ) || !wp_verify_nonce( $_POST['ff_storyview_post_class_nonce'], basename( __FILE__ ) ) )
+function ff_storyview_save_storyview_data($post_id, $post) {
+    // check nonce
+    if(!isset($_POST['ff_storyview_post_class_nonce']) || !wp_verify_nonce($_POST['ff_storyview_post_class_nonce'], basename(__FILE__))){
         return $post_id;
+    }
+
+    // get post type
+    $post_type = get_post_type_object($post->post_type);
   
-    /* Get the post type object. */
-    $post_type = get_post_type_object( $post->post_type );
-  
-    /* Check if the current user has permission to edit the post. */
-    if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+    // check permissions
+    if(!current_user_can($post_type->cap->edit_post, $post_id)){
         return $post_id;
+    }
   
+    // process posted data
+    $storyview_data = [];
+    $storyview_data["activ"] = intval($_POST["ff_storyview_activ"]);
+    $storyview_data["button_text"] = sanitize_text_field($_POST["ff_storyview_button_text"]);
+    $storyview_data["button_type"] = intval($_POST["ff_storyview_button_type"]);
+    $storyview_data["button_other_code"] = $_POST["ff_storyview_button_type_other_code"];
+    $storyview_data["story_blocks_data"] = "";
+
+    // process story blocks data
+    $story_blocks_data = [];
+    // TODO
+
     /* Get the posted data and sanitize it for use as an HTML class. */
-    $new_meta_value = ( isset( $_POST['ff_storyview-post-class'] ) ? sanitize_html_class( $_POST['ff_storyview-post-class'] ) : '' );
+    //$new_meta_value = ( isset( $_POST['ff_storyview-post-class'] ) ? sanitize_html_class( $_POST['ff_storyview-post-class'] ) : '' );
+
+    $new_meta_value = json_encode($storyview_data);
+
+
   
     /* Get the meta key. */
-    $meta_key = 'ff_storyview_post_class';
+    $meta_key = 'ff_storyview_data';
   
     /* Get the meta value of the custom field key. */
-    $meta_value = get_post_meta( $post_id, $meta_key, true );
+    $meta_value = get_post_meta($post_id, $meta_key, true);
   
     /* If a new meta value was added and there was no previous value, add it. */
-    if ( $new_meta_value && '' == $meta_value )
-        add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-  
-    /* If the new meta value does not match the old value, update it. */
-    elseif ( $new_meta_value && $new_meta_value != $meta_value )
-        update_post_meta( $post_id, $meta_key, $new_meta_value );
-  
-    /* If there is no new meta value but an old value exists, delete it. */
-    elseif ( '' == $new_meta_value && $meta_value )
-        delete_post_meta( $post_id, $meta_key, $meta_value );
+    if($new_meta_value && '' == $meta_value){
+        add_post_meta($post_id, $meta_key, $new_meta_value, true);
+    } elseif ($new_meta_value && $new_meta_value != $meta_value) {
+        update_post_meta($post_id, $meta_key, $new_meta_value);
+    }
 }
 
-/* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php', 'ff_storyview_setup' );
-add_action( 'load-post-new.php', 'ff_storyview_setup' );
+add_action('load-post.php', 'ff_storyview_setup');
+add_action('load-post-new.php', 'ff_storyview_setup');
+
+function ff_storyview_css(){
+    echo '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
+    echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
+
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
+}
+
+function ff_storyview_js(){
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
+}
 
 /* Filter the post class hook with our custom post class function. */
 add_filter( 'post_class', 'ff_storyview_post_class' );
@@ -633,19 +681,4 @@ function ff_storyview_post_class( $classes ) {
     }
 
     return $classes;
-}
-
-function ff_storyview_css(){
-    echo '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
-    echo '<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
-    echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
-    echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
-
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
-}
-
-function ff_storyview_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
 }

@@ -28,7 +28,6 @@ jQuery(document).ready(function($){
             }
         });
     }
-
     customSelect();
 
     /**
@@ -36,7 +35,10 @@ jQuery(document).ready(function($){
      */
     $("#ff_storyview_blocks_list").sortable({
         placeholder: "ui-state-highlight",
-        axis: "y"
+        axis: "y",
+        update: function(event, ui){
+            updateStoryBlockIDs();
+        }
     });
 
     // file selector
@@ -242,6 +244,9 @@ jQuery(document).ready(function($){
      */
     function deleteStoryBlock(blockId){
         $("#ff_storyview_block_item_" + blockId).remove();
+        
+        // update story block IDs
+        updateStoryBlockIDs();
     }
 
     /**
@@ -256,8 +261,14 @@ jQuery(document).ready(function($){
         $(newStoryBlockItem).appendTo("#ff_storyview_blocks_list");
 
         customSelect();
+
+        // update story block IDs
+        updateStoryBlockIDs();
     }
 
+    /**
+     * Toggle story view settings on activation
+     */
     const storyViewBasicSettings = $("#ff_storyview_basic_settings");
     const storyViewBlocks = $("#ff_storyview_blocks");
     const addBlockButton = $("#ff_storyview_add_block_button");
@@ -274,5 +285,34 @@ jQuery(document).ready(function($){
             addBlockButton.hide();
         }
     });
+
+    /**
+     * Update story block ids after
+     * - sort
+     * - add
+     * - remove
+     */
+    const storyBlockIDs = $("#story_block_ids");
+    function updateStoryBlockIDs(){
+        let storyBlockIds = "";
+        $("#ff_storyview_blocks_list .ff_storyview_block_item").each(function(){
+            storyBlockIds += $(this).data("blockid") + ",";
+        });
+
+        storyBlockIDs.val(storyBlockIds);
+    }
+
+    /**
+     * Find the highest story block id
+     */
+    function getHighestStoryID(){
+        let highestId = 1;
+        $("#ff_storyview_blocks_list .ff_storyview_block_item").each(function(){
+            if($(this).data("blockid") > highestId){
+                highestId = $(this).data("blockid");
+            }
+        });
+        return highestId;
+    }
 
 });
