@@ -35,51 +35,58 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+define("FF_STORYVIEW_META_KEY", "ff_storyview_data");
+define("FF_STORYVIEW_SHORTCODE", "ff_storyview");
+
 /**
  * Plugin has been activated
  */
 function activate(){
-    
+    // TODO
 }
 
 /**
  * Plugin has been deactivated
  */
 function deactivate(){
-    // flush rewrite rules
+    // TODO
 }
 
 /**
  * Plugin has been uninstalled
  */
 function uninstall(){
-    // delete cpt
-    // delete data from the db
+    // TODO
 }
 
-// on activation
-register_activation_hook(__FILE__ , "activate");
-
-// on deactivation
-register_deactivation_hook(__FILE__ , "deactivate");
-
-
-/* Story view meta box setup function. */
+/**
+ * Story view init setup
+ */
 function ff_storyview_setup() {
-    /* Add meta boxes*/
+    /**
+     * Add meta boxes
+     */
     add_action('add_meta_boxes', 'ff_storyview_display_storyview_editor');
 
-    /* Save data */
+    /** 
+     * Save data 
+     */
     add_action('save_post', 'ff_storyview_save_storyview_data', 10, 2);
 
-    /* Add custom css */
+    /**
+     * Add backend custom CSS
+     */
     add_action('admin_head', 'ff_storyview_css');
 
-    /* Add custom JS */
+    /**
+     * Add backend custom js
+     */
     add_action('admin_footer', 'ff_storyview_js');
 }
 
-/* Create one or more meta boxes to be displayed on the post editor screen. */
+/**
+ * Create story view meta box under the content editor
+ */
 function ff_storyview_display_storyview_editor() {
     add_meta_box(
         'ff_storyview-post-class',
@@ -91,10 +98,12 @@ function ff_storyview_display_storyview_editor() {
     );
 }
 
-/* Display the post meta box. */
+/**
+ * Display the story view editor
+ */
 function ff_storyview_post_class_meta_box($post) {
     // get current story view data if exitst
-    $storyview_data_temp = get_post_meta($post->ID, "ff_storyview_data", true);
+    $storyview_data_temp = get_post_meta($post->ID, FF_STORYVIEW_META_KEY, true);
 
     $storyview_data = [];
     $storyview_activ = false;
@@ -106,7 +115,9 @@ function ff_storyview_post_class_meta_box($post) {
     include_once("views/admin_editor.php");
 }
 
-/* Save the meta box's post metadata. */
+/**
+ * Save story view data as postmeta
+ */
 function ff_storyview_save_storyview_data($post_id, $post) {
     // check nonce
     if(!isset($_POST['ff_storyview_post_class_nonce']) || !wp_verify_nonce($_POST['ff_storyview_post_class_nonce'], basename(__FILE__))){
@@ -150,7 +161,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $storyview_data["story_blocks_data"] = $story_blocks_data;
     $new_meta_value = json_encode($storyview_data, JSON_UNESCAPED_UNICODE);
   
-    $meta_key = 'ff_storyview_data';
+    $meta_key = FF_STORYVIEW_META_KEY;
     $meta_value = get_post_meta($post_id, $meta_key, true);
 
     if($new_meta_value && '' == $meta_value){
@@ -159,9 +170,6 @@ function ff_storyview_save_storyview_data($post_id, $post) {
         update_post_meta($post_id, $meta_key, $new_meta_value);
     }
 }
-
-add_action('load-post.php', 'ff_storyview_setup');
-add_action('load-post-new.php', 'ff_storyview_setup');
 
 function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
@@ -178,13 +186,46 @@ function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
 }
 
+/**
+ * Display story view on the frontend
+ */
+function ff_storyview_display(){
+    $post_id = get_the_ID();
+
+    return $post_id;
+
+    if (!empty($post_id)) {
+        $storyview_data = get_post_meta($post_id, FF_STORYVIEW_META_KEY, true);
+
+        if(!empty($storyview_data)){
+
+        } else {
+            /**
+             * Replace shortcode with empty string
+             */
+
+        }
+    }
+
+    return $classes;
+}
 
 
+// on activation
+register_activation_hook(__FILE__ , "activate");
+
+// on deactivation
+register_deactivation_hook(__FILE__ , "deactivate");
+
+
+add_action('load-post.php', 'ff_storyview_setup');
+add_action('load-post-new.php', 'ff_storyview_setup');
+add_shortcode(FF_STORYVIEW_SHORTCODE, 'ff_storyview_display');
 
 
 // TEMP
 /* Filter the post class hook with our custom post class function. */
-add_filter( 'post_class', 'ff_storyview_post_class' );
+//add_filter( 'post_class', 'ff_storyview_post_class' );
 
 function ff_storyview_post_class( $classes ) {
     /* Get the current post ID. */

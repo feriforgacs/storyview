@@ -20,6 +20,10 @@ if ( !function_exists( 'add_action' ) ) {
         </div>
 
         <div class="ff_storyview_block_content" id="ff_storyview_basic_settings" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
+            <h4>Shortcode</h4>
+            <p>Insert the following shortcode to your post to the place where you want to display the Story View button:</p>
+            <input type="text" class="components-text-control__input" value="[<?php echo FF_STORYVIEW_SHORTCODE; ?>]" onfocus="this.select();" />
+            <hr />
             <h4>Story View Button</h4>
 
             <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
@@ -94,7 +98,7 @@ if ( !function_exists( 'add_action' ) ) {
                 $storyview_block_item_text_align = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_align) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_align : "ff_storyview_text_align_left";
 
                 $storyview_block_item_text_font_family = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_family) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_family : "arial";
-                
+
                 $storyview_block_item_text_font_size = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_size) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_size : "f12";
 
                 $storyview_block_item_text_background_color = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_background_color) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_background_color : "ff_storyview_block_background_black";
