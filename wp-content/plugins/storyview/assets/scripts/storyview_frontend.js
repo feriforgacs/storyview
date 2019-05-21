@@ -102,6 +102,3 @@ function updateIndicator(direction){
 }
 
 window.addEventListener("resize", setSizes);
-
-// DEBUG
-toggleStoryview();
