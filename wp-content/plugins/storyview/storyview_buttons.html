@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ff_storyview_button{
+            border: none;
+            background: none;
+            outline: none;
+            padding: 0;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .ff_storyview_button_icon{
+            background-color: #eee;
+            background-image: url(/wp-content/uploads/2019/05/samuel-zeller-62819-unsplash.jpg);
+            background-size: cover;
+            background-position: center center;
+            display: inline-block;
+            min-width: 50px;
+            min-height: 50px;
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                -webkit-box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+            }
+            70% {
+                -webkit-box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+            }
+            100% {
+                -webkit-box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+            }
+        }
+        @keyframes pulse {
+            0% {
+                -moz-box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+                box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+            }
+            70% {
+                -moz-box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+                box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+            }
+            100% {
+                -moz-box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+            box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+            }
+        }
+
+        /*
+         * Button 1
+         */
+        .ff_storyview_button_type_1{
+            border: 2px solid #ad11a6;
+            padding: 2px;
+            background: #f7f7f7;
+            border-radius: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #555;
+            animation: pulse 2s infinite;
+        }
+
+        .ff_storyview_button_type_1:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_1 .ff_storyview_button_icon{
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        /*
+         * Button 1 END
+         */
+
+        /*
+         * Button 2
+         */
+        .ff_storyview_button_type_2{
+            border: 2px solid #ad11a6;
+            padding: 2px;
+            background: #f7f7f7;
+            border-radius: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #555;
+            animation: pulse 2s infinite;
+        }
+
+        .ff_storyview_button_type_2:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_2 .ff_storyview_button_icon{
+            margin-right: 10px;
+            border-radius: 30px;
+        }
+
+        /*
+         * Button 2 END
+         */
+
+        /*
+         * Button 3
+         */
+        .ff_storyview_button_type_3{
+            border: 2px solid #ad11a6;
+            padding: 2px;
+            background: #f7f7f7;
+            border-radius: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            color: #555;
+            animation: pulse 2s infinite;
+            flex-direction: column;
+            width: 110px;
+        }
+
+        .ff_storyview_button_type_3:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_3 .ff_storyview_button_icon{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            border-radius: 2px;
+        }
+
+        .ff_storyview_button_type_3 .ff_storyview_button_text{
+            margin-bottom: 10px;
+        }
+        /*
+         * Button 3 END
+         */
+
+        /*
+         * Button 4
+         */
+        .ff_storyview_button_type_4{
+            border: 2px solid #ad11a6;
+            padding: 2px;
+            background: #f7f7f7;
+            border-radius: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            color: #555;
+            animation: pulse 2s infinite;
+            flex-direction: column;
+            width: 110px;
+        }
+
+        .ff_storyview_button_type_4:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_4 .ff_storyview_button_icon{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            border-radius: 50px;
+        }
+
+        .ff_storyview_button_type_4 .ff_storyview_button_text{
+            margin-bottom: 10px;
+        }
+        /*
+         * Button 4 END
+         */
+
+        /*
+         * Button 5
+         */
+
+        .ff_storyview_button_type_5{
+            padding: 0;
+            background: #f7f7f7;
+            border-radius: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+            animation: pulse 2s infinite;
+            flex-direction: column;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .ff_storyview_button_type_5:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_5 .ff_storyview_button_icon{
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+        }
+
+        .ff_storyview_button_type_5 .ff_storyview_button_text{
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 55px;
+            width: 98px;
+            height: 98px;
+            line-height: 98px;
+            background: rgba(0, 0, 0, .5);
+            border: 2px solid #ad11a6;
+        }
+        /*
+         * Button 5 END
+         */
+
+        /*
+         * Button 6
+         */
+        .ff_storyview_button_type_6{
+            background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+            border-radius: 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+            animation: pulse 2s infinite;
+            flex-direction: column;
+            min-height: 35px;
+            padding: 10px 30px;
+        }
+
+        .ff_storyview_button_type_6:hover{
+            animation: none;
+            box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+        }
+
+        .ff_storyview_button_type_6 .ff_storyview_button_icon{
+            display: none;
+        }
+        /*
+         * Button 6 END
+         */
+        
+
+    </style>
+</head>
+<body>
+    
+<!-- button #1 -->
+<button class="ff_storyview_button ff_storyview_button_type_1">
+    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+</button>
+<!-- end button #1 -->
+
+<!-- button #2 -->
+<button class="ff_storyview_button ff_storyview_button_type_2">
+        <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+    </button>
+    <!-- end button #2 -->
+
+<!-- button #3 -->
+<button class="ff_storyview_button ff_storyview_button_type_3">
+    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+</button>
+<!-- end button #3 -->
+
+<!-- button #4 -->
+<button class="ff_storyview_button ff_storyview_button_type_4">
+    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+</button>
+<!-- end button #4 -->
+
+<!-- button #5 -->
+<button class="ff_storyview_button ff_storyview_button_type_5">
+    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">TL⚡DR</span>
+</button>
+<!-- end button #5 -->
+
+<!-- button #5 -->
+<button class="ff_storyview_button ff_storyview_button_type_6">
+    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+</button>
+<!-- end button #5 -->
+
+</body>
+</html>
