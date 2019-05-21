@@ -221,12 +221,15 @@ function ff_storyview_display(){
             $storyview_button .= '<i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">' . $storyview_data->button_type . '</span>';
             $storyview_button .= '</button>';
 
-            $storyview_blocks = '<div id="ff_storyview_blocks_container">';
+            $storyview_blocks = '<div id="ff_storyview_blocks_container"><div id="ff_storyview_blocks">';
 
             $storyview_blocks_indicator = '<div id="ff_storyview_blocks_indicator">';
             if(isset($storyview_data->story_blocks_data)){
+                $storyview_blocks .= '<div id="ff_storyview_blocks_items_container">';
+
+                $i = 0;
                 foreach($storyview_data->story_blocks_data as $storyview_block){
-                    $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
+                    $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
                         $storyview_blocks .= '<p class="block_item_text ' . $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size . ' ' . $storyview_block->ff_storyview_block_item_text_background_color . ' ' . $storyview_block->ff_storyview_block_item_text_font_color .'">';
                         $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
@@ -234,12 +237,22 @@ function ff_storyview_display(){
 
                     $storyview_blocks .= '</div>';
 
-                    $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item" id="ff_storyview_block_indicator_item_' . $storyview_block->ff_storyview_block_id . '"></div>';
+                    $indicator_activ = "";
+                    if($i == 0){
+                        $indicator_activ = "activ";
+                    } else {
+                        $indicator_activ = "";
+                    }
+                    $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item ' . $indicator_activ . '" id="ff_storyview_block_indicator_item_' . $storyview_block->ff_storyview_block_id . '"></div>';
+
+                    $i++;
                 }
+
+                $storyview_blocks .= '</div>';
             }
             $storyview_blocks_indicator .= '</div>';
 
-            $storyview_blocks .= $storyview_blocks_indicator . '<button id="ff_storyview_close_button">&times;</button></div>';
+            $storyview_blocks .= $storyview_blocks_indicator . '<button id="ff_storyview_close_button">&times;</button></div></div>';
 
             $storyview_content = $storyview_button . $storyview_blocks;
 
