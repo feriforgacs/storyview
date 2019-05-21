@@ -20,8 +20,10 @@ ffStoryviewCloseButton.addEventListener("click", toggleStoryview);
 function toggleStoryview(){
     if(ffStoryviewBody.classList.contains("ff_storyview_visible")){
         ffStoryviewBody.classList.remove("ff_storyview_visible");
+        history.pushState("storyview", document.title, window.location.href.split('#')[0]);
     } else {
         ffStoryviewBody.classList.add("ff_storyview_visible");
+        history.pushState("storyview", document.title + " Storyview", "#storyview");
     }
 
     setSizes();
@@ -102,3 +104,17 @@ function updateIndicator(direction){
 }
 
 window.addEventListener("resize", setSizes);
+
+window.addEventListener("keydown", e => {
+	if (e.code === "Escape" || e.code === "escape") {
+		if (ffStoryviewBody.classList.contains("ff_storyview_visible")) {
+            ffStoryviewBody.classList.remove("ff_storyview_visible");
+            history.pushState("storyview", document.title, window.location.href.split('#')[0]);
+		}
+	}
+});
+
+if (window.location.hash.includes("#storyview")) {
+    ffStoryviewBody.classList.add("ff_storyview_visible");
+    history.pushState("storyview", document.title + " Storyview", "#storyview");
+}
