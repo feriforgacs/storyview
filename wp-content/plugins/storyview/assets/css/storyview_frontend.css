@@ -216,3 +216,344 @@ by Ferenc Forgacs - @feriforgacs
 body.ff_storyview_visible{
     overflow: hidden;
 }
+
+/* button types */
+
+.ff_storyview_button{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.ff_storyview_button_icon{
+    background-color: #eee;
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+        box-shadow: 0 0 0 0 rgba(248, 204, 46, .4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+        box-shadow: 0 0 0 10px rgba(248, 204, 46, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+    box-shadow: 0 0 0 0 rgba(248, 204, 46, 0);
+    }
+}
+
+/*
+ * Button 1
+ */
+.ff_storyview_button_type_1{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    animation: pulse 2s infinite;
+}
+
+.ff_storyview_button_type_1_i{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    animation: pulse 2s infinite;
+}
+
+.ff_storyview_button_type_1:hover, .ff_storyview_button_type_1_i:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_1 .ff_storyview_button_icon, .ff_storyview_button_type_1_i .ff_storyview_button_icon{
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/*
+ * Button 1 END
+ */
+
+/*
+ * Button 2
+ */
+.ff_storyview_button_type_2{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    animation: pulse 2s infinite;
+}
+
+.ff_storyview_button_type_2_i{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    animation: pulse 2s infinite;
+}
+
+.ff_storyview_button_type_2:hover, .ff_storyview_button_type_2_i:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_2 .ff_storyview_button_icon, .ff_storyview_button_type_2_i .ff_storyview_button_icon{
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+/*
+ * Button 2 END
+ */
+
+/*
+ * Button 3
+ */
+.ff_storyview_button_type_3{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #555;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    width: 110px;
+}
+
+.ff_storyview_button_type_3_i{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    width: 110px;
+}
+
+.ff_storyview_button_type_3:hover, .ff_storyview_button_type_3_i:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_3 .ff_storyview_button_icon, .ff_storyview_button_type_3_i .ff_storyview_button_icon{
+    width: 108px;
+    height: 108px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.ff_storyview_button_type_3 .ff_storyview_button_text, .ff_storyview_button_type_3_i .ff_storyview_button_text{
+    margin-bottom: 10px;
+}
+/*
+ * Button 3 END
+ */
+
+/*
+ * Button 4
+ */
+.ff_storyview_button_type_4{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #555;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    width: 110px;
+}
+
+.ff_storyview_button_type_4_i{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    width: 110px;
+}
+
+.ff_storyview_button_type_4:hover, .ff_storyview_button_type_4_i:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_4 .ff_storyview_button_icon, .ff_storyview_button_type_4_i .ff_storyview_button_icon{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
+
+.ff_storyview_button_type_4 .ff_storyview_button_text, .ff_storyview_button_type_4_i .ff_storyview_button_text{
+    margin-bottom: 10px;
+}
+/*
+ * Button 4 END
+ */
+
+/*
+ * Button 5
+ */
+.ff_storyview_button_type_5{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 35px;
+    color: #555;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    min-height: 35px;
+    padding: 10px 30px;
+}
+
+.ff_storyview_button_type_5_i{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    min-height: 35px;
+    padding: 10px 30px;
+}
+
+.ff_storyview_button_type_5:hover, .ff_storyview_button_type_5_i:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_5 .ff_storyview_button_icon, .ff_storyview_button_type_5_i .ff_storyview_button_icon{
+    display: none;
+}
+/*
+ * Button 5 END
+ */
+
+/*
+ * Button 6
+ */
+
+.ff_storyview_button_type_6{
+    padding: 0;
+    background: #f7f7f7;
+    border-radius: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    animation: pulse 2s infinite;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.ff_storyview_button_type_6:hover{
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
+.ff_storyview_button_type_6 .ff_storyview_button_icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.ff_storyview_button_type_6 .ff_storyview_button_text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 55px;
+    width: 58px;
+    height: 58px;
+    line-height: 58px;
+    background: rgba(0, 0, 0, .5);
+    border: 2px solid #ad11a6;
+}
+/*
+ * Button 6 END
+ */
