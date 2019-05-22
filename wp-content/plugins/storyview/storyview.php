@@ -120,7 +120,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $storyview_data = [];
     $storyview_data["activ"] = intval($_POST["ff_storyview_activ"]);
     $storyview_data["button_text"] = sanitize_text_field($_POST["ff_storyview_button_text"]);
-    $storyview_data["button_type"] = intval($_POST["ff_storyview_button_type"]);
+    $storyview_data["button_type"] = strtolower($_POST["ff_storyview_button_type"]);
     $storyview_data["button_other_code"] = $_POST["ff_storyview_button_type_other_code"];
     $storyview_data["story_blocks_data"] = "";
 
@@ -201,8 +201,8 @@ function ff_storyview_display(){
 
             $storyview_content = "";
 
-            $storyview_button = '<button id="ff_storyview_button" class="' . $storyview_data->button_type . '">';
-            $storyview_button .= '<i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">' . $storyview_data->button_type . '</span>';
+            $storyview_button = '<button id="ff_storyview_button" class="ff_storyview_button_type_' . $storyview_data->button_type . '">';
+            $storyview_button .= '<i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
             $storyview_button .= '</button>';
 
             $storyview_blocks = '<div id="ff_storyview_blocks_container"><div id="ff_storyview_blocks">';
