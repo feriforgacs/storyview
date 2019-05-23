@@ -246,6 +246,8 @@ if ( !function_exists( 'add_action' ) ) {
             for($i = 1; $i <= $storyview_blocks_count; $i++){
                 $storyview_block_id = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_id) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_id : 1;
 
+                echo "<h1>Block count:</h1>" . $storyview_blocks_count;
+
                 $storyview_block_ids .= $storyview_block_id . ",";
 
                 $storyview_block_image = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_image) ? urldecode($storyview_data->story_blocks_data->$i->ff_storyview_block_image) : null;
