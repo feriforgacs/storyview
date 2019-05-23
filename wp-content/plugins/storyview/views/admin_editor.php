@@ -39,7 +39,7 @@ if ( !function_exists( 'add_action' ) ) {
                 <div id="ff_storyview_button_types_content">
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="1" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 1){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 1){ ?>checked="checked"<?php } ?> />
                             <i>Type 1</i>
 
                             <!-- button #1 -->
@@ -54,7 +54,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="1_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "1_i"){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "1_i"){ ?>checked="checked"<?php } ?> />
                             <i>Type 1 Inverse</i>
 
                             <!-- button #1_i -->
@@ -71,7 +71,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="2" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 2){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 2){ ?>checked="checked"<?php } ?> />
                             <i>Type 2</i>
 
                             <!-- button #2 -->
@@ -86,7 +86,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="2_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "2_i"){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "2_i"){ ?>checked="checked"<?php } ?> />
                             <i>Type 2 Inverse</i>
 
                             <!-- button #2_i -->
@@ -103,7 +103,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="3" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 3){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 3){ ?>checked="checked"<?php } ?> />
                             <i>Type 3</i>
 
                             <!-- button #3 -->
@@ -118,7 +118,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="3_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "3_i"){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "3_i"){ ?>checked="checked"<?php } ?> />
                             <i>Type 3 Inverse</i>
 
                             <!-- button #3_i -->
@@ -135,7 +135,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="4" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 4){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 4){ ?>checked="checked"<?php } ?> />
                             <i>Type 4</i>
 
                             <!-- button #4 -->
@@ -150,7 +150,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="4_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "4_i"){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "4_i"){ ?>checked="checked"<?php } ?> />
                             <i>Type 4 Inverse</i>
 
                             <!-- button #4_i -->
@@ -167,7 +167,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="5" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 5){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 5){ ?>checked="checked"<?php } ?> />
                             <i>Type 5</i>
 
                             <!-- button #5 -->
@@ -182,7 +182,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="5_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "5_i"){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "5_i"){ ?>checked="checked"<?php } ?> />
                             <i>Type 5 Inverse</i>
 
                             <!-- button #5_i -->
@@ -199,7 +199,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="6" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 6){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="6" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 6){ ?>checked="checked"<?php } ?> />
                             <i>Type 6</i>
 
                             <!-- button #6 -->
@@ -210,7 +210,7 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" value="7" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 7){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" id="ff_storyview_button_type_other" name="ff_storyview_button_type" class="ff_storyview_button_type" value="other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 7){ ?>checked="checked"<?php } ?> />
                             <i>Other (own code)</i>
                         </label>
                     </div>
@@ -222,7 +222,10 @@ if ( !function_exists( 'add_action' ) ) {
                 <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(isset($storyview_data->button_other_code)){
                     echo esc_html($storyview_data->button_other_code);
                 } ?>" />
-                <br /><small>Don't use "a" or "button" tags in your code.</small>
+                <br /><small>Don't use "a" or "button" tags in your code. Use the following shortcodes to display the button text, and the button image:
+                    <pre>{{button_text}} {{button_image}}</pre>
+                    Eg.: &lt;span class="my_custom_button"&gt;&lt;img src="{{button_image}}" /&gt; {{button_text}}&lt;/span&gt;
+                </small>
             </div>
         </div>
     </div>

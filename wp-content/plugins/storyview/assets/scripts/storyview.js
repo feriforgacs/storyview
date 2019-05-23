@@ -346,4 +346,15 @@ jQuery(document).ready(function($){
 
     updateButtonImage();
 
+    /**
+     * Display / hide other button type code section
+     */
+    $("input.ff_storyview_button_type").on("change", function(){
+        if($("#ff_storyview_button_type_other").is(":checked")){
+            $("#ff_storyview_button_types_other").show();
+        } else {
+            $("#ff_storyview_button_types_other").hide();
+        }
+    });
+
 });

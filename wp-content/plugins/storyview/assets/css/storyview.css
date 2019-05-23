@@ -23,6 +23,10 @@ by Ferenc Forgacs - @feriforgacs
     margin: 1rem 0 0 0;
 }
 
+#ff_storyview_button_types_other{
+    display: none;
+}
+
 .ff_storyview_label{
     display: block;
     margin: 0 0 .3rem;
