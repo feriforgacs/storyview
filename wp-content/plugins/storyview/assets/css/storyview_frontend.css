@@ -226,7 +226,7 @@ body.ff_storyview_visible{
     padding: 0;
     margin: 10px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     position: relative;
 }
@@ -282,6 +282,20 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
+.ff_storyview_button_type_1:hover, .ff_storyview_button_type_1:focus, .ff_storyview_button_type_1:active{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
 .ff_storyview_button_type_1_i{
     border: none;
     padding: 4px;
@@ -295,7 +309,15 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-.ff_storyview_button_type_1:hover, .ff_storyview_button_type_1_i:hover{
+.ff_storyview_button_type_1_i:hover, .ff_storyview_button_type_1_i:focus, .ff_storyview_button_type_1_i:active{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
@@ -325,6 +347,20 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
+.ff_storyview_button_type_2:hover, .ff_storyview_button_type_2:focus, .ff_storyview_button_type_2:active{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+}
+
 .ff_storyview_button_type_2_i{
     border: none;
     padding: 4px;
@@ -338,7 +374,16 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-.ff_storyview_button_type_2:hover, .ff_storyview_button_type_2_i:hover{
+.ff_storyview_button_type_2_i:hover, .ff_storyview_button_type_2_i:focus, .ff_storyview_button_type_2_i:active{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
@@ -371,6 +416,23 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
+.ff_storyview_button_type_3:hover, .ff_storyview_button_type_3:focus, .ff_storyview_button_type_3:active{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #555;
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    width: 110px;
+}
+
 .ff_storyview_button_type_3_i{
     border: none;
     padding: 4px;
@@ -387,9 +449,21 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-.ff_storyview_button_type_3:hover, .ff_storyview_button_type_3_i:hover{
+.ff_storyview_button_type_3_i:hover, .ff_storyview_button_type_3_i:focus, .ff_storyview_button_type_3_i:active{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    width: 110px;
 }
 
 .ff_storyview_button_type_3 .ff_storyview_button_icon, .ff_storyview_button_type_3_i .ff_storyview_button_icon{
@@ -425,6 +499,23 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
+.ff_storyview_button_type_4:hover, .ff_storyview_button_type_4:focus, .ff_storyview_button_type_4:active{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #555;
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    width: 110px;
+}
+
 .ff_storyview_button_type_4_i{
     border: none;
     padding: 4px;
@@ -441,9 +532,21 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-.ff_storyview_button_type_4:hover, .ff_storyview_button_type_4_i:hover{
+.ff_storyview_button_type_4_i:hover, .ff_storyview_button_type_4_i:focus, .ff_storyview_button_type_4_i:active{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    width: 110px;
 }
 
 .ff_storyview_button_type_4 .ff_storyview_button_icon, .ff_storyview_button_type_4_i .ff_storyview_button_icon{
@@ -481,6 +584,25 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
+.ff_storyview_button_type_5:hover, .ff_storyview_button_type_5:focus, .ff_storyview_button_type_5:active{
+    border: 2px solid #ad11a6;
+    padding: 2px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 35px;
+    color: #555;
+    animation: none;
+    box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    min-height: 35px;
+    padding: 10px 30px;
+}
+
 .ff_storyview_button_type_5_i{
     border: none;
     padding: 4px;
@@ -499,9 +621,23 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
-.ff_storyview_button_type_5:hover, .ff_storyview_button_type_5_i:hover{
+.ff_storyview_button_type_5_i:hover, .ff_storyview_button_type_5_i:focus, .ff_storyview_button_type_5_i:active{
+    border: none;
+    padding: 4px;
+    background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    min-height: 35px;
+    padding: 10px 30px;
 }
 
 .ff_storyview_button_type_5 .ff_storyview_button_icon, .ff_storyview_button_type_5_i .ff_storyview_button_icon{
@@ -532,9 +668,22 @@ body.ff_storyview_visible{
     position: relative;
 }
 
-.ff_storyview_button_type_6:hover{
+.ff_storyview_button_type_6:hover, .ff_storyview_button_type_6:focus, .ff_storyview_button_type_6:active{
+    padding: 0;
+    background: #f7f7f7;
+    border-radius: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
     animation: none;
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+    position: relative;
 }
 
 .ff_storyview_button_type_6 .ff_storyview_button_icon{
