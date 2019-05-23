@@ -140,7 +140,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $story_block_ids = explode(",", $_POST["story_block_ids"]);
     for($i = 0; $i < count($story_block_ids) - 1; $i++) {
         $current_block_id = $story_block_ids[$i];
-        $story_blocks_data[$current_block_id] = array(
+        $story_blocks_data[$i] = array(
             "ff_storyview_block_id"                         => $current_block_id,
             "ff_storyview_block_image"                      => urlencode($_POST["ff_storyview_block_image_" . $current_block_id]),
             "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),

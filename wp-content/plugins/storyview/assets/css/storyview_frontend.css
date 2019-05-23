@@ -200,12 +200,16 @@ by Ferenc Forgacs - @feriforgacs
     margin: 0;
 }
 
-.ff_storyview_block_item_content p{
-    margin: 20px;
+.ff_storyview_block_item_content .block_item_text{
     line-height: 200%;
-    padding: 10px;
+    padding: .5rem;
+    margin: 10px;
     border-radius: 3px;
     display: inline-block;
+}
+
+.ff_storyview_block_item_content .block_item_text:empty {
+    display: none;
 }
 
 .ff_storyview_visible #ff_storyview_blocks_container{
@@ -707,3 +711,7 @@ body.ff_storyview_visible{
 /*
  * Button 6 END
  */
+
+.ff_storyview_button_type_1 .ff_storyview_button_text, .ff_storyview_button_type_1_i .ff_storyview_button_text, .ff_storyview_button_type_2 .ff_storyview_button_text, .ff_storyview_button_type_2_i .ff_storyview_button_text{
+    padding-right: 10px;
+}

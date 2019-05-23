@@ -8,8 +8,8 @@ if ( !function_exists( 'add_action' ) ) {
 ?>
 <div id="ff_storyview_container">
     <div class="ff_storyview_block">
-        <h3 class="ff_storyview_block_header">Story View Post Settings</h3>
         <div class="ff_storyview_block_content">
+            <br />
             <input id="ff_storyview_activ" name="ff_storyview_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
             if(isset($storyview_data->activ) && $storyview_data->activ == 1){
                 $storyview_activ = true;
@@ -39,7 +39,7 @@ if ( !function_exists( 'add_action' ) ) {
                 <div id="ff_storyview_button_types_content">
                     <div class="ff_storyview_button_types_button_block">
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 1){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1" <?php if((isset($storyview_data->button_type) && $storyview_data->button_type == 1) || !isset($storyview_data->button_type)){ ?>checked="checked"<?php } ?> />
                             <i>Type 1</i>
 
                             <!-- button #1 -->
@@ -243,28 +243,34 @@ if ( !function_exists( 'add_action' ) ) {
             }
 
             $storyview_block_ids = "";
-            for($i = 1; $i <= $storyview_blocks_count; $i++){
-                $storyview_block_id = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_id) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_id : 1;
 
-                echo "<h1>Block count:</h1>" . $storyview_blocks_count;
+            $i = 1;
+            $j = $storyview_blocks_count;
+            if($storyview_blocks_count == 1){
+                $i = 0;
+                $j = 0;
+            }
+
+            for($i; $i <= $j; $i++){
+                $storyview_block_id = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_id) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_id : 1;
 
                 $storyview_block_ids .= $storyview_block_id . ",";
 
-                $storyview_block_image = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_image) ? urldecode($storyview_data->story_blocks_data->$i->ff_storyview_block_image) : null;
+                $storyview_block_image = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_image) ? urldecode($storyview_data->story_blocks_data[$i]->ff_storyview_block_image) : null;
 
-                $storyview_block_item_text = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text : null;
+                $storyview_block_item_text = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text : null;
 
-                $storyview_block_item_text_position = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_position) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_position : "ff_storyview_text_block_top";
+                $storyview_block_item_text_position = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_position) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_position : "ff_storyview_text_block_top";
 
-                $storyview_block_item_text_align = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_align) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_align : "ff_storyview_text_align_left";
+                $storyview_block_item_text_align = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_align) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_align : "ff_storyview_text_align_left";
 
-                $storyview_block_item_text_font_family = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_family) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_family : "arial";
+                $storyview_block_item_text_font_family = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_family) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_family : "arial";
 
-                $storyview_block_item_text_font_size = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_size) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_size : "f12";
+                $storyview_block_item_text_font_size = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size : "f12";
 
-                $storyview_block_item_text_background_color = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_background_color) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_background_color : "ff_storyview_block_background_black";
+                $storyview_block_item_text_background_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color : "ff_storyview_block_background_black";
 
-                $storyview_block_item_text_font_color = isset($storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_color) ? $storyview_data->story_blocks_data->$i->ff_storyview_block_item_text_font_color : "ff_storyview_block_color_white";
+                $storyview_block_item_text_font_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color : "ff_storyview_block_color_white";
 
                 ?>
                 <div class="ff_storyview_block_item" id="ff_storyview_block_item_<?php echo $storyview_block_id; ?>" data-blockid="<?php echo $storyview_block_id; ?>">
@@ -284,9 +290,7 @@ if ( !function_exists( 'add_action' ) ) {
                                 }
                                 echo '"';
                             } ?>>
-                            <p class="block_item_text <?php echo $storyview_block_item_text_background_color . ' ' . $storyview_block_item_text_font_color . ' ' . $storyview_block_item_text_font_family . ' ' . $storyview_block_item_text_font_size; ?>">
-                                <?php echo $storyview_block_item_text; ?>
-                            </p>
+                            <p class="block_item_text <?php echo $storyview_block_item_text_background_color . ' ' . $storyview_block_item_text_font_color . ' ' . $storyview_block_item_text_font_family . ' ' . $storyview_block_item_text_font_size; ?>"><?php echo $storyview_block_item_text; ?></p>
                         </div>
                     </div>
 
@@ -499,7 +503,7 @@ if ( !function_exists( 'add_action' ) ) {
         <div class="ff_storyview_block_item_preview">
             <p class="preview_text">preview</p>
             <div class="ff_storyview_block_item_content ff_storyview_text_block_top ff_storyview_text_align_left">
-                <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white"></p>
+                <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f12"></p>
             </div>
         </div>
 
@@ -596,7 +600,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_%BLOCKID%">Font Size</label>
                         <select name="ff_storyview_block_item_text_font_size_%BLOCKID%" class="custom-select font-size-select" data-blockid="%BLOCKID%" id="ff_storyview_block_item_text_font_size_%BLOCKID%">
-                            <option value="f12" checked="checked">12px</option>
+                            <option value="f12" selected="selected">12px</option>
                             <option value="f14">14px</option>
                             <option value="f18">18px</option>
                             <option value="f24">24px</option>
@@ -671,7 +675,7 @@ if ( !function_exists( 'add_action' ) ) {
                             </label>
 
                             <label class="ff_storyview_block_item_text_font_color_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_font_color_%BLOCKID%" value="ff_storyview_block_color_white" />
+                                <input type="radio" name="ff_storyview_block_item_text_font_color_%BLOCKID%" value="ff_storyview_block_color_white" checked="checked" />
                                 <span class="color-preview white activ">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>

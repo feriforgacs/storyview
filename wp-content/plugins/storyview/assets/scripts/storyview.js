@@ -341,6 +341,12 @@ jQuery(document).ready(function($){
                     "background-image": image
                 });
             });
+        } else {
+            $(".ff_storyview_button .ff_storyview_button_icon").each(function(){
+                $(this).css({
+                    "background-image": "none"
+                });
+            });
         }
     }
 
