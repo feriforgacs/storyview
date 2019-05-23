@@ -105,6 +105,7 @@ jQuery(document).ready(function($){
         });
 
         displayStoryPreview(blockId);
+
     }
 
     $("#ff_storyview_blocks_list").on("keyup", ".ff_storyview_block_item_text_textarea", function(){
@@ -229,6 +230,8 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview .ff_storyview_block_item_content").css({
             "display": "flex"
         });
+
+        updateButtonImage();
     }
 
     $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_delete_button", function(){
@@ -300,6 +303,7 @@ jQuery(document).ready(function($){
         });
 
         storyBlockIDs.val(storyBlockIds);
+        updateButtonImage();
     }
 
     /**
@@ -314,5 +318,32 @@ jQuery(document).ready(function($){
         });
         return highestId;
     }
+
+    /**
+     * Update story view button text
+     */
+    $("#ff_storyview_button_text").on("keyup", function(){
+        let buttonText = $(this).val();
+        $(".ff_storyview_button .ff_storyview_button_text").each(function(){
+            $(this).text(buttonText);
+        });
+    });
+
+    /**
+     * Display / Update button image
+     */
+    function updateButtonImage(){
+        if($(".ff_storyview_block_item").length){
+            let image = $(".ff_storyview_block_item:first-child .ff_storyview_block_item_content").css("background-image");
+
+            $(".ff_storyview_button .ff_storyview_button_icon").each(function(){
+                $(this).css({
+                    "background-image": image
+                });
+            });
+        }
+    }
+
+    updateButtonImage();
 
 });

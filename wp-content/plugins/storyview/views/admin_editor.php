@@ -44,7 +44,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #1 -->
                             <button class="ff_storyview_button ff_storyview_button_type_1">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #1 -->
                         </label>
@@ -55,7 +59,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #1_i -->
                             <button class="ff_storyview_button ff_storyview_button_type_1_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #1_i -->
                         </label>
@@ -68,7 +76,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #2 -->
                             <button class="ff_storyview_button ff_storyview_button_type_2">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #2 -->
                         </label>
@@ -79,7 +91,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #2_i -->
                             <button class="ff_storyview_button ff_storyview_button_type_2_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #2_i -->
                         </label>
@@ -92,7 +108,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #3 -->
                             <button class="ff_storyview_button ff_storyview_button_type_3">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #3 -->
                         </label>
@@ -103,7 +123,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #3_i -->
                             <button class="ff_storyview_button ff_storyview_button_type_3_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #3_i -->
                         </label>
@@ -116,7 +140,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #4 -->
                             <button class="ff_storyview_button ff_storyview_button_type_4">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #4 -->
                         </label>
@@ -127,7 +155,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #4_i -->
                             <button class="ff_storyview_button ff_storyview_button_type_4_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #4_i -->
                         </label>
@@ -140,7 +172,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #5 -->
                             <button class="ff_storyview_button ff_storyview_button_type_5">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #5 -->
                         </label>
@@ -151,7 +187,11 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <!-- button #5_i -->
                             <button class="ff_storyview_button ff_storyview_button_type_5_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">Open Story View ⚡</span>
+                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                    if(isset($storyview_data->button_text)){
+                                        echo $storyview_data->button_text;
+                                    }
+                                    ?></span>
                             </button>
                             <!-- end button #5_i -->
                         </label>

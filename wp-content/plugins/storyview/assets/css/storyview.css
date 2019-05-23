@@ -404,7 +404,7 @@ by Ferenc Forgacs - @feriforgacs
     padding: 0;
     margin: 10px;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     position: relative;
 }
@@ -880,6 +880,7 @@ by Ferenc Forgacs - @feriforgacs
     line-height: 58px;
     background: rgba(0, 0, 0, .5);
     border: 2px solid #ad11a6;
+    overflow: hidden;
 }
 /*
  * Button 6 END
