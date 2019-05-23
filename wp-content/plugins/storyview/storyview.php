@@ -236,9 +236,22 @@ function ff_storyview_display(){
 
             $storyview_blocks .= $storyview_blocks_indicator . '<button id="ff_storyview_close_button">&times;</button></div></div>';
 
-            $storyview_button = '<button id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
-            $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
-            $storyview_button .= '</button>';
+            if($storyview_data->button_type == "other"){
+                $button_custom_code = $storyview_data->button_other_code;
+                // replace button text shortcode
+                $button_custom_code = str_replace("{{button_text}}", $storyview_data->button_text, $button_custom_code);
+
+                // replace button image shortcode
+                $button_custom_code = str_replace("{{button_image}}", $storyview_button_icon_image, $button_custom_code);
+
+                $storyview_button = '<button id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button .= $button_custom_code;
+                $storyview_button .= '</button>';
+            } else {
+                $storyview_button = '<button id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
+                $storyview_button .= '</button>';
+            }
 
             $storyview_content = $storyview_button . $storyview_blocks;
 

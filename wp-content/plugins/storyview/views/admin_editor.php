@@ -210,14 +210,14 @@ if ( !function_exists( 'add_action' ) ) {
                         </label>
 
                         <label class="ff_storyview_button_type_label">
-                            <input type="radio" id="ff_storyview_button_type_other" name="ff_storyview_button_type" class="ff_storyview_button_type" value="other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 7){ ?>checked="checked"<?php } ?> />
+                            <input type="radio" id="ff_storyview_button_type_other" name="ff_storyview_button_type" class="ff_storyview_button_type" value="other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>checked="checked"<?php } ?> />
                             <i>Other (own code)</i>
                         </label>
                     </div>
                 </div>
             </div>
 
-            <div id="ff_storyview_button_types_other">
+            <div id="ff_storyview_button_types_other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>style="display: block;"<?php } ?>>
                 <label class="ff_storyview_label" for="ff_storyview_button_type_other_code">Custom Button for Story View Button (You can add custom HTML code)</label>
                 <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(isset($storyview_data->button_other_code)){
                     echo esc_html($storyview_data->button_other_code);
