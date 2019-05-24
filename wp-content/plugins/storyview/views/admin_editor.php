@@ -236,23 +236,23 @@ if ( !function_exists( 'add_action' ) ) {
         <div id="ff_storyview_blocks_list">
 
             <?php
-            $storyview_blocks_count = 1;
-            $storyview_block_id = 1;            
-            if(isset($storyview_data->story_blocks_data) && count((array)$storyview_data->story_blocks_data) > 1){
+            $storyview_blocks_count = 0;
+            $storyview_block_id = 0;
+            if(isset($storyview_data->story_blocks_data) && count((array)$storyview_data->story_blocks_data) > 0){
                 $storyview_blocks_count = count((array)$storyview_data->story_blocks_data);
             }
 
             $storyview_block_ids = "";
 
-            $i = 1;
+            $i = 0;
             $j = $storyview_blocks_count;
             if($storyview_blocks_count == 1){
                 $i = 0;
-                $j = 0;
+                $j = 1;
             }
 
-            for($i; $i <= $j; $i++){
-                $storyview_block_id = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_id) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_id : 1;
+            for($i; $i < $j; $i++){
+                $storyview_block_id = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_id) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_id : 0;
 
                 $storyview_block_ids .= $storyview_block_id . ",";
 
@@ -271,7 +271,7 @@ if ( !function_exists( 'add_action' ) ) {
                 $storyview_block_item_text_background_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color : "ff_storyview_block_background_black";
 
                 $storyview_block_item_text_font_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color : "ff_storyview_block_color_white";
-
+                
                 ?>
                 <div class="ff_storyview_block_item" id="ff_storyview_block_item_<?php echo $storyview_block_id; ?>" data-blockid="<?php echo $storyview_block_id; ?>">
                     <div class="ff_storyview_block_item_move">

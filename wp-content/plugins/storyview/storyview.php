@@ -3,9 +3,9 @@
  * @package StoryView
  */
 /*
-Plugin Name: StoryView
+Plugin Name: ⚡ Story View
 Plugin URI: https://storyviewplugin.com
-Description: Create story like versions for your posts
+Description: Create story like versions for your posts for more engagement
 Version: 1.0.0
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
@@ -141,7 +141,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     for($i = 0; $i < count($story_block_ids) - 1; $i++) {
         $current_block_id = $story_block_ids[$i];
         $story_blocks_data[$i] = array(
-            "ff_storyview_block_id"                         => $current_block_id,
+            "ff_storyview_block_id"                         => $i,
             "ff_storyview_block_image"                      => urlencode($_POST["ff_storyview_block_image_" . $current_block_id]),
             "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),
             "ff_storyview_block_item_text_position"         => sanitize_text_field($_POST["ff_storyview_block_item_text_position_" . $current_block_id]),
@@ -283,7 +283,7 @@ function ff_storyview_frontend_css(){
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=' . date("YmdHis"), __FILE__ ) ) . '"></script>';
 }
 
 

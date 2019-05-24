@@ -5,7 +5,7 @@ by Ferenc Forgacs - @feriforgacs
 */
 
 const ffStoryviewGap = 40;
-let ffStoryviewCurrentStory = 1;
+let ffStoryviewCurrentStory = 0;
 
 /**
  * Toggle storyview
@@ -69,8 +69,8 @@ function stepStoryview(event){
 
     if(event.clientX > ffStoryviewBlocksLeftMax){
         // go to next block
-        if(ffStoryviewCurrentStory < ffStoryviewBlockItemsCount){
-            let left = ffStoryviewCurrentStory * ffStoryviewBlockWidth;
+        if(ffStoryviewCurrentStory < ffStoryviewBlockItemsCount - 1){
+            let left = (ffStoryviewCurrentStory + 1) * ffStoryviewBlockWidth;
             ffStoryviewBlocksContainer.style.transform = 'translateX(-' + left + 'px)';
             ffStoryviewCurrentStory++;
         }
@@ -78,10 +78,10 @@ function stepStoryview(event){
         updateIndicator("next");
     } else {
         // go to previous block
-        if(ffStoryviewCurrentStory > 1){
-            ffStoryviewCurrentStory--;
+        if(ffStoryviewCurrentStory > 0){
             let left = ffStoryviewCurrentStory * ffStoryviewBlockWidth - ffStoryviewBlockWidth;
             ffStoryviewBlocksContainer.style.transform = 'translateX(-' + left + 'px)';
+            ffStoryviewCurrentStory--;
         }
         // update indicator
         updateIndicator("previous");
