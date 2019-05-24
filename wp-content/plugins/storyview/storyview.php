@@ -318,3 +318,10 @@ function ff_storyview_post_class( $classes ) {
 
     return $classes;
 }
+
+require 'includes/updatechecker/plugin-update-checker.php';
+$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://demo.storyviewplugin.com/updater/?action=get_metadata&slug=storyview',
+	__FILE__,
+	'storyview'
+);
