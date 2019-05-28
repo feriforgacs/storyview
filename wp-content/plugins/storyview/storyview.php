@@ -38,7 +38,6 @@ function deactivate(){
  * Plugin has been uninstalled
  */
 function uninstall(){
-    // TODO
 }
 
 /**
