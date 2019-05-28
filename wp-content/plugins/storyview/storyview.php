@@ -270,7 +270,7 @@ function ff_storyview_frontend_css(){
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=' . date("YmdHis"), __FILE__ ) ) . '"></script>';
 }
 
 
