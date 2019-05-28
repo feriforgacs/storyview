@@ -51,5 +51,11 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.0.2 =
+* Swipe gestures
+
+= 1.0.1 =
+* Mobile layout fixes
+
 = 1.0 =
 * Initial release
