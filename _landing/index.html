@@ -177,7 +177,7 @@
             <div id="howto-video-body">
                 <button id="howto-video-close-btn">&times;</button>
                 <div id="howto-video">
-                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OJor89C9sK4&enablejsapi=1&origin=https://storyviewplugin.com" id="video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OJor89C9sK4" id="video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -205,7 +205,8 @@ function displayVideo(){
 function closeVideo(){
     if(body.classList.contains("video-visible")){
         body.classList.remove("video-visible");
-        video.stopVideo();
+        let videoURL = video.src;
+        video.src = videoURL;
     }
 }
 
