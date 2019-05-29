@@ -49,19 +49,17 @@ html {
 
 #cookie-alert {
 	position: fixed;
-	bottom: 0;
-	width: 100%;
-	max-width: 450px;
-	right: 0;
-	background: rgb(41, 41, 41);
-	text-align: left;
-	font-size: 0.8rem;
-	padding: 1rem;
-	line-height: 2rem;
-	color: #eee;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-	display: none;
-	flex-direction: column;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(270deg,#8000ff 0,#ff7a00 100%),#fff;
+    text-align: center;
+    font-size: .8rem;
+    padding: .5rem;
+    line-height: 2rem;
+    color: #eee;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    display: none;
+    flex-direction: column;
 }
 
 #cookie-alert .subpage-link {
@@ -82,8 +80,12 @@ html {
 
 #cookie-alert span {
 	width: 100%;
-	text-align: center;
-	background: var(--mainColor);
+    text-align: center;
+    background: 0 0;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    max-width: 150px;
+    margin: 0 auto;
 }
 
 #content{
@@ -481,6 +483,10 @@ body.video-visible #howto-video-modal{
 
     footer li{
         flex: 1;
+    }
+
+    #cookie-alert{
+        flex-direction: row;
     }
 }
 

@@ -186,6 +186,12 @@
     </div>
 </div>
 
+<div id="cookie-alert">
+    <p>🍪 We are using cookies to ensure you get the best experience on our website. <a
+            class="subpage-link" href="privacy-policy.html">Learn more...</a></p>
+    <span><a id="cookie-alert-accept">I agree</a></span>
+</div>
+
 <script>
 const videoButtons = document.querySelectorAll(".view-video");
 const videoCloseButton = document.querySelector("#howto-video-close-btn");
@@ -210,6 +216,28 @@ function closeVideo(){
         let videoURL = video.src;
         video.src = videoURL;
     }
+}
+
+// cookie alert
+const cookieAlert = document.querySelector("#cookie-alert");
+const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
+
+cookieAlertAgreeButton.addEventListener("click", toggleCookieAlert);
+
+function toggleCookieAlert(show = false) {
+	if (show === true) {
+		cookieAlert.style.display = "flex";
+	} else {
+		const cookieExpires = new Date();
+		cookieExpires.setFullYear(cookieExpires.getFullYear() + 1);
+		document.cookie = "sv_cookie_accepted=1; expires=" + cookieExpires.toUTCString() + ";";
+
+		cookieAlert.style.display = "none";
+	}
+}
+
+if (!document.cookie.includes("sv_cookie_accepted=1")) {
+	toggleCookieAlert(true);
 }
 
 </script>
