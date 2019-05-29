@@ -218,6 +218,12 @@ function closeVideo(){
     }
 }
 
+window.addEventListener("keydown", e => {
+	if (e.code === "Escape" || e.code === "escape") {
+		closeVideo();
+    }
+});
+
 // cookie alert
 const cookieAlert = document.querySelector("#cookie-alert");
 const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
