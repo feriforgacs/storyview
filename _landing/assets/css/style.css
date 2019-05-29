@@ -584,25 +584,8 @@ body.video-visible #howto-video-modal{
         flex: 2;
     }
 
-    #cta-section-bottom h4{
-        /* padding-left: 2rem;
-        margin-top: 0;
-        flex: 10; */
-    }
-
-    #cta-section-bottom .bottom{
-        /* display: flex;
-        align-items: center; */
-    }
-
     #cta-section-bottom .bottom .placeholder{
         flex: 2;
-    }
-
-    #cta-section-bottom .btn{
-        /* margin-left: 2rem;
-        flex: 5;
-        margin-bottom: 0; */
     }
 
     #cta-section-bottom p{
