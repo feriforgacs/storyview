@@ -335,6 +335,94 @@ footer a{
     color: #888;
 }
 
+#howto-video-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+body.video-visible #howto-video-modal{
+    display: block;
+}
+
+#howto-video-container{
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+#howto-video-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+#howto-video-body{
+    position: relative;
+    padding: 0px;
+    flex: 1 1 auto;
+}
+
+#howto-video{
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+#howto-video::before{
+    display: block;
+    content: "";
+    padding-top: 56.25%;
+}
+
+#howto-video iframe{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#howto-video-close-btn{
+    position: absolute;
+    top: -45px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: 0 0;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#howto-video iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 @media only screen and (min-width: 768px){
     body, html{
         font-size: 14px;

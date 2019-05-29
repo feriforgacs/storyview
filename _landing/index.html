@@ -83,7 +83,7 @@
                     </defs>
                     </svg>
                     </i></span></button>
-                <a href="#" target="_blank" class="btn btn-primary" id="download">Get the plugin for $19</a>
+                <a href="https://gum.co/storyview" target="_blank" class="btn btn-primary" id="download">Get the plugin for $19</a>
             </section>
 
             <section class="example-section" id="example-1">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="bottom">
                         <div class="placeholder"></div>
-                        <a href="#" target="_blank" class="btn btn-secondary btn-white">Get the plugin for $ 19</a>
+                        <a href="https://gum.co/storyview" target="_blank" class="btn btn-secondary btn-white">Get the plugin for $ 19</a>
                         <p>(One-time purcase, no recurring fees)</p>
                     </div>
                 </div>
@@ -169,9 +169,47 @@
                 </nav>
                 <p class="copy">All rights reserved (c) 2019</p>
             </footer>
-
-
         </div>
     </div>
+<div id="howto-video-modal">
+    <div id="howto-video-container">
+        <div id="howto-video-content">
+            <div id="howto-video-body">
+                <button id="howto-video-close-btn">&times;</button>
+                <div id="howto-video">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OJor89C9sK4&enablejsapi=1&origin=https://storyviewplugin.com" id="video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const videoButtons = document.querySelectorAll(".view-video");
+const videoCloseButton = document.querySelector("#howto-video-close-btn");
+const body = document.querySelector("body");
+const video = document.querySelector("#video");
+
+videoButtons.forEach((videoButton) => {
+    videoButton.addEventListener("click", displayVideo);
+});
+
+videoCloseButton.addEventListener("click", closeVideo);
+
+function displayVideo(){
+    if(!body.classList.contains("video-visible")){
+        body.classList.add("video-visible");
+    }
+}
+
+function closeVideo(){
+    if(body.classList.contains("video-visible")){
+        body.classList.remove("video-visible");
+        video.stopVideo();
+    }
+}
+
+</script>
+
 </body>
 </html>
