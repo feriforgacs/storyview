@@ -21,13 +21,13 @@ ffStoryviewCloseButton.addEventListener("click", toggleStoryview);
 function toggleStoryview(){
     if(ffStoryviewBody.classList.contains("ff_storyview_visible")){
         ffStoryviewBody.classList.remove("ff_storyview_visible");
-        history.pushState("storyview", document.title, window.location.href.split('#')[0]);
+		history.pushState("storyview", document.title, window.location.href.split('#')[0]);
     } else {
         ffStoryviewBody.classList.add("ff_storyview_visible");
-        history.pushState("storyview", document.title + " Storyview", "#storyview");
-    }
-
-    setSizes();
+		history.pushState("storyview", document.title + " Storyview", "#storyview");
+	}
+	
+	setSizes();
 }
 
 /**
@@ -51,7 +51,7 @@ function setSizes(){
     
     let width = ffStoryviewBlockWidth * ffStoryviewBlockItemsCount;
     ffStoryviewBlocksContainer.style.width = width + 'px';
-    ffStoryviewBlocksContainer.style.transform = 'translateX(0px)';
+    // ffStoryviewBlocksContainer.style.transform = 'translateX(0px)';
 
 	// set sizes for default blocks
 	ffStoryviewBlockItems.forEach((ffStoryviewBlockItem)=>{
@@ -84,6 +84,10 @@ setSizes();
 function stepStoryview(event = null, direction = null){
 	if(event && event.target.closest(".ff_storyview_block_item_content_code") && !direction){
 		// code slide, don't go to next or previous slide on click
+		return;
+	}
+
+	if(event && event.target.id == "ff_storyview_close_button"){
 		return;
 	}
 	
