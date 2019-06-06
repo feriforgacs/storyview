@@ -82,7 +82,7 @@ setSizes();
  * @param {string} direction step direction
  */
 function stepStoryview(event = null, direction = null){
-	if((event.target.classList.contains("ff_storyview_block_item_code") || event.target.classList.contains("ff_storyview_block_item_content_code") || event.target.classList.contains("code_block_previous") || event.target.classList.contains("code_block_next")) && !direction){
+	if(event && event.target.closest(".ff_storyview_block_item_content_code") && !direction){
 		// code slide, don't go to next or previous slide on click
 		return;
 	}

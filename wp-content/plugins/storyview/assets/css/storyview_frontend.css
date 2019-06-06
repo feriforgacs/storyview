@@ -723,6 +723,13 @@ body.ff_storyview_visible{
     font-weight: bold;
 }
 
+.ff_storyview_block_item_code{
+    overflow-x: scroll;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 #ff_storyview_blocks a.code_block_previous, #ff_storyview_blocks a.code_block_next{
     line-height: 60px;
     height: 60px;
