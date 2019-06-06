@@ -5,6 +5,7 @@ by Ferenc Forgacs - @feriforgacs
 */
 
 const ffStoryviewGap = 40;
+const ffStoryviewCodeBlockBottomGap = 60;
 let ffStoryviewCurrentStory = 0;
 
 /**
@@ -37,7 +38,10 @@ ffStoryviewBlocks.addEventListener("click", stepStoryview);
 
 const ffStoryviewBlocksContainer = document.querySelector("#ff_storyview_blocks_items_container");
 const ffStoryviewBlockItems = document.querySelectorAll(".ff_storyview_block_item_content");
-const ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length;
+const ffStoryviewBlockCodeItems = document.querySelectorAll(".ff_storyview_block_item_content_code");
+
+const ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length + ffStoryviewBlockCodeItems.length;
+
 let ffStoryviewBlockWidth = (window.innerWidth < 420) ? window.innerWidth : 420;
 let ffStoryviewBlockHeight = (window.innerHeight < 746) ? window.innerHeight : 746;
 
@@ -49,12 +53,25 @@ function setSizes(){
     ffStoryviewBlocksContainer.style.width = width + 'px';
     ffStoryviewBlocksContainer.style.transform = 'translateX(0px)';
 
-    ffStoryviewBlockItems.forEach((ffStoryviewBlockItem)=>{
+	// set sizes for default blocks
+	ffStoryviewBlockItems.forEach((ffStoryviewBlockItem)=>{
         ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
 
         let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
         ffStoryviewBlockItem.style.height = blockHeight + "px";
-    })
+	});
+	
+	// set sizes for code blocks
+	ffStoryviewBlockCodeItems.forEach((ffStoryviewBlockItem)=>{
+        ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
+
+        let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+		ffStoryviewBlockItem.style.height = blockHeight + "px";
+		
+		let codeBlock = ffStoryviewBlockItem.querySelector(".ff_storyview_block_item_code");
+		let codeBlockHeight = blockHeight - ffStoryviewCodeBlockBottomGap;
+		codeBlock.style.height = codeBlockHeight + "px";
+	});
 }
 
 setSizes();
@@ -65,6 +82,11 @@ setSizes();
  * @param {string} direction step direction
  */
 function stepStoryview(event = null, direction = null){
+	if((event.target.classList.contains("ff_storyview_block_item_code") || event.target.classList.contains("ff_storyview_block_item_content_code") || event.target.classList.contains("code_block_previous") || event.target.classList.contains("code_block_next")) && !direction){
+		// code slide, don't go to next or previous slide on click
+		return;
+	}
+	
     let ffStoryviewBlocksPosition = ffStoryviewBlocks.getBoundingClientRect();
     let ffStoryviewBlocksLeftMax = ffStoryviewBlocksPosition.left + (ffStoryviewBlocksPosition.width / 2);
 
@@ -88,6 +110,24 @@ function stepStoryview(event = null, direction = null){
         updateIndicator("previous");
     }
 }
+
+/**
+ * Handle step to previous or next slide on clode block
+ */
+const codeBlockPreviousButtons = document.querySelectorAll(".code_block_previous");
+const codeBlockNextButtons = document.querySelectorAll(".code_block_next");
+
+codeBlockPreviousButtons.forEach(codeBlockPreviousButton => {
+	codeBlockPreviousButton.addEventListener("click", (event) => {
+		stepStoryview(event, "previous");
+	});
+});
+
+codeBlockNextButtons.forEach(codeBlockNextButton => {
+	codeBlockNextButton.addEventListener("click", (event) => {
+		stepStoryview(event, "next");
+	})
+});
 
 /**
  * Update the status of the indicator

@@ -207,18 +207,38 @@ function ff_storyview_display(){
 
                 $i = 0;
                 foreach($storyview_data->story_blocks_data as $storyview_block){
-                    $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
+                    $block_type = isset($storyview_block->ff_storyview_block_type) ? $storyview_block->ff_storyview_block_type : "";
+                    switch($block_type) {
+                        case("code"):
+                            // display special stroyview block - shortcode, html code
+                            // do_shortcode($content)
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_content_code">';
+                                $storyview_blocks .= '<div class="ff_storyview_block_item_code">' . do_shortcode($storyview_block->ff_storyview_block_content) . '</div>';
+                                $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
+                            $storyview_blocks .= '</div>';
+                            break;
+                        default:
+                            // display default storyview block - bgimage, text
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
-                        $storyview_blocks .= '<p class="block_item_text ' . $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size . ' ' . $storyview_block->ff_storyview_block_item_text_background_color . ' ' . $storyview_block->ff_storyview_block_item_text_font_color .'">';
-                        $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
-                        $storyview_blocks .= '</p>';
+                                $storyview_blocks .= '<p class="block_item_text ' . $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size . ' ' . $storyview_block->ff_storyview_block_item_text_background_color . ' ' . $storyview_block->ff_storyview_block_item_text_font_color .'">';
+                                $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
+                                $storyview_blocks .= '</p>';
 
-                    $storyview_blocks .= '</div>';
+                            $storyview_blocks .= '</div>';
+                            break;
+                    }
 
                     $indicator_activ = "";
+                    $button_image_set = false;
+
+                    if(!$button_image_set && isset($storyview_block->ff_storyview_block_image)){
+                        $storyview_button_icon_image = urldecode($storyview_block->ff_storyview_block_image);
+                        $button_image_set = true;
+                    }
+
                     if($i == 0){
                         $indicator_activ = "activ";
-                        $storyview_button_icon_image = urldecode($storyview_block->ff_storyview_block_image);
                     } else {
                         $indicator_activ = "";
                     }

@@ -188,7 +188,7 @@ by Ferenc Forgacs - @feriforgacs
     transform: translateX(0);
 }
 
-.ff_storyview_block_item_content{
+.ff_storyview_block_item_content, .ff_storyview_block_item_content_code{
     flex: 1;
     max-height: 746px;
     display: flex;
@@ -714,4 +714,46 @@ body.ff_storyview_visible{
 
 .ff_storyview_button_type_1 .ff_storyview_button_text, .ff_storyview_button_type_1_i .ff_storyview_button_text, .ff_storyview_button_type_2 .ff_storyview_button_text, .ff_storyview_button_type_2_i .ff_storyview_button_text{
     padding-right: 10px;
+}
+
+.ff_storyview_block_item_code_navigation{
+    display: flex;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#ff_storyview_blocks a.code_block_previous, #ff_storyview_blocks a.code_block_next{
+    line-height: 60px;
+    height: 60px;
+    cursor: pointer;
+    flex: 1;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 100ms ease;
+}
+
+#ff_storyview_blocks a.code_block_previous:active{
+    opacity: .5;
+    margin-left: -10px;
+}
+
+#ff_storyview_blocks a.code_block_next:active{
+    opacity: .5;
+    margin-right: -10px;
+}
+
+.code_block_next {
+    text-align: right;
+}
+
+.code_block_next span{
+    margin-left: 10px;
+}
+
+.code_block_previous span{
+    transform: scaleX(-1);
+    display: inline-block;
+    margin-right: 10px;
 }
