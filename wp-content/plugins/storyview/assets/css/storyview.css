@@ -125,11 +125,14 @@ by Ferenc Forgacs - @feriforgacs
     margin-top: 4px;
 }
 
-#ff_storyview_add_block_button{
-    width: 100%;
+#ff_storyview_add_block_button, #ff_storyview_add_code_block_button{
+    width: 90%;
     line-height: 40px;
     height: 40px;
-    display: none;
+}
+
+#ff_storyview_add_block_button{
+    margin-left: 10%;
 }
 
 .ff_storyview_block_item_text_position_label.activ, .ff_storyview_block_item_text_align_label.activ{
@@ -153,7 +156,7 @@ by Ferenc Forgacs - @feriforgacs
     margin-bottom: -4px;
 }
 
-#ff_storyview_add_block_button strong{
+#ff_storyview_add_block_button strong, #ff_storyview_add_code_block_button strong{
     font-size: 1rem;
 }
 
@@ -895,4 +898,26 @@ by Ferenc Forgacs - @feriforgacs
 
 .ff_storyview_button_type_1 .ff_storyview_button_text, .ff_storyview_button_type_1_i .ff_storyview_button_text, .ff_storyview_button_type_2 .ff_storyview_button_text, .ff_storyview_button_type_2_i .ff_storyview_button_text{
     padding-right: 10px;
+}
+
+/* Custom Blocks */
+.ff_sotryview_add_actions_button_block{
+    flex: 1;
+}
+
+.ff_sotryview_add_actions_button_block .info{
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.ff_sotryview_add_actions_button_block .info i{
+    display: inline-block;
+    background: #11a0d2;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-right: 10px;
 }

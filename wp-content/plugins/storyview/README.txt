@@ -51,6 +51,9 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.0.3 =
+* Custom Story Block support
+
 = 1.0.2 =
 * Swipe gestures
 

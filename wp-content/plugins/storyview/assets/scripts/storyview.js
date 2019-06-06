@@ -334,7 +334,7 @@ jQuery(document).ready(function($){
      */
     function updateButtonImage(){
         if($(".ff_storyview_block_item").length){
-            let image = $(".ff_storyview_block_item:first-child .ff_storyview_block_item_content").css("background-image");
+            let image = $(".ff_storyview_block_item_classic:first").first().find(".ff_storyview_block_item_content").css("background-image");
 
             $(".ff_storyview_button .ff_storyview_button_icon").each(function(){
                 $(this).css({
