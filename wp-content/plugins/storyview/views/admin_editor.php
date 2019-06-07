@@ -302,7 +302,7 @@ if ( !function_exists( 'add_action' ) ) {
                                 <div class="ff_storyview_block_item_settings_block">
                                     <h3>Custom Block Content</h3>
                                     <label class="ff_storyview_label" for="ff_storyview_block_content_<?php echo $i; ?>">Add your shortcode, or custom HTML code to the field below</label>
-                                    <textarea class="ff_storyview_block_content_editor" id="ff_storyview_block_content_<?php echo $i; ?>" name="ff_storyview_block_content_<?php echo $i; ?>"><?php echo $storyview_block_content; ?></textarea>
+                                    <textarea data-blockid="<?php echo $i; ?>" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_<?php echo $i; ?>" name="ff_storyview_block_content_<?php echo $i; ?>"><?php echo $storyview_block_content; ?></textarea>
                                     <p class="ff_storyview_info">
                                         <i>i</i> The preview of shortcodes will be visible on the frontend.
                                     </p>

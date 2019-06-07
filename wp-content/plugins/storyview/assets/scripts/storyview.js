@@ -113,6 +113,18 @@ jQuery(document).ready(function($){
     });
 
     /**
+     * Display storyview custom block preview
+     */
+    $("#ff_storyview_blocks_list").on("keyup", ".ff_storyview_block_content_editor", function(){
+        let blockId = $(this).data("blockid");
+        let codeBlockValue = $(this).val();
+        // set preview content
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content").html(codeBlockValue).css({ "display": "flex" });
+        // hide preview text
+        $("#ff_storyview_block_item_" + blockId + " .preview_text").css({ "display": "none" });
+    });
+
+    /**
      * Display text in preview section
      * @param {int} blockId selected block id
      */
