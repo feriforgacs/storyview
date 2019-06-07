@@ -286,19 +286,26 @@ if ( !function_exists( 'add_action' ) ) {
                                 </i>
                             </div>
 
-                            <div class="ff_storyview_block_item_preview">
-                                <p class="preview_text">preview</p>
-                                <div class="ff_storyview_block_item_content">
-                                    <p class="block_item_text"></p>
+                            <div class="ff_storyview_block_item_preview ff_storyview_block_item_preview_code">
+                                <p class="preview_text" <?php if($storyview_block_content){ ?>style="display: none;" <?php } ?>>preview</p>
+                                <div class="ff_storyview_block_item_content" <?php if($storyview_block_content){ ?>style="display: flex;" <?php } ?>>
+                                    <?php
+                                    if($storyview_block_content){
+                                        echo $storyview_block_content;
+                                    }
+                                    ?>
                                 </div>
                             </div>
 
                             <div class="ff_storyview_block_item_settings">
-
+                                <p class="block_type_label custom">Custom Block</p>
                                 <div class="ff_storyview_block_item_settings_block">
-                                    <?php
-                                    wp_editor($storyview_block_content, "ff_storyview_block_content_" . $i, ["media_buttons" => true, "teeny" => true]);
-                                    ?>
+                                    <h3>Custom Block Content</h3>
+                                    <label class="ff_storyview_label" for="ff_storyview_block_content_<?php echo $i; ?>">Add your shortcode, or custom HTML code to the field below</label>
+                                    <textarea class="ff_storyview_block_content_editor" id="ff_storyview_block_content_<?php echo $i; ?>" name="ff_storyview_block_content_<?php echo $i; ?>"><?php echo $storyview_block_content; ?></textarea>
+                                    <p class="ff_storyview_info">
+                                        <i>i</i> The preview of shortcodes will be visible on the frontend.
+                                    </p>
                                 </div>
 
                                 <div class="ff_storyview_block_item_settings_block delete_block">
@@ -337,7 +344,7 @@ if ( !function_exists( 'add_action' ) ) {
                             </div>
 
                             <div class="ff_storyview_block_item_settings">
-
+                            <p class="block_type_label classic">Classic Block</p>
                                 <div class="ff_storyview_block_item_settings_block">
                                     <div class="ff_storyview_block_item_image_upload">
                                         <input type="button" class="ff_storyview_image_upload button" data-blockid="<?php echo $storyview_block_id; ?>" value="Select Story Block Image" />
@@ -536,14 +543,14 @@ if ( !function_exists( 'add_action' ) ) {
     <div class="ff_storyview_add_actions" <?php if($storyview_activ){ ?> style="display: flex;" <?php } ?>>
         <div class="ff_sotryview_add_actions_button_block">
             <button class="button" id="ff_storyview_add_code_block_button"><strong>&plus;</strong> Add Custom Block</button>
-            <p class="info">
+            <p class="ff_storyview_info">
                 <i>i</i> To <strong>embed forms, videos, custom HTML or shortcodes</strong>, use this block type.
             </p>
         </div>
 
         <div class="ff_sotryview_add_actions_button_block">
             <button class="button" id="ff_storyview_add_block_button"><strong>&plus;</strong> Add Classic Block</button>
-            <p class="info">
+            <p class="ff_storyview_info">
                 <i>i</i> To display the <strong>classic image-text story block</strong>, use this block type.
             </p>
         </div>
@@ -566,7 +573,7 @@ if ( !function_exists( 'add_action' ) ) {
         </div>
 
         <div class="ff_storyview_block_item_settings">
-
+            <p class="block_type_label classic">Classic Block</p>
             <div class="ff_storyview_block_item_settings_block">
                 <div class="ff_storyview_block_item_image_upload">
                     <input type="button" class="ff_storyview_image_upload button" data-blockid="%BLOCKID%" value="Select Story Block Image" />

@@ -905,12 +905,17 @@ by Ferenc Forgacs - @feriforgacs
     flex: 1;
 }
 
-.ff_sotryview_add_actions_button_block .info{
+.ff_storyview_info{
     text-align: center;
     padding: 0 1rem;
 }
 
-.ff_sotryview_add_actions_button_block .info i{
+.ff_storyview_block_item_settings_block .ff_storyview_info{
+    text-align: left;
+    padding: 0;
+}
+
+.ff_storyview_info i{
     display: inline-block;
     background: #11a0d2;
     width: 20px;
@@ -920,4 +925,38 @@ by Ferenc Forgacs - @feriforgacs
     font-weight: bold;
     border-radius: 10px;
     margin-right: 10px;
+    text-align: center;
+}
+
+.block_type_label{
+    padding: 0 15px;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.block_type_label.custom{
+    color: #fff;
+    background: #de8a64;
+}
+
+.block_type_label.classic{
+    color: #fff;
+    background: #2992c2;
+}
+
+.ff_storyview_block_content_editor{
+    height: 300px;
+    width: 100%;
+}
+
+.ff_storyview_block_item_preview_code .ff_storyview_block_item_content{
+    background: rgba(0,0,0,.9);
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    align-items: center;
+    flex-wrap: wrap;
+    display: none;
 }

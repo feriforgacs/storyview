@@ -299,7 +299,8 @@ jQuery(document).ready(function($){
     function updateStoryBlockIDs(){
         let storyBlockIds = "";
         $("#ff_storyview_blocks_list .ff_storyview_block_item").each(function(){
-            storyBlockIds += $(this).data("blockid") + ",";
+            let blockId = $(this).data("blockid")
+            storyBlockIds +=  blockId + ",";
         });
 
         storyBlockIDs.val(storyBlockIds);
