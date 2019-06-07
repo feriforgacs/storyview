@@ -306,6 +306,7 @@ if ( !function_exists( 'add_action' ) ) {
                                     <p class="ff_storyview_info">
                                         <i>i</i> The preview of shortcodes will be visible on the frontend.
                                     </p>
+                                    <input type="hidden" name="ff_storyview_block_type_<?php echo $i; ?>" value="code" />
                                 </div>
 
                                 <div class="ff_storyview_block_item_settings_block delete_block">
@@ -770,17 +771,22 @@ if ( !function_exists( 'add_action' ) ) {
             </i>
         </div>
 
-        <div class="ff_storyview_block_item_preview">
+        <div class="ff_storyview_block_item_preview ff_storyview_block_item_preview_code">
             <p class="preview_text">preview</p>
-            <div class="ff_storyview_block_item_content ff_storyview_text_block_top ff_storyview_text_align_left">
-                <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f12"></p>
+            <div class="ff_storyview_block_item_content">
             </div>
         </div>
 
         <div class="ff_storyview_block_item_settings">
-
+            <p class="block_type_label custom">Custom Block</p>
             <div class="ff_storyview_block_item_settings_block">
-                CODE EDITOR
+                <h3>Custom Block Content</h3>
+                <label class="ff_storyview_label" for="ff_storyview_block_content_%BLOCKID%">Add your shortcode, or custom HTML code to the field below</label>
+                <textarea data-blockid="%BLOCKID%" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_%BLOCKID%" name="ff_storyview_block_content_%BLOCKID%"><?php echo $storyview_block_content; ?></textarea>
+                <p class="ff_storyview_info">
+                    <i>i</i> The preview of shortcodes will be visible on the frontend.
+                </p>
+                <input type="hidden" name="ff_storyview_block_type_%BLOCKID%" value="code" />
             </div>
 
             <div class="ff_storyview_block_item_settings_block delete_block">

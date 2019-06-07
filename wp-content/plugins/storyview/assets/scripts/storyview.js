@@ -282,6 +282,21 @@ jQuery(document).ready(function($){
     }
 
     /**
+     * Add new custom story block item to the list
+     */
+    $("#ff_storyview_add_code_block_button").on("click", addStoryCodeBlockItem);
+    function addStoryCodeBlockItem(){
+        let storyBlockItems = $(".ff_storyview_block_item").length;
+        storyBlockItems += 1;
+        let storyBlockTemplate = $("#storyview_block_code_template").html();
+        let newStoryBlockItem = storyBlockTemplate.replace(/%BLOCKID%/gi, storyBlockItems);
+        $(newStoryBlockItem).appendTo("#ff_storyview_blocks_list");
+
+        // update story block IDs
+        updateStoryBlockIDs();
+    }
+
+    /**
      * Toggle story view settings on activation
      */
     const storyViewBasicSettings = $("#ff_storyview_basic_settings");
