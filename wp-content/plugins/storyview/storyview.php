@@ -126,17 +126,32 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $story_block_ids = explode(",", $_POST["story_block_ids"]);
     for($i = 0; $i < count($story_block_ids) - 1; $i++) {
         $current_block_id = $story_block_ids[$i];
-        $story_blocks_data[$i] = array(
-            "ff_storyview_block_id"                         => $i,
-            "ff_storyview_block_image"                      => urlencode($_POST["ff_storyview_block_image_" . $current_block_id]),
-            "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),
-            "ff_storyview_block_item_text_position"         => sanitize_text_field($_POST["ff_storyview_block_item_text_position_" . $current_block_id]),
-            "ff_storyview_block_item_text_align"            => sanitize_text_field($_POST["ff_storyview_block_item_text_align_" . $current_block_id]),
-            "ff_storyview_block_item_text_font_family"      => sanitize_text_field($_POST["ff_storyview_block_item_text_font_family_" . $current_block_id]),
-            "ff_storyview_block_item_text_font_size"        => sanitize_text_field($_POST["ff_storyview_block_item_text_font_size_" . $current_block_id]),
-            "ff_storyview_block_item_text_background_color" => sanitize_text_field($_POST["ff_storyview_block_item_text_background_color_" . $current_block_id]),
-            "ff_storyview_block_item_text_font_color"       => sanitize_text_field($_POST["ff_storyview_block_item_text_font_color_" . $current_block_id])
-        );
+
+        // check block type
+        $story_block_type = isset($_POST["ff_storyview_block_type_" . $current_block_id]) ? $_POST["ff_storyview_block_type_" . $current_block_id] : "";
+
+        switch($story_block_type){
+            case "code":
+                $story_blocks_data[$i] = array(
+                    "ff_storyview_block_id"                         => $i,
+                    "ff_storyview_block_type"                       => "code",
+                    "ff_storyview_block_content"                    => base64_encode($_POST["ff_storyview_block_content_" . $current_block_id])
+                );
+                break;
+            default:
+                $story_blocks_data[$i] = array(
+                    "ff_storyview_block_id"                         => $i,
+                    "ff_storyview_block_image"                      => urlencode($_POST["ff_storyview_block_image_" . $current_block_id]),
+                    "ff_storyview_block_item_text"                  => sanitize_text_field($_POST["ff_storyview_block_item_text_" . $current_block_id]),
+                    "ff_storyview_block_item_text_position"         => sanitize_text_field($_POST["ff_storyview_block_item_text_position_" . $current_block_id]),
+                    "ff_storyview_block_item_text_align"            => sanitize_text_field($_POST["ff_storyview_block_item_text_align_" . $current_block_id]),
+                    "ff_storyview_block_item_text_font_family"      => sanitize_text_field($_POST["ff_storyview_block_item_text_font_family_" . $current_block_id]),
+                    "ff_storyview_block_item_text_font_size"        => sanitize_text_field($_POST["ff_storyview_block_item_text_font_size_" . $current_block_id]),
+                    "ff_storyview_block_item_text_background_color" => sanitize_text_field($_POST["ff_storyview_block_item_text_background_color_" . $current_block_id]),
+                    "ff_storyview_block_item_text_font_color"       => sanitize_text_field($_POST["ff_storyview_block_item_text_font_color_" . $current_block_id])
+                );
+                break;
+        }
     }
 
     $storyview_data["story_blocks_data"] = $story_blocks_data;
@@ -158,7 +173,7 @@ function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=' . date("YmdHis"), __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
 }
 
@@ -213,7 +228,7 @@ function ff_storyview_display(){
                             // display special stroyview block - shortcode, html code
                             // do_shortcode($content)
                             $storyview_blocks .= '<div class="ff_storyview_block_item_content_code">';
-                                $storyview_blocks .= '<div class="ff_storyview_block_item_code">' . do_shortcode($storyview_block->ff_storyview_block_content) . '</div>';
+                                $storyview_blocks .= '<div class="ff_storyview_block_item_code">' . do_shortcode(stripslashes(base64_decode($storyview_block->ff_storyview_block_content))) . '</div>';
                                 $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
                             $storyview_blocks .= '</div>';
                             break;
