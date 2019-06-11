@@ -272,8 +272,15 @@ if ( !function_exists( 'add_action' ) ) {
 
                 $storyview_block_item_text_font_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color : "ff_storyview_block_color_white";
 
+                /**
+                 * Custom story block settings
+                 */
                 $storyview_block_type = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_type) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_type : "";
+                
                 $storyview_block_content = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_content) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_content : "";
+
+                $storyview_block_item_block_background_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color : "ff_storyview_block_background_black";
+
 
                 switch($storyview_block_type){
                     case("code"):
@@ -307,6 +314,41 @@ if ( !function_exists( 'add_action' ) ) {
                                         <i>i</i> The preview of shortcodes will be visible on the frontend.
                                     </p>
                                     <input type="hidden" name="ff_storyview_block_type_<?php echo $i; ?>" value="code" />
+
+                                    <div class="ff_storyview_row">
+                                        <div class="ff_storyview_col_md_6">
+                                            <label class="ff_storyview_label">Custom Block Background</label>
+                                            <div class="ff_storyview_color_group">
+                                                <label class="ff_storyview_block_item_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
+                                                    <input type="radio" name="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_black" <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_black"){ echo 'checked="checked"';} ?> />
+                                                    <span class="color-preview black <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_black"){ echo 'activ';} ?>" title="black">
+                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                                    </span>
+                                                </label>
+
+                                                <label class="ff_storyview_block_item_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
+                                                    <input type="radio" name="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_gray" <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_gray"){ echo 'checked="checked"';} ?> />
+                                                    <span class="color-preview dark-gray <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_gray"){ echo 'activ';} ?>" title="dark gray">
+                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                                    </span>
+                                                </label>
+
+                                                <label class="ff_storyview_block_item_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
+                                                    <input type="radio" name="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_red" <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_red"){ echo 'checked="checked"';} ?> />
+                                                    <span class="color-preview red <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_red"){ echo 'activ';} ?>" title="red">
+                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                                    </span>
+                                                </label>
+
+                                                <label class="ff_storyview_block_item_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
+                                                    <input type="radio" name="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_white" <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_white"){ echo 'checked="checked"';} ?> />
+                                                    <span class="color-preview white <?php if($storyview_block_item_block_background_color == "ff_storyview_block_background_white"){ echo 'activ';} ?>" title="white">
+                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="ff_storyview_block_item_settings_block delete_block">
@@ -787,6 +829,41 @@ if ( !function_exists( 'add_action' ) ) {
                     <i>i</i> The preview of shortcodes will be visible on the frontend.
                 </p>
                 <input type="hidden" name="ff_storyview_block_type_%BLOCKID%" value="code" />
+
+                <div class="ff_storyview_row">
+                    <div class="ff_storyview_col_md_6">
+                        <label class="ff_storyview_label">Custom Block Background</label>
+                        <div class="ff_storyview_color_group">
+                            <label class="ff_storyview_block_item_background_color_label" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_block_background_color_%BLOCKID%" value="ff_storyview_block_background_black" checked="checked" />
+                                <span class="color-preview black activ" title="black">
+                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                </span>
+                            </label>
+
+                            <label class="ff_storyview_block_item_background_color_label" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_block_background_color_%BLOCKID%" value="ff_storyview_block_background_gray" />
+                                <span class="color-preview dark-gray" title="dark gray">
+                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                </span>
+                            </label>
+
+                            <label class="ff_storyview_block_item_background_color_label" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_block_background_color_%BLOCKID%" value="ff_storyview_block_background_red" />
+                                <span class="color-preview red" title="red">
+                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                </span>
+                            </label>
+
+                            <label class="ff_storyview_block_item_background_color_label" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_block_background_color_%BLOCKID%" value="ff_storyview_block_background_white" />
+                                <span class="color-preview white" title="white">
+                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="ff_storyview_block_item_settings_block delete_block">

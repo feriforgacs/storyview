@@ -51,7 +51,10 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
-= 1.0.3 =
+= 1.1.1 =
+* Background color support for custom story blocks
+
+= 1.1.0 =
 * Custom Story Block support
 
 = 1.0.2 =

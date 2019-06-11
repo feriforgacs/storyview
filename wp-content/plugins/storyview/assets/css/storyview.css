@@ -87,7 +87,7 @@ by Ferenc Forgacs - @feriforgacs
     border-bottom: none;
 }
 
-.ff_storyview_block_item_text_position_label input[type=radio], .ff_storyview_block_item_text_align_label input[type=radio], .ff_storyview_block_item_text_background_color_label input[type=radio], .ff_storyview_block_item_text_font_color_label input[type=radio] {
+.ff_storyview_block_item_text_position_label input[type=radio], .ff_storyview_block_item_text_align_label input[type=radio], .ff_storyview_block_item_text_background_color_label input[type=radio], .ff_storyview_block_item_text_font_color_label input[type=radio], .ff_storyview_block_item_background_color_label input[type=radio] {
     display: none;
 }
 
@@ -160,7 +160,7 @@ by Ferenc Forgacs - @feriforgacs
     font-size: 1rem;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview, .ff_storyview_block_item_text_font_color_label .color-preview{
+.ff_storyview_block_item_text_background_color_label .color-preview, .ff_storyview_block_item_text_font_color_label .color-preview, .ff_storyview_block_item_background_color_label .color-preview{
     display: inline-block;
     width: 2rem;
     height: 2rem;
@@ -171,23 +171,23 @@ by Ferenc Forgacs - @feriforgacs
     border: 1px solid #ccc;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.activ, .ff_storyview_block_item_text_font_color_label .color-preview.activ{
+.ff_storyview_block_item_text_background_color_label .color-preview.activ, .ff_storyview_block_item_text_font_color_label .color-preview.activ, .ff_storyview_block_item_background_color_label .color-preview.activ{
     box-shadow: inset 0 0 0 4px #fff;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.black, .ff_storyview_block_item_text_font_color_label .color-preview.black{
+.ff_storyview_block_item_text_background_color_label .color-preview.black, .ff_storyview_block_item_text_font_color_label .color-preview.black, .ff_storyview_block_item_background_color_label .color-preview.black{
     background: #000;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.dark-gray, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray{
+.ff_storyview_block_item_text_background_color_label .color-preview.dark-gray, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray, .ff_storyview_block_item_background_color_label .color-preview.dark-gray{
     background: #333333;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.red, .ff_storyview_block_item_text_font_color_label .color-preview.red{
+.ff_storyview_block_item_text_background_color_label .color-preview.red, .ff_storyview_block_item_text_font_color_label .color-preview.red, .ff_storyview_block_item_background_color_label .color-preview.red{
     background: #c92c2c;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.white, .ff_storyview_block_item_text_font_color_label .color-preview.white{
+.ff_storyview_block_item_text_background_color_label .color-preview.white, .ff_storyview_block_item_text_font_color_label .color-preview.white, .ff_storyview_block_item_background_color_label .color-preview.white{
     background: #fff;
 }
 
@@ -197,20 +197,20 @@ by Ferenc Forgacs - @feriforgacs
     background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview svg, .ff_storyview_block_item_text_font_color_label .color-preview svg{
+.ff_storyview_block_item_text_background_color_label .color-preview svg, .ff_storyview_block_item_text_font_color_label .color-preview svg, .ff_storyview_block_item_background_color_label .color-preview svg{
     margin: 5px 0 0 5px;
     opacity: 0;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.activ svg, .ff_storyview_block_item_text_font_color_label .color-preview.activ svg{
+.ff_storyview_block_item_text_background_color_label .color-preview.activ svg, .ff_storyview_block_item_text_font_color_label .color-preview.activ svg, .ff_storyview_block_item_background_color_label .color-preview.activ svg{
     opacity: 1;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.black svg, .ff_storyview_block_item_text_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_background_color_label .color-preview.red svg, .ff_storyview_block_item_text_font_color_label .color-preview.black svg, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_font_color_label .color-preview.red svg{
+.ff_storyview_block_item_text_background_color_label .color-preview.black svg, .ff_storyview_block_item_text_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_background_color_label .color-preview.red svg, .ff_storyview_block_item_text_font_color_label .color-preview.black svg, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_font_color_label .color-preview.red svg, .ff_storyview_block_item_background_color_label .color-preview.black svg, .ff_storyview_block_item_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_background_color_label .color-preview.red svg{
     fill: #fff;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.white svg, .ff_storyview_block_item_text_background_color_label .color-preview.transparent svg, .ff_storyview_block_item_text_font_color_label .color-preview.white svg {
+.ff_storyview_block_item_text_background_color_label .color-preview.white svg, .ff_storyview_block_item_text_background_color_label .color-preview.transparent svg, .ff_storyview_block_item_text_font_color_label .color-preview.white svg, .ff_storyview_block_item_background_color_label.color-preview.white svg {
     fill: #11a0d2;
 }
 
@@ -271,23 +271,23 @@ by Ferenc Forgacs - @feriforgacs
 }
 
 .ff_storyview_block_background_black{
-    background: rgba(0, 0, 0, .8);
+    background: rgba(0, 0, 0, .8) !important;
 }
 
 .ff_storyview_block_background_gray{
-    background: rgba(51, 51, 51, .8)
+    background: rgba(51, 51, 51, .8) !important;
 }
 
 .ff_storyview_block_background_red{
-    background: rgba(201, 44, 44, .8)
+    background: rgba(201, 44, 44, .8) !important;
 }
 
 .ff_storyview_block_background_white{
-    background: rgba(255, 255, 255, .8)
+    background: rgba(255, 255, 255, .8) !important;
 }
 
 .ff_storyview_block_background_transparent{
-    background: none;
+    background: none !important;
 }
 
 .ff_storyview_block_color_black{
