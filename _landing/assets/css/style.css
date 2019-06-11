@@ -206,15 +206,15 @@ h1{
     font-size: 1rem;
 }
 
-#example-2{
+#example-2, #example-4{
     flex-direction: row-reverse;
 }
 
-#example-2 img{
+#example-2 img, #example-4 img{
     margin-right: -20%;
 }
 
-#example-2 p{
+#example-2 p, #example-4 p{
     margin-right: 20%;
 }
 
@@ -528,11 +528,11 @@ body.video-visible #howto-video-modal{
         flex: 0 0 55%;
     }
 
-    #example-2 img{
+    #example-2 img, #example-4 img{
         margin-right: -10%;
     }
 
-    #example-2 p{
+    #example-2 p, #example-4 p{
         margin-right: 10%;
     }
 
@@ -566,7 +566,7 @@ body.video-visible #howto-video-modal{
         margin-left: 1rem;
     }
 
-    #example-2 img, #example-2 p{
+    #example-2 img, #example-4 img, #example-2 p, #example-4 p{
         margin-right: 1rem;
     }
 
