@@ -29,7 +29,7 @@ if ( !function_exists( 'add_action' ) ) {
             <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
             <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="<?php
             if(isset($storyview_data->button_text)){
-                echo $storyview_data->button_text;
+                echo esc_html($storyview_data->button_text);
             }
             ?>" />
 
@@ -824,7 +824,7 @@ if ( !function_exists( 'add_action' ) ) {
             <div class="ff_storyview_block_item_settings_block">
                 <h3>Custom Block Content</h3>
                 <label class="ff_storyview_label" for="ff_storyview_block_content_%BLOCKID%">Add your shortcode, or custom HTML code to the field below</label>
-                <textarea data-blockid="%BLOCKID%" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_%BLOCKID%" name="ff_storyview_block_content_%BLOCKID%"><?php echo $storyview_block_content; ?></textarea>
+                <textarea data-blockid="%BLOCKID%" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_%BLOCKID%" name="ff_storyview_block_content_%BLOCKID%"></textarea>
                 <p class="ff_storyview_info">
                     <i>i</i> The preview of shortcodes will be visible on the frontend.
                 </p>

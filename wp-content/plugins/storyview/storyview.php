@@ -6,7 +6,7 @@
 Plugin Name: ⚡ Story View
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.1.2
+Version: 1.1.3
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -156,7 +156,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     }
 
     $storyview_data["story_blocks_data"] = $story_blocks_data;
-    $new_meta_value = json_encode($storyview_data, JSON_UNESCAPED_UNICODE);
+    $new_meta_value = json_encode($storyview_data, JSON_UNESCAPED_UNICODE|JSON_HEX_APOS|JSON_HEX_QUOT);
   
     $meta_key = FF_STORYVIEW_META_KEY;
     $meta_value = get_post_meta($post_id, $meta_key, true);

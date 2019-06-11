@@ -51,6 +51,10 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.1.3 =
+* Custom block saving issue fixes
+* Single quote error fixes
+
 = 1.1.2 =
 * Admin editor CSS fixes
 
