@@ -232,6 +232,25 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("f12 f14 f18 f24 f36").addClass(fontSizeClass);
     }
 
+    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_background_color_label", function(){
+        let backgroundColorValue = $(this).children("input[type=radio]").val();
+        let blockId = $(this).data("blockid");
+
+        $('.ff_storyview_block_item_background_color_label[data-blockid="' + blockId + '"] .activ').removeClass("activ");
+        $(this).children(".color-preview").addClass("activ");
+        
+        setBlockBackgroundColor(blockId, backgroundColorValue);
+    });
+
+    /**
+     * 
+     * @param {int} blockId selected block id
+     * @param {string} backgroundColorClass selected background color CSS class
+     */
+    function setBlockBackgroundColor(blockId, backgroundColorClass){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview_code .ff_storyview_block_item_content").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white").addClass(backgroundColorClass);
+    }
+
     /**
      * Display story preview for selected block
      * @param {int} blockId selected block id
