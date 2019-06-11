@@ -900,6 +900,10 @@ by Ferenc Forgacs - @feriforgacs
     padding-right: 10px;
 }
 
+.ff_storyview_add_actions{
+    display: none;
+}
+
 /* Custom Blocks */
 .ff_sotryview_add_actions_button_block{
     flex: 1;

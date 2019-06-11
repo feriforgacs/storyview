@@ -6,7 +6,7 @@
 Plugin Name: ⚡ Story View
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.1.1
+Version: 1.1.2
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt

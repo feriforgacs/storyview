@@ -51,6 +51,9 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.1.2 =
+* Admin editor CSS fixes
+
 = 1.1.1 =
 * Background color support for custom story blocks
 

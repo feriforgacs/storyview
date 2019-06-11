@@ -320,13 +320,13 @@ jQuery(document).ready(function($){
      */
     const storyViewBasicSettings = $("#ff_storyview_basic_settings");
     const storyViewBlocks = $("#ff_storyview_blocks");
-    const addBlockButton = $("#ff_storyview_add_block_button");
+    const addBlockButton = $(".ff_storyview_add_actions");
     $("#ff_storyview_activ").on("change", function(){
         if($(this).is(":checked")){
             // show story view settings
             storyViewBasicSettings.show();
             storyViewBlocks.show();
-            addBlockButton.show();
+            addBlockButton.css({ "display": "flex" });
         } else {
             // hide story view settings
             storyViewBasicSettings.hide();
