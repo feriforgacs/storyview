@@ -135,7 +135,8 @@ function ff_storyview_save_storyview_data($post_id, $post) {
                 $story_blocks_data[$i] = array(
                     "ff_storyview_block_id"                         => $i,
                     "ff_storyview_block_type"                       => "code",
-                    "ff_storyview_block_content"                    => base64_encode($_POST["ff_storyview_block_content_" . $current_block_id])
+                    "ff_storyview_block_content"                    => base64_encode($_POST["ff_storyview_block_content_" . $current_block_id]),
+                    "ff_storyview_block_item_block_background_color" => sanitize_text_field($_POST["ff_storyview_block_item_block_background_color_" . $current_block_id])
                 );
                 break;
             default:

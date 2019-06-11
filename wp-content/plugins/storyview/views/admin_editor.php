@@ -295,7 +295,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <div class="ff_storyview_block_item_preview ff_storyview_block_item_preview_code">
                                 <p class="preview_text" <?php if($storyview_block_content){ ?>style="display: none;" <?php } ?>>preview</p>
-                                <div class="ff_storyview_block_item_content" <?php if($storyview_block_content){ ?>style="display: flex;" <?php } ?>>
+                                <div class="ff_storyview_block_item_content <?php echo $storyview_block_item_block_background_color; ?>" <?php if($storyview_block_content){ ?>style="display: flex;" <?php } ?>>
                                     <?php
                                     if($storyview_block_content){
                                         echo stripslashes(base64_decode($storyview_block_content));
