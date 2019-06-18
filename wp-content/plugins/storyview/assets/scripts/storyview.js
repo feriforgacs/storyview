@@ -450,4 +450,20 @@ jQuery(document).ready(function($){
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_color_black ff_storyview_block_color_gray ff_storyview_block_color_red ff_storyview_block_color_white").addClass(fontColor);
     }
 
+    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_text_position_label", function(){
+        let positionValue = $(this).children("input[type=radio]").val();
+
+        $('.ff_storyview_amp_cover_text_position_label.activ').removeClass("activ");
+        $(this).addClass("activ");
+        
+        setAmpTextPosition(positionValue);
+    });
+    /**
+     * Set story view block text position for preview
+     * @param {string} position selected block position css class
+     */
+    function setAmpTextPosition(position){
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content").removeClass("ff_storyview_text_block_top ff_storyview_text_block_middle ff_storyview_text_block_bottom").addClass(position);
+    }
+
 });
