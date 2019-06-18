@@ -232,6 +232,11 @@ if ( !function_exists( 'add_action' ) ) {
         </div>
     </div>
 
+    <?php
+    // amp settings block
+    include_once("admin_editor_amp_settings.php");
+    ?>
+
     <div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
         <h3 class="ff_storyview_block_header">AMP Story Settings</h3>
         <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
@@ -363,7 +368,7 @@ if ( !function_exists( 'add_action' ) ) {
                         <div class="ff_storyview_row">
                             <div class="ff_storyview_col_md_6">
                                 <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_family">Font Family</label>
-                                <select name="ff_storyview_amp_cover_text_font_family" class="custom-select font-family-select" id="ff_storyview_amp_cover_text_font_family">
+                                <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_family" class="custom-select font-family-select" id="ff_storyview_amp_cover_text_font_family">
                                     <option value="arial" selected="selected">Arial</option>    
                                     <option value="courier">Courier</option>
                                     <option value="roboto">Roboto</option>
@@ -375,7 +380,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <div class="ff_storyview_col_md_6">
                                 <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_size">Font Size</label>
-                                <select name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
+                                <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
                                     <option value="f12" selected="selected">12px</option>
                                     <option value="f14">14px</option>
                                     <option value="f18">18px</option>

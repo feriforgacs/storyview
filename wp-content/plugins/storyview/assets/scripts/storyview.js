@@ -20,10 +20,18 @@ jQuery(document).ready(function($){
     
                 if(element.classList.contains("font-family-select")){
                     // change font family in preview
-                    setTextFontFamily(blockId, selectedOption);
+                    if(blockId == "ampcover"){
+                        setAmpTextFontFamily(selectedOption);
+                    } else {
+                        setTextFontFamily(blockId, selectedOption);
+                    }
                 } else if(element.classList.contains("font-size-select")){
                     // change font size in preview
-                    setTextFontSize(blockId, selectedOption);
+                    if(blockId == "ampcover"){
+                        setAmpTextFontSize(selectedOption);
+                    } else {
+                        setTextFontSize(blockId, selectedOption);
+                    }
                 }
             }
         });
@@ -485,6 +493,23 @@ jQuery(document).ready(function($){
         setAmpTextAlignment(alignmentValue);
     });
 
+    /**
+     * Set AMP Cover text font family for preview
+     * @param {string} fontFamilyClass selected font family css class
+     */
+    function setAmpTextFontFamily(fontFamilyClass){
+        // set text font family
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("arial courier roboto rounded montserrat lily").addClass(fontFamilyClass);
+    }
+
+    /**
+     * Set AMP Cover text font size for preview
+     * @param {string} fontSizeClass selected font size css class
+     */
+    function setAmpTextFontSize(fontSizeClass){
+        // set text font family
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("f12 f14 f18 f24 f36").addClass(fontSizeClass);
+    }
 
 
 });
