@@ -515,6 +515,7 @@ jQuery(document).ready(function($){
      * Handle AMP Story Cover image select
      */
     $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_upload", function( event ){
+        console.log("itt vagyok - Cover upload");
         event.preventDefault();
 
         // open the file frame if exists
@@ -557,6 +558,7 @@ jQuery(document).ready(function($){
      * @param {string} image_url uploaded or selected attachment url
      */
     function setAmpCoverImage(image_url){
+        console.log("itt vagyok - setAmpCoverImage");
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
             "background-image": "url(" + image_url + ")"
         });
@@ -568,6 +570,7 @@ jQuery(document).ready(function($){
      * Display AMP Story Cover preview
      */
     function displayAmpCoverPreview(){
+        console.log("itt vagyok - displayAmpCoverPreview");
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .preview_text").hide();
 
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
@@ -575,5 +578,54 @@ jQuery(document).ready(function($){
         });
     }
 
+    /**
+     * Handle AMP Story Publisher logo select
+     */
+    $("#ff_storyview_amp_publisher_logo_upload").on("click", function( event ){
+        console.log("itt vagyok - ff_storyview_amp_publisher_logo_upload");
+        event.preventDefault();
 
+        // open the file frame if exists
+        if (file_frame) {
+            file_frame.uploader.uploader.param("post_id", set_to_post_id );
+            file_frame.open();
+            return;
+        } else {
+            wp.media.model.settings.post.id = set_to_post_id;
+        }
+        
+        // create the file frame
+        file_frame = wp.media.frames.file_frame = wp.media({
+            title: "Select image",
+            button: {
+                text: "Use this image",
+            },
+            multiple: false
+        });
+        
+        // process data after the file was selected in the file frame
+        file_frame.on("select", function() {
+            attachment = file_frame.state().get("selection").first().toJSON();
+            
+            wp.media.model.settings.post.id = wp_media_post_id;
+
+            // add image url value to the story view block hidden image field
+            $("#ff_storyview_amp_publisher_logo_image").val(attachment.url);
+
+            // set image for preview
+            setAmpPublisherImage(attachment.url);
+        });
+        
+        // open the file frame
+        file_frame.open();
+    });
+
+    /**
+     * Display AMP Story Cover preview with uploaded or selected image
+     * @param {string} image_url uploaded or selected attachment url
+     */
+    function setAmpPublisherImage(image_url){
+        console.log("itt vagyok - setAmpPublisherImage");
+        $("#ff_storyview_amp_publisher_logo_preview").html(`<img src="${image_url}" />`);
+    }
 });

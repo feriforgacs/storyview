@@ -48,7 +48,7 @@ if ( !function_exists( 'add_action' ) ) {
                     </div>
 
                     <div class="ff_storyview_col_md_6">
-                        <input type="button" class="button ff_storyview_amp_publisher_logo_upload" value="Select AMP Story Publisher Logo" /><br />
+                        <input type="button" id="ff_storyview_amp_publisher_logo_upload" class="button ff_storyview_amp_publisher_logo_upload" value="Select AMP Story Publisher Logo" /><br />
                         <small>The file should be a raster file, such as .jpg, .png, or .gif<br />
                             The logo shape should be a square, not a rectangle.<br />
                             The background color should not be transparent.<br />

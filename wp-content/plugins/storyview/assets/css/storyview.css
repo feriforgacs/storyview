@@ -1002,6 +1002,11 @@ by Ferenc Forgacs - @feriforgacs
     align-items: center;
 }
 
+#ff_storyview_amp_publisher_logo_preview img{
+    width: 96px;
+    height: 96px;
+}
+
 #ff_storyview_amp_publisher_logo_preview p{
     font-weight: bold;
     transform: rotate(45deg);
