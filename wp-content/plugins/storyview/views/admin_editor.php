@@ -295,7 +295,7 @@ if ( !function_exists( 'add_action' ) ) {
 
                             <div class="ff_storyview_col_md_6">
                                 <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name</label>
-                                <textarea name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="1"></textarea><br />
+                                <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" /><br />
                                 <small>Try to keep it under 60 characters</small>
                             </div>
                         </div>

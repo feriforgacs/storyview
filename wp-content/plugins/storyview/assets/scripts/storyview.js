@@ -411,4 +411,25 @@ jQuery(document).ready(function($){
         }
     });
 
+    /**
+     * AMP Story settings
+     */
+    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_text_background_color_label", function(){
+        let backgroundColorValue = $(this).children("input[type=radio]").val();
+
+        $('#ff_storyview_amp_story_settings .ff_storyview_amp_cover_text_background_color_label .activ').removeClass("activ");
+        $(this).children(".color-preview").addClass("activ");
+        
+        setAmpTextBackgroundColor(backgroundColorValue);
+    });
+
+    /**
+     * Set AMP Story cover text background color
+     * @param {string} backgroundColor selected background color css class
+     */
+    function setAmpTextBackgroundColor(backgroundColor){
+        // set text background
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white ff_storyview_block_background_transparent").addClass(backgroundColor);
+    }
+
 });
