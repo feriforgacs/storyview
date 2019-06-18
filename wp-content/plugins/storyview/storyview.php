@@ -308,38 +308,36 @@ function ff_storyview_frontend_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js', __FILE__ ) ) . '"></script>';
 }
 
-
 // on activation
 register_activation_hook(__FILE__ , "activate");
 
 // on deactivation
 register_deactivation_hook(__FILE__ , "deactivate");
 
-
 add_action('load-post.php', 'ff_storyview_setup');
 add_action('load-post-new.php', 'ff_storyview_setup');
 add_shortcode(FF_STORYVIEW_SHORTCODE, 'ff_storyview_display');
 
+/**
+ * AMP Stories support
+ */
 
-// TEMP
-/* Filter the post class hook with our custom post class function. */
-//add_filter( 'post_class', 'ff_storyview_post_class' );
+function storyview_amp_query_vars($query_vars){
+    $query_vars[] = "storyview_amp";
+    return $query_vars;
+}
 
-function ff_storyview_post_class( $classes ) {
-    /* Get the current post ID. */
-    $post_id = get_the_ID();
-    /* If we have a post ID, proceed. */
-    if ( !empty( $post_id ) ) {
-        /* Get the custom post class. */
-        $post_class = get_post_meta( $post_id, 'ff_storyview_post_class', true );
-
-        /* If a post class was input, sanitize it and add it to the post class array. */
-        if ( !empty( $post_class ) )
-            $classes[] = sanitize_html_class( $post_class );
+function storyview_amp_template($template){
+    global $wp;
+    if(array_key_exists("storyview_amp", $wp->query_vars) && $wp->query_vars["storyview_amp"] == "1"){
+        $template = dirname(__FILE__) . "/views/frontend_amp_view.php";
     }
 
-    return $classes;
+    return $template;
 }
+
+add_filter("query_vars", "storyview_amp_query_vars");
+add_filter("single_template", "storyview_amp_template");
 
 require 'includes/updatechecker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
