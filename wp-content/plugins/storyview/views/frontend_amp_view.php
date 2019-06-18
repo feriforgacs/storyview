@@ -5,6 +5,26 @@
 if(have_posts()){
     $storyview_data = get_post_meta($post->ID, FF_STORYVIEW_META_KEY, true);
     if(!empty($storyview_data)){
+        /**
+         * Check used font families
+         */
+        $font_families = "";
+        if(stristr($storyview_data, "roboto") !== FALSE){
+            $font_families .= '<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext" rel="stylesheet">';
+        }
+
+        if(stristr($storyview_data, "rounded") !== FALSE){
+            $font_families .= '<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
+        }
+
+        if(stristr($storyview_data, "lily") !== FALSE){
+            $font_families .= '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
+        }
+
+        if(stristr($storyview_data, "montserrat") !== FALSE){
+            $font_families .= '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
+        }
+
         $storyview_data = json_decode($storyview_data);
 
         /**
@@ -25,10 +45,11 @@ if(have_posts()){
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         <script async src="https://cdn.ampproject.org/v0.js"></script>
         <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400" rel="stylesheet">
+        
+        <?php echo $font_families; ?>
+        
         <style amp-custom>
             amp-story {
-                font-family: 'Oswald',sans-serif;
                 color: #fff;
             }
             amp-story-page {
@@ -130,6 +151,55 @@ if(have_posts()){
                 padding: .5rem;
                 border-radius: 3px;
             }
+            .courier{
+                font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+                font-weight: bold;
+            }
+
+            .roboto{
+                font-family: 'Roboto', sans-serif;
+                font-weight: bold;
+            }
+
+            .rounded{
+                font-family: 'M PLUS Rounded 1c', sans-serif;
+                font-weight: bold;
+            }
+
+            .lily{
+                font-family: 'Lily Script One', cursive;
+                font-weight: bold;
+            }
+
+            .montserrat{
+                font-family: 'Montserrat', sans-serif;
+                font-weight: bold;
+            }
+
+            .arial{
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+            }
+
+            .f12{
+                font-size: 12px;
+            }
+
+            .f14{
+                font-size: 14px;
+            }
+
+            .f18{
+                font-size: 18px;
+            }
+
+            .f24{
+                font-size: 24px;
+            }
+
+            .f36{
+                font-size: 36px;
+            }
         </style>
     </head>
     <body>
@@ -192,7 +262,43 @@ if(have_posts()){
                 }
             }
             ?>
-
+            <amp-story-bookend layout="nodisplay">
+                <script type="application/json">
+                {
+                    "bookendVersion": "v1.0",
+                    "shareProviders": [
+                        "system",
+                        "whatsapp",
+                        "facebook",
+                        "twitter",
+                        "email",
+                        "pinterest",
+                        "sms"
+                    ],
+                    "components": [
+                        {
+                            "type": "heading",
+                            "text": "Read the full article"
+                        },
+                        {
+                            "type": "small",
+                            "title": "<?php the_title(); ?>",
+                            "url": "<?php echo the_permalink(); ?>",
+                            "image": "<?php echo get_the_post_thumbnail_url(); ?>"
+                        },
+                        {
+                            "type": "cta-link",
+                            "links": [
+                                {
+                                    "text": "Read the full article",
+                                    "url": "<?php echo the_permalink(); ?>"
+                                }
+                            ]
+                        }
+                    ]
+                }
+                </script>
+            </amp-story-bookend>
             
         </amp-story>
     </body>

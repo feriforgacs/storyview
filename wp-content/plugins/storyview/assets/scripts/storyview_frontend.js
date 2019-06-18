@@ -18,7 +18,8 @@ const ffStoryviewCloseButton = document.querySelector("#ff_storyview_close_butto
 ffStoryviewDisplayButton.addEventListener("click", toggleStoryview);
 ffStoryviewCloseButton.addEventListener("click", toggleStoryview);
 
-function toggleStoryview(){
+function toggleStoryview(e){
+	e.preventDefault();
     if(ffStoryviewBody.classList.contains("ff_storyview_visible")){
         ffStoryviewBody.classList.remove("ff_storyview_visible");
 		history.pushState("storyview", document.title, window.location.href.split('#')[0]);
