@@ -514,21 +514,22 @@ jQuery(document).ready(function($){
     /**
      * Handle AMP Story Cover image select
      */
+    let file_frame_amp_cover;
     $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_upload", function( event ){
         console.log("itt vagyok - Cover upload");
         event.preventDefault();
 
         // open the file frame if exists
-        if (file_frame) {
-            file_frame.uploader.uploader.param("post_id", set_to_post_id );
-            file_frame.open();
+        if (file_frame_amp_cover) {
+            file_frame_amp_cover.uploader.uploader.param("post_id", set_to_post_id );
+            file_frame_amp_cover.open();
             return;
         } else {
             wp.media.model.settings.post.id = set_to_post_id;
         }
         
         // create the file frame
-        file_frame = wp.media.frames.file_frame = wp.media({
+        file_frame_amp_cover = wp.media.frames.file_frame_amp_cover = wp.media({
             title: "Select image",
             button: {
                 text: "Use this image",
@@ -537,8 +538,8 @@ jQuery(document).ready(function($){
         });
         
         // process data after the file was selected in the file frame
-        file_frame.on("select", function() {
-            attachment = file_frame.state().get("selection").first().toJSON();
+        file_frame_amp_cover.on("select", function() {
+            attachment = file_frame_amp_cover.state().get("selection").first().toJSON();
             
             wp.media.model.settings.post.id = wp_media_post_id;
 
@@ -550,7 +551,7 @@ jQuery(document).ready(function($){
         });
         
         // open the file frame
-        file_frame.open();
+        file_frame_amp_cover.open();
     });
 
     /**
@@ -581,21 +582,22 @@ jQuery(document).ready(function($){
     /**
      * Handle AMP Story Publisher logo select
      */
+    let file_frame_amp_publisher_logo;
     $("#ff_storyview_amp_publisher_logo_upload").on("click", function( event ){
         console.log("itt vagyok - ff_storyview_amp_publisher_logo_upload");
         event.preventDefault();
 
         // open the file frame if exists
-        if (file_frame) {
-            file_frame.uploader.uploader.param("post_id", set_to_post_id );
-            file_frame.open();
+        if (file_frame_amp_publisher_logo) {
+            file_frame_amp_publisher_logo.uploader.uploader.param("post_id", set_to_post_id );
+            file_frame_amp_publisher_logo.open();
             return;
         } else {
             wp.media.model.settings.post.id = set_to_post_id;
         }
         
         // create the file frame
-        file_frame = wp.media.frames.file_frame = wp.media({
+        file_frame_amp_publisher_logo = wp.media.frames.file_frame_amp_publisher_logo = wp.media({
             title: "Select image",
             button: {
                 text: "Use this image",
@@ -604,8 +606,8 @@ jQuery(document).ready(function($){
         });
         
         // process data after the file was selected in the file frame
-        file_frame.on("select", function() {
-            attachment = file_frame.state().get("selection").first().toJSON();
+        file_frame_amp_publisher_logo.on("select", function() {
+            attachment = file_frame_amp_publisher_logo.state().get("selection").first().toJSON();
             
             wp.media.model.settings.post.id = wp_media_post_id;
 
@@ -617,7 +619,7 @@ jQuery(document).ready(function($){
         });
         
         // open the file frame
-        file_frame.open();
+        file_frame_amp_publisher_logo.open();
     });
 
     /**
