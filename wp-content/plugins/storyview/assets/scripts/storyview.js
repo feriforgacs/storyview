@@ -511,5 +511,69 @@ jQuery(document).ready(function($){
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("f12 f14 f18 f24 f36").addClass(fontSizeClass);
     }
 
+    /**
+     * Handle AMP Story Cover image select
+     */
+    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_upload", function( event ){
+        event.preventDefault();
+
+        // open the file frame if exists
+        if (file_frame) {
+            file_frame.uploader.uploader.param("post_id", set_to_post_id );
+            file_frame.open();
+            return;
+        } else {
+            wp.media.model.settings.post.id = set_to_post_id;
+        }
+        
+        // create the file frame
+        file_frame = wp.media.frames.file_frame = wp.media({
+            title: "Select image",
+            button: {
+                text: "Use this image",
+            },
+            multiple: false
+        });
+        
+        // process data after the file was selected in the file frame
+        file_frame.on("select", function() {
+            attachment = file_frame.state().get("selection").first().toJSON();
+            
+            wp.media.model.settings.post.id = wp_media_post_id;
+
+            // add image url value to the story view block hidden image field
+            $("#ff_storyview_amp_cover_image").val(attachment.url);
+
+            // set image for preview
+            setAmpCoverImage(attachment.url);
+        });
+        
+        // open the file frame
+        file_frame.open();
+    });
+
+    /**
+     * Display AMP Story Cover preview with uploaded or selected image
+     * @param {string} image_url uploaded or selected attachment url
+     */
+    function setAmpCoverImage(image_url){
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
+            "background-image": "url(" + image_url + ")"
+        });
+
+        displayAmpCoverPreview();
+    }
+
+    /**
+     * Display AMP Story Cover preview
+     */
+    function displayAmpCoverPreview(){
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .preview_text").hide();
+
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
+            "display": "flex"
+        });
+    }
+
 
 });

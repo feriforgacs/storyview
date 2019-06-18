@@ -18,6 +18,7 @@ if ( !function_exists( 'add_action' ) ) {
     <label for="ff_storyview_amp_activ">Generate AMP Story for this Story View <small>| Learn more about AMP Stories <a href="https://amp.dev/about/stories" target="_blank">here</a></small></label>
 
     <div class="ff_storyview_amp_cover ff_storyview_amp_cover_classic">
+        <div class="ff_storyview_amp_cover_move"></div>
         <div class="ff_storyview_amp_cover_preview">
             <p class="preview_text">preview</p>
             <div class="ff_storyview_amp_cover_content ff_storyview_text_block_top ff_storyview_text_align_left">

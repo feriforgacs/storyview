@@ -70,8 +70,8 @@ by Ferenc Forgacs - @feriforgacs
     position: relative;
 }
 
-.ff_storyview_amp_cover_preview{
-    flex: 11;
+.ff_storyview_amp_cover_move{
+    flex: 1;
 }
 
 .ff_storyview_block_item_preview .preview_text, .ff_storyview_amp_cover_preview .preview_text{
@@ -222,7 +222,7 @@ by Ferenc Forgacs - @feriforgacs
     fill: #11a0d2;
 }
 
-.ff_storyview_block_item_content{
+.ff_storyview_block_item_content, .ff_storyview_amp_cover_content{
     position: relative;
     width: 378px;
     height: 672px;
