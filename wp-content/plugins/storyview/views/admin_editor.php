@@ -20,214 +20,449 @@ if ( !function_exists( 'add_action' ) ) {
         </div>
 
         <div class="ff_storyview_block_content" id="ff_storyview_basic_settings" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
-            <h4>Shortcode</h4>
-            <p>Insert the following shortcode to your post to the place where you want to display the Story View button:</p>
-            <input type="text" class="components-text-control__input" value="[<?php echo FF_STORYVIEW_SHORTCODE; ?>]" onfocus="this.select();" />
-            <hr />
-            <h4>Story View Button</h4>
+            <div class="ff_storyview_button_settings">
+                <h4>Shortcode</h4>
+                <p>Insert the following shortcode to your post to the place where you want to display the Story View button:</p>
+                <input type="text" class="components-text-control__input" value="[<?php echo FF_STORYVIEW_SHORTCODE; ?>]" onfocus="this.select();" />
+                <hr />
+                <h4>Story View Button</h4>
 
-            <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
-            <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="<?php
-            if(isset($storyview_data->button_text)){
-                echo esc_html($storyview_data->button_text);
-            }
-            ?>" />
+                <label class="ff_storyview_label" for="ff_storyview_button_text">Button Text</label>
+                <input class="components-text-control__input" type="text" id="ff_storyview_button_text" name="ff_storyview_button_text" value="<?php
+                if(isset($storyview_data->button_text)){
+                    echo esc_html($storyview_data->button_text);
+                }
+                ?>" />
 
-            <div id="ff_storyview_button_types">
-                <label class="ff_storyview_label">Button Type</label>
-                <small>The image of the button will be generated from the image of the first (classic) story block</small>
-                <div id="ff_storyview_button_types_content">
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1" <?php if((isset($storyview_data->button_type) && $storyview_data->button_type == 1) || !isset($storyview_data->button_type)){ ?>checked="checked"<?php } ?> />
-                            <i>Type 1</i>
+                <div id="ff_storyview_button_types">
+                    <label class="ff_storyview_label">Button Type</label>
+                    <small>The image of the button will be generated from the image of the first (classic) story block</small>
+                    <div id="ff_storyview_button_types_content">
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1" <?php if((isset($storyview_data->button_type) && $storyview_data->button_type == 1) || !isset($storyview_data->button_type)){ ?>checked="checked"<?php } ?> />
+                                <i>Type 1</i>
 
-                            <!-- button #1 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_1">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #1 -->
-                        </label>
+                                <!-- button #1 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_1">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #1 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "1_i"){ ?>checked="checked"<?php } ?> />
-                            <i>Type 1 Inverse</i>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="1_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "1_i"){ ?>checked="checked"<?php } ?> />
+                                <i>Type 1 Inverse</i>
 
-                            <!-- button #1_i -->
-                            <button class="ff_storyview_button ff_storyview_button_type_1_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #1_i -->
-                        </label>
-                    </div>
+                                <!-- button #1_i -->
+                                <button class="ff_storyview_button ff_storyview_button_type_1_i">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #1_i -->
+                            </label>
+                        </div>
 
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 2){ ?>checked="checked"<?php } ?> />
-                            <i>Type 2</i>
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 2){ ?>checked="checked"<?php } ?> />
+                                <i>Type 2</i>
 
-                            <!-- button #2 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_2">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #2 -->
-                        </label>
+                                <!-- button #2 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_2">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #2 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "2_i"){ ?>checked="checked"<?php } ?> />
-                            <i>Type 2 Inverse</i>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="2_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "2_i"){ ?>checked="checked"<?php } ?> />
+                                <i>Type 2 Inverse</i>
 
-                            <!-- button #2_i -->
-                            <button class="ff_storyview_button ff_storyview_button_type_2_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #2_i -->
-                        </label>
-                    </div>
+                                <!-- button #2_i -->
+                                <button class="ff_storyview_button ff_storyview_button_type_2_i">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #2_i -->
+                            </label>
+                        </div>
 
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 3){ ?>checked="checked"<?php } ?> />
-                            <i>Type 3</i>
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 3){ ?>checked="checked"<?php } ?> />
+                                <i>Type 3</i>
 
-                            <!-- button #3 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_3">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #3 -->
-                        </label>
+                                <!-- button #3 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_3">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #3 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "3_i"){ ?>checked="checked"<?php } ?> />
-                            <i>Type 3 Inverse</i>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="3_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "3_i"){ ?>checked="checked"<?php } ?> />
+                                <i>Type 3 Inverse</i>
 
-                            <!-- button #3_i -->
-                            <button class="ff_storyview_button ff_storyview_button_type_3_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #3_i -->
-                        </label>
-                    </div>
+                                <!-- button #3_i -->
+                                <button class="ff_storyview_button ff_storyview_button_type_3_i">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #3_i -->
+                            </label>
+                        </div>
 
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 4){ ?>checked="checked"<?php } ?> />
-                            <i>Type 4</i>
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 4){ ?>checked="checked"<?php } ?> />
+                                <i>Type 4</i>
 
-                            <!-- button #4 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_4">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #4 -->
-                        </label>
+                                <!-- button #4 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_4">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #4 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "4_i"){ ?>checked="checked"<?php } ?> />
-                            <i>Type 4 Inverse</i>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="4_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "4_i"){ ?>checked="checked"<?php } ?> />
+                                <i>Type 4 Inverse</i>
 
-                            <!-- button #4_i -->
-                            <button class="ff_storyview_button ff_storyview_button_type_4_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #4_i -->
-                        </label>
-                    </div>
+                                <!-- button #4_i -->
+                                <button class="ff_storyview_button ff_storyview_button_type_4_i">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #4_i -->
+                            </label>
+                        </div>
 
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 5){ ?>checked="checked"<?php } ?> />
-                            <i>Type 5</i>
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 5){ ?>checked="checked"<?php } ?> />
+                                <i>Type 5</i>
 
-                            <!-- button #5 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_5">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #5 -->
-                        </label>
+                                <!-- button #5 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_5">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #5 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "5_i"){ ?>checked="checked"<?php } ?> />
-                            <i>Type 5 Inverse</i>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="5_i" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "5_i"){ ?>checked="checked"<?php } ?> />
+                                <i>Type 5 Inverse</i>
 
-                            <!-- button #5_i -->
-                            <button class="ff_storyview_button ff_storyview_button_type_5_i">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                                    if(isset($storyview_data->button_text)){
-                                        echo $storyview_data->button_text;
-                                    }
-                                    ?></span>
-                            </button>
-                            <!-- end button #5_i -->
-                        </label>
-                    </div>
+                                <!-- button #5_i -->
+                                <button class="ff_storyview_button ff_storyview_button_type_5_i">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
+                                        if(isset($storyview_data->button_text)){
+                                            echo $storyview_data->button_text;
+                                        }
+                                        ?></span>
+                                </button>
+                                <!-- end button #5_i -->
+                            </label>
+                        </div>
 
-                    <div class="ff_storyview_button_types_button_block">
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="6" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 6){ ?>checked="checked"<?php } ?> />
-                            <i>Type 6</i>
+                        <div class="ff_storyview_button_types_button_block">
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="6" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == 6){ ?>checked="checked"<?php } ?> />
+                                <i>Type 6</i>
 
-                            <!-- button #6 -->
-                            <button class="ff_storyview_button ff_storyview_button_type_6">
-                                <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">TL⚡DR</span>
-                            </button>
-                            <!-- end button #6 -->
-                        </label>
+                                <!-- button #6 -->
+                                <button class="ff_storyview_button ff_storyview_button_type_6">
+                                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text">TL⚡DR</span>
+                                </button>
+                                <!-- end button #6 -->
+                            </label>
 
-                        <label class="ff_storyview_button_type_label">
-                            <input type="radio" id="ff_storyview_button_type_other" name="ff_storyview_button_type" class="ff_storyview_button_type" value="other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>checked="checked"<?php } ?> />
-                            <i>Other (own code)</i>
-                        </label>
+                            <label class="ff_storyview_button_type_label">
+                                <input type="radio" id="ff_storyview_button_type_other" name="ff_storyview_button_type" class="ff_storyview_button_type" value="other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>checked="checked"<?php } ?> />
+                                <i>Other (own code)</i>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="ff_storyview_button_types_other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>style="display: block;"<?php } ?>>
-                <label class="ff_storyview_label" for="ff_storyview_button_type_other_code">Custom Button for Story View Button (You can add custom HTML code)</label>
-                <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(isset($storyview_data->button_other_code)){
-                    echo esc_html($storyview_data->button_other_code);
-                } ?>" />
-                <br /><small>Don't use "a" or "button" tags in your code. Use the following shortcodes to display the button text, and the button image:
-                    <pre>{{button_text}} {{button_image}}</pre>
-                    Eg.: &lt;span class="my_custom_button"&gt;&lt;img src="{{button_image}}" /&gt; {{button_text}}&lt;/span&gt;
-                </small>
+                <div id="ff_storyview_button_types_other" <?php if(isset($storyview_data->button_type) && $storyview_data->button_type == "other"){ ?>style="display: block;"<?php } ?>>
+                    <label class="ff_storyview_label" for="ff_storyview_button_type_other_code">Custom Button for Story View Button (You can add custom HTML code)</label>
+                    <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(isset($storyview_data->button_other_code)){
+                        echo esc_html($storyview_data->button_other_code);
+                    } ?>" />
+                    <br /><small>Don't use "a" or "button" tags in your code. Use the following shortcodes to display the button text, and the button image:
+                        <pre>{{button_text}} {{button_image}}</pre>
+                        Eg.: &lt;span class="my_custom_button"&gt;&lt;img src="{{button_image}}" /&gt; {{button_text}}&lt;/span&gt;
+                    </small>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
+        <h3 class="ff_storyview_block_header">AMP Story Settings</h3>
+        <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
+        if(isset($storyview_data->amp_activ) && $storyview_data->amp_activ == 1){
+            $storyview_amp_activ = true;
+            ?>checked="checked"<?php
+        }
+        ?> />
+        <label for="ff_storyview_amp_activ">Generate AMP Story for this Story View <small>| Learn more about AMP Stories <a href="https://amp.dev/about/stories" target="_blank">here</a></small></label>
+
+            <div class="ff_storyview_amp_cover ff_storyview_amp_cover_classic">
+                <div class="ff_storyview_amp_cover_preview">
+                    <p class="preview_text">preview</p>
+                    <div class="ff_storyview_amp_cover_content ff_storyview_text_block_top ff_storyview_text_align_left">
+                        <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f12"></p>
+                    </div>
+                </div>
+
+                <div class="ff_storyview_amp_cover_settings">
+                    <p class="block_type_label amp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><g fill="none" fill-rule="evenodd"><path fill="#005AF0" d="M0 15c0 8.284 6.716 15 15 15 8.285 0 15-6.716 15-15 0-8.284-6.715-15-15-15C6.716 0 0 6.716 0 15z"></path><path fill="#FFFFFF" fill-rule="nonzero" d="M13.85 24.098h-1.14l1.128-6.823-3.49.005h-.05a.57.57 0 0 1-.568-.569c0-.135.125-.363.125-.363l6.272-10.46 1.16.005-1.156 6.834 3.508-.004h.056c.314 0 .569.254.569.568 0 .128-.05.24-.121.335L13.85 24.098zM15 0C6.716 0 0 6.716 0 15c0 8.284 6.716 15 15 15 8.285 0 15-6.716 15-15 0-8.284-6.715-15-15-15z"></path></g></svg>
+                        AMP Story Cover
+                    </p>
+                    <div class="ff_storyview_amp_cover_settings_block">
+                        <div class="ff_storyview_amp_cover_image_upload">
+                            <input type="button" class="ff_storyview_amp_cover_upload button" value="Select AMP Story Cover Image" />
+                            <input type="hidden" name="ff_storyview_amp_cover_image" id="ff_storyview_amp_cover_image" value="" />
+                            <br /><small>Ideal size 1080x1920px. For better performance, try to <a href="https://tinypng.com/" target="_blank">optimize</a> the size of the image.</small>
+                        </div>
+                    </div>
+
+                    <div class="ff_storyview_amp_cover_settings_block">
+                        <div class="ff_storyview_amp_publisher_logo ff_storyview_row">
+                            <div class="ff_storyview_col_md_6">
+                                <div id="ff_storyview_amp_publisher_logo_preview">
+                                    <p class="ff_storyview_amp_preview_text">Logo Preview</p>
+                                </div>
+                            </div>
+
+                            <div class="ff_storyview_col_md_6">
+                                <input type="button" class="button ff_storyview_amp_publisher_logo_upload" value="Select AMP Story Publisher Logo" /><br />
+                                <small>The file should be a raster file, such as .jpg, .png, or .gif<br />
+                                    The logo shape should be a square, not a rectangle.<br />
+                                    The background color should not be transparent.<br />
+                                    Use one logo per brand that is consistent across AMP stories.<br />
+                                    The logo should be at least 96x96 pixels.</small>
+                                <input type="hidden" name="ff_storyview_amp_publisher_logo_image" value="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ff_storyview_amp_cover_settings_block">
+                        <h3>Text Settings</h3>
+
+                        <div class="ff_storyview_row">
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_title">AMP Story Title</label>
+                                <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"></textarea><br />
+                                <small>Try to keep it under 160 characters</small>
+                            </div>
+
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name</label>
+                                <textarea name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="1"></textarea><br />
+                                <small>Try to keep it under 60 characters</small>
+                            </div>
+                        </div>
+
+                        <div class="ff_storyview_row">
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label">Text Block Position</label>
+                                <div class="ff_storyview_button_group">
+                                    <label class="ff_storyview_amp_cover_text_position_label activ">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_top" checked="checked" />
+                                        <span>Top</span>
+                                        <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
+                                        <rect x="7" y="4" width="6" height="3" fill="#444B54"/>
+                                        </svg>
+                                        </i>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_position_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_middle" />
+                                        <span>Middle</span>
+                                        <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
+                                        <rect x="7" y="9" width="6" height="3" fill="#444B54"/>
+                                        </svg>
+                                        </i>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_position_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_bottom" />
+                                        <span>Bottom</span>
+                                        <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
+                                        <rect x="7" y="13" width="6" height="3" fill="#444B54"/>
+                                        </svg>
+                                        </i>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label">Text Alignment</label>
+                                <div class="ff_storyview_button_group">
+                                    <label class="ff_storyview_amp_cover_text_align_label activ">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_left" checked="checked" />
+                                        <span>Left</span>
+                                        <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_align_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_center" />
+                                        <span>Center</span>
+                                        <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_align_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_right" />
+                                        <span>Right</span>
+                                        <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ff_storyview_row">
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_family">Font Family</label>
+                                <select name="ff_storyview_amp_cover_text_font_family" class="custom-select font-family-select" id="ff_storyview_amp_cover_text_font_family">
+                                    <option value="arial" selected="selected">Arial</option>    
+                                    <option value="courier">Courier</option>
+                                    <option value="roboto">Roboto</option>
+                                    <option value="rounded">Rounded</option>
+                                    <option value="lily">Lily</option>
+                                    <option value="montserrat">Montserrat</option>
+                                </select>
+                            </div>
+
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_size">Font Size</label>
+                                <select name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
+                                    <option value="f12" selected="selected">12px</option>
+                                    <option value="f14">14px</option>
+                                    <option value="f18">18px</option>
+                                    <option value="f24">24px</option>
+                                    <option value="f36">36px</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="ff_storyview_row">
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label">Text Block Background</label>
+                                <div class="ff_storyview_color_group">
+                                    <label class="ff_storyview_amp_cover_text_background_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_black" checked="checked" />
+                                        <span class="color-preview black activ" title="black">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_background_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_gray" />
+                                        <span class="color-preview dark-gray" title="dark gray">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_background_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_red" />
+                                        <span class="color-preview red" title="red">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_background_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_white" />
+                                        <span class="color-preview white" title="white">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_background_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_transparent" />
+                                        <span class="color-preview transparent" title="transparent, no background">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="ff_storyview_col_md_6">
+                                <label class="ff_storyview_label">Font Color</label>
+                                <div class="ff_storyview_color_group">
+                                    <label class="ff_storyview_amp_cover_text_font_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_black" />
+                                        <span class="color-preview black">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_font_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_gray" />
+                                        <span class="color-preview dark-gray">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_font_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_red" />
+                                        <span class="color-preview red">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+
+                                    <label class="ff_storyview_amp_cover_text_font_color_label">
+                                        <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_white" checked="checked" />
+                                        <span class="color-preview white activ">
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- end .ff_storyview_amp_cover -->
     </div>
 
     <div id="ff_storyview_blocks" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
@@ -308,11 +543,14 @@ if ( !function_exists( 'add_action' ) ) {
                                 <p class="block_type_label custom">Custom Block</p>
                                 <div class="ff_storyview_block_item_settings_block">
                                     <h3>Custom Block Content</h3>
-                                    <label class="ff_storyview_label" for="ff_storyview_block_content_<?php echo $i; ?>">Add your shortcode, or custom HTML code to the field below</label>
-                                    <textarea data-blockid="<?php echo $i; ?>" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_<?php echo $i; ?>" name="ff_storyview_block_content_<?php echo $i; ?>"><?php echo stripslashes(base64_decode($storyview_block_content)); ?></textarea>
                                     <p class="ff_storyview_info">
                                         <i>i</i> The preview of shortcodes will be visible on the frontend.
                                     </p>
+                                    <p class="ff_storyview_info">
+                                        <i>i</i> Custom Blocks are not visible in AMP Stories.
+                                    </p>
+                                    <label class="ff_storyview_label" for="ff_storyview_block_content_<?php echo $i; ?>">Add your shortcode, or custom HTML code to the field below</label>
+                                    <textarea data-blockid="<?php echo $i; ?>" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_<?php echo $i; ?>" name="ff_storyview_block_content_<?php echo $i; ?>"><?php echo stripslashes(base64_decode($storyview_block_content)); ?></textarea>
                                     <input type="hidden" name="ff_storyview_block_type_<?php echo $i; ?>" value="code" />
 
                                     <div class="ff_storyview_row">
@@ -392,7 +630,7 @@ if ( !function_exists( 'add_action' ) ) {
                                     <div class="ff_storyview_block_item_image_upload">
                                         <input type="button" class="ff_storyview_image_upload button" data-blockid="<?php echo $storyview_block_id; ?>" value="Select Story Block Image" />
                                         <input type="hidden" name="ff_storyview_block_image_<?php echo $storyview_block_id; ?>" id="ff_storyview_block_image_<?php echo $storyview_block_id; ?>" value="<?php echo $storyview_block_image; ?>" />
-                                        <br /><small>Ideal size 1080x1920px. For better performance, try to optimize the size of the image.</small>
+                                        <br /><small>Ideal size 1080x1920px. For better performance, try to <a href="https://tinypng.com/" target="_blank">optimize</a> the size of the image.</small>
                                     </div>
                                 </div>
 
@@ -621,7 +859,7 @@ if ( !function_exists( 'add_action' ) ) {
                 <div class="ff_storyview_block_item_image_upload">
                     <input type="button" class="ff_storyview_image_upload button" data-blockid="%BLOCKID%" value="Select Story Block Image" />
                     <input type="hidden" name="ff_storyview_block_image_%BLOCKID%" id="ff_storyview_block_image_%BLOCKID%" value="" />
-                    <br /><small>Ideal size 1080x1920px. For better performance, try to optimize the size of the image.</small>
+                    <br /><small>Ideal size 1080x1920px. For better performance, try to <a href="https://tinypng.com/" target="_blank">optimize</a> the size of the image.</small>
                 </div>
             </div>
 
@@ -823,11 +1061,14 @@ if ( !function_exists( 'add_action' ) ) {
             <p class="block_type_label custom">Custom Block</p>
             <div class="ff_storyview_block_item_settings_block">
                 <h3>Custom Block Content</h3>
-                <label class="ff_storyview_label" for="ff_storyview_block_content_%BLOCKID%">Add your shortcode, or custom HTML code to the field below</label>
-                <textarea data-blockid="%BLOCKID%" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_%BLOCKID%" name="ff_storyview_block_content_%BLOCKID%"></textarea>
                 <p class="ff_storyview_info">
                     <i>i</i> The preview of shortcodes will be visible on the frontend.
                 </p>
+                <p class="ff_storyview_info">
+                    <i>i</i> Custom Blocks are not visible in AMP Stories.
+                </p>
+                <label class="ff_storyview_label" for="ff_storyview_block_content_%BLOCKID%">Add your shortcode, or custom HTML code to the field below</label>
+                <textarea data-blockid="%BLOCKID%" class="ff_storyview_block_content_editor" id="ff_storyview_block_content_%BLOCKID%" name="ff_storyview_block_content_%BLOCKID%"></textarea>
                 <input type="hidden" name="ff_storyview_block_type_%BLOCKID%" value="code" />
 
                 <div class="ff_storyview_row">

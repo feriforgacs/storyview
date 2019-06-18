@@ -34,6 +34,7 @@ jQuery(document).ready(function($){
      * Sortable story view blocks
      */
     $("#ff_storyview_blocks_list").sortable({
+        handle: ".ff_storyview_block_item_move",
         placeholder: "ui-state-highlight",
         axis: "y",
         update: function(event, ui){

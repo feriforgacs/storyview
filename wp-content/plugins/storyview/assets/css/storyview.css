@@ -33,14 +33,18 @@ by Ferenc Forgacs - @feriforgacs
 }
 
 #ff_storyview_container .components-text-control__input, #ff_storyview_container .components-textarea-control__input{
-    max-width: 300px;
+    max-width: 328px;
 }
 
-.ff_storyview_block_item{
+.ff_storyview_block_item, .ff_storyview_amp_cover{
     display: flex;
     border: 1px solid #eee;
     margin-bottom: 1rem;
     background: #fff;
+}
+
+.ff_storyview_amp_cover{
+    margin-top: 15px;
 }
 
 .ff_storyview_block_item_move{
@@ -57,7 +61,7 @@ by Ferenc Forgacs - @feriforgacs
     cursor: move;
 }
 
-.ff_storyview_block_item_preview{
+.ff_storyview_block_item_preview, .ff_storyview_amp_cover_preview{
     flex: 10;
     border-right: 1px solid #eee;
     text-align: center;
@@ -66,7 +70,11 @@ by Ferenc Forgacs - @feriforgacs
     position: relative;
 }
 
-.ff_storyview_block_item_preview .preview_text{
+.ff_storyview_amp_cover_preview{
+    flex: 11;
+}
+
+.ff_storyview_block_item_preview .preview_text, .ff_storyview_amp_cover_preview .preview_text{
     font-size: 5rem;
     transform: rotate(45deg);
     color: #eee;
@@ -74,20 +82,20 @@ by Ferenc Forgacs - @feriforgacs
     width: 100%;
 }
 
-.ff_storyview_block_item_settings{
+.ff_storyview_block_item_settings, .ff_storyview_amp_cover_settings{
     flex: 15;
 }
 
-.ff_storyview_block_item_settings_block {
+.ff_storyview_block_item_settings_block, .ff_storyview_amp_cover_settings_block {
     padding: 1rem;
     border-bottom: 1px solid #eee;
 }
 
-.ff_storyview_block_item_settings_block:last-child{
+.ff_storyview_block_item_settings_block:last-child, .ff_storyview_amp_cover_settings_block:last-child{
     border-bottom: none;
 }
 
-.ff_storyview_block_item_text_position_label input[type=radio], .ff_storyview_block_item_text_align_label input[type=radio], .ff_storyview_block_item_text_background_color_label input[type=radio], .ff_storyview_block_item_text_font_color_label input[type=radio], .ff_storyview_block_item_background_color_label input[type=radio] {
+.ff_storyview_block_item_text_position_label input[type=radio], .ff_storyview_block_item_text_align_label input[type=radio], .ff_storyview_block_item_text_background_color_label input[type=radio], .ff_storyview_block_item_text_font_color_label input[type=radio], .ff_storyview_block_item_background_color_label input[type=radio], .ff_storyview_amp_cover_text_position_label input[type=radio], .ff_storyview_amp_cover_text_align_label input[type=radio], .ff_storyview_amp_cover_text_background_color_label input[type=radio], .ff_storyview_amp_cover_text_font_color_label input[type=radio] {
     display: none;
 }
 
@@ -111,7 +119,7 @@ by Ferenc Forgacs - @feriforgacs
     border-right: none;
 }
 
-.ff_storyview_block_item_text_position_label span, .ff_storyview_block_item_text_align_label span{
+.ff_storyview_block_item_text_position_label span, .ff_storyview_block_item_text_align_label span, .ff_storyview_amp_cover_text_position_label span, .ff_storyview_amp_cover_text_align_label span{
     display: none;
 }
 
@@ -135,7 +143,7 @@ by Ferenc Forgacs - @feriforgacs
     margin-left: 10%;
 }
 
-.ff_storyview_block_item_text_position_label.activ, .ff_storyview_block_item_text_align_label.activ{
+.ff_storyview_block_item_text_position_label.activ, .ff_storyview_block_item_text_align_label.activ, .ff_storyview_amp_cover_text_position_label.activ, .ff_storyview_amp_cover_text_align_label.activ{
     border-top: 2px solid #11a0d2;
     margin-top: -1px;
     background: #fff;
@@ -160,7 +168,7 @@ by Ferenc Forgacs - @feriforgacs
     font-size: 1rem;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview, .ff_storyview_block_item_text_font_color_label .color-preview, .ff_storyview_block_item_background_color_label .color-preview{
+.ff_storyview_block_item_text_background_color_label .color-preview, .ff_storyview_block_item_text_font_color_label .color-preview, .ff_storyview_block_item_background_color_label .color-preview, .ff_storyview_amp_cover_text_background_color_label .color-preview, .ff_storyview_amp_cover_text_font_color_label .color-preview{
     display: inline-block;
     width: 2rem;
     height: 2rem;
@@ -171,46 +179,46 @@ by Ferenc Forgacs - @feriforgacs
     border: 1px solid #ccc;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.activ, .ff_storyview_block_item_text_font_color_label .color-preview.activ, .ff_storyview_block_item_background_color_label .color-preview.activ{
+.ff_storyview_block_item_text_background_color_label .color-preview.activ, .ff_storyview_block_item_text_font_color_label .color-preview.activ, .ff_storyview_block_item_background_color_label .color-preview.activ, .ff_storyview_amp_cover_text_background_color_label .color-preview.activ, .ff_storyview_amp_cover_text_font_color_label .color-preview.activ{
     box-shadow: inset 0 0 0 4px #fff;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.black, .ff_storyview_block_item_text_font_color_label .color-preview.black, .ff_storyview_block_item_background_color_label .color-preview.black{
+.ff_storyview_block_item_text_background_color_label .color-preview.black, .ff_storyview_block_item_text_font_color_label .color-preview.black, .ff_storyview_block_item_background_color_label .color-preview.black, .ff_storyview_amp_cover_text_background_color_label .color-preview.black, .ff_storyview_amp_cover_text_font_color_label .color-preview.black{
     background: #000;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.dark-gray, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray, .ff_storyview_block_item_background_color_label .color-preview.dark-gray{
+.ff_storyview_block_item_text_background_color_label .color-preview.dark-gray, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray, .ff_storyview_block_item_background_color_label .color-preview.dark-gray, .ff_storyview_amp_cover_text_background_color_label .color-preview.dark-gray, .ff_storyview_amp_cover_text_font_color_label .color-preview.dark-gray{
     background: #333333;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.red, .ff_storyview_block_item_text_font_color_label .color-preview.red, .ff_storyview_block_item_background_color_label .color-preview.red{
+.ff_storyview_block_item_text_background_color_label .color-preview.red, .ff_storyview_block_item_text_font_color_label .color-preview.red, .ff_storyview_block_item_background_color_label .color-preview.red, .ff_storyview_amp_cover_text_background_color_label .color-preview.red, .ff_storyview_amp_cover_text_font_color_label .color-preview.red{
     background: #c92c2c;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.white, .ff_storyview_block_item_text_font_color_label .color-preview.white, .ff_storyview_block_item_background_color_label .color-preview.white{
+.ff_storyview_block_item_text_background_color_label .color-preview.white, .ff_storyview_block_item_text_font_color_label .color-preview.white, .ff_storyview_block_item_background_color_label .color-preview.white, .ff_storyview_amp_cover_text_background_color_label .color-preview.white, .ff_storyview_amp_cover_text_font_color_label .color-preview.white{
     background: #fff;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.transparent{
+.ff_storyview_block_item_text_background_color_label .color-preview.transparent, .ff_storyview_amp_cover_text_background_color_label .color-preview.transparent{
     background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%);
     background-size: 10px 10px;
     background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview svg, .ff_storyview_block_item_text_font_color_label .color-preview svg, .ff_storyview_block_item_background_color_label .color-preview svg{
+.ff_storyview_block_item_text_background_color_label .color-preview svg, .ff_storyview_block_item_text_font_color_label .color-preview svg, .ff_storyview_block_item_background_color_label .color-preview svg, .ff_storyview_amp_cover_text_background_color_label .color-preview svg, .ff_storyview_amp_cover_text_font_color_label .color-preview svg{
     margin: 5px 0 0 5px;
     opacity: 0;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.activ svg, .ff_storyview_block_item_text_font_color_label .color-preview.activ svg, .ff_storyview_block_item_background_color_label .color-preview.activ svg{
+.ff_storyview_block_item_text_background_color_label .color-preview.activ svg, .ff_storyview_block_item_text_font_color_label .color-preview.activ svg, .ff_storyview_block_item_background_color_label .color-preview.activ svg, .ff_storyview_amp_cover_text_background_color_label .color-preview.activ svg, .ff_storyview_amp_cover_text_font_color_label .color-preview.activ svg{
     opacity: 1;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.black svg, .ff_storyview_block_item_text_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_background_color_label .color-preview.red svg, .ff_storyview_block_item_text_font_color_label .color-preview.black svg, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_font_color_label .color-preview.red svg, .ff_storyview_block_item_background_color_label .color-preview.black svg, .ff_storyview_block_item_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_background_color_label .color-preview.red svg{
+.ff_storyview_block_item_text_background_color_label .color-preview.black svg, .ff_storyview_block_item_text_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_background_color_label .color-preview.red svg, .ff_storyview_block_item_text_font_color_label .color-preview.black svg, .ff_storyview_block_item_text_font_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_text_font_color_label .color-preview.red svg, .ff_storyview_block_item_background_color_label .color-preview.black svg, .ff_storyview_block_item_background_color_label .color-preview.dark-gray svg, .ff_storyview_block_item_background_color_label .color-preview.red svg, .ff_storyview_amp_cover_text_background_color_label .color-preview.black svg, .ff_storyview_amp_cover_text_font_color_label .color-preview.black svg, .ff_storyview_amp_cover_text_background_color_label .color-preview.dark-gray svg, .ff_storyview_amp_cover_text_font_color_label .color-preview.dark-gray svg, .ff_storyview_amp_cover_text_background_color_label .color-preview.red svg, .ff_storyview_amp_cover_text_font_color_label .color-preview.red svg{
     fill: #fff;
 }
 
-.ff_storyview_block_item_text_background_color_label .color-preview.white svg, .ff_storyview_block_item_text_background_color_label .color-preview.transparent svg, .ff_storyview_block_item_text_font_color_label .color-preview.white svg, .ff_storyview_block_item_background_color_label.color-preview.white svg {
+.ff_storyview_block_item_text_background_color_label .color-preview.white svg, .ff_storyview_block_item_text_background_color_label .color-preview.transparent svg, .ff_storyview_block_item_text_font_color_label .color-preview.white svg, .ff_storyview_block_item_background_color_label.color-preview.white svg, .ff_storyview_amp_cover_text_background_color_label .color-preview.white svg, .ff_storyview_amp_cover_text_font_color_label .color-preview.white svg {
     fill: #11a0d2;
 }
 
@@ -306,7 +314,7 @@ by Ferenc Forgacs - @feriforgacs
     color: #fff;
 }
 
-#ff_storyview_blocks .selectric{
+#ff_storyview_blocks .selectric, .ff_storyview_amp_cover_settings_block .selectric{
     border-color: #ccc;
     border-radius: 3px;
     background: #f7f7f7;
@@ -314,16 +322,16 @@ by Ferenc Forgacs - @feriforgacs
     width: 90%;
 }
 
-#ff_storyview_blocks .selectric .button{
+#ff_storyview_blocks .selectric .button, .ff_storyview_amp_cover_settings_block .selectric .button{
     border: none;
 }
 
-#ff_storyview_blocks .selectric-items li.highlighted{
+#ff_storyview_blocks .selectric-items li.highlighted, .ff_storyview_amp_cover_settings_block .selectric-items li.highlighted{
     background: #11a0d2;
     color: #fff;
 }
 
-#ff_storyview_blocks .selectric-items li, #ff_storyview_blocks .selectric-items ul{
+#ff_storyview_blocks .selectric-items li, #ff_storyview_blocks .selectric-items ul, .ff_storyview_amp_cover_settings_block .selectric-items ul{
     font-size: 16px;
     line-height: 30px;
     min-height: 30px;
@@ -950,6 +958,15 @@ by Ferenc Forgacs - @feriforgacs
     background: #2992c2;
 }
 
+.block_type_label.amp{
+    color: #fff;
+    background: #005af0;
+}
+
+.block_type_label.amp svg{
+    width: 13px;
+}
+
 .ff_storyview_block_content_editor{
     height: 300px;
     width: 100%;
@@ -963,4 +980,33 @@ by Ferenc Forgacs - @feriforgacs
     align-items: center;
     flex-wrap: wrap;
     display: none;
+}
+
+#ff_storyview_amp_story_settings{
+    margin: 15px 0;
+}
+
+.ff_storyview_amp_publisher_logo{
+    margin: 15px 0;
+}
+
+#ff_storyview_amp_publisher_logo_preview{
+    position: relative;
+    width: 96px;
+    height: 96px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+#ff_storyview_amp_publisher_logo_preview p{
+    font-weight: bold;
+    transform: rotate(45deg);
+    color: #eee;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
 }

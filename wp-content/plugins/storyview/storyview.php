@@ -350,6 +350,32 @@ function storyview_amp_template($template){
 add_filter("query_vars", "storyview_amp_query_vars");
 add_filter("single_template", "storyview_amp_template");
 
+/**
+ * Story View custom settings
+ * - AMP Story defaults
+ *  - Logo
+ *  - Author name
+ * - Analytics ID
+ */
+
+function storyview_top_level_menu(){
+    add_menu_page(
+		'Story View Settings',
+		'Story View',
+		'manage_options',
+		'storyview_settings',
+		'storyview_top_level_menu_display',
+		'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00NSAyNUM0NSAzNi4wNDU3IDM2LjA0NTcgNDUgMjUgNDVDMTMuOTU0MyA0NSA1IDM2LjA0NTcgNSAyNUM1IDEzLjk1NDMgMTMuOTU0MyA1IDI1IDVDMzYuMDQ1NyA1IDQ1IDEzLjk1NDMgNDUgMjVaTTUwIDI1QzUwIDM4LjgwNzEgMzguODA3MSA1MCAyNSA1MEMxMS4xOTI5IDUwIDAgMzguODA3MSAwIDI1QzAgMTEuMTkyOSAxMS4xOTI5IDAgMjUgMEMzOC44MDcxIDAgNTAgMTEuMTkyOSA1MCAyNVpNMTIuNSAyNS42MzU2SDI0LjE1OTRMMjIuMjQ1OCAzNy41TDI5Ljg3MjkgMzAuOTMyMkwzNy41MDAxIDI0LjM2NDRIMjUuODQwNkwyNy43NTQyIDEyLjVMMjAuMTI3MSAxOS4wNjc4TDEyLjUgMjUuNjM1NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=',
+		6
+	);
+}
+
+function storyview_top_level_menu_display(){
+    echo "Story View settings";
+}
+
+// add_action("admin_menu", "storyview_top_level_menu");
+
 require 'includes/updatechecker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://demo.storyviewplugin.com/updater/?action=get_metadata&slug=storyview',
