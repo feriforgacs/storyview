@@ -432,4 +432,22 @@ jQuery(document).ready(function($){
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white ff_storyview_block_background_transparent").addClass(backgroundColor);
     }
 
+    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_text_font_color_label", function(){
+        let textColorValue = $(this).children("input[type=radio]").val();
+
+        $('#ff_storyview_amp_story_settings .ff_storyview_amp_cover_text_font_color_label .activ').removeClass("activ");
+        $(this).children(".color-preview").addClass("activ");
+        
+        setAmpTextColor(textColorValue);
+    });
+
+    /**
+     * Set AMP Story cover text color
+     * @param {string} fontColor selected background color css class
+     */
+    function setAmpTextColor(fontColor){
+        // set text color
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_color_black ff_storyview_block_color_gray ff_storyview_block_color_red ff_storyview_block_color_white").addClass(fontColor);
+    }
+
 });
