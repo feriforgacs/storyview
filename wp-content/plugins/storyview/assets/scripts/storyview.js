@@ -330,17 +330,21 @@ jQuery(document).ready(function($){
     const storyViewBasicSettings = $("#ff_storyview_basic_settings");
     const storyViewBlocks = $("#ff_storyview_blocks");
     const addBlockButton = $(".ff_storyview_add_actions");
+    const storyViewAmpSettings = $("#ff_storyview_amp_story_settings");
     $("#ff_storyview_activ").on("change", function(){
         if($(this).is(":checked")){
             // show story view settings
             storyViewBasicSettings.show();
             storyViewBlocks.show();
             addBlockButton.css({ "display": "flex" });
+            storyViewAmpSettings.show();
+
         } else {
             // hide story view settings
             storyViewBasicSettings.hide();
             storyViewBlocks.hide();
             addBlockButton.hide();
+            storyViewAmpSettings.hide();
         }
     });
 

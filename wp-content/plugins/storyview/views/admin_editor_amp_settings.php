@@ -21,7 +21,7 @@ if(isset($storyview_data->amp_settings)){
 
 ?>
 
-<div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
+<div id="ff_storyview_amp_story_settings" class="ff_storyview_block" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
     <h3 class="ff_storyview_block_header">AMP Story Settings</h3>
     <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
     if(isset($amp_activ) && $amp_activ == 1){
