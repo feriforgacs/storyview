@@ -31,9 +31,44 @@ if(have_posts()){
          * Check if story view is activated for this post
          */
         if(!$storyview_data->activ){
+            status_header( 404 );
+            nocache_headers();
+
+            require get_404_template();
             return;
         }
+
+        /**
+         * Check if AMP Story is enabled
+         */
+        if(!isset($storyview_data->amp_settings) || $storyview_data->amp_settings->activ != 1){
+            status_header( 404 );
+            nocache_headers();
+
+            require get_404_template();
+            return;
+        }
+    } else {
+        status_header( 404 );
+        nocache_headers();
+
+        require get_404_template();
+        return;
     }
+
+if(isset($storyview_data->amp_settings)){
+    $amp_activ =                        $storyview_data->amp_settings->activ;
+    $amp_cover_image =                  urldecode($storyview_data->amp_settings->cover_image);
+    $amp_publisher_logo =               urldecode($storyview_data->amp_settings->publisher_logo);
+    $amp_cover_title =                  $storyview_data->amp_settings->cover_title;
+    $amp_cover_author_name =            $storyview_data->amp_settings->cover_author_name;
+    $amp_cover_text_position =          $storyview_data->amp_settings->cover_text_position;
+    $amp_cover_text_align =             $storyview_data->amp_settings->cover_text_align;
+    $amp_cover_text_font_family =       $storyview_data->amp_settings->cover_text_font_family;
+    $amp_cover_text_font_size =         $storyview_data->amp_settings->cover_text_font_size;
+    $amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
+    $amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
+}
     ?>
 <!doctype html>
 <html ⚡>
@@ -58,8 +93,13 @@ if(have_posts()){
             h1 {
                 font-weight: bold;
                 font-size: 2.875em;
-                font-weight: normal;
-                line-height: 1.174;
+                line-height: 200%;
+                padding: 1rem;
+                margin: 10px;
+                border-radius: 3px;
+            }
+            h1 span{
+                font-size: 14px;
             }
             p {
                 font-weight: normal;
@@ -204,23 +244,32 @@ if(have_posts()){
     </head>
     <body>
         <amp-story standalone
-            title="<?php the_title(); ?>"
-            publisher="<?php echo get_the_author_meta('display_name', $post->post_author); ?>"
-            publisher-logo-src=""
-            poster-portrait-src="">
+            title="<?php echo $amp_cover_title; ?>"
+            publisher="<?php echo $amp_cover_author_name; ?>"
+            publisher-logo-src="<?php echo $amp_publisher_logo; ?>"
+            poster-portrait-src="<?php echo $amp_cover_image; ?>">
         
             <!-- #cover -->
             <amp-story-page id="cover">
                 <amp-story-grid-layer template="fill">
+                    <?php
+                    $cover_image_folder_temp = explode("wp-content", $amp_cover_image);
+                    $cover_image_path = "./wp-content" . $cover_image_folder_temp[1];
+                    list($cover_image_width, $cover_image_height) = getimagesize($cover_image_path);
+                    ?>
                     <amp-img src="<?php echo get_the_post_thumbnail_url(); ?>"
-                        width="1080" height="1920"
+                        width="<?php echo $cover_image_width ?>" height="<?php echo $cover_image_height ?>"
                         layout="responsive">
                     </amp-img>
                 </amp-story-grid-layer>
 
-                <amp-story-grid-layer template="vertical">
-                    <h1><?php the_title(); ?></h1>
-                    <p>By <?php echo get_the_author_meta('display_name', $post->post_author); ?></p>
+                <amp-story-grid-layer template="vertical" class="<?php echo $amp_cover_text_position . " " . $amp_cover_text_align; ?>">
+                    <h1 class="<?php echo $amp_cover_text_font_family . " " . $amp_cover_text_font_size . " " . $amp_cover_text_background_color . " " . $amp_cover_text_font_color; ?>">
+                        <?php echo $amp_cover_title; ?>
+                        <br /><span>
+                            <?php echo $amp_cover_author_name; ?>
+                        </span>
+                    </h1>
                 </amp-story-grid-layer>
             </amp-story-page>
             <!-- end #cover -->
@@ -282,9 +331,9 @@ if(have_posts()){
                         },
                         {
                             "type": "small",
-                            "title": "<?php the_title(); ?>",
+                            "title": "<?php echo $amp_cover_title; ?>",
                             "url": "<?php echo the_permalink(); ?>",
-                            "image": "<?php echo get_the_post_thumbnail_url(); ?>"
+                            "image": "<?php echo $amp_cover_image; ?>"
                         },
                         {
                             "type": "cta-link",
