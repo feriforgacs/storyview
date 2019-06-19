@@ -5,26 +5,101 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+if(isset($storyview_data->amp_settings)){
+    $amp_activ =                        $storyview_data->amp_settings->activ;
+    $amp_cover_image =                  urldecode($storyview_data->amp_settings->cover_image);
+    $amp_publisher_logo =               urldecode($storyview_data->amp_settings->publisher_logo);
+    $amp_cover_title =                  $storyview_data->amp_settings->cover_title;
+    $amp_cover_author_name =            $storyview_data->amp_settings->cover_author_name;
+    $amp_cover_text_position =          $storyview_data->amp_settings->cover_text_position;
+    $amp_cover_text_align =             $storyview_data->amp_settings->cover_text_align;
+    $amp_cover_text_font_family =       $storyview_data->amp_settings->cover_text_font_family;
+    $amp_cover_text_font_size =         $storyview_data->amp_settings->cover_text_font_size;
+    $amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
+    $amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
+}
+
 ?>
 
 <div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
     <h3 class="ff_storyview_block_header">AMP Story Settings</h3>
     <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
-    if(isset($storyview_data->amp_activ) && $storyview_data->amp_activ == 1){
-        $storyview_amp_activ = true;
+    if(isset($amp_activ) && $amp_activ == 1){
         ?>checked="checked"<?php
     }
     ?> />
     <label for="ff_storyview_amp_activ">Generate AMP Story for this Story View <small>| Learn more about AMP Stories <a href="https://amp.dev/about/stories" target="_blank">here</a></small></label>
 
-    <div class="ff_storyview_amp_cover ff_storyview_amp_cover_classic">
+    <div class="ff_storyview_amp_cover ff_storyview_amp_cover_classic" <?php if(isset($amp_activ) && $amp_activ == 1) { ?> style="display: flex;" <?php } ?>>
         <div class="ff_storyview_amp_cover_move"></div>
         <div class="ff_storyview_amp_cover_preview">
-            <p class="preview_text">preview</p>
-            <div class="ff_storyview_amp_cover_content ff_storyview_text_block_top ff_storyview_text_align_left">
-                <div class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f18" id="amp_cover_text_content">
-                    <?php the_title(); ?><br />
-                    <span class="amp_author"><?php echo get_the_author_meta('display_name', $post->post_author); ?></span>
+            <p <?php
+            // check preview data, hide temp text if any available
+            if((isset($amp_cover_image) && strlen($amp_cover_image) != 0) || (isset($amp_cover_title) && strlen($amp_cover_title) != 0) || (isset($amp_cover_author_name) && strlen($amp_cover_author_name) != 0)){
+                ?> style="display: none;" <?php
+                }
+            ?> class="preview_text">preview</p>
+
+            <div class="ff_storyview_amp_cover_content <?php
+            if(isset($amp_cover_text_position) && strlen($amp_cover_text_position) != 0){
+                echo " " . $amp_cover_text_position;
+            } else {
+                echo " ff_storyview_text_block_top";
+            }
+
+            if(isset($amp_cover_text_align) && strlen($amp_cover_text_align) != 0){
+                echo " " . $amp_cover_text_align;
+            } else {
+                echo " ff_storyview_text_align_left";
+            }
+            ?>" style="<?php
+            // check preview data, display if available
+            if((isset($amp_cover_image) && strlen($amp_cover_image) != 0) || (isset($amp_cover_title) && strlen($amp_cover_title) != 0) || (isset($amp_cover_author_name) && strlen($amp_cover_author_name) != 0)){
+                ?>display: flex;<?php
+            }
+
+            if(isset($amp_cover_image) && strlen($amp_cover_image) != 0){
+                ?>
+                background-image: url('<?php echo $amp_cover_image; ?>');
+                <?php
+            }
+            ?>">
+                <div class="block_item_text <?php
+                if(isset($amp_cover_text_font_family) && strlen($amp_cover_text_font_family) != 0){
+                    echo " " . $amp_cover_text_font_family;
+                } else {
+                    echo " arial";
+                }
+
+                if(isset($amp_cover_text_font_size) && strlen($amp_cover_text_font_size) != 0){
+                    echo " " . $amp_cover_text_font_size;
+                } else {
+                    echo " f18";
+                }
+
+                if(isset($amp_cover_text_background_color) && strlen($amp_cover_text_background_color) != 0){
+                    echo " " . $amp_cover_text_background_color;
+                } else {
+                    echo " ff_storyview_block_background_black";
+                }
+
+                if(isset($amp_cover_text_font_color) && strlen($amp_cover_text_font_color) != 0){
+                    echo " " . $amp_cover_text_font_color;
+                } else {
+                    echo " ff_storyview_block_color_white";
+                }
+                ?>" id="amp_cover_text_content">
+                    <?php if(isset($amp_cover_title)){
+                        echo $amp_cover_title;
+                    } else {
+                        the_title();
+                    } ?><br />
+                    <span class="amp_author"><?php if(isset($amp_cover_author_name)){
+                        echo $amp_cover_author_name;
+                    } else {
+                        echo get_the_author_meta('display_name', $post->post_author);
+                    }
+                    ?></span>
                 </div>
             </div>
         </div>
@@ -37,7 +112,9 @@ if ( !function_exists( 'add_action' ) ) {
             <div class="ff_storyview_amp_cover_settings_block">
                 <div class="ff_storyview_amp_cover_image_upload">
                     <input type="button" class="ff_storyview_amp_cover_upload button" value="Select AMP Story Cover Image" />
-                    <input type="hidden" name="ff_storyview_amp_cover_image" id="ff_storyview_amp_cover_image" value="" />
+                    <input type="hidden" name="ff_storyview_amp_cover_image" id="ff_storyview_amp_cover_image" value="<?php if(isset($amp_cover_image) && strlen($amp_cover_image) != 0){
+                        echo $amp_cover_image;
+                    } ?>" />
                     <br /><small>Ideal size 1080x1920px. For better performance, try to <a href="https://tinypng.com/" target="_blank">optimize</a> the size of the image.</small>
                 </div>
             </div>
@@ -46,7 +123,17 @@ if ( !function_exists( 'add_action' ) ) {
                 <div class="ff_storyview_amp_publisher_logo ff_storyview_row">
                     <div class="ff_storyview_col_md_6">
                         <div id="ff_storyview_amp_publisher_logo_preview">
-                            <p class="ff_storyview_amp_preview_text">Logo Preview</p>
+                            <?php
+                            if(isset($amp_publisher_logo) && strlen($amp_publisher_logo) != 0){
+                                ?>
+                                <img src="<?php echo $amp_publisher_logo; ?>" />
+                                <?php
+                            } else {
+                                ?>
+                                <p class="ff_storyview_amp_preview_text">Logo Preview</p>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -57,7 +144,9 @@ if ( !function_exists( 'add_action' ) ) {
                             The background color should not be transparent.<br />
                             Use one logo per brand that is consistent across AMP stories.<br />
                             The logo should be at least 96x96 pixels.</small>
-                        <input type="hidden" name="ff_storyview_amp_publisher_logo_image" value="" />
+                        <input type="hidden" name="ff_storyview_amp_publisher_logo_image" id="ff_storyview_amp_publisher_logo_image" value="<?php if(isset($amp_publisher_logo) && strlen($amp_publisher_logo) != 0){
+                            echo $amp_publisher_logo;
+                        } ?>" />
                     </div>
                 </div>
             </div>
@@ -68,13 +157,25 @@ if ( !function_exists( 'add_action' ) ) {
                 <div class="ff_storyview_row">
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_title">AMP Story Title</label>
-                        <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"><?php the_title(); ?></textarea><br />
+                        <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"><?php
+                        if(isset($amp_cover_title) && strlen($amp_cover_title) != 0){
+                            echo $amp_cover_title;
+                        } else {
+                            the_title();
+                        }
+                        ?></textarea><br />
                         <small>Try to keep it under 160 characters</small>
                     </div>
 
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name</label>
-                        <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" value="<?php echo get_the_author_meta('display_name', $post->post_author); ?>" /><br />
+                        <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" value="<?php
+                        if(isset($amp_cover_author_name) && strlen($amp_cover_author_name) != 0){
+                            echo $amp_cover_author_name;
+                        } else {
+                            echo get_the_author_meta('display_name', $post->post_author);
+                        }
+                        ?>" /><br />
                         <small>Try to keep it under 60 characters</small>
                     </div>
                 </div>
@@ -83,8 +184,8 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Block Position</label>
                         <div class="ff_storyview_button_group">
-                            <label class="ff_storyview_amp_cover_text_position_label activ">
-                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_top" checked="checked" />
+                            <label class="ff_storyview_amp_cover_text_position_label <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_top"){ ?>activ<?php } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_top" <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_top"){ ?>checked="checked"<?php } ?> />
                                 <span>Top</span>
                                 <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -93,8 +194,8 @@ if ( !function_exists( 'add_action' ) ) {
                                 </i>
                             </label>
 
-                            <label class="ff_storyview_amp_cover_text_position_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_middle" />
+                            <label class="ff_storyview_amp_cover_text_position_label <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_middle"){ ?>activ<?php } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_middle" <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_middle"){ ?>checked="checked"<?php } ?> />
                                 <span>Middle</span>
                                 <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -103,8 +204,8 @@ if ( !function_exists( 'add_action' ) ) {
                                 </i>
                             </label>
 
-                            <label class="ff_storyview_amp_cover_text_position_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_bottom" />
+                            <label class="ff_storyview_amp_cover_text_position_label <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_bottom"){ ?>activ<?php } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_position" value="ff_storyview_text_block_bottom" <?php if(isset($amp_cover_text_position) && $amp_cover_text_position == "ff_storyview_text_block_bottom"){ ?>checked="checked"<?php } ?> />
                                 <span>Bottom</span>
                                 <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -118,20 +219,44 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Alignment</label>
                         <div class="ff_storyview_button_group">
-                            <label class="ff_storyview_amp_cover_text_align_label activ">
-                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_left" checked="checked" />
+                            <label class="ff_storyview_amp_cover_text_align_label <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_left"){
+                                    ?>
+                                    activ
+                                    <?php
+                                } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_left" <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_left"){
+                                    ?>
+                                    checked="checked"
+                                    <?php
+                                } ?> />
                                 <span>Left</span>
                                 <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                             </label>
 
-                            <label class="ff_storyview_amp_cover_text_align_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_center" />
+                            <label class="ff_storyview_amp_cover_text_align_label <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_center"){
+                                    ?>
+                                    activ
+                                    <?php
+                                } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_center" <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_center"){
+                                    ?>
+                                    checked="checked"
+                                    <?php
+                                } ?> />
                                 <span>Center</span>
                                 <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
                             </label>
 
-                            <label class="ff_storyview_amp_cover_text_align_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_right" />
+                            <label class="ff_storyview_amp_cover_text_align_label <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_right"){
+                                    ?>
+                                    activ
+                                    <?php
+                                } ?>">
+                                <input type="radio" name="ff_storyview_amp_cover_text_align" value="ff_storyview_text_align_right" <?php if(isset($amp_cover_text_align) && $amp_cover_text_align == "ff_storyview_text_align_right"){
+                                    ?>
+                                    checked="checked"
+                                    <?php
+                                } ?> />
                                 <span>Right</span>
                                 <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
                             </label>
@@ -143,12 +268,12 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_family">Font Family</label>
                         <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_family" class="custom-select font-family-select" id="ff_storyview_amp_cover_text_font_family">
-                            <option value="arial" selected="selected">Arial</option>    
-                            <option value="courier">Courier</option>
-                            <option value="roboto">Roboto</option>
-                            <option value="rounded">Rounded</option>
-                            <option value="lily">Lily</option>
-                            <option value="montserrat">Montserrat</option>
+                            <option value="arial" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "arial"){ ?> selected="selected" <?php } ?>>Arial</option>    
+                            <option value="courier" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "courier"){ ?> selected="selected" <?php } ?>>Courier</option>
+                            <option value="roboto" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "roboto"){ ?> selected="selected" <?php } ?>>Roboto</option>
+                            <option value="rounded" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "rounded"){ ?> selected="selected" <?php } ?>>Rounded</option>
+                            <option value="lily" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "lily"){ ?> selected="selected" <?php } ?>>Lily</option>
+                            <option value="montserrat" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "montserrat"){ ?> selected="selected" <?php } ?>>Montserrat</option>
                         </select>
                     </div>
 
@@ -157,9 +282,9 @@ if ( !function_exists( 'add_action' ) ) {
                         <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
                             <!-- <option value="f12">12px</option>
                             <option value="f14">14px</option> -->
-                            <option value="f18" selected="selected">18px</option>
-                            <option value="f24">24px</option>
-                            <option value="f36">36px</option>
+                            <option value="f18" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f18"){ ?> selected="selected" <?php } ?>>18px</option>
+                            <option value="f24" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f24"){ ?> selected="selected" <?php } ?>>24px</option>
+                            <option value="f36" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f36"){ ?> selected="selected" <?php } ?>>36px</option>
                         </select>
                     </div>
                 </div>
@@ -169,36 +294,36 @@ if ( !function_exists( 'add_action' ) ) {
                         <label class="ff_storyview_label">Text Block Background</label>
                         <div class="ff_storyview_color_group">
                             <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_black" checked="checked" />
-                                <span class="color-preview black activ" title="black">
+                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_black" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_black"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview black <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_black"){ ?> activ <?php } ?>" title="black">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_gray" />
-                                <span class="color-preview dark-gray" title="dark gray">
+                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_gray" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_gray"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview dark-gray <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_gray"){ ?> activ <?php } ?>" title="dark gray">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_red" />
-                                <span class="color-preview red" title="red">
+                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_red" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_red"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview red <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_red"){ ?> activ <?php } ?>" title="red">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_white" />
-                                <span class="color-preview white" title="white">
+                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_white" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_white"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview white <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_white"){ ?> activ <?php } ?>" title="white">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_transparent" />
-                                <span class="color-preview transparent" title="transparent, no background">
+                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_transparent" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_transparent"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview transparent <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_transparent"){ ?> activ <?php } ?>" title="transparent, no background">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
@@ -209,29 +334,29 @@ if ( !function_exists( 'add_action' ) ) {
                         <label class="ff_storyview_label">Font Color</label>
                         <div class="ff_storyview_color_group">
                             <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_black" />
-                                <span class="color-preview black">
+                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_black" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_black"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview black <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_black"){ ?> activ <?php } ?>">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_gray" />
-                                <span class="color-preview dark-gray">
+                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_gray" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_gray"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview dark-gray <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_gray"){ ?> activ <?php } ?>">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_red" />
-                                <span class="color-preview red">
+                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_red" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_red"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview red <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_red"){ ?> activ <?php } ?>">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
 
                             <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_white" checked="checked" />
-                                <span class="color-preview white activ">
+                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_white" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_white"){ ?> checked="checked" <?php } ?> />
+                                <span class="color-preview white <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_white"){ ?> activ <?php } ?>">
                                     <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                 </span>
                             </label>
