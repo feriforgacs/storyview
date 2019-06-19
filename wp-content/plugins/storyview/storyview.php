@@ -284,13 +284,17 @@ function ff_storyview_display(){
 
             // create AMP URL
             $post_url = parse_url(get_permalink());
-            $amp_story_url = "";
+            $story_url = "";
 
-            if(array_key_exists("query", $post_url) && $post_url["query"] != ""){
-                // param already exists in the url
-                $amp_story_url = get_permalink() . "&storyview_amp=1";
+            if(isset($storyview_data->amp_settings) && $storyview_data->amp_settings->activ == 1){
+                if(array_key_exists("query", $post_url) && $post_url["query"] != ""){
+                    // param already exists in the url
+                    $story_url = get_permalink() . "&storyview_amp=1";
+                } else {
+                    $story_url = get_permalink() . "?storyview_amp=1";
+                }
             } else {
-                $amp_story_url = get_permalink() . "?storyview_amp=1";
+                $story_url = get_permalink() . "#storyview";
             }
 
             if($storyview_data->button_type == "other"){
@@ -301,11 +305,11 @@ function ff_storyview_display(){
                 // replace button image shortcode
                 $button_custom_code = str_replace("{{button_image}}", $storyview_button_icon_image, $button_custom_code);
 
-                $storyview_button = '<a href="' . $amp_story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a href="' . $story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= $button_custom_code;
                 $storyview_button .= '</a>';
             } else {
-                $storyview_button = '<a href="' . $amp_story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a href="' . $story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                 $storyview_button .= '</a>';
             }

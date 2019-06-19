@@ -69,13 +69,72 @@ if(isset($storyview_data->amp_settings)){
     $amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
     $amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
 }
+
+/**
+ * Set default values for cover text
+ */
+if(strlen($amp_cover_text_position) == 0){
+    $amp_cover_text_position = "ff_storyview_text_block_top";
+}
+
+if(strlen($amp_cover_text_align) == 0){
+    $amp_cover_text_align = "ff_storyview_text_align_left";
+}
+
+if(strlen($amp_cover_text_font_family) == 0){
+    $amp_cover_text_font_family = "arial";
+}
+
+if(strlen($amp_cover_text_font_size) == 0){
+    $amp_cover_text_font_size = "f18";
+}
+
+if(strlen($amp_cover_text_background_color) == 0){
+    $amp_cover_text_background_color = "ff_storyview_block_background_black";
+}
+
+if(strlen($amp_cover_text_font_color) == 0){
+    $amp_cover_text_font_color = "ff_storyview_block_color_white";
+}
+
+
+if(strlen($amp_cover_image) == 0 || strlen($amp_publisher_logo) == 0 || strlen($amp_cover_title) == 0 || strlen($amp_cover_author_name) == 0){
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            *{
+                font-family: Arial, Helvetica, sans-serif;
+                color: #c92c2c;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Missing required information</h1>
+        <p>For AMP stories the following informations are required:</p>
+        <ul>
+            <li>AMP Story Cover Image</li>
+            <li>AMP Story Publisher Logo</li>
+            <li>AMP Story Title</li>
+            <li>AMP Story Author Name</li>
+        </ul>
+        <p>Make sure that you provied all these informations for your AMP Story.</p>
+        <a href="/wp-admin/post.php?post=<?php the_ID(); ?>&action=edit#ff_storyview_amp_cover_settings_container">Go back to edit the post</a>
+    </body>
+</html>
+<?php
+exit();
+}
+
     ?>
 <!doctype html>
 <html ⚡>
     <head>
         <meta charset="utf-8">
         <title><?php the_title(); ?></title>
-        <link rel="canonical" href="pets.html">
+        <link rel="canonical" href="<?php echo the_permalink(); ?>">
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -95,7 +154,6 @@ if(isset($storyview_data->amp_settings)){
                 font-size: 2.875em;
                 line-height: 200%;
                 padding: 1rem;
-                margin: 10px;
                 border-radius: 3px;
             }
             h1 span{
@@ -257,7 +315,7 @@ if(isset($storyview_data->amp_settings)){
                     $cover_image_path = "./wp-content" . $cover_image_folder_temp[1];
                     list($cover_image_width, $cover_image_height) = getimagesize($cover_image_path);
                     ?>
-                    <amp-img src="<?php echo get_the_post_thumbnail_url(); ?>"
+                    <amp-img src="<?php echo $amp_cover_image; ?>"
                         width="<?php echo $cover_image_width ?>" height="<?php echo $cover_image_height ?>"
                         layout="responsive">
                     </amp-img>

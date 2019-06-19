@@ -17,6 +17,13 @@ if(isset($storyview_data->amp_settings)){
     $amp_cover_text_font_size =         $storyview_data->amp_settings->cover_text_font_size;
     $amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
     $amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
+} else {
+    $amp_cover_text_position = "ff_storyview_text_block_top";
+    $amp_cover_text_align = "ff_storyview_text_align_left";
+    $amp_cover_text_font_family = "arial";
+    $amp_cover_text_font_size = "f18";
+    $amp_cover_text_background_color = "ff_storyview_block_background_black";
+    $amp_cover_text_font_color = "ff_storyview_block_color_white";
 }
 
 ?>
@@ -89,12 +96,12 @@ if(isset($storyview_data->amp_settings)){
                     echo " ff_storyview_block_color_white";
                 }
                 ?>" id="amp_cover_text_content">
-                    <?php if(isset($amp_cover_title)){
+                    <?php if(isset($amp_cover_title) && strlen($amp_cover_title) != 0){
                         echo $amp_cover_title;
                     } else {
                         the_title();
                     } ?><br />
-                    <span class="amp_author"><?php if(isset($amp_cover_author_name)){
+                    <span class="amp_author"><?php if(isset($amp_cover_author_name) && strlen($amp_cover_author_name) != 0){
                         echo $amp_cover_author_name;
                     } else {
                         echo get_the_author_meta('display_name', $post->post_author);
@@ -363,6 +370,22 @@ if(isset($storyview_data->amp_settings)){
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="ff_storyview_amp_cover_settings_block">
+                <?php
+                $post_url = parse_url(get_permalink());
+                if(array_key_exists("query", $post_url) && $post_url["query"] != ""){
+                    // param already exists in the url
+                    $story_url = get_permalink() . "&storyview_amp=1";
+                } else {
+                    $story_url = get_permalink() . "?storyview_amp=1";
+                }
+                ?>
+                <p><strong>AMP Story Preview URL:</strong> <a href="<?php echo $story_url; ?>" target="_blank"><?php echo $story_url; ?> <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-external components-external-link__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M9 3h8v8l-2-1V6.92l-5.6 5.59-1.41-1.41L14.08 5H10zm3 12v-3l2-2v7H3V6h8L9 8H5v7h7z"></path></svg></a></p>
+                <p class="ff_storyview_info">
+                    <i>i</i> Save your changes to preview the latest version of your AMP Story
+                </p>
             </div>
 
         </div>

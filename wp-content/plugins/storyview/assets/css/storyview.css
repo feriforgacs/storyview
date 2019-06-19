@@ -1024,3 +1024,8 @@ by Ferenc Forgacs - @feriforgacs
 #ff_storyview_amp_cover_settings_container{
     display: none;
 }
+
+.ff_storyview_amp_cover_settings_block .ff_storyview_info{
+    text-align: left;
+    padding-left: 0;
+}
