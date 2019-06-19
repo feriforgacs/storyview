@@ -516,7 +516,6 @@ jQuery(document).ready(function($){
      */
     let file_frame_amp_cover;
     $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_upload", function( event ){
-        console.log("itt vagyok - Cover upload");
         event.preventDefault();
 
         // open the file frame if exists
@@ -559,7 +558,6 @@ jQuery(document).ready(function($){
      * @param {string} image_url uploaded or selected attachment url
      */
     function setAmpCoverImage(image_url){
-        console.log("itt vagyok - setAmpCoverImage");
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
             "background-image": "url(" + image_url + ")"
         });
@@ -571,7 +569,6 @@ jQuery(document).ready(function($){
      * Display AMP Story Cover preview
      */
     function displayAmpCoverPreview(){
-        console.log("itt vagyok - displayAmpCoverPreview");
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .preview_text").hide();
 
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_preview .ff_storyview_amp_cover_content").css({
@@ -584,7 +581,6 @@ jQuery(document).ready(function($){
      */
     let file_frame_amp_publisher_logo;
     $("#ff_storyview_amp_publisher_logo_upload").on("click", function( event ){
-        console.log("itt vagyok - ff_storyview_amp_publisher_logo_upload");
         event.preventDefault();
 
         // open the file frame if exists
@@ -627,7 +623,25 @@ jQuery(document).ready(function($){
      * @param {string} image_url uploaded or selected attachment url
      */
     function setAmpPublisherImage(image_url){
-        console.log("itt vagyok - setAmpPublisherImage");
         $("#ff_storyview_amp_publisher_logo_preview").html(`<img src="${image_url}" />`);
+    }
+
+    /**
+     * Display AMP Story title and author name
+     */
+    $("#ff_storyview_amp_cover_text_title").on("keyup", function(){
+        displayAmpTitleAuthor();
+    });
+
+    $("#ff_storyview_amp_cover_text_author").on("keyup", function(){
+        displayAmpTitleAuthor();
+    });
+
+    function displayAmpTitleAuthor(){
+        let title = $("#ff_storyview_amp_cover_text_title").val();
+        let author = $("#ff_storyview_amp_cover_text_author").val();
+
+        $("#amp_cover_text_content").html(`${title}<br /><span class="amp_author">${author}</span>`);
+        displayAmpCoverPreview();
     }
 });

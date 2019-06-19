@@ -22,7 +22,10 @@ if ( !function_exists( 'add_action' ) ) {
         <div class="ff_storyview_amp_cover_preview">
             <p class="preview_text">preview</p>
             <div class="ff_storyview_amp_cover_content ff_storyview_text_block_top ff_storyview_text_align_left">
-                <p class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f12"></p>
+                <div class="block_item_text ff_storyview_block_background_black ff_storyview_block_color_white arial f18" id="amp_cover_text_content">
+                    <?php the_title(); ?><br />
+                    <span class="amp_author"><?php echo get_the_author_meta('display_name', $post->post_author); ?></span>
+                </div>
             </div>
         </div>
 
@@ -65,13 +68,13 @@ if ( !function_exists( 'add_action' ) ) {
                 <div class="ff_storyview_row">
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_title">AMP Story Title</label>
-                        <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"></textarea><br />
+                        <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"><?php the_title(); ?></textarea><br />
                         <small>Try to keep it under 160 characters</small>
                     </div>
 
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name</label>
-                        <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" /><br />
+                        <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" value="<?php echo get_the_author_meta('display_name', $post->post_author); ?>" /><br />
                         <small>Try to keep it under 60 characters</small>
                     </div>
                 </div>
@@ -152,9 +155,9 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_size">Font Size</label>
                         <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
-                            <option value="f12" selected="selected">12px</option>
-                            <option value="f14">14px</option>
-                            <option value="f18">18px</option>
+                            <!-- <option value="f12">12px</option>
+                            <option value="f14">14px</option> -->
+                            <option value="f18" selected="selected">18px</option>
                             <option value="f24">24px</option>
                             <option value="f36">36px</option>
                         </select>

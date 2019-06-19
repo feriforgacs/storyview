@@ -243,15 +243,19 @@ by Ferenc Forgacs - @feriforgacs
     margin-bottom: 1rem;
 }
 
-.ff_storyview_block_item_content .block_item_text{
+.ff_storyview_block_item_content .block_item_text, .ff_storyview_amp_cover_content .block_item_text{
     line-height: 200%;
     padding: .5rem;
     margin: 10px;
     border-radius: 3px;
     display: inline-block;
 }
-.ff_storyview_block_item_content .block_item_text:empty {
+.ff_storyview_block_item_content .block_item_text:empty, .ff_storyview_amp_cover_content .block_item_text:empty {
     display: none;
+}
+
+.ff_storyview_amp_cover_content .block_item_text .amp_author{
+    font-size: 14px;
 }
 
 .ff_storyview_text_block_top{
