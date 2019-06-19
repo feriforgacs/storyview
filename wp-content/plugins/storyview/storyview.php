@@ -121,6 +121,19 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $storyview_data["button_other_code"] = $_POST["ff_storyview_button_type_other_code"];
     $storyview_data["story_blocks_data"] = "";
 
+    // AMP Cover data
+    $storyview_data["amp_settings"]["activ"] =                          intval($_POST["ff_storyview_amp_activ"]);
+    $storyview_data["amp_settings"]["cover_image"] =                    urlencode($_POST["ff_storyview_amp_cover_image"]);
+    $storyview_data["amp_settings"]["publisher_logo"] =                 urlencode($_POST["ff_storyview_amp_publisher_logo_image"]);
+    $storyview_data["amp_settings"]["cover_title"] =                    sanitize_text_field($_POST["ff_storyview_amp_cover_text_title"]);
+    $storyview_data["amp_settings"]["cover_author_name"] =              sanitize_text_field($_POST["ff_storyview_amp_cover_text_author"]);
+    $storyview_data["amp_settings"]["cover_text_position"] =            sanitize_text_field($_POST["ff_storyview_amp_cover_text_position"]);
+    $storyview_data["amp_settings"]["cover_text_align"] =               sanitize_text_field($_POST["ff_storyview_amp_cover_text_align"]);
+    $storyview_data["amp_settings"]["cover_text_font_family"] =         sanitize_text_field($_POST["ff_storyview_amp_cover_text_font_family"]);
+    $storyview_data["amp_settings"]["cover_text_font_size"] =           sanitize_text_field($_POST["ff_storyview_amp_cover_text_font_size"]);
+    $storyview_data["amp_settings"]["cover_text_background_color"] =    sanitize_text_field($_POST["ff_storyview_amp_cover_text_background_color"]);
+    $storyview_data["amp_settings"]["cover_text_font_color"] =          sanitize_text_field($_POST["ff_storyview_amp_cover_text_font_color"]);
+
     // process story blocks data
     $story_blocks_data = [];
     $story_block_ids = explode(",", $_POST["story_block_ids"]);
