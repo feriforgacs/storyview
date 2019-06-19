@@ -644,4 +644,17 @@ jQuery(document).ready(function($){
         $("#amp_cover_text_content").html(`${title}<br /><span class="amp_author">${author}</span>`);
         displayAmpCoverPreview();
     }
+
+    /**
+     * Toggle AMP cover settings panel
+     */
+    $("#ff_storyview_amp_activ").on("change", function(){
+        if($(this).is(":checked")){
+            // display AMP cover settings panel
+            $("#ff_storyview_amp_cover_settings_container").css({"display": "flex"});
+        } else {
+            // hide AMP cover settings panel
+            $("#ff_storyview_amp_cover_settings_container").css({"display": "none"});
+        }
+    })
 });

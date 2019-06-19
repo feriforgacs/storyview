@@ -1019,3 +1019,7 @@ by Ferenc Forgacs - @feriforgacs
     width: 100%;
     text-align: center;
 }
+
+#ff_storyview_amp_cover_settings_container{
+    display: none;
+}

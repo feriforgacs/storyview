@@ -30,7 +30,7 @@ if(isset($storyview_data->amp_settings)){
     ?> />
     <label for="ff_storyview_amp_activ">Generate AMP Story for this Story View <small>| Learn more about AMP Stories <a href="https://amp.dev/about/stories" target="_blank">here</a></small></label>
 
-    <div class="ff_storyview_amp_cover ff_storyview_amp_cover_classic" <?php if(isset($amp_activ) && $amp_activ == 1) { ?> style="display: flex;" <?php } ?>>
+    <div id="ff_storyview_amp_cover_settings_container" class="ff_storyview_amp_cover ff_storyview_amp_cover_classic" <?php if(isset($amp_activ) && $amp_activ == 1) { ?> style="display: flex;" <?php } ?>>
         <div class="ff_storyview_amp_cover_move"></div>
         <div class="ff_storyview_amp_cover_preview">
             <p <?php
