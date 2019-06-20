@@ -118,7 +118,7 @@ if(isset($storyview_data->amp_settings)){
             </p>
             <div class="ff_storyview_amp_cover_settings_block">
                 <div class="ff_storyview_amp_cover_image_upload">
-                    <input type="button" class="ff_storyview_amp_cover_upload button" value="Select AMP Story Cover Image" />
+                    <input type="button" class="ff_storyview_amp_cover_upload button" value="Select AMP Story Cover Image" /><span class="ff_storyview_required">required</span>
                     <input type="hidden" name="ff_storyview_amp_cover_image" id="ff_storyview_amp_cover_image" value="<?php if(isset($amp_cover_image) && strlen($amp_cover_image) != 0){
                         echo $amp_cover_image;
                     } ?>" />
@@ -145,7 +145,7 @@ if(isset($storyview_data->amp_settings)){
                     </div>
 
                     <div class="ff_storyview_col_md_6">
-                        <input type="button" id="ff_storyview_amp_publisher_logo_upload" class="button ff_storyview_amp_publisher_logo_upload" value="Select AMP Story Publisher Logo" /><br />
+                        <input type="button" id="ff_storyview_amp_publisher_logo_upload" class="button ff_storyview_amp_publisher_logo_upload" value="Select AMP Story Publisher Logo" /><span class="ff_storyview_required">required</span><br />
                         <small>The file should be a raster file, such as .jpg, .png, or .gif<br />
                             The logo shape should be a square, not a rectangle.<br />
                             The background color should not be transparent.<br />
@@ -163,7 +163,7 @@ if(isset($storyview_data->amp_settings)){
 
                 <div class="ff_storyview_row">
                     <div class="ff_storyview_col_md_6">
-                        <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_title">AMP Story Title</label>
+                        <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_title">AMP Story Title <span class="ff_storyview_required">required</span></label>
                         <textarea name="ff_storyview_amp_cover_text_title" id="ff_storyview_amp_cover_text_title" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" cols="30" rows="3"><?php
                         if(isset($amp_cover_title) && strlen($amp_cover_title) != 0){
                             echo $amp_cover_title;
@@ -175,7 +175,7 @@ if(isset($storyview_data->amp_settings)){
                     </div>
 
                     <div class="ff_storyview_col_md_6">
-                        <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name</label>
+                        <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_author">AMP Story Author Name <span class="ff_storyview_required">required</span></label>
                         <input type="text" name="ff_storyview_amp_cover_text_author" id="ff_storyview_amp_cover_text_author" class="components-textarea-control__input ff_storyview_amp_cover_text_textarea" value="<?php
                         if(isset($amp_cover_author_name) && strlen($amp_cover_author_name) != 0){
                             echo $amp_cover_author_name;
@@ -373,6 +373,9 @@ if(isset($storyview_data->amp_settings)){
             </div>
 
             <div class="ff_storyview_amp_cover_settings_block">
+                <p class="ff_storyview_info">
+                    <i>i</i> Save your changes to preview the latest version of your AMP Story
+                </p>
                 <?php
                 $post_url = parse_url(get_permalink());
                 if(array_key_exists("query", $post_url) && $post_url["query"] != ""){
@@ -383,9 +386,6 @@ if(isset($storyview_data->amp_settings)){
                 }
                 ?>
                 <p><strong>AMP Story Preview URL:</strong> <a href="<?php echo $story_url; ?>" target="_blank"><?php echo $story_url; ?> <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-external components-external-link__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M9 3h8v8l-2-1V6.92l-5.6 5.59-1.41-1.41L14.08 5H10zm3 12v-3l2-2v7H3V6h8L9 8H5v7h7z"></path></svg></a></p>
-                <p class="ff_storyview_info">
-                    <i>i</i> Save your changes to preview the latest version of your AMP Story
-                </p>
             </div>
 
         </div>
