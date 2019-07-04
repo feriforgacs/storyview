@@ -22,8 +22,72 @@ if(isset($storyview_data->amp_settings)){
     $amp_cover_text_align = "ff_storyview_text_align_left";
     $amp_cover_text_font_family = "arial";
     $amp_cover_text_font_size = "f18";
-    $amp_cover_text_background_color = "ff_storyview_block_background_black";
-    $amp_cover_text_font_color = "ff_storyview_block_color_white";
+    $amp_cover_text_background_color = "rgba(0, 0, 0, .8)";
+    $amp_cover_text_font_color = "rgb(255, 255, 255)";
+}
+
+/**
+ * Set default value for AMP cover background color
+ */
+$ff_storyview_amp_cover_background = "rgba(0, 0, 0, .8)";
+if(isset($amp_cover_text_background_color)){
+    switch($amp_cover_text_background_color){
+        case "ff_storyview_block_background_black":
+            $ff_storyview_amp_cover_background = "rgba(0, 0, 0, .8)";
+            break;
+
+        case "ff_storyview_block_background_gray":
+            $ff_storyview_amp_cover_background = "rgba(51, 51, 51, .8)";
+            break;
+
+        case "ff_storyview_block_background_red":
+            $ff_storyview_amp_cover_background = "rgba(201, 44, 44, .8)";
+            break;
+
+        case "ff_storyview_block_background_white":
+            $ff_storyview_amp_cover_background = "rgba(255, 255, 255, .8)";
+            break;
+
+        case "ff_storyview_block_background_transparent":
+            $ff_storyview_amp_cover_background = "rgba(255, 255, 255, 0)";
+            break;
+        
+        default:
+            if(strlen($amp_cover_text_background_color) > 1){
+                $ff_storyview_amp_cover_background = $amp_cover_text_background_color;
+            }
+            break;
+    }
+}
+
+/**
+ * Set default valur for AMP cover font color
+ */
+$ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
+if(isset($amp_cover_text_font_color)){
+    switch($amp_cover_text_font_color){
+        case "ff_storyview_block_color_black":
+            $ff_storyview_amp_cover_font_color = "rgb(0, 0, 0)";
+            break;
+
+        case "ff_storyview_block_color_gray":
+            $ff_storyview_amp_cover_font_color = "rgb(51, 51, 51)";
+            break;
+
+        case "ff_storyview_block_color_red":
+            $ff_storyview_amp_cover_font_color = "rgb(201, 44, 44)";
+            break;
+
+        case "ff_storyview_block_color_white":
+            $ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
+            break;
+        
+        default:
+            if(strlen($amp_cover_text_font_color) > 1){
+                $ff_storyview_amp_cover_font_color = $amp_cover_text_font_color;
+            }
+            break;
+    }
 }
 
 ?>
@@ -83,18 +147,13 @@ if(isset($storyview_data->amp_settings)){
                 } else {
                     echo " f18";
                 }
+                ?>" style="<?php
+                    // display selected background color
+                    echo "background-color: " . $ff_storyview_amp_cover_background . ";";
 
-                if(isset($amp_cover_text_background_color) && strlen($amp_cover_text_background_color) != 0){
-                    echo " " . $amp_cover_text_background_color;
-                } else {
-                    echo " ff_storyview_block_background_black";
-                }
+                    // display selected font color
+                    echo "color: " . $ff_storyview_amp_cover_font_color . ";";
 
-                if(isset($amp_cover_text_font_color) && strlen($amp_cover_text_font_color) != 0){
-                    echo " " . $amp_cover_text_font_color;
-                } else {
-                    echo " ff_storyview_block_color_white";
-                }
                 ?>" id="amp_cover_text_content">
                     <?php if(isset($amp_cover_title) && strlen($amp_cover_title) != 0){
                         echo $amp_cover_title;
@@ -287,8 +346,6 @@ if(isset($storyview_data->amp_settings)){
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_size">Font Size</label>
                         <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_size" class="custom-select font-size-select" id="ff_storyview_amp_cover_text_font_size">
-                            <!-- <option value="f12">12px</option>
-                            <option value="f14">14px</option> -->
                             <option value="f18" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f18"){ ?> selected="selected" <?php } ?>>18px</option>
                             <option value="f24" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f24"){ ?> selected="selected" <?php } ?>>24px</option>
                             <option value="f36" <?php if(isset($amp_cover_text_font_size) && $amp_cover_text_font_size == "f36"){ ?> selected="selected" <?php } ?>>36px</option>
@@ -299,74 +356,16 @@ if(isset($storyview_data->amp_settings)){
                 <div class="ff_storyview_row">
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Block Background</label>
-                        <div class="ff_storyview_color_group">
-                            <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_black" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_black"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview black <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_black"){ ?> activ <?php } ?>" title="black">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_gray" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_gray"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview dark-gray <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_gray"){ ?> activ <?php } ?>" title="dark gray">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_red" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_red"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview red <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_red"){ ?> activ <?php } ?>" title="red">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_white" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_white"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview white <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_white"){ ?> activ <?php } ?>" title="white">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_background_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_background_color" value="ff_storyview_block_background_transparent" <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_transparent"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview transparent <?php if(isset($amp_cover_text_background_color) && $amp_cover_text_background_color == "ff_storyview_block_background_transparent"){ ?> activ <?php } ?>" title="transparent, no background">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
+                        <div class="ff_storyview_background_color_colorpicker">
+                            <input type="text" name="ff_storyview_amp_cover_text_background_color" value="<?php echo $ff_storyview_amp_cover_background; ?>" id="ff_storyview_amp_cover_text_background_color" />
                         </div>
                     </div>
 
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Font Color</label>
-                        <div class="ff_storyview_color_group">
-                            <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_black" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_black"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview black <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_black"){ ?> activ <?php } ?>">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
 
-                            <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_gray" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_gray"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview dark-gray <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_gray"){ ?> activ <?php } ?>">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_red" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_red"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview red <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_red"){ ?> activ <?php } ?>">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
-
-                            <label class="ff_storyview_amp_cover_text_font_color_label">
-                                <input type="radio" name="ff_storyview_amp_cover_text_font_color" value="ff_storyview_block_color_white" <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_white"){ ?> checked="checked" <?php } ?> />
-                                <span class="color-preview white <?php if(isset($amp_cover_text_font_color) && $amp_cover_text_font_color == "ff_storyview_block_color_white"){ ?> activ <?php } ?>">
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                </span>
-                            </label>
+                        <div class="ff_storyview_text_font_color_colorpicker">
+                            <input type="text" name="ff_storyview_amp_cover_text_font_color" value="<?php echo $ff_storyview_amp_cover_font_color; ?>" id="ff_storyview_amp_cover_text_font_color" />
                         </div>
                     </div>
                 </div>

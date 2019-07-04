@@ -429,39 +429,25 @@ jQuery(document).ready(function($){
 
     /**
      * Set AMP Story cover text background color
-     * @param {string} backgroundColor selected background color css class
+     * @param {string} backgroundColor selected background color rgba value
      */
     function setAmpTextBackgroundColor(backgroundColor){
         // set text background
-        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white ff_storyview_block_background_transparent").addClass(backgroundColor);
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").css({
+            "background-color": backgroundColor
+        });
     }
-
-    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_text_background_color_label", function(){
-        let backgroundColorValue = $(this).children("input[type=radio]").val();
-
-        $('#ff_storyview_amp_story_settings .ff_storyview_amp_cover_text_background_color_label .activ').removeClass("activ");
-        $(this).children(".color-preview").addClass("activ");
-        
-        setAmpTextBackgroundColor(backgroundColorValue);
-    });
 
     /**
      * Set AMP Story cover text color
-     * @param {string} fontColor selected background color css class
+     * @param {string} fontColor selected background color rgba value
      */
     function setAmpTextColor(fontColor){
         // set text color
-        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").removeClass("ff_storyview_block_color_black ff_storyview_block_color_gray ff_storyview_block_color_red ff_storyview_block_color_white").addClass(fontColor);
+        $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").css({
+            "color": fontColor
+        });
     }
-
-    $("#ff_storyview_amp_story_settings").on("click", ".ff_storyview_amp_cover_text_font_color_label", function(){
-        let textColorValue = $(this).children("input[type=radio]").val();
-
-        $('#ff_storyview_amp_story_settings .ff_storyview_amp_cover_text_font_color_label .activ').removeClass("activ");
-        $(this).children(".color-preview").addClass("activ");
-        
-        setAmpTextColor(textColorValue);
-    });
 
     /**
      * Set AMP Cover text position for preview
@@ -661,4 +647,56 @@ jQuery(document).ready(function($){
             $("#ff_storyview_amp_cover_settings_container").css({"display": "none"});
         }
     })
+
+    /**
+     * Custom colorpicker - AMP Cover background color
+     */
+    $("#ff_storyview_amp_cover_text_background_color").spectrum({
+        clickoutFiresChange: true,
+        showInput: true,
+        showInitial: true,
+        allowEmpty: true,
+        showAlpha: true,
+        showPalette: true,
+        preferredFormat: "rgb",
+        palette: [[
+            "rgba(0, 0, 0, .8)",
+            "rgba(51, 51, 51, .8)",
+            "rgba(201, 44, 44, .8)",
+            "rgba(255, 255, 255, .8)",
+            "rgba(255, 255, 255, 0)"
+        ]],
+        change: function(color){
+            setAmpTextBackgroundColor(color.toRgbString());
+        },
+        move: function(color){
+            setAmpTextBackgroundColor(color.toRgbString());
+        }
+    });
+
+    /**
+     * Custom colorpicker - AMP Cover font color
+     */
+    $("#ff_storyview_amp_cover_text_font_color").spectrum({
+        clickoutFiresChange: true,
+        showInput: true,
+        showInitial: true,
+        allowEmpty: true,
+        showAlpha: true,
+        showPalette: true,
+        preferredFormat: "rgb",
+        palette: [[
+            "rgba(0, 0, 0, 1)",
+            "rgba(51, 51, 51, 1)",
+            "rgba(201, 44, 44, 1)",
+            "rgba(255, 255, 255, 1)"
+        ]],
+        change: function(color){
+            setAmpTextColor(color.toRgbString());
+        },
+        move: function(color){
+            setAmpTextColor(color.toRgbString());
+        }
+    });
+
 });
