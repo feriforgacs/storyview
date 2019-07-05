@@ -251,6 +251,8 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview_code .ff_storyview_block_item_content").css({
             "background-color": backgroundColor
         });
+
+        $("#ff_storyview_block_item_block_background_color_" + blockId).val(backgroundColor);
     }
 
     /**
@@ -302,7 +304,7 @@ jQuery(document).ready(function($){
         updateStoryBlockIDs();
 
         // display custom colorpicker
-        classicBlockCustomColorpicker();
+        customColorPicker();
     }
 
     /**
@@ -318,6 +320,9 @@ jQuery(document).ready(function($){
 
         // update story block IDs
         updateStoryBlockIDs();
+
+        // display custom colorpicker
+        customColorPicker();
     }
 
     /**
@@ -644,7 +649,7 @@ jQuery(document).ready(function($){
         }
     });
 
-    function classicBlockCustomColorpicker(){
+    function customColorPicker(){
         /**
          * Custom color picker - Classic story block background color
          */
@@ -755,9 +760,65 @@ jQuery(document).ready(function($){
                 setTextColor(blockId, "rgba(0, 0, 0, 0)");
             }
         });
+
+        /**
+         * Display custom colorpicker for custom story blocks
+         */
+        $(".ff_storyview_custom_background_color_colorpicker_input").spectrum({
+            clickoutFiresChange: true,
+            showInput: true,
+            showInitial: true,
+            allowEmpty: false,
+            showAlpha: true,
+            showPalette: true,
+            preferredFormat: "rgb",
+            palette: [[
+                "rgba(0, 0, 0, .8)",
+                "rgba(51, 51, 51, .8)",
+                "rgba(201, 44, 44, .8)",
+                "rgba(255, 255, 255, .8)",
+                "rgba(255, 255, 255, 0)"
+            ]]
+        });
+
+        /**
+         * Set custom block preview background color on change
+         */
+        $(".ff_storyview_custom_background_color_colorpicker_input").on("change.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setBlockBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setBlockBackgroundColor(blockId, "rgba(0, 0, 0, .8)");
+            }
+        });
+
+        /**
+         * Set custom block preview background color on move
+         */
+        $(".ff_storyview_custom_background_color_colorpicker_input").on("move.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setBlockBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setBlockBackgroundColor(blockId, "rgba(0, 0, 0, .8)");
+            }
+        });
+
+        /**
+         * Set custom block preview background color on hide
+         */
+        $(".ff_storyview_custom_background_color_colorpicker_input").on("hide.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setBlockBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setBlockBackgroundColor(blockId, "rgba(0, 0, 0, .8)");
+            }
+        });
     }
 
-    classicBlockCustomColorpicker();
+    customColorPicker();
 
     /**
      * Custom colorpicker - AMP Cover background color
