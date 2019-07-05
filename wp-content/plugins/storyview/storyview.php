@@ -262,6 +262,10 @@ function ff_storyview_display(){
                                         $storyview_block_background_color = "rgba(255, 255, 255, .8)";
                                         break;
 
+                                    case "ff_storyview_block_background_transparent":
+                                        $storyview_block_background_color = "rgba(255, 255, 255, 0)";
+                                        break;
+
                                     default:
                                         $storyview_block_background_color = $storyview_block->ff_storyview_block_item_block_background_color;
                                         break;
@@ -291,6 +295,10 @@ function ff_storyview_display(){
 
                                     case "ff_storyview_block_background_white":
                                         $storyview_block_background_color = "rgba(255, 255, 255, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_transparent":
+                                        $storyview_block_background_color = "rgba(255, 255, 255, 0)";
                                         break;
 
                                     default:

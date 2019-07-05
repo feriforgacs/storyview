@@ -437,6 +437,8 @@ jQuery(document).ready(function($){
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").css({
             "background-color": backgroundColor
         });
+
+        $("#ff_storyview_amp_cover_text_background_color").val(backgroundColor);
     }
 
     /**
@@ -448,6 +450,8 @@ jQuery(document).ready(function($){
         $("#ff_storyview_amp_story_settings .ff_storyview_amp_cover_content .block_item_text").css({
             "color": fontColor
         });
+
+        $("#ff_storyview_amp_cover_text_font_color").val(fontColor);
     }
 
     /**

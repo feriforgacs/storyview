@@ -97,6 +97,61 @@ if(strlen($amp_cover_text_font_color) == 0){
     $amp_cover_text_font_color = "ff_storyview_block_color_white";
 }
 
+/**
+ * Handle custom colors
+ * Cover text background color
+ */
+switch($amp_cover_text_background_color){
+    case "ff_storyview_block_background_black":
+        $amp_cover_text_background_color = "rgba(0, 0, 0, .8)";
+        break;
+
+    case "ff_storyview_block_background_gray":
+        $amp_cover_text_background_color = "rgba(51, 51, 51, .8)";
+        break;
+
+    case "ff_storyview_block_background_red":
+        $amp_cover_text_background_color = "rgba(201, 44, 44, .8)";
+        break;
+
+    case "ff_storyview_block_background_white":
+        $amp_cover_text_background_color = "rgba(255, 255, 255, .8)";
+        break;
+
+    case "ff_storyview_block_background_transparent":
+        $amp_cover_text_background_color = "rgba(255, 255, 255, 0)";
+        break;
+
+    default:
+        $amp_cover_text_background_color = $storyview_data->amp_settings->cover_text_background_color;
+        break;
+}
+
+/**
+ * Handle custom colors
+ * Cover text font color
+ */
+switch($amp_cover_text_font_color){
+    case "ff_storyview_block_color_black":
+        $amp_cover_text_font_color = "rgb(0, 0, 0)";
+        break;
+
+    case "ff_storyview_block_color_gray":
+        $amp_cover_text_font_color = "rgb(51, 51, 51)";
+        break;
+
+    case "ff_storyview_block_color_red":
+        $amp_cover_text_font_color = "rgb(201, 44, 44)";
+        break;
+
+    case "ff_storyview_block_color_white":
+        $amp_cover_text_font_color = "rgb(255, 255, 255)";
+        break;
+    
+    default:
+        $amp_cover_text_font_color = $storyview_data->amp_settings->cover_text_font_color;
+        break;
+}
 
 if(strlen($amp_cover_image) == 0 || strlen($amp_publisher_logo) == 0 || strlen($amp_cover_title) == 0 || strlen($amp_cover_author_name) == 0){
 ?>
@@ -322,7 +377,7 @@ exit();
                 </amp-story-grid-layer>
 
                 <amp-story-grid-layer template="vertical" class="<?php echo $amp_cover_text_position . " " . $amp_cover_text_align; ?>">
-                    <h1 class="<?php echo $amp_cover_text_font_family . " " . $amp_cover_text_font_size . " " . $amp_cover_text_background_color . " " . $amp_cover_text_font_color; ?>">
+                    <h1 class="<?php echo $amp_cover_text_font_family . " " . $amp_cover_text_font_size; ?>" style="background-color: <?php echo $amp_cover_text_background_color; ?>; color: <?php echo $amp_cover_text_font_color; ?>;">
                         <?php echo $amp_cover_title; ?>
                         <br /><span>
                             <?php echo $amp_cover_author_name; ?>
