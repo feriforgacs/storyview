@@ -244,7 +244,30 @@ function ff_storyview_display(){
                             // display special stroyview block - shortcode, html code
                             // do_shortcode($content)
                             $storyview_blocks .= '<div class="ff_storyview_block_item_content_code">';
-                                $storyview_blocks .= '<div class="ff_storyview_block_item_code ' . $storyview_block->ff_storyview_block_item_block_background_color . '">' . do_shortcode(stripslashes(base64_decode($storyview_block->ff_storyview_block_content))) . '</div>';
+                                $storyview_block_background_color = $storyview_block->ff_storyview_block_item_block_background_color;
+                                switch($storyview_block_background_color){
+                                    case "ff_storyview_block_background_black":
+                                        $storyview_block_background_color = "rgba(0, 0, 0, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_gray":
+                                        $storyview_block_background_color = "rgba(51, 51, 51, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_red":
+                                        $storyview_block_background_color = "rgba(201, 44, 44, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_white":
+                                        $storyview_block_background_color = "rgba(255, 255, 255, .8)";
+                                        break;
+
+                                    default:
+                                        $storyview_block_background_color = $storyview_block->ff_storyview_block_item_block_background_color;
+                                        break;
+                                }
+
+                                $storyview_blocks .= '<div class="ff_storyview_block_item_code" style="background-color: ' . $storyview_block_background_color . ';">' . do_shortcode(stripslashes(base64_decode($storyview_block->ff_storyview_block_content))) . '</div>';
                                 $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
                             $storyview_blocks .= '</div>';
                             break;
@@ -252,7 +275,53 @@ function ff_storyview_display(){
                             // display default storyview block - bgimage, text
                             $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
-                                $storyview_blocks .= '<p class="block_item_text ' . $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size . ' ' . $storyview_block->ff_storyview_block_item_text_background_color . ' ' . $storyview_block->ff_storyview_block_item_text_font_color .'">';
+                                $storyview_block_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
+                                switch($storyview_block_background_color){
+                                    case "ff_storyview_block_background_black":
+                                        $storyview_block_background_color = "rgba(0, 0, 0, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_gray":
+                                        $storyview_block_background_color = "rgba(51, 51, 51, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_red":
+                                        $storyview_block_background_color = "rgba(201, 44, 44, .8)";
+                                        break;
+
+                                    case "ff_storyview_block_background_white":
+                                        $storyview_block_background_color = "rgba(255, 255, 255, .8)";
+                                        break;
+
+                                    default:
+                                        $storyview_block_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
+                                        break;
+                                }
+
+                                $storyview_block_font_color = $storyview_block->ff_storyview_block_item_text_font_color;
+                                switch($storyview_block_font_color){
+                                    case "ff_storyview_block_color_black":
+                                        $storyview_block_font_color = "rgb(0, 0, 0)";
+                                        break;
+
+                                    case "ff_storyview_block_color_gray":
+                                        $storyview_block_font_color = "rgb(51, 51, 51)";
+                                        break;
+
+                                    case "ff_storyview_block_color_red":
+                                        $storyview_block_font_color = "rgb(201, 44, 44)";
+                                        break;
+
+                                    case "ff_storyview_block_color_white":
+                                        $storyview_block_font_color = "rgb(255, 255, 255)";
+                                        break;
+                                    
+                                    default:
+                                        $storyview_block_font_color = $storyview_block->ff_storyview_block_item_text_font_color;
+                                        break;
+                                }
+
+                                $storyview_blocks .= '<p class="block_item_text ' . $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size .'" style="background-color: ' . $storyview_block_background_color . '; color: ' . $storyview_block_font_color . ';">';
                                 $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
                                 $storyview_blocks .= '</p>';
 
