@@ -202,6 +202,9 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").css({
             "background-color": backgroundColor
         });
+
+        // set background color value for colorpicker input
+        $("#ff_storyview_block_item_text_background_color_" + blockId).val(backgroundColor);
     }
 
     /**
@@ -214,6 +217,9 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").css({
             "color": fontColor
         });
+
+        // set text color value for colorpicker input
+        $("#ff_storyview_block_item_text_font_color_" + blockId).val(fontColor);
     }
 
     /**
@@ -294,6 +300,9 @@ jQuery(document).ready(function($){
 
         // update story block IDs
         updateStoryBlockIDs();
+
+        // display custom colorpicker
+        classicBlockCustomColorpicker();
     }
 
     /**
@@ -635,44 +644,120 @@ jQuery(document).ready(function($){
         }
     });
 
-    /**
-     * Custom color picker - Classic story block background color
-     */
-    $(".ff_storyview_background_color_colorpicker_input").spectrum({
-        clickoutFiresChange: true,
-        showInput: true,
-        showInitial: true,
-        allowEmpty: true,
-        showAlpha: true,
-        showPalette: true,
-        preferredFormat: "rgb",
-        palette: [[
-            "rgba(0, 0, 0, .8)",
-            "rgba(51, 51, 51, .8)",
-            "rgba(201, 44, 44, .8)",
-            "rgba(255, 255, 255, .8)",
-            "rgba(255, 255, 255, 0)"
-        ]]
-    });
+    function classicBlockCustomColorpicker(){
+        /**
+         * Custom color picker - Classic story block background color
+         */
+        $(".ff_storyview_background_color_colorpicker_input").spectrum({
+            clickoutFiresChange: true,
+            showInput: true,
+            showInitial: true,
+            allowEmpty: false,
+            showAlpha: true,
+            showPalette: true,
+            preferredFormat: "rgb",
+            palette: [[
+                "rgba(0, 0, 0, .8)",
+                "rgba(51, 51, 51, .8)",
+                "rgba(201, 44, 44, .8)",
+                "rgba(255, 255, 255, .8)",
+                "rgba(255, 255, 255, 0)"
+            ]]
+        });
 
-    /**
-     * Custom color picker - Classic story block font color
-     */
-    $(".ff_storyview_font_color_colorpicker_input").spectrum({
-        clickoutFiresChange: true,
-        showInput: true,
-        showInitial: true,
-        allowEmpty: true,
-        showAlpha: true,
-        showPalette: true,
-        preferredFormat: "rgb",
-        palette: [[
-            "rgb(0, 0, 0)",
-            "rgb(51, 51, 51)",
-            "rgb(201, 44, 44)",
-            "rgb(255, 255, 255)"
-        ]]
-    });
+        /**
+         * Custom color picker - Classic story block font color
+         */
+        $(".ff_storyview_font_color_colorpicker_input").spectrum({
+            clickoutFiresChange: true,
+            showInput: true,
+            showInitial: true,
+            allowEmpty: false,
+            showAlpha: true,
+            showPalette: true,
+            preferredFormat: "rgb",
+            palette: [[
+                "rgb(0, 0, 0)",
+                "rgb(51, 51, 51)",
+                "rgb(201, 44, 44)",
+                "rgb(255, 255, 255)"
+            ]]
+        });
+
+        /**
+         * Set preview text background color on change
+         */
+        $(".ff_storyview_background_color_colorpicker_input").on("change.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setTextBackgroundColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+
+        /**
+         * Set preview text background color on move
+         */
+        $(".ff_storyview_background_color_colorpicker_input").on("move.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setTextBackgroundColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+
+        /**
+         * Set preview text background color on cancel
+         */
+        $(".ff_storyview_background_color_colorpicker_input").on("hide.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextBackgroundColor(blockId, color.toRgbString());
+            } else {
+                setTextBackgroundColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+
+        /**
+         * Set preview text font color on change
+         */
+        $(".ff_storyview_font_color_colorpicker_input").on("change.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextColor(blockId, color.toRgbString());
+            } else {
+                setTextColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+
+        /**
+         * Set preview text font color on move
+         */
+        $(".ff_storyview_font_color_colorpicker_input").on("move.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextColor(blockId, color.toRgbString());
+            } else {
+                setTextColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+
+        /**
+         * Set preview text font color on move
+         */
+        $(".ff_storyview_font_color_colorpicker_input").on("hide.spectrum", function(event, color){
+            let blockId = event.target.dataset.blockid;
+            if(color){
+                setTextColor(blockId, color.toRgbString());
+            } else {
+                setTextColor(blockId, "rgba(0, 0, 0, 0)");
+            }
+        });
+    }
+
+    classicBlockCustomColorpicker();
 
     /**
      * Custom colorpicker - AMP Cover background color
@@ -681,7 +766,7 @@ jQuery(document).ready(function($){
         clickoutFiresChange: true,
         showInput: true,
         showInitial: true,
-        allowEmpty: true,
+        allowEmpty: false,
         showAlpha: true,
         showPalette: true,
         preferredFormat: "rgb",
@@ -706,6 +791,13 @@ jQuery(document).ready(function($){
             } else {
                 setAmpTextBackgroundColor("rgba(0, 0, 0, 0)");
             }
+        },
+        hide: function(color){
+            if(color){
+                setAmpTextBackgroundColor(color.toRgbString());
+            } else {
+                setAmpTextBackgroundColor("rgba(0, 0, 0, 0)");
+            }
         }
     });
 
@@ -716,7 +808,7 @@ jQuery(document).ready(function($){
         clickoutFiresChange: true,
         showInput: true,
         showInitial: true,
-        allowEmpty: true,
+        allowEmpty: false,
         showAlpha: true,
         showPalette: true,
         preferredFormat: "rgb",
@@ -740,50 +832,13 @@ jQuery(document).ready(function($){
             } else {
                 setAmpTextColor("rgba(0, 0, 0, 0)");
             }
-        }
-    });
-
-    /**
-     * Set preview text background color on change
-     */
-    $(".ff_storyview_background_color_colorpicker_input").on("change.spectrum", function(event, color){
-        if(color){
-            setTextBackgroundColor(event.target.dataset.blockid, color.toRgbString());
-        } else {
-            setTextBackgroundColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
-        }
-    });
-
-    /**
-     * Set preview text background color on move
-     */
-    $(".ff_storyview_background_color_colorpicker_input").on("move.spectrum", function(event, color){
-        if(color){
-            setTextBackgroundColor(event.target.dataset.blockid, color.toRgbString());
-        } else {
-            setTextBackgroundColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
-        }
-    });
-
-    /**
-     * Set preview text font color on change
-     */
-    $(".ff_storyview_font_color_colorpicker_input").on("change.spectrum", function(event, color){
-        if(color){
-            setTextColor(event.target.dataset.blockid, color.toRgbString());
-        } else {
-            setTextColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
-        }
-    });
-
-    /**
-     * Set preview text font color on move
-     */
-    $(".ff_storyview_font_color_colorpicker_input").on("move.spectrum", function(event, color){
-        if(color){
-            setTextColor(event.target.dataset.blockid, color.toRgbString());
-        } else {
-            setTextColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
+        },
+        hide: function(color){
+            if(color){
+                setAmpTextColor(color.toRgbString());
+            } else {
+                setAmpTextColor("rgba(0, 0, 0, 0)");
+            }
         }
     });
 
