@@ -204,23 +204,16 @@ jQuery(document).ready(function($){
         });
     }
 
-    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_font_color_label", function(){
-        let fontColorValue = $(this).children("input[type=radio]").val();
-        let blockId = $(this).data("blockid");
-
-        $('.ff_storyview_block_item_text_font_color_label[data-blockid="' + blockId + '"] .activ').removeClass("activ");
-        $(this).children(".color-preview").addClass("activ");
-        
-        setTextColor(blockId, fontColorValue);
-    });
     /**
      * Set story view block text color for preview
      * @param {int} blockId selected block id
-     * @param {string} fontColor selected text color css class
+     * @param {string} fontColor selected text color rgba value
      */
     function setTextColor(blockId, fontColor){
         // set text color
-        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("ff_storyview_block_color_black ff_storyview_block_color_gray ff_storyview_block_color_red ff_storyview_block_color_white").addClass(fontColor);
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").css({
+            "color": fontColor
+        });
     }
 
     /**
@@ -663,6 +656,25 @@ jQuery(document).ready(function($){
     });
 
     /**
+     * Custom color picker - Classic story block font color
+     */
+    $(".ff_storyview_font_color_colorpicker_input").spectrum({
+        clickoutFiresChange: true,
+        showInput: true,
+        showInitial: true,
+        allowEmpty: true,
+        showAlpha: true,
+        showPalette: true,
+        preferredFormat: "rgb",
+        palette: [[
+            "rgb(0, 0, 0)",
+            "rgb(51, 51, 51)",
+            "rgb(201, 44, 44)",
+            "rgb(255, 255, 255)"
+        ]]
+    });
+
+    /**
      * Custom colorpicker - AMP Cover background color
      */
     $("#ff_storyview_amp_cover_text_background_color").spectrum({
@@ -750,6 +762,28 @@ jQuery(document).ready(function($){
             setTextBackgroundColor(event.target.dataset.blockid, color.toRgbString());
         } else {
             setTextBackgroundColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
+        }
+    });
+
+    /**
+     * Set preview text font color on change
+     */
+    $(".ff_storyview_font_color_colorpicker_input").on("change.spectrum", function(event, color){
+        if(color){
+            setTextColor(event.target.dataset.blockid, color.toRgbString());
+        } else {
+            setTextColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
+        }
+    });
+
+    /**
+     * Set preview text font color on move
+     */
+    $(".ff_storyview_font_color_colorpicker_input").on("move.spectrum", function(event, color){
+        if(color){
+            setTextColor(event.target.dataset.blockid, color.toRgbString());
+        } else {
+            setTextColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
         }
     });
 

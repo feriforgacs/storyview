@@ -593,34 +593,8 @@ if ( !function_exists( 'add_action' ) ) {
 
                                         <div class="ff_storyview_col_md_6">
                                             <label class="ff_storyview_label">Font Color</label>
-                                            <div class="ff_storyview_color_group">
-                                                <label class="ff_storyview_block_item_text_font_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_color_black" <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_black"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview black <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_black"){ echo 'activ';} ?>">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_font_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_color_gray" <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_gray"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview dark-gray <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_black"){ echo 'activ';} ?>">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_font_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_color_red" <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_red"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview red <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_red"){ echo 'activ';} ?>">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_font_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_color_white" <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_white"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview white <?php if($storyview_block_item_text_font_color == "ff_storyview_block_color_white"){ echo 'activ';} ?>">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
+                                            <div class="ff_storyview_font_color_colorpicker">
+                                                <input data-blockid="<?php echo $storyview_block_id; ?>" type="text" name="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" id="ff_storyview_block_item_text_font_color_<?php echo $storyview_block_id; ?>" class="ff_storyview_font_color_colorpicker_input" value="<?php echo $storyview_block_item_text_font_color; ?>" />
                                             </div>
                                         </div>
                                     </div>
