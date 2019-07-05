@@ -402,6 +402,65 @@ exit();
                             $image_folder_temp = explode("wp-content", $image_path_temp);
                             $image_path = "./wp-content" . $image_folder_temp[1];
                             list($width, $height) = getimagesize($image_path);
+
+                            /**
+                             * Handle custom colors
+                             * Custom background color
+                             */
+                            $amp_block_text_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
+                            switch($amp_block_text_background_color){
+                                case "ff_storyview_block_background_black":
+                                    $amp_block_text_background_color = "rgba(0, 0, 0, .8)";
+                                    break;
+
+                                case "ff_storyview_block_background_gray":
+                                    $amp_block_text_background_color = "rgba(51, 51, 51, .8)";
+                                    break;
+
+                                case "ff_storyview_block_background_red":
+                                    $amp_block_text_background_color = "rgba(201, 44, 44, .8)";
+                                    break;
+
+                                case "ff_storyview_block_background_white":
+                                    $amp_block_text_background_color = "rgba(255, 255, 255, .8)";
+                                    break;
+
+                                case "ff_storyview_block_background_transparent":
+                                    $amp_block_text_background_color = "rgba(255, 255, 255, 0)";
+                                    break;
+
+                                default:
+                                    $amp_block_text_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
+                                    break;
+                            }
+
+                            /**
+                             * Handle custom colors
+                             * Custom font color
+                             */
+                            $amp_block_text_font_color = $storyview_block->ff_storyview_block_item_text_font_color;
+                            switch($amp_block_text_font_color){
+                                case "ff_storyview_block_color_black":
+                                    $amp_block_text_font_color = "rgb(0, 0, 0)";
+                                    break;
+
+                                case "ff_storyview_block_color_gray":
+                                    $amp_block_text_font_color = "rgb(51, 51, 51)";
+                                    break;
+
+                                case "ff_storyview_block_color_red":
+                                    $amp_block_text_font_color = "rgb(201, 44, 44)";
+                                    break;
+
+                                case "ff_storyview_block_color_white":
+                                    $amp_block_text_font_color = "rgb(255, 255, 255)";
+                                    break;
+                                
+                                default:
+                                    $amp_block_text_font_color = $storyview_block->ff_storyview_block_item_text_font_color;
+                                    break;
+                            }
+
                             ?>
                             <amp-story-page id="page<?php echo $i; ?>">
                                 <!-- image -->
@@ -414,7 +473,7 @@ exit();
 
                                 <!-- text -->
                                 <amp-story-grid-layer template="vertical" class="<?php echo $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align; ?>">
-                                    <p animate-in="fade-in" animate-in-delay="0.2s" animate-in-duration="0.5s" class="block_item_text <?php echo $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size . ' ' . $storyview_block->ff_storyview_block_item_text_background_color . ' ' . $storyview_block->ff_storyview_block_item_text_font_color; ?>"><?php echo $storyview_block->ff_storyview_block_item_text; ?></p>
+                                    <p animate-in="fade-in" animate-in-delay="0.2s" animate-in-duration="0.5s" class="block_item_text <?php echo $storyview_block->ff_storyview_block_item_text_font_family . ' ' . $storyview_block->ff_storyview_block_item_text_font_size; ?>" style="background-color: <?php echo $amp_block_text_background_color; ?>; color: <?php echo $amp_block_text_font_color; ?>;"><?php echo $storyview_block->ff_storyview_block_item_text; ?></p>
                                 </amp-story-grid-layer>
                             </amp-story-page>
                             <?php
