@@ -195,11 +195,13 @@ jQuery(document).ready(function($){
     /**
      * Set story view block text background for preview
      * @param {int} blockId selected block id
-     * @param {string} backgroundColor selected background color css class
+     * @param {string} backgroundColor selected background rgba value
      */
     function setTextBackgroundColor(blockId, backgroundColor){
         // set text background
-        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white ff_storyview_block_background_transparent").addClass(backgroundColor);
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").css({
+            "background-color": backgroundColor
+        });
     }
 
     $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_text_font_color_label", function(){
@@ -241,23 +243,15 @@ jQuery(document).ready(function($){
         $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_content .block_item_text").removeClass("f12 f14 f18 f24 f36").addClass(fontSizeClass);
     }
 
-    $("#ff_storyview_blocks_list").on("click", ".ff_storyview_block_item_background_color_label", function(){
-        let backgroundColorValue = $(this).children("input[type=radio]").val();
-        let blockId = $(this).data("blockid");
-
-        $('.ff_storyview_block_item_background_color_label[data-blockid="' + blockId + '"] .activ').removeClass("activ");
-        $(this).children(".color-preview").addClass("activ");
-        
-        setBlockBackgroundColor(blockId, backgroundColorValue);
-    });
-
     /**
      * 
      * @param {int} blockId selected block id
-     * @param {string} backgroundColorClass selected background color CSS class
+     * @param {string} backgroundColor selected custom color rgba code
      */
-    function setBlockBackgroundColor(blockId, backgroundColorClass){
-        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview_code .ff_storyview_block_item_content").removeClass("ff_storyview_block_background_black ff_storyview_block_background_gray ff_storyview_block_background_red ff_storyview_block_background_white").addClass(backgroundColorClass);
+    function setBlockBackgroundColor(blockId, backgroundColor){
+        $("#ff_storyview_block_item_" + blockId + " .ff_storyview_block_item_preview_code .ff_storyview_block_item_content").css({
+            "background-color": backgroundColor
+        });
     }
 
     /**
@@ -646,7 +640,27 @@ jQuery(document).ready(function($){
             // hide AMP cover settings panel
             $("#ff_storyview_amp_cover_settings_container").css({"display": "none"});
         }
-    })
+    });
+
+    /**
+     * Custom color picker - Classic story block background color
+     */
+    $(".ff_storyview_background_color_colorpicker_input").spectrum({
+        clickoutFiresChange: true,
+        showInput: true,
+        showInitial: true,
+        allowEmpty: true,
+        showAlpha: true,
+        showPalette: true,
+        preferredFormat: "rgb",
+        palette: [[
+            "rgba(0, 0, 0, .8)",
+            "rgba(51, 51, 51, .8)",
+            "rgba(201, 44, 44, .8)",
+            "rgba(255, 255, 255, .8)",
+            "rgba(255, 255, 255, 0)"
+        ]]
+    });
 
     /**
      * Custom colorpicker - AMP Cover background color
@@ -667,10 +681,19 @@ jQuery(document).ready(function($){
             "rgba(255, 255, 255, 0)"
         ]],
         change: function(color){
-            setAmpTextBackgroundColor(color.toRgbString());
+            if(color){
+                setAmpTextBackgroundColor(color.toRgbString());
+            } else {
+                setAmpTextBackgroundColor("rgba(0, 0, 0, 0)");
+            }
+            
         },
         move: function(color){
-            setAmpTextBackgroundColor(color.toRgbString());
+            if(color){
+                setAmpTextBackgroundColor(color.toRgbString());
+            } else {
+                setAmpTextBackgroundColor("rgba(0, 0, 0, 0)");
+            }
         }
     });
 
@@ -692,10 +715,41 @@ jQuery(document).ready(function($){
             "rgba(255, 255, 255, 1)"
         ]],
         change: function(color){
-            setAmpTextColor(color.toRgbString());
+            if(color){
+                setAmpTextColor(color.toRgbString());
+            } else {
+                setAmpTextColor("rgba(0, 0, 0, 0)");
+            }
+            
         },
         move: function(color){
-            setAmpTextColor(color.toRgbString());
+            if(color){
+                setAmpTextColor(color.toRgbString());
+            } else {
+                setAmpTextColor("rgba(0, 0, 0, 0)");
+            }
+        }
+    });
+
+    /**
+     * Set preview text background color on change
+     */
+    $(".ff_storyview_background_color_colorpicker_input").on("change.spectrum", function(event, color){
+        if(color){
+            setTextBackgroundColor(event.target.dataset.blockid, color.toRgbString());
+        } else {
+            setTextBackgroundColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
+        }
+    });
+
+    /**
+     * Set preview text background color on move
+     */
+    $(".ff_storyview_background_color_colorpicker_input").on("move.spectrum", function(event, color){
+        if(color){
+            setTextBackgroundColor(event.target.dataset.blockid, color.toRgbString());
+        } else {
+            setTextBackgroundColor(event.target.dataset.blockid, "rgba(0, 0, 0, 0)");
         }
     });
 

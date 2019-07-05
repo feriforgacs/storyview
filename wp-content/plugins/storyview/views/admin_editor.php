@@ -275,9 +275,65 @@ if ( !function_exists( 'add_action' ) ) {
 
                 $storyview_block_item_text_font_size = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size : "f12";
 
-                $storyview_block_item_text_background_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color : "ff_storyview_block_background_black";
+                // set custom background color for classic story block text
+                $storyview_block_item_text_background_color = "rgba(0, 0, 0, .8)";
+                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color)){
+                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color){
+                        case "ff_storyview_block_background_black":
+                            $storyview_block_item_text_background_color = "rgba(0, 0, 0, .8)";
+                            break;
 
-                $storyview_block_item_text_font_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color : "ff_storyview_block_color_white";
+                        case "ff_storyview_block_background_gray":
+                            $storyview_block_item_text_background_color = "rgba(51, 51, 51, .8)";
+                            break;
+
+                        case "ff_storyview_block_background_red":
+                            $storyview_block_item_text_background_color = "rgba(201, 44, 44, .8)";
+                            break;
+
+                        case "ff_storyview_block_background_white":
+                            $storyview_block_item_text_background_color = "rgba(255, 255, 255, .8)";
+                            break;
+
+                        case "ff_storyview_block_background_transparent":
+                            $storyview_block_item_text_background_color = "rgba(255, 255, 255, 0)";
+                            break;
+
+                        default:
+                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color) > 1){
+                                $storyview_block_item_text_background_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color;
+                            }
+                            break;
+                    }
+                }
+
+                // set custom font color for classic story block text
+                $storyview_block_item_text_font_color = "rgb(255, 255, 255)";
+                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color)){
+                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color){
+                        case "ff_storyview_block_color_black":
+                            $storyview_block_item_text_font_color = "rgb(0, 0, 0)";
+                            break;
+
+                        case "ff_storyview_block_color_gray":
+                            $storyview_block_item_text_font_color = "rgb(51, 51, 51)";
+                            break;
+
+                        case "ff_storyview_block_color_red":
+                            $storyview_block_item_text_font_color = "rgb(201, 44, 44)";
+                            break;
+
+                        case "ff_storyview_block_color_white":
+                            $storyview_block_item_text_font_color = "rgb(255, 255, 255)";
+                            break;
+                        
+                        default:
+                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) > 1){
+                                $storyview_block_item_text_font_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color;
+                            }
+                            break;
+                    }
+                }
 
                 /**
                  * Custom story block settings
@@ -286,8 +342,33 @@ if ( !function_exists( 'add_action' ) ) {
                 
                 $storyview_block_content = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_content) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_content : "";
 
-                $storyview_block_item_block_background_color = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color : "ff_storyview_block_background_black";
+                // set custom background color for custom story block
+                $storyview_block_item_block_background_color = "rgba(0, 0, 0, .8)";
+                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color)){
+                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color){
+                        case "ff_storyview_block_background_black":
+                            $storyview_block_item_block_background_color = "rgba(0, 0, 0, .8)";
+                            break;
 
+                        case "ff_storyview_block_background_gray":
+                            $storyview_block_item_block_background_color = "rgba(51, 51, 51, .8)";
+                            break;
+
+                        case "ff_storyview_block_background_red":
+                            $storyview_block_item_block_background_color = "rgba(201, 44, 44, .8)";
+                            break;
+
+                        case "ff_storyview_block_background_white":
+                            $storyview_block_item_block_background_color = "rgba(255, 255, 255, .8)";
+                            break;
+
+                        default:
+                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color) > 1){
+                                $storyview_block_item_block_background_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color;
+                            }
+                            break;
+                    }
+                }
 
                 switch($storyview_block_type){
                     case("code"):
@@ -356,6 +437,10 @@ if ( !function_exists( 'add_action' ) ) {
                                                         <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
                                                     </span>
                                                 </label>
+                                            </div>
+
+                                            <div class="ff_storyview_background_color_colorpicker">
+                                                <input type="text" name="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" id="ff_storyview_block_item_block_background_color_<?php echo $storyview_block_id; ?>" class="ff_storyview_background_color_colorpicker_input" value="<?php echo $storyview_block_item_text_background_color; ?>" />
                                             </div>
                                         </div>
                                     </div>
@@ -501,41 +586,8 @@ if ( !function_exists( 'add_action' ) ) {
                                     <div class="ff_storyview_row">
                                         <div class="ff_storyview_col_md_6">
                                             <label class="ff_storyview_label">Text Block Background</label>
-                                            <div class="ff_storyview_color_group">
-                                                <label class="ff_storyview_block_item_text_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_black" <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_black"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview black <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_black"){ echo 'activ';} ?>" title="black">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_gray" <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_gray"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview dark-gray <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_gray"){ echo 'activ';} ?>" title="dark gray">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_red" <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_red"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview red <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_red"){ echo 'activ';} ?>" title="red">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_white" <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_white"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview white <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_white"){ echo 'activ';} ?>" title="white">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
-
-                                                <label class="ff_storyview_block_item_text_background_color_label" data-blockid="<?php echo $storyview_block_id; ?>">
-                                                    <input type="radio" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" value="ff_storyview_block_background_transparent" <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_transparent"){ echo 'checked="checked"';} ?> />
-                                                    <span class="color-preview transparent <?php if($storyview_block_item_text_background_color == "ff_storyview_block_background_transparent"){ echo 'activ';} ?>" title="transparent, no background">
-                                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-saved" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M15.3 5.3l-6.8 6.8-2.8-2.8-1.4 1.4 4.2 4.2 8.2-8.2"></path></svg>
-                                                    </span>
-                                                </label>
+                                            <div class="ff_storyview_background_color_colorpicker">
+                                                <input data-blockid="<?php echo $storyview_block_id; ?>" type="text" name="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" id="ff_storyview_block_item_text_background_color_<?php echo $storyview_block_id; ?>" class="ff_storyview_background_color_colorpicker_input" value="<?php echo $storyview_block_item_text_background_color; ?>" />
                                             </div>
                                         </div>
 
