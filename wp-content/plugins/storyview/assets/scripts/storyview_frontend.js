@@ -6,6 +6,7 @@ by Ferenc Forgacs - @feriforgacs
 
 const ffStoryviewGap = 40;
 const ffStoryviewCodeBlockBottomGap = 60;
+const ffStoryviewControllerBlockBottomGap = 60;
 let ffStoryviewCurrentStory = 0;
 
 /**
@@ -58,7 +59,10 @@ function setSizes(){
 	ffStoryviewBlockItems.forEach((ffStoryviewBlockItem)=>{
         ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
 
-        let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+		let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+		if(ffStoryviewBlockItem.classList.contains("controllers_visible")){
+			blockHeight -= ffStoryviewControllerBlockBottomGap;
+		}
         ffStoryviewBlockItem.style.height = blockHeight + "px";
 	});
 	

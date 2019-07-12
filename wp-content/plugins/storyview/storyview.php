@@ -280,7 +280,15 @@ function ff_storyview_display(){
                             break;
                         default:
                             // display default storyview block - bgimage, text
-                            $storyview_blocks .= '<div class="ff_storyview_block_item_content ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
+                            // check controller display settings
+                            $display_controllers = false;
+                            $display_controllers_class = "";
+                            if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
+                                $display_controllers = true;
+                                $display_controllers_class = "controllers_visible";
+                            }
+
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_container"><div class="ff_storyview_block_item_content ' . $display_controllers_class . ' ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
                                 $storyview_block_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
                                 switch($storyview_block_background_color){
@@ -336,7 +344,13 @@ function ff_storyview_display(){
                                 $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
                                 $storyview_blocks .= '</p>';
 
-                            $storyview_blocks .= '</div>';
+                                // display controllers
+                                $storyview_blocks_controllers = "";
+                                if($display_controllers){
+                                    $storyview_blocks_controllers = '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
+                                }
+
+                            $storyview_blocks .= '</div>' . $storyview_blocks_controllers . '</div>';
                             break;
                     }
 
