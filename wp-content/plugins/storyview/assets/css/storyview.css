@@ -1040,3 +1040,7 @@ by Ferenc Forgacs - @feriforgacs
     font-size: 10px;
     text-transform: uppercase;
 }
+
+.ff_storyview_player_settings{
+    padding-left: 10px;
+}
