@@ -134,6 +134,9 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     $storyview_data["amp_settings"]["cover_text_background_color"] =    sanitize_text_field($_POST["ff_storyview_amp_cover_text_background_color"]);
     $storyview_data["amp_settings"]["cover_text_font_color"] =          sanitize_text_field($_POST["ff_storyview_amp_cover_text_font_color"]);
 
+    // Story controllers data
+    $storyview_data["display_controllers"] = intval($_POST["ff_storyview_display_controllers"]);
+
     // process story blocks data
     $story_blocks_data = [];
     $story_block_ids = explode(",", $_POST["story_block_ids"]);

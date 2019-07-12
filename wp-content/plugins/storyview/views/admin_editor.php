@@ -239,7 +239,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <div class="ff_storyview_player_settings">
                             <h4>Story View Player Settings</h4>
-                            <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" <?php
+                            <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" value="1" <?php
                             if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
                                 ?>
                                 checked="checked"
