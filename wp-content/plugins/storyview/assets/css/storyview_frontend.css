@@ -721,7 +721,7 @@ body.ff_storyview_visible{
     padding-right: 10px;
 }
 
-.ff_storyview_block_item_code_navigation{
+.ff_storyview_block_item_code_navigation, .ff_storyview_block_item_navigation{
     display: flex;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
@@ -735,7 +735,7 @@ body.ff_storyview_visible{
     flex-wrap: wrap;
 }
 
-#ff_storyview_blocks a.code_block_previous, #ff_storyview_blocks a.code_block_next{
+#ff_storyview_blocks a.code_block_previous, #ff_storyview_blocks a.code_block_next, #ff_storyview_blocks a.classic_block_previous, #ff_storyview_blocks a.classic_block_next{
     line-height: 60px;
     height: 60px;
     cursor: pointer;
@@ -746,25 +746,25 @@ body.ff_storyview_visible{
     transition: all 100ms ease;
 }
 
-#ff_storyview_blocks a.code_block_previous:active{
+#ff_storyview_blocks a.code_block_previous:active, #ff_storyview_blocks a.classic_block_previous:active{
     opacity: .5;
     margin-left: -10px;
 }
 
-#ff_storyview_blocks a.code_block_next:active{
+#ff_storyview_blocks a.code_block_next:active, #ff_storyview_blocks a.classic_block_next:active{
     opacity: .5;
     margin-right: -10px;
 }
 
-.code_block_next {
+.code_block_next, .classic_block_next {
     text-align: right;
 }
 
-.code_block_next span{
+.code_block_next span, .classic_block_next span{
     margin-left: 10px;
 }
 
-.code_block_previous span{
+.code_block_previous span, .classic_block_previous span{
     transform: scaleX(-1);
     display: inline-block;
     margin-right: 10px;

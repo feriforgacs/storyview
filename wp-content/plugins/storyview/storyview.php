@@ -347,7 +347,7 @@ function ff_storyview_display(){
                                 // display controllers
                                 $storyview_blocks_controllers = "";
                                 if($display_controllers){
-                                    $storyview_blocks_controllers = '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
+                                    $storyview_blocks_controllers = '<div class="ff_storyview_block_item_navigation"><a class="classic_block_previous"><span>&#10132;</span> Previous</a><a class="classic_block_next">Next <span>&#10132;</span></a></div>';
                                 }
 
                             $storyview_blocks .= '</div>' . $storyview_blocks_controllers . '</div>';

@@ -92,6 +92,8 @@ function stepStoryview(event = null, direction = null){
 		return;
 	}
 
+	console.log(event.target);
+
 	if(event && event.target.id == "ff_storyview_close_button"){
 		return;
 	}
