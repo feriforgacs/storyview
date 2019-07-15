@@ -17,6 +17,9 @@ const ffStoryviewDisplayButton = document.querySelector("#ff_storyview_button");
 const ffStoryviewCloseButton = document.querySelector("#ff_storyview_close_button");
 
 if (ffStoryviewDisplayButton) {
+	ffStoryviewDisplayButton.addEventListener("click", toggleStoryview);
+	ffStoryviewCloseButton.addEventListener("click", toggleStoryview);
+
 	function toggleStoryview(e) {
 		e.preventDefault();
 		if (ffStoryviewBody.classList.contains("ff_storyview_visible")) {
@@ -89,8 +92,6 @@ if (ffStoryviewDisplayButton) {
 			// code slide, don't go to next or previous slide on click
 			return;
 		}
-
-		console.log(event.target);
 
 		if (event && event.target.id == "ff_storyview_close_button") {
 			return;
