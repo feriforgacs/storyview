@@ -71,6 +71,22 @@ if(isset($storyview_data->amp_settings)){
 }
 
 /**
+ * Check for default settings
+ */
+if(strlen($amp_publisher_logo) < 1){
+    $amp_publisher_logo = esc_attr(get_option('ff_storyview_amp_publisher_logo'));
+}
+
+if(strlen($amp_cover_author_name) < 1){
+    $amp_cover_author_name = esc_attr(get_option('ff_storyview_amp_author_name'));
+}
+
+$amp_story_analytics = "";
+if(esc_attr(get_option('ff_storyview_amp_analytics_id'))){
+    $amp_story_analytics = esc_attr(get_option('ff_storyview_amp_analytics_id'));
+}
+
+/**
  * Set default values for cover text
  */
 if(strlen($amp_cover_text_position) == 0){
@@ -193,6 +209,14 @@ exit();
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         <script async src="https://cdn.ampproject.org/v0.js"></script>
+        <?php
+        if(strlen($amp_story_analytics)){
+            ?>
+            <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+            <?php
+        }
+        ?>
+
         <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
         
         <?php echo $font_families; ?>
@@ -361,6 +385,13 @@ exit();
             publisher="<?php echo $amp_cover_author_name; ?>"
             publisher-logo-src="<?php echo $amp_publisher_logo; ?>"
             poster-portrait-src="<?php echo $amp_cover_image; ?>">
+            <?php
+            if(strlen($amp_story_analytics)){
+                ?>
+                <amp-analytics config="https://www.googletagmanager.com/amp.json?id=<?php echo $amp_story_analytics; ?>" data-credentials="include"></amp-analytics>
+                <?php
+            }
+            ?>
         
             <!-- #cover -->
             <amp-story-page id="cover">
@@ -519,8 +550,7 @@ exit();
                     ]
                 }
                 </script>
-            </amp-story-bookend>
-            
+            </amp-story-bookend>            
         </amp-story>
     </body>
 </html>
