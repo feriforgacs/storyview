@@ -619,6 +619,8 @@ jQuery(document).ready(function($){
      */
     function setAmpPublisherImage(image_url){
         $("#ff_storyview_amp_publisher_logo_preview").html(`<img src="${image_url}" />`);
+        // change amp publisher image default value to zero
+        $("#ff_storyview_amp_publisher_logo_default").val(0);
     }
 
     /**
@@ -638,6 +640,15 @@ jQuery(document).ready(function($){
 
         $("#amp_cover_text_content").html(`${title}<br /><span class="amp_author">${author}</span>`);
         displayAmpCoverPreview();
+
+        /**
+         * Check if author changed from default value
+         */
+        if(author !== ampCoverAuthorName){
+            $("#ff_storyview_amp_cover_author_name_default").val(0);
+        } else {
+            $("#ff_storyview_amp_cover_author_name_default").val(1);
+        }
     }
 
     /**

@@ -6,24 +6,24 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 if(isset($storyview_data->amp_settings)){
-    $amp_activ =                        $storyview_data->amp_settings->activ;
-    $amp_cover_image =                  urldecode($storyview_data->amp_settings->cover_image);
-    $amp_publisher_logo =               urldecode($storyview_data->amp_settings->publisher_logo);
-    $amp_cover_title =                  $storyview_data->amp_settings->cover_title;
-    $amp_cover_author_name =            $storyview_data->amp_settings->cover_author_name;
-    $amp_cover_text_position =          $storyview_data->amp_settings->cover_text_position;
-    $amp_cover_text_align =             $storyview_data->amp_settings->cover_text_align;
-    $amp_cover_text_font_family =       $storyview_data->amp_settings->cover_text_font_family;
-    $amp_cover_text_font_size =         $storyview_data->amp_settings->cover_text_font_size;
-    $amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
-    $amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
+	$amp_activ =                        $storyview_data->amp_settings->activ;
+	$amp_cover_image =                  urldecode($storyview_data->amp_settings->cover_image);
+	$amp_publisher_logo =               urldecode($storyview_data->amp_settings->publisher_logo);
+	$amp_cover_title =                  $storyview_data->amp_settings->cover_title;
+	$amp_cover_author_name =            $storyview_data->amp_settings->cover_author_name;
+	$amp_cover_text_position =          $storyview_data->amp_settings->cover_text_position;
+	$amp_cover_text_align =             $storyview_data->amp_settings->cover_text_align;
+	$amp_cover_text_font_family =       $storyview_data->amp_settings->cover_text_font_family;
+	$amp_cover_text_font_size =         $storyview_data->amp_settings->cover_text_font_size;
+	$amp_cover_text_background_color =  $storyview_data->amp_settings->cover_text_background_color;
+	$amp_cover_text_font_color =        $storyview_data->amp_settings->cover_text_font_color;
 } else {
-    $amp_cover_text_position = "ff_storyview_text_block_top";
-    $amp_cover_text_align = "ff_storyview_text_align_left";
-    $amp_cover_text_font_family = "arial";
-    $amp_cover_text_font_size = "f18";
-    $amp_cover_text_background_color = "rgba(0, 0, 0, .8)";
-    $amp_cover_text_font_color = "rgb(255, 255, 255)";
+	$amp_cover_text_position = "ff_storyview_text_block_top";
+	$amp_cover_text_align = "ff_storyview_text_align_left";
+	$amp_cover_text_font_family = "arial";
+	$amp_cover_text_font_size = "f18";
+	$amp_cover_text_background_color = "rgba(0, 0, 0, .8)";
+	$amp_cover_text_font_color = "rgb(255, 255, 255)";
 }
 
 /**
@@ -31,33 +31,33 @@ if(isset($storyview_data->amp_settings)){
  */
 $ff_storyview_amp_cover_background = "rgba(0, 0, 0, .8)";
 if(isset($amp_cover_text_background_color)){
-    switch($amp_cover_text_background_color){
-        case "ff_storyview_block_background_black":
-            $ff_storyview_amp_cover_background = "rgba(0, 0, 0, .8)";
-            break;
+	switch($amp_cover_text_background_color){
+		case "ff_storyview_block_background_black":
+			$ff_storyview_amp_cover_background = "rgba(0, 0, 0, .8)";
+			break;
 
-        case "ff_storyview_block_background_gray":
-            $ff_storyview_amp_cover_background = "rgba(51, 51, 51, .8)";
-            break;
+		case "ff_storyview_block_background_gray":
+			$ff_storyview_amp_cover_background = "rgba(51, 51, 51, .8)";
+			break;
 
-        case "ff_storyview_block_background_red":
-            $ff_storyview_amp_cover_background = "rgba(201, 44, 44, .8)";
-            break;
+		case "ff_storyview_block_background_red":
+			$ff_storyview_amp_cover_background = "rgba(201, 44, 44, .8)";
+			break;
 
-        case "ff_storyview_block_background_white":
-            $ff_storyview_amp_cover_background = "rgba(255, 255, 255, .8)";
-            break;
+		case "ff_storyview_block_background_white":
+			$ff_storyview_amp_cover_background = "rgba(255, 255, 255, .8)";
+			break;
 
-        case "ff_storyview_block_background_transparent":
-            $ff_storyview_amp_cover_background = "rgba(255, 255, 255, 0)";
-            break;
-        
-        default:
-            if(strlen($amp_cover_text_background_color) > 1){
-                $ff_storyview_amp_cover_background = $amp_cover_text_background_color;
-            }
-            break;
-    }
+		case "ff_storyview_block_background_transparent":
+			$ff_storyview_amp_cover_background = "rgba(255, 255, 255, 0)";
+			break;
+
+		default:
+			if(strlen($amp_cover_text_background_color) > 1){
+				$ff_storyview_amp_cover_background = $amp_cover_text_background_color;
+			}
+			break;
+	}
 }
 
 /**
@@ -65,32 +65,54 @@ if(isset($amp_cover_text_background_color)){
  */
 $ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
 if(isset($amp_cover_text_font_color)){
-    switch($amp_cover_text_font_color){
-        case "ff_storyview_block_color_black":
-            $ff_storyview_amp_cover_font_color = "rgb(0, 0, 0)";
-            break;
+	switch($amp_cover_text_font_color){
+		case "ff_storyview_block_color_black":
+			$ff_storyview_amp_cover_font_color = "rgb(0, 0, 0)";
+			break;
 
-        case "ff_storyview_block_color_gray":
-            $ff_storyview_amp_cover_font_color = "rgb(51, 51, 51)";
-            break;
+		case "ff_storyview_block_color_gray":
+			$ff_storyview_amp_cover_font_color = "rgb(51, 51, 51)";
+			break;
 
-        case "ff_storyview_block_color_red":
-            $ff_storyview_amp_cover_font_color = "rgb(201, 44, 44)";
-            break;
+		case "ff_storyview_block_color_red":
+			$ff_storyview_amp_cover_font_color = "rgb(201, 44, 44)";
+			break;
 
-        case "ff_storyview_block_color_white":
-            $ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
-            break;
-        
-        default:
-            if(strlen($amp_cover_text_font_color) > 1){
-                $ff_storyview_amp_cover_font_color = $amp_cover_text_font_color;
-            }
-            break;
+		case "ff_storyview_block_color_white":
+			$ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
+			break;
+
+		default:
+			if(strlen($amp_cover_text_font_color) > 1){
+					$ff_storyview_amp_cover_font_color = $amp_cover_text_font_color;
+			}
+			break;
+	}
+}
+
+/**
+ * Check default AMP Story settings
+ */
+$amp_publisher_logo_default = false;
+if(!isset($amp_publisher_logo) || strlen($amp_publisher_logo) < 1){
+    if(esc_attr(get_option('ff_storyview_amp_publisher_logo'))){
+        $amp_publisher_logo_default = true;
+        $amp_publisher_logo = esc_attr(get_option('ff_storyview_amp_publisher_logo'));
     }
 }
 
+$amp_cover_author_name_default = false;
+if(!isset($amp_cover_author_name) || strlen($amp_cover_author_name) < 1){
+    if(esc_attr(get_option('ff_storyview_amp_author_name'))){
+        $amp_cover_author_name_default = true;
+        $amp_cover_author_name = esc_attr(get_option('ff_storyview_amp_author_name'));
+    }
+}
 ?>
+
+<script>
+const ampCoverAuthorName = '<?php echo $amp_cover_author_name; ?>';
+</script>
 
 <div id="ff_storyview_amp_story_settings" class="ff_storyview_block" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
     <h3 class="ff_storyview_block_header">AMP Story Settings</h3>
@@ -213,6 +235,21 @@ if(isset($amp_cover_text_font_color)){
                         <input type="hidden" name="ff_storyview_amp_publisher_logo_image" id="ff_storyview_amp_publisher_logo_image" value="<?php if(isset($amp_publisher_logo) && strlen($amp_publisher_logo) != 0){
                             echo $amp_publisher_logo;
                         } ?>" />
+
+                        <?php
+                        /**
+                         * Don't save default settings to the db
+                         */
+                        if($amp_publisher_logo_default){
+                            ?>
+                            <input type="hidden" name="ff_storyview_amp_publisher_logo_default" id="ff_storyview_amp_publisher_logo_default" value="1" />
+                            <?php
+                        } else {
+                            ?>
+                            <input type="hidden" name="ff_storyview_amp_publisher_logo_default" id="ff_storyview_amp_publisher_logo_default" value="0" />
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -243,6 +280,21 @@ if(isset($amp_cover_text_font_color)){
                         }
                         ?>" /><br />
                         <small>Try to keep it under 60 characters</small>
+
+                        <?php
+                        /**
+                         * Don't save default settings to the db
+                         */
+                        if($amp_cover_author_name_default){
+                            ?>
+                            <input type="hidden" name="ff_storyview_amp_cover_author_name_default" id="ff_storyview_amp_cover_author_name_default" value="1" />
+                            <?php
+                        } else {
+                            ?>
+                            <input type="hidden" name="ff_storyview_amp_cover_author_name_default" id="ff_storyview_amp_cover_author_name_default" value="0" />
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -334,7 +386,7 @@ if(isset($amp_cover_text_font_color)){
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_amp_cover_text_font_family">Font Family</label>
                         <select data-blockid="ampcover" name="ff_storyview_amp_cover_text_font_family" class="custom-select font-family-select" id="ff_storyview_amp_cover_text_font_family">
-                            <option value="arial" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "arial"){ ?> selected="selected" <?php } ?>>Arial</option>    
+                            <option value="arial" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "arial"){ ?> selected="selected" <?php } ?>>Arial</option>
                             <option value="courier" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "courier"){ ?> selected="selected" <?php } ?>>Courier</option>
                             <option value="roboto" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "roboto"){ ?> selected="selected" <?php } ?>>Roboto</option>
                             <option value="rounded" <?php if(isset($amp_cover_text_font_family) && $amp_cover_text_font_family == "rounded"){ ?> selected="selected" <?php } ?>>Rounded</option>
