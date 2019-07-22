@@ -53,6 +53,11 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 = 1.4.0 =
 * Display / Hide story controllers - previous, next buttons
+* Default AMP Story settings
+* AMP Story Analytics tracking
+
+= 1.3.1 =
+* Frontend issue fix
 
 = 1.3.0 =
 * Custom color picker support

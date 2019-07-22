@@ -473,21 +473,39 @@ add_filter("single_template", "storyview_amp_template");
 
 function storyview_top_level_menu(){
     add_menu_page(
-		'Story View Settings',
+		'⚡ Story View Settings',
 		'Story View',
 		'manage_options',
 		'storyview_settings',
 		'storyview_top_level_menu_display',
 		'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00NSAyNUM0NSAzNi4wNDU3IDM2LjA0NTcgNDUgMjUgNDVDMTMuOTU0MyA0NSA1IDM2LjA0NTcgNSAyNUM1IDEzLjk1NDMgMTMuOTU0MyA1IDI1IDVDMzYuMDQ1NyA1IDQ1IDEzLjk1NDMgNDUgMjVaTTUwIDI1QzUwIDM4LjgwNzEgMzguODA3MSA1MCAyNSA1MEMxMS4xOTI5IDUwIDAgMzguODA3MSAwIDI1QzAgMTEuMTkyOSAxMS4xOTI5IDAgMjUgMEMzOC44MDcxIDAgNTAgMTEuMTkyOSA1MCAyNVpNMTIuNSAyNS42MzU2SDI0LjE1OTRMMjIuMjQ1OCAzNy41TDI5Ljg3MjkgMzAuOTMyMkwzNy41MDAxIDI0LjM2NDRIMjUuODQwNkwyNy43NTQyIDEyLjVMMjAuMTI3MSAxOS4wNjc4TDEyLjUgMjUuNjM1NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=',
-		6
+		100
 	);
 }
 
 function storyview_top_level_menu_display(){
-    echo "Story View settings";
+    include_once("views/admin_story_view_settings.php");
 }
 
-// add_action("admin_menu", "storyview_top_level_menu");
+function storyview_settings(){
+    register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_publisher_logo");
+    register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_author_name");
+    register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_analytics_id");
+}
+
+function storyview_settings_menu($links){
+    $storyview_settings_link = '<a href="admin.php?page=storyview_settings">Settings</a>';
+    array_push($links, $storyview_settings_link);
+
+    return $links;
+}
+
+/**
+ * Display plugin settings menu in the WP sidebar
+ */
+add_action("admin_menu", "storyview_top_level_menu");
+add_action("admin_init", "storyview_settings");
+add_filter("plugin_action_links_" . plugin_basename(__FILE__), "storyview_settings_menu");
 
 require 'includes/updatechecker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
