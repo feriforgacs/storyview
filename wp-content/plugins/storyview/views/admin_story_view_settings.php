@@ -59,7 +59,6 @@ if($_GET["tab"]){
           <tr valign="top">
             <th scope="row">
               <label for="ff_storyview_amp_publisher_logo">Publisher logo</label><br />
-              <small>Preview:</small>
               <div id="ff_storyview_amp_publisher_logo_preview" <?php
               if(esc_attr(get_option('ff_storyview_amp_publisher_logo'))){
                 echo 'style="display: block;"';
@@ -68,6 +67,10 @@ if($_GET["tab"]){
               }
               ?>>
                   <img id="ff_storyview_amp_publisher_logo_preview_image" style="width: 96px; height: 96px;" src="<?php echo esc_attr( get_option('ff_storyview_amp_publisher_logo') ); ?>" />
+                  <button class="ff_storyview_publisher_logo_delete_button" id="ff_storyview_publisher_logo_delete_button">
+                    <i><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-trash" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 4h3c.6 0 1 .4 1 1v1H3V5c0-.6.5-1 1-1h3c.2-1.1 1.3-2 2.5-2s2.3.9 2.5 2zM8 4h3c-.2-.6-.9-1-1.5-1S8.2 3.4 8 4zM4 7h11l-.9 10.1c0 .5-.5.9-1 .9H5.9c-.5 0-.9-.4-1-.9L4 7z"></path></svg></i>
+                    <span>Remove Image</span>
+                </button>
               </div>
             </th>
             <td>
@@ -109,45 +112,3 @@ if($_GET["tab"]){
     ?>
   </form>
 </div>
-
-<script>
-jQuery(document).ready(function($){
-/**
- * Handle AMP Story Publisher logo select
- */
-let file_frame_amp_publisher_logo;
-  $("#ff_storyview_amp_publisher_logo_upload").on("click", function( event ){
-      event.preventDefault();
-
-      // open the file frame if exists
-      if (file_frame_amp_publisher_logo) {
-          file_frame_amp_publisher_logo.open();
-          return;
-      }
-      
-      // create the file frame
-      file_frame_amp_publisher_logo = wp.media.frames.file_frame_amp_publisher_logo = wp.media({
-          title: "Select image",
-          button: {
-              text: "Use this image",
-          },
-          multiple: false
-      });
-      
-      // process data after the file was selected in the file frame
-      file_frame_amp_publisher_logo.on("select", function() {
-          attachment = file_frame_amp_publisher_logo.state().get("selection").first().toJSON();
-
-          // add image url value to the story view block hidden image field
-          $("#ff_storyview_amp_publisher_logo").val(attachment.url);
-
-          // set image for preview
-          $("#ff_storyview_amp_publisher_logo_preview_image").attr({ "src": attachment.url });
-          $("#ff_storyview_amp_publisher_logo_preview").show();
-      });
-      
-      // open the file frame
-      file_frame_amp_publisher_logo.open();
-  });
-});
-</script>

@@ -521,6 +521,17 @@ add_action("admin_menu", "storyview_top_level_menu");
 add_action("admin_init", "storyview_settings");
 add_filter("plugin_action_links_" . plugin_basename(__FILE__), "storyview_settings_menu");
 
+/**
+ * Load custom CSS for plugin settings page
+ */
+function ff_storyview_load_settings_style($hook) {
+    if($hook == "toplevel_page_storyview_settings") {
+        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.min.css', __FILE__) );
+        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.min.js', __FILE__) );
+    }
+}
+add_action("admin_enqueue_scripts", "ff_storyview_load_settings_style");
+
 require 'includes/updatechecker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://demo.storyviewplugin.com/updater/?action=get_metadata&slug=storyview',
