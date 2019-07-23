@@ -157,7 +157,14 @@ if(isset($_GET["tab"])){
               <label for="ff_storyview_default_font_family">Default Font Family</label><br />
             </th>
             <td>
-              <input type="text" name="ff_storyview_default_font_family" id="ff_storyview_default_font_family" value="<?php echo esc_attr( get_option('ff_storyview_default_font_family') ); ?>" />
+              <select name="ff_storyview_default_font_family" class="custom-select font-family-select" id="ff_storyview_default_font_family">
+                <option value="arial" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "arial") ? 'selected="selected"' : ''; ?>>Arial</option>    
+                <option value="courier" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "courier") ? 'selected="selected"' : ''; ?>>Courier</option>
+                <option value="roboto" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "roboto") ? 'selected="selected"' : ''; ?>>Roboto</option>
+                <option value="rounded" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "rounded") ? 'selected="selected"' : ''; ?>>Rounded</option>
+                <option value="lily" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "lily") ? 'selected="selected"' : ''; ?>>Lily</option>
+                <option value="montserrat" <?php echo (esc_attr(get_option('ff_storyview_default_font_family')) == "montserrat") ? 'selected="selected"' : ''; ?>>Montserrat</option>
+              </select>
             </td>
             <td>
               <small>When you add a new Classic Block to your story, this is the font family that will be selected by default.</small>
@@ -169,7 +176,13 @@ if(isset($_GET["tab"])){
               <label for="ff_storyview_default_font_size">Default Font Size</label><br />
             </th>
             <td>
-              <input type="text" name="ff_storyview_default_font_size" id="ff_storyview_default_font_size" value="<?php echo esc_attr( get_option('ff_storyview_default_font_size') ); ?>" />
+              <select name="ff_storyview_default_font_size" class="custom-select font-size-select" id="ff_storyview_default_font_size">
+                <option value="f12" <?php echo (esc_attr(get_option('ff_storyview_default_font_size')) == "f12") ? 'selected="selected"' : ''; ?>>12px</option>
+                <option value="f14" <?php echo (esc_attr(get_option('ff_storyview_default_font_size')) == "f14") ? 'selected="selected"' : ''; ?>>14px</option>
+                <option value="f18" <?php echo (esc_attr(get_option('ff_storyview_default_font_size')) == "f18") ? 'selected="selected"' : ''; ?>>18px</option>
+                <option value="f24" <?php echo (esc_attr(get_option('ff_storyview_default_font_size')) == "f24") ? 'selected="selected"' : ''; ?>>24px</option>
+                <option value="f36" <?php echo (esc_attr(get_option('ff_storyview_default_font_size')) == "f36") ? 'selected="selected"' : ''; ?>>36px</option>
+              </select>
             </td>
             <td>
               <small>When you add a new Classic Block to your story, this is the font size that will be selected by default.</small>

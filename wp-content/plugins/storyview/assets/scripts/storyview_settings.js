@@ -53,4 +53,10 @@ jQuery(document).ready(function($){
       $(this).addClass("activ");
     });
 
+    $(".custom-select").selectric({
+      optionsItemBuilder: function(itemData) {
+        return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
+      }
+  });
+
   });

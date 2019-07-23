@@ -115,7 +115,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <select name="ff_storyview_block_item_text_font_family_<?php echo $storyview_block_id; ?>" class="custom-select font-family-select" data-blockid="<?php echo $storyview_block_id; ?>" id="ff_storyview_block_item_text_font_family_<?php echo $storyview_block_id; ?>">
                         <option value="arial" <?php if($storyview_block_item_text_font_family == "arial"){ echo 'selected="selected"'; } ?>>Arial</option>    
                         <option value="courier" <?php if($storyview_block_item_text_font_family == "courier"){ echo 'selected="selected"'; } ?>>Courier</option>
-                        <option value="roboto" <?php if($storyview_block_item_text_font_family == "robot"){ echo 'selected="selected"'; } ?>>Roboto</option>
+                        <option value="roboto" <?php if($storyview_block_item_text_font_family == "roboto"){ echo 'selected="selected"'; } ?>>Roboto</option>
                         <option value="rounded" <?php if($storyview_block_item_text_font_family == "rounded"){ echo 'selected="selected"'; } ?>>Rounded</option>
                         <option value="lily" <?php if($storyview_block_item_text_font_family == "lily"){ echo 'selected="selected"'; } ?>>Lily</option>
                         <option value="montserrat" <?php if($storyview_block_item_text_font_family == "montserrat"){ echo 'selected="selected"'; } ?>>Montserrat</option>
