@@ -479,13 +479,26 @@ add_filter("single_template", "storyview_amp_template");
 
 /**
  * Story View custom settings
- * - AMP Story defaults
+ * - AMP Story defaults:
  *  - Logo
  *  - Author name
- * - Analytics ID
+ *  - Analytics ID
+ * - General defaults
+ *  - Default button text
+ *  - Default button type
+ *  - Default text block position
+ *  - Default text alignment
+ *  - Default font family
+ *  - Default font size
+ *  - Default text block background
+ *  - Default font color
+ *  - Default custom block background color
+ *  - Previous button label
+ *  - Next button label
  */
 
 function storyview_top_level_menu(){
+    // Top level menu
     add_menu_page(
 		'⚡ Story View Settings',
 		'Story View',
@@ -494,7 +507,7 @@ function storyview_top_level_menu(){
 		'storyview_top_level_menu_display',
 		'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00NSAyNUM0NSAzNi4wNDU3IDM2LjA0NTcgNDUgMjUgNDVDMTMuOTU0MyA0NSA1IDM2LjA0NTcgNSAyNUM1IDEzLjk1NDMgMTMuOTU0MyA1IDI1IDVDMzYuMDQ1NyA1IDQ1IDEzLjk1NDMgNDUgMjVaTTUwIDI1QzUwIDM4LjgwNzEgMzguODA3MSA1MCAyNSA1MEMxMS4xOTI5IDUwIDAgMzguODA3MSAwIDI1QzAgMTEuMTkyOSAxMS4xOTI5IDAgMjUgMEMzOC44MDcxIDAgNTAgMTEuMTkyOSA1MCAyNVpNMTIuNSAyNS42MzU2SDI0LjE1OTRMMjIuMjQ1OCAzNy41TDI5Ljg3MjkgMzAuOTMyMkwzNy41MDAxIDI0LjM2NDRIMjUuODQwNkwyNy43NTQyIDEyLjVMMjAuMTI3MSAxOS4wNjc4TDEyLjUgMjUuNjM1NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=',
 		100
-	);
+    );
 }
 
 function storyview_top_level_menu_display(){
@@ -502,13 +515,27 @@ function storyview_top_level_menu_display(){
 }
 
 function storyview_settings(){
+    // AMP settings
     register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_publisher_logo");
     register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_author_name");
     register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_analytics_id");
+
+    // General settings
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_button_text");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_button_type");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_position");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_alignment");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_font_family");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_font_size");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_background_color");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_font_color");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_custom_block_background_color");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_previous_button_label");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_next_button_label");
 }
 
 function storyview_settings_menu($links){
-    $storyview_settings_link = '<a href="admin.php?page=storyview_settings">Settings</a>';
+    $storyview_settings_link = '<a href="admin.php?page=storyview_settings&tab=general">Settings</a>';
     array_push($links, $storyview_settings_link);
 
     return $links;

@@ -43,4 +43,14 @@ jQuery(document).ready(function($){
       $("#ff_storyview_amp_publisher_logo").val("");
     });
 
+    $(".ff_storyview_block_item_text_position_label").on("click", function(){
+      $('.ff_storyview_block_item_text_position_label.activ').removeClass("activ");
+      $(this).addClass("activ");
+    });
+
+    $(".ff_storyview_block_item_text_align_label").on("click", function(){
+      $('.ff_storyview_block_item_text_align_label.activ').removeClass("activ");
+      $(this).addClass("activ");
+    });
+
   });

@@ -55,6 +55,7 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 * Display / Hide story controllers - previous, next buttons
 * Default AMP Story settings
 * AMP Story Analytics tracking
+* Default story block settings
 
 = 1.3.1 =
 * Frontend issue fix
