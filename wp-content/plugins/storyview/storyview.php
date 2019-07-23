@@ -558,6 +558,9 @@ function ff_storyview_load_settings_style($hook) {
 
         wp_enqueue_style( 'ff_storyview_settings_selectric_css', plugins_url('assets/css/selectric.min.css', __FILE__) );
         wp_enqueue_script( 'ff_storyview_settings_selectric_js', plugins_url('assets/scripts/jquery.selectric.min.js', __FILE__) );
+
+        wp_enqueue_style( 'ff_storyview_settings_spectrum_css', plugins_url('assets/css/spectrum.min.css', __FILE__) );
+        wp_enqueue_script( 'ff_storyview_settings_spectrum_js', plugins_url('assets/scripts/spectrum.min.js', __FILE__) );
     }
 }
 add_action("admin_enqueue_scripts", "ff_storyview_load_settings_style");

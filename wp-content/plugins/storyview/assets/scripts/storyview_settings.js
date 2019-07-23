@@ -59,4 +59,53 @@ jQuery(document).ready(function($){
       }
   });
 
+  $("#ff_storyview_default_text_background_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb",
+    palette: [[
+      "rgba(0, 0, 0, .8)",
+      "rgba(51, 51, 51, .8)",
+      "rgba(201, 44, 44, .8)",
+      "rgba(255, 255, 255, .8)",
+      "rgba(255, 255, 255, 0)"
+    ]]
   });
+
+  $("#ff_storyview_default_text_font_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb",
+    palette: [[
+      "rgb(0, 0, 0)",
+      "rgb(51, 51, 51)",
+      "rgb(201, 44, 44)",
+      "rgb(255, 255, 255)"
+    ]]
+  });
+
+  $("#ff_storyview_default_custom_block_background_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb",
+    palette: [[
+      "rgb(0, 0, 0)",
+      "rgb(51, 51, 51)",
+      "rgb(201, 44, 44)",
+      "rgb(255, 255, 255)"
+    ]]
+  });
+
+});

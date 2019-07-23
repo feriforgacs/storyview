@@ -230,7 +230,7 @@ if(isset($_GET["tab"])){
               <label for="ff_storyview_default_previous_button_label">Default Label For Previous Button</label><br />
             </th>
             <td>
-              <input type="text" name="ff_storyview_default_previous_button_label" id="ff_storyview_default_previous_button_label" value="<?php echo esc_attr( get_option('ff_storyview_default_previous_button_label') ); ?>" />
+              <input type="text" name="ff_storyview_default_previous_button_label" id="ff_storyview_default_previous_button_label" value="<?php echo esc_attr( get_option('ff_storyview_default_previous_button_label') ); ?>" placeholder="Previous" />
             </td>
             <td>
               <small>This is the text that will be visible for the "Previous" button under your story blocks.</small>
@@ -242,7 +242,7 @@ if(isset($_GET["tab"])){
               <label for="ff_storyview_default_next_button_label">Default Label For Next Button</label><br />
             </th>
             <td>
-              <input type="text" name="ff_storyview_default_next_button_label" id="ff_storyview_default_next_button_label" value="<?php echo esc_attr( get_option('ff_storyview_default_next_button_label') ); ?>" />
+              <input type="text" name="ff_storyview_default_next_button_label" id="ff_storyview_default_next_button_label" value="<?php echo esc_attr( get_option('ff_storyview_default_next_button_label') ); ?>" placeholder="Next" />
             </td>
             <td>
               <small>This is the text that will be visible for the "Next" button under your story blocks.</small>
