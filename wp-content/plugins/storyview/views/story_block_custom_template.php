@@ -4,6 +4,16 @@ if ( !function_exists( 'add_action' ) ) {
 	echo "No direct access";
 	exit;
 }
+
+/**
+ * Get default values
+ */
+$default_custom_block_background_color = "rgba(0, 0, 0, .8)";
+
+if(strlen(esc_attr(get_option('ff_storyview_default_custom_block_background_color'))) > 1){
+    $default_custom_block_background_color = esc_attr(get_option('ff_storyview_default_custom_block_background_color'));
+}
+
 ?>
 <script type="text/template" id="storyview_block_code_template">
     <div class="ff_storyview_block_item ff_storyview_block_item_code" id="ff_storyview_block_item_%BLOCKID%" data-blockid="%BLOCKID%">
@@ -15,7 +25,7 @@ if ( !function_exists( 'add_action' ) ) {
 
         <div class="ff_storyview_block_item_preview ff_storyview_block_item_preview_code">
             <p class="preview_text">preview</p>
-            <div class="ff_storyview_block_item_content">
+            <div class="ff_storyview_block_item_content" style="background: <?php echo $default_custom_block_background_color; ?>;">
             </div>
         </div>
 
@@ -37,7 +47,7 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Custom Block Background</label>
                         <div class="ff_storyview_background_color_colorpicker">
-                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_block_background_color_%BLOCKID%" id="ff_storyview_block_item_block_background_color_%BLOCKID%" class="ff_storyview_custom_background_color_colorpicker_input" value="rgba(0, 0, 0, .8)" />
+                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_block_background_color_%BLOCKID%" id="ff_storyview_block_item_block_background_color_%BLOCKID%" class="ff_storyview_custom_background_color_colorpicker_input" value="<?php echo $default_custom_block_background_color; ?>" />
                         </div>
                     </div>
                 </div>

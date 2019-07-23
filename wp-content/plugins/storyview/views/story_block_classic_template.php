@@ -4,6 +4,42 @@ if ( !function_exists( 'add_action' ) ) {
 	echo "No direct access";
 	exit;
 }
+
+/**
+ * Get default values
+ */
+
+$default_text_block_position = "ff_storyview_text_block_top";
+$default_text_alignment = "ff_storyview_text_align_left";
+$default_font_family = "arial";
+$default_font_size = "f12";
+$default_text_block_background_color = "rgba(0, 0, 0, .8)";
+$default_text_font_color = "rgb(255, 255, 255)";
+
+if(strlen(esc_attr(get_option('ff_storyview_default_text_position'))) > 1) {
+    $default_text_block_position = esc_attr(get_option('ff_storyview_default_text_position'));
+}
+
+if(strlen(esc_attr(get_option('ff_storyview_default_text_alignment'))) > 1) {
+    $default_text_alignment = esc_attr(get_option('ff_storyview_default_text_alignment'));
+}
+
+if(strlen(esc_attr(get_option('ff_storyview_default_font_family'))) > 1) {
+    $default_font_family = esc_attr(get_option('ff_storyview_default_font_family'));
+}
+
+if(strlen(esc_attr(get_option('ff_storyview_default_font_size'))) > 1) {
+    $default_font_size = esc_attr(get_option('ff_storyview_default_font_size'));
+}
+
+if(strlen(esc_attr(get_option('ff_storyview_default_text_background_color'))) > 1) {
+    $default_text_block_background_color = esc_attr(get_option('ff_storyview_default_text_background_color'));
+}
+
+if(strlen(esc_attr(get_option('ff_storyview_default_text_font_color'))) > 1) {
+    $default_text_font_color = esc_attr(get_option('ff_storyview_default_text_font_color'));
+}
+
 ?>
 <script type="text/template" id="storyview_block_template">
     <div class="ff_storyview_block_item ff_storyview_block_item_classic" id="ff_storyview_block_item_%BLOCKID%" data-blockid="%BLOCKID%">
@@ -15,8 +51,8 @@ if ( !function_exists( 'add_action' ) ) {
 
         <div class="ff_storyview_block_item_preview">
             <p class="preview_text">preview</p>
-            <div class="ff_storyview_block_item_content ff_storyview_text_block_top ff_storyview_text_align_left">
-                <p class="block_item_text arial f12" style="background-color: rgba(0, 0, 0, .8); color: rgb(255, 255, 255);"></p>
+            <div class="ff_storyview_block_item_content <?php echo $default_text_block_position . ' ' . $default_text_alignment; ?>">
+                <p class="block_item_text <?php echo $default_font_family . ' ' . $default_font_size; ?>" style="background-color: <?php echo $default_text_block_background_color; ?>; color: <?php echo $default_text_font_color; ?>;"></p>
             </div>
         </div>
 
@@ -41,8 +77,8 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Block Position</label>
                         <div class="ff_storyview_button_group">
-                            <label class="ff_storyview_block_item_text_position_label activ" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_top" checked="checked" />
+                            <label class="ff_storyview_block_item_text_position_label <?php echo ($default_text_block_position == "ff_storyview_text_block_top") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_top" <?php echo ($default_text_block_position == "ff_storyview_text_block_top") ? 'checked="checked"' : ''; ?> />
                                 <span>Top</span>
                                 <i title="top"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -51,8 +87,8 @@ if ( !function_exists( 'add_action' ) ) {
                                 </i>
                             </label>
 
-                            <label class="ff_storyview_block_item_text_position_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_middle" />
+                            <label class="ff_storyview_block_item_text_position_label <?php echo ($default_text_block_position == "ff_storyview_text_block_middle") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_middle" <?php echo ($default_text_block_position == "ff_storyview_text_block_middle") ? 'checked="checked"' : ''; ?> />
                                 <span>Middle</span>
                                 <i title="middle"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -61,8 +97,8 @@ if ( !function_exists( 'add_action' ) ) {
                                 </i>
                             </label>
 
-                            <label class="ff_storyview_block_item_text_position_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_bottom" />
+                            <label class="ff_storyview_block_item_text_position_label <?php echo ($default_text_block_position == "ff_storyview_text_block_bottom") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_position_%BLOCKID%" value="ff_storyview_text_block_bottom" <?php echo ($default_text_block_position == "ff_storyview_text_block_bottom") ? 'checked="checked"' : ''; ?> />
                                 <span>Bottom</span>
                                 <i title="bottom"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="5.5" y="2.5" width="9" height="15" stroke="#444B54"/>
@@ -76,20 +112,20 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Alignment</label>
                         <div class="ff_storyview_button_group">
-                            <label class="ff_storyview_block_item_text_align_label activ" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_left" checked="checked" />
+                            <label class="ff_storyview_block_item_text_align_label <?php echo ($default_text_alignment == "ff_storyview_text_align_left") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_left" <?php echo ($default_text_alignment == "ff_storyview_text_align_left") ? 'checked="checked"' : ''; ?> />
                                 <span>Left</span>
                                 <i title="left"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignleft" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M12 5V3H3v2h9zm5 4V7H3v2h14zm-5 4v-2H3v2h9zm5 4v-2H3v2h14z"></path></svg></i>
                             </label>
 
-                            <label class="ff_storyview_block_item_text_align_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_center" />
+                            <label class="ff_storyview_block_item_text_align_label <?php echo ($default_text_alignment == "ff_storyview_text_align_center") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_center" <?php echo ($default_text_alignment == "ff_storyview_text_align_center") ? 'checked="checked"' : ''; ?> />
                                 <span>Center</span>
                                 <i title="center"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-aligncenter" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14 5V3H6v2h8zm3 4V7H3v2h14zm-3 4v-2H6v2h8zm3 4v-2H3v2h14z"></path></svg></i>
                             </label>
 
-                            <label class="ff_storyview_block_item_text_align_label" data-blockid="%BLOCKID%">
-                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_right" />
+                            <label class="ff_storyview_block_item_text_align_label <?php echo ($default_text_alignment == "ff_storyview_text_align_right") ? 'activ' : ''; ?>" data-blockid="%BLOCKID%">
+                                <input type="radio" name="ff_storyview_block_item_text_align_%BLOCKID%" value="ff_storyview_text_align_right" <?php echo ($default_text_alignment == "ff_storyview_text_align_right") ? 'checked="checked"' : ''; ?> />
                                 <span>Right</span>
                                 <i title="right"><svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-editor-alignright" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M17 5V3H8v2h9zm0 4V7H3v2h14zm0 4v-2H8v2h9zm0 4v-2H3v2h14z"></path></svg></i>
                             </label>
@@ -101,23 +137,23 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_family_%BLOCKID%">Font Family</label>
                         <select name="ff_storyview_block_item_text_font_family_%BLOCKID%" class="custom-select font-family-select" data-blockid="%BLOCKID%" id="ff_storyview_block_item_text_font_family_%BLOCKID%">
-                            <option value="arial" selected="selected">Arial</option>    
-                            <option value="courier">Courier</option>
-                            <option value="roboto">Roboto</option>
-                            <option value="rounded">Rounded</option>
-                            <option value="lily">Lily</option>
-                            <option value="montserrat">Montserrat</option>
+                            <option value="arial" <?php echo ($default_font_family == "arial") ? 'selected="selected"' : ''; ?>>Arial</option>    
+                            <option value="courier" <?php echo ($default_font_family == "courier") ? 'selected="selected"' : ''; ?>>Courier</option>
+                            <option value="roboto" <?php echo ($default_font_family == "roboto") ? 'selected="selected"' : ''; ?>>Roboto</option>
+                            <option value="rounded" <?php echo ($default_font_family == "rounded") ? 'selected="selected"' : ''; ?>>Rounded</option>
+                            <option value="lily" <?php echo ($default_font_family == "lily") ? 'selected="selected"' : ''; ?>>Lily</option>
+                            <option value="montserrat" <?php echo ($default_font_family == "montserrat") ? 'selected="selected"' : ''; ?>>Montserrat</option>
                         </select>
                     </div>
 
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label" for="ff_storyview_block_item_text_font_size_%BLOCKID%">Font Size</label>
                         <select name="ff_storyview_block_item_text_font_size_%BLOCKID%" class="custom-select font-size-select" data-blockid="%BLOCKID%" id="ff_storyview_block_item_text_font_size_%BLOCKID%">
-                            <option value="f12" selected="selected">12px</option>
-                            <option value="f14">14px</option>
-                            <option value="f18">18px</option>
-                            <option value="f24">24px</option>
-                            <option value="f36">36px</option>
+                            <option value="f12" <?php echo ($default_font_size == "f12") ? 'selected="selected"' : ''; ?>>12px</option>
+                            <option value="f14" <?php echo ($default_font_size == "f14") ? 'selected="selected"' : ''; ?>>14px</option>
+                            <option value="f18" <?php echo ($default_font_size == "f18") ? 'selected="selected"' : ''; ?>>18px</option>
+                            <option value="f24" <?php echo ($default_font_size == "f24") ? 'selected="selected"' : ''; ?>>24px</option>
+                            <option value="f36" <?php echo ($default_font_size == "f36") ? 'selected="selected"' : ''; ?>>36px</option>
                         </select>
                     </div>
                 </div>
@@ -126,14 +162,14 @@ if ( !function_exists( 'add_action' ) ) {
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Text Block Background</label>
                         <div class="ff_storyview_background_color_colorpicker">
-                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_text_background_color_%BLOCKID%" id="ff_storyview_block_item_text_background_color_%BLOCKID%" class="ff_storyview_background_color_colorpicker_input" value="rgba(0, 0, 0, .8)" />
+                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_text_background_color_%BLOCKID%" id="ff_storyview_block_item_text_background_color_%BLOCKID%" class="ff_storyview_background_color_colorpicker_input" value="<?php echo $default_text_block_background_color; ?>" />
                         </div>
                     </div>
 
                     <div class="ff_storyview_col_md_6">
                         <label class="ff_storyview_label">Font Color</label>
                         <div class="ff_storyview_font_color_colorpicker">
-                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_text_font_color_%BLOCKID%" id="ff_storyview_block_item_text_font_color_%BLOCKID%" class="ff_storyview_font_color_colorpicker_input" value="rgb(255, 255, 255)" />
+                            <input data-blockid="%BLOCKID%" type="text" name="ff_storyview_block_item_text_font_color_%BLOCKID%" id="ff_storyview_block_item_text_font_color_%BLOCKID%" class="ff_storyview_font_color_colorpicker_input" value="<?php echo $default_text_font_color; ?>" />
                         </div>
                     </div>
                 </div>
