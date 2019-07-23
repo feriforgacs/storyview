@@ -61,7 +61,7 @@ if(isset($amp_cover_text_background_color)){
 }
 
 /**
- * Set default valur for AMP cover font color
+ * Set default value for AMP cover font color
  */
 $ff_storyview_amp_cover_font_color = "rgb(255, 255, 255)";
 if(isset($amp_cover_text_font_color)){
