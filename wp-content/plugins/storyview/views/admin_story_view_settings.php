@@ -237,7 +237,7 @@ if(isset($_GET["tab"])){
 
               <div id="ff_storyview_button_types_other" <?php echo (esc_attr(get_option('ff_storyview_default_button_type')) == "other") ? 'style="display: block;"' : ''; ?>>
                 <label class="ff_storyview_label" for="ff_storyview_button_type_other_code">Custom Button for Story View Button (You can add custom HTML code)</label>
-                <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_button_type_other_code" value="<?php if(esc_attr(get_option('ff_storyview_default_button_type_other_code'))){
+                <input class="components-text-control__input" type="text" id="ff_storyview_button_type_other_code" name="ff_storyview_default_button_type_other_code" value="<?php if(esc_attr(get_option('ff_storyview_default_button_type_other_code'))){
                     echo esc_html(esc_attr(get_option('ff_storyview_default_button_type_other_code')));
                 } ?>" />
                 <br /><small>Don't use "a" or "button" tags in your code.<br />Use the following shortcodes to display the button text, and the button image:
