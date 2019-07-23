@@ -289,7 +289,20 @@ function ff_storyview_display(){
                                 }
 
                                 $storyview_blocks .= '<div class="ff_storyview_block_item_code" style="background-color: ' . $storyview_block_background_color . ';">' . do_shortcode(stripslashes(base64_decode($storyview_block->ff_storyview_block_content))) . '</div>';
-                                $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous"><span>&#10132;</span> Previous</a><a class="code_block_next">Next <span>&#10132;</span></a></div>';
+
+                                // check default values for controller labels
+                                $default_button_label_previous = "<span>&#10132;</span> Previous";
+                                $default_button_label_next = "Next <span>&#10132;</span>";
+                                
+                                if(strlen(esc_attr(get_option('ff_storyview_default_previous_button_label'))) > 0) {
+                                    $default_button_label_previous = esc_attr(get_option('ff_storyview_default_previous_button_label'));
+                                }
+
+                                if(strlen(esc_attr(get_option('ff_storyview_default_next_button_label'))) > 0) {
+                                    $default_button_label_next = esc_attr(get_option('ff_storyview_default_next_button_label'));
+                                }
+
+                                $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous">' . $default_button_label_previous . '</a><a class="code_block_next">' . $default_button_label_next . '</a></div>';
                             $storyview_blocks .= '</div>';
                             break;
                         default:
@@ -361,7 +374,19 @@ function ff_storyview_display(){
                                 // display controllers
                                 $storyview_blocks_controllers = "";
                                 if($display_controllers){
-                                    $storyview_blocks_controllers = '<div class="ff_storyview_block_item_navigation"><a class="classic_block_previous"><span>&#10132;</span> Previous</a><a class="classic_block_next">Next <span>&#10132;</span></a></div>';
+                                    // check default values for controller labels
+                                    $default_button_label_previous = "<span>&#10132;</span> Previous";
+                                    $default_button_label_next = "Next <span>&#10132;</span>";
+                                    
+                                    if(strlen(esc_attr(get_option('ff_storyview_default_previous_button_label'))) > 0) {
+                                        $default_button_label_previous = esc_attr(get_option('ff_storyview_default_previous_button_label'));
+                                    }
+
+                                    if(strlen(esc_attr(get_option('ff_storyview_default_next_button_label'))) > 0) {
+                                        $default_button_label_next = esc_attr(get_option('ff_storyview_default_next_button_label'));
+                                    }
+
+                                    $storyview_blocks_controllers = '<div class="ff_storyview_block_item_navigation"><a class="classic_block_previous">' . $default_button_label_previous . '</a><a class="classic_block_next">' . $default_button_label_next . '</a></div>';
                                 }
 
                             $storyview_blocks .= '</div>' . $storyview_blocks_controllers . '</div>';
