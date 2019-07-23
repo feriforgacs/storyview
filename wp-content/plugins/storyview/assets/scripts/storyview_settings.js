@@ -108,4 +108,19 @@ jQuery(document).ready(function($){
     ]]
   });
 
+  $("input.ff_storyview_button_type").on("change", function(){
+    if($("#ff_storyview_button_type_other").is(":checked")){
+      $("#ff_storyview_button_types_other").show();
+    } else {
+      $("#ff_storyview_button_types_other").hide();
+    }
+  });
+
+  $("#ff_storyview_default_button_text").on("keyup", function(){
+    let buttonText = $(this).val();
+    $(".ff_storyview_button .ff_storyview_button_text").each(function(){
+        $(this).text(buttonText);
+    });
+  });
+
 });

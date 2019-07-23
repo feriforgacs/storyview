@@ -523,6 +523,7 @@ function storyview_settings(){
     // General settings
     register_setting("ff_storyview_general_options_group", "ff_storyview_default_button_text");
     register_setting("ff_storyview_general_options_group", "ff_storyview_default_button_type");
+    register_setting("ff_storyview_general_options_group", "ff_storyview_default_button_type_other_code");
     register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_position");
     register_setting("ff_storyview_general_options_group", "ff_storyview_default_text_alignment");
     register_setting("ff_storyview_general_options_group", "ff_storyview_default_font_family");
