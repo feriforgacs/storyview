@@ -51,6 +51,9 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.4.1 =
+* Multiple Story View button support
+
 = 1.4.0 =
 * Display / Hide story controllers - previous, next buttons
 * Default AMP Story settings

@@ -13,20 +13,36 @@ let ffStoryviewCurrentStory = 0;
  * Toggle storyview
  */
 const ffStoryviewBody = document.querySelector("body");
-const ffStoryviewDisplayButton = document.querySelector("#ff_storyview_button");
-const ffStoryviewCloseButton = document.querySelector("#ff_storyview_close_button");
+const ffStoryviewDisplayButton = document.querySelectorAll(".ff_storyview_button");
+const ffStoryviewCloseButton = document.querySelectorAll(".ff_storyview_close_button");
 
 if (ffStoryviewDisplayButton) {
-	ffStoryviewDisplayButton.addEventListener("click", toggleStoryview);
-	ffStoryviewCloseButton.addEventListener("click", toggleStoryview);
+	ffStoryviewDisplayButton.forEach(storyViewButton => {
+		storyViewButton.addEventListener("click", toggleStoryview);
+	});
+
+	ffStoryviewCloseButton.forEach(storyViewCloseButton => {
+		storyViewCloseButton.addEventListener("click", toggleStoryview);
+	});
 
 	function toggleStoryview(e) {
 		e.preventDefault();
-		if (ffStoryviewBody.classList.contains("ff_storyview_visible")) {
+		if (e.target.classList.contains("ff_storyview_close_button")) {
+			// hide story view
+			document.querySelectorAll(".ff_storyview_blocks_container").forEach(storyviewBlockContainer => {
+				storyviewBlockContainer.classList.remove('visible');
+			});
 			ffStoryviewBody.classList.remove("ff_storyview_visible");
 			history.pushState("storyview", document.title, window.location.href.split('#')[0]);
 		} else {
+			// display story view
 			ffStoryviewBody.classList.add("ff_storyview_visible");
+			let currentStoryviewBlock = this.nextSibling;
+
+			currentStoryviewBlock.classList.add("visible");
+
+			ffStoryviewCurrentStory = this.nextSibling.querySelector(".ff_storyview_block_indicator_item.activ").dataset.index;
+			
 			history.pushState("storyview", document.title + " Storyview", "#storyview");
 		}
 
@@ -36,47 +52,54 @@ if (ffStoryviewDisplayButton) {
 	/**
 	 * Storyview step forward, backward
 	 */
-	const ffStoryviewBlocks = document.querySelector("#ff_storyview_blocks");
-	ffStoryviewBlocks.addEventListener("click", stepStoryview);
-
-	const ffStoryviewBlocksContainer = document.querySelector("#ff_storyview_blocks_items_container");
-	const ffStoryviewBlockItems = document.querySelectorAll(".ff_storyview_block_item_content");
-	const ffStoryviewBlockCodeItems = document.querySelectorAll(".ff_storyview_block_item_content_code");
-
-	const ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length + ffStoryviewBlockCodeItems.length;
+	const ffStoryviewBlocks = document.querySelectorAll(".ff_storyview_blocks");
+	ffStoryviewBlocks.forEach(storyviewBlock => {
+		storyviewBlock.addEventListener("click", stepStoryview);
+	});
 
 	let ffStoryviewBlockWidth = (window.innerWidth < 420) ? window.innerWidth : 420;
 	let ffStoryviewBlockHeight = (window.innerHeight < 746) ? window.innerHeight : 746;
 
 	function setSizes() {
-		ffStoryviewBlockWidth = (window.innerWidth < 420) ? window.innerWidth : 420;
-		ffStoryviewBlockHeight = (window.innerHeight < 746) ? window.innerHeight : 746;
+		const ffStoryviewBlocks = document.querySelectorAll(".ff_storyview_blocks");
 
-		let width = ffStoryviewBlockWidth * ffStoryviewBlockItemsCount;
-		ffStoryviewBlocksContainer.style.width = width + 'px';
-		// ffStoryviewBlocksContainer.style.transform = 'translateX(0px)';
+		ffStoryviewBlocks.forEach(storyviewBlock => {
+			let ffStoryviewBlocksContainer = storyviewBlock.querySelectorAll(".ff_storyview_blocks_items_container");
+			let ffStoryviewBlockItems = storyviewBlock.querySelectorAll(".ff_storyview_block_item_content");
+			let ffStoryviewBlockCodeItems = storyviewBlock.querySelectorAll(".ff_storyview_block_item_content_code");
 
-		// set sizes for default blocks
-		ffStoryviewBlockItems.forEach((ffStoryviewBlockItem) => {
-			ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
+			let ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length + ffStoryviewBlockCodeItems.length;
 
-			let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
-			if (ffStoryviewBlockItem.classList.contains("controllers_visible")) {
-				blockHeight -= ffStoryviewControllerBlockBottomGap;
-			}
-			ffStoryviewBlockItem.style.height = blockHeight + "px";
-		});
+			ffStoryviewBlockWidth = (window.innerWidth < 420) ? window.innerWidth : 420;
+			ffStoryviewBlockHeight = (window.innerHeight < 746) ? window.innerHeight : 746;
 
-		// set sizes for code blocks
-		ffStoryviewBlockCodeItems.forEach((ffStoryviewBlockItem) => {
-			ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
+			let width = ffStoryviewBlockWidth * ffStoryviewBlockItemsCount;
+			ffStoryviewBlocksContainer.forEach(storyviewBlockContainer => {
+				storyviewBlockContainer.style.width = width + 'px';
+			});
 
-			let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
-			ffStoryviewBlockItem.style.height = blockHeight + "px";
+			// set sizes for default blocks
+			ffStoryviewBlockItems.forEach((ffStoryviewBlockItem) => {
+				ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
 
-			let codeBlock = ffStoryviewBlockItem.querySelector(".ff_storyview_block_item_code");
-			let codeBlockHeight = blockHeight - ffStoryviewCodeBlockBottomGap;
-			codeBlock.style.height = codeBlockHeight + "px";
+				let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+				if (ffStoryviewBlockItem.classList.contains("controllers_visible")) {
+					blockHeight -= ffStoryviewControllerBlockBottomGap;
+				}
+				ffStoryviewBlockItem.style.height = blockHeight + "px";
+			});
+
+			// set sizes for code blocks
+			ffStoryviewBlockCodeItems.forEach((ffStoryviewBlockItem) => {
+				ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
+
+				let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+				ffStoryviewBlockItem.style.height = blockHeight + "px";
+
+				let codeBlock = ffStoryviewBlockItem.querySelector(".ff_storyview_block_item_code");
+				let codeBlockHeight = blockHeight - ffStoryviewCodeBlockBottomGap;
+				codeBlock.style.height = codeBlockHeight + "px";
+			});
 		});
 	}
 
@@ -93,31 +116,35 @@ if (ffStoryviewDisplayButton) {
 			return;
 		}
 
-		if (event && event.target.id == "ff_storyview_close_button") {
+		if (event && event.target.classList.contains("ff_storyview_close_button")) {
 			return;
 		}
 
-		let ffStoryviewBlocksPosition = ffStoryviewBlocks.getBoundingClientRect();
+		const currentStoryviewBlock = document.querySelector(".ff_storyview_blocks_container.visible");
+		const currentStoryviewBlockContainer = currentStoryviewBlock.querySelector(".ff_storyview_blocks_items_container");
+		const currentStoryviewBlockItemsCount = currentStoryviewBlockContainer.querySelectorAll(".item").length;
+
+		let ffStoryviewBlocksPosition = currentStoryviewBlock.getBoundingClientRect();
 		let ffStoryviewBlocksLeftMax = ffStoryviewBlocksPosition.left + (ffStoryviewBlocksPosition.width / 2);
 
 		if ((event && event.clientX > ffStoryviewBlocksLeftMax) || direction == "next") {
 			// go to next block
-			if (ffStoryviewCurrentStory < ffStoryviewBlockItemsCount - 1) {
+			if (ffStoryviewCurrentStory < currentStoryviewBlockItemsCount - 1) {
 				let left = (ffStoryviewCurrentStory + 1) * ffStoryviewBlockWidth;
-				ffStoryviewBlocksContainer.style.transform = 'translateX(-' + left + 'px)';
+				currentStoryviewBlockContainer.style.transform = 'translateX(-' + left + 'px)';
 				ffStoryviewCurrentStory++;
 			}
 			// update indicator
-			updateIndicator("next");
+			updateIndicator("next", currentStoryviewBlock);
 		} else {
 			// go to previous block
 			if (ffStoryviewCurrentStory > 0) {
 				let left = ffStoryviewCurrentStory * ffStoryviewBlockWidth - ffStoryviewBlockWidth;
-				ffStoryviewBlocksContainer.style.transform = 'translateX(-' + left + 'px)';
+				currentStoryviewBlockContainer.style.transform = 'translateX(-' + left + 'px)';
 				ffStoryviewCurrentStory--;
 			}
 			// update indicator
-			updateIndicator("previous");
+			updateIndicator("previous", currentStoryviewBlock);
 		}
 	}
 
@@ -142,15 +169,19 @@ if (ffStoryviewDisplayButton) {
 	/**
 	 * Update the status of the indicator
 	 */
-	function updateIndicator(direction) {
+	function updateIndicator(direction, storyviewBlock) {
 		if (direction == "next") {
 			let previousStoryIndicator = ffStoryviewCurrentStory - 1;
-			document.querySelector("#ff_storyview_block_indicator_item_" + previousStoryIndicator).classList.remove("activ");
-			document.querySelector("#ff_storyview_block_indicator_item_" + ffStoryviewCurrentStory).classList.add("activ");
+			if(storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + previousStoryIndicator)){
+				storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + previousStoryIndicator).classList.remove("activ");
+				storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + ffStoryviewCurrentStory).classList.add("activ");
+			}
 		} else if (direction == "previous") {
 			let nextStoryIndicator = ffStoryviewCurrentStory + 1;
-			document.querySelector("#ff_storyview_block_indicator_item_" + nextStoryIndicator).classList.remove("activ");
-			document.querySelector("#ff_storyview_block_indicator_item_" + ffStoryviewCurrentStory).classList.add("activ");
+			if(storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + nextStoryIndicator)){
+				storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + nextStoryIndicator).classList.remove("activ");
+				storyviewBlock.querySelector(".ff_storyview_block_indicator_item_" + ffStoryviewCurrentStory).classList.add("activ");
+			}
 		}
 	}
 
@@ -160,6 +191,9 @@ if (ffStoryviewDisplayButton) {
 		if (e.code === "Escape" || e.code === "escape") {
 			if (ffStoryviewBody.classList.contains("ff_storyview_visible")) {
 				ffStoryviewBody.classList.remove("ff_storyview_visible");
+				document.querySelectorAll(".ff_storyview_blocks_container").forEach(storyviewBlockContainer => {
+					storyviewBlockContainer.classList.remove('visible');
+				});
 				history.pushState("storyview", document.title, window.location.href.split('#')[0]);
 			}
 		} else if (e.code === "ArrowLeft" || e.code === "arowleft") {
@@ -175,10 +209,10 @@ if (ffStoryviewDisplayButton) {
 		}
 	});
 
-	if (window.location.hash.includes("#storyview")) {
+	/* if (window.location.hash.includes("#storyview")) {
 		ffStoryviewBody.classList.add("ff_storyview_visible");
 		history.pushState("storyview", document.title + " Storyview", "#storyview");
-	}
+	} */
 
 	class TinyGesture {
 		constructor(element, options) {
@@ -362,18 +396,48 @@ if (ffStoryviewDisplayButton) {
 		disregardVelocityThreshold: (type, self) => Math.floor(0.1 * (type === "x" ? self.element.clientWidth : self.element.clientHeight))
 	};
 
-	const target = document.getElementById("ff_storyview_blocks");
-	const gesture = new TinyGesture(target, touchOptions);
+	const touchTarget = document.querySelectorAll(".ff_storyview_blocks");
+	let gestures = [];
+	touchTarget.forEach(target => {
+		gestures.push(new TinyGesture(target, touchOptions));
+	});
 
-	if ("ontouchstart" in window || (window.DocumentTouch && window.document instanceof DocumentTouch) || window.navigator.maxTouchPoints || window.navigator.msMaxTouchPoints) {
-		gesture.on("swiperight", event => {
-			// goto previous story
-			stepStoryview(null, "previous");
-		});
+	gestures.forEach(gesture => {
+		if ("ontouchstart" in window || (window.DocumentTouch && window.document instanceof DocumentTouch) || window.navigator.maxTouchPoints || window.navigator.msMaxTouchPoints) {
+			gesture.on("swiperight", event => {
+				// goto previous story
+				stepStoryview(null, "previous");
+			});
 
-		gesture.on("swipeleft", event => {
-			// goto next story
-			stepStoryview(null, "next");
-		});
-	}
+			gesture.on("swipeleft", event => {
+				// goto next story
+				stepStoryview(null, "next");
+			});
+		}
+	});
+
+	function getClosest(elem, selector) {
+		// Element.matches() polyfill
+		if (!Element.prototype.matches) {
+			Element.prototype.matches =
+				Element.prototype.matchesSelector ||
+				Element.prototype.mozMatchesSelector ||
+				Element.prototype.msMatchesSelector ||
+				Element.prototype.oMatchesSelector ||
+				Element.prototype.webkitMatchesSelector ||
+				function (s) {
+					var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+						i = matches.length;
+					while (--i >= 0 && matches.item(i) !== this) { }
+					return i > -1;
+				};
+		}
+
+		// Get the closest matching element
+		for (; elem && elem !== document; elem = elem.parentNode) {
+			if (elem.matches(selector)) return elem;
+		}
+		return null;
+
+	};
 }

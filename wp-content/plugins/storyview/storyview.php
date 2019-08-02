@@ -6,7 +6,7 @@
 Plugin Name: ⚡ Story View
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.4.0
+Version: 1.4.1
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -246,12 +246,12 @@ function ff_storyview_display(){
 
             $storyview_content = "";
 
-            $storyview_blocks = '<div id="ff_storyview_blocks_container"><div id="ff_storyview_blocks">';
+            $storyview_blocks = '<div class="ff_storyview_blocks_container"><div class="ff_storyview_blocks">';
 
-            $storyview_blocks_indicator = '<div id="ff_storyview_blocks_indicator">';
+            $storyview_blocks_indicator = '<div class="ff_storyview_blocks_indicator">';
             $storyview_button_icon_image = "";
             if(isset($storyview_data->story_blocks_data)){
-                $storyview_blocks .= '<div id="ff_storyview_blocks_items_container">';
+                $storyview_blocks .= '<div class="ff_storyview_blocks_items_container">';
 
                 $i = 0;
                 foreach($storyview_data->story_blocks_data as $storyview_block){
@@ -260,7 +260,7 @@ function ff_storyview_display(){
                         case("code"):
                             // display special stroyview block - shortcode, html code
                             // do_shortcode($content)
-                            $storyview_blocks .= '<div class="ff_storyview_block_item_content_code">';
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_content_code item">';
                                 $storyview_block_background_color = $storyview_block->ff_storyview_block_item_block_background_color;
                                 switch($storyview_block_background_color){
                                     case "ff_storyview_block_background_black":
@@ -315,7 +315,7 @@ function ff_storyview_display(){
                                 $display_controllers_class = "controllers_visible";
                             }
 
-                            $storyview_blocks .= '<div class="ff_storyview_block_item_container"><div class="ff_storyview_block_item_content ' . $display_controllers_class . ' ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_container item"><div class="ff_storyview_block_item_content ' . $display_controllers_class . ' ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
                                 $storyview_block_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
                                 switch($storyview_block_background_color){
@@ -406,7 +406,7 @@ function ff_storyview_display(){
                     } else {
                         $indicator_activ = "";
                     }
-                    $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item ' . $indicator_activ . '" id="ff_storyview_block_indicator_item_' . $storyview_block->ff_storyview_block_id . '"></div>';
+                    $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item ' . $indicator_activ . ' ff_storyview_block_indicator_item_' . $storyview_block->ff_storyview_block_id . '" data-index=' . $storyview_block->ff_storyview_block_id . '></div>';
 
                     $i++;
                 }
@@ -415,7 +415,7 @@ function ff_storyview_display(){
             }
             $storyview_blocks_indicator .= '</div>';
 
-            $storyview_blocks .= $storyview_blocks_indicator . '<button id="ff_storyview_close_button">&times;</button></div></div>';
+            $storyview_blocks .= $storyview_blocks_indicator . '<button class="ff_storyview_close_button">&times;</button></div></div>';
 
             // create AMP URL
             $post_url = parse_url(get_permalink());
@@ -440,11 +440,11 @@ function ff_storyview_display(){
                 // replace button image shortcode
                 $button_custom_code = str_replace("{{button_image}}", $storyview_button_icon_image, $button_custom_code);
 
-                $storyview_button = '<a href="' . $story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= $button_custom_code;
                 $storyview_button .= '</a>';
             } else {
-                $storyview_button = '<a href="' . $story_url . '" id="ff_storyview_button" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                 $storyview_button .= '</a>';
             }
@@ -464,11 +464,11 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.css', __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.js', __FILE__ ) ) . '"></script>';
 }
 
 // on activation

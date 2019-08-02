@@ -116,7 +116,7 @@ by Ferenc Forgacs - @feriforgacs
     font-size: 36px;
 }
 
-#ff_storyview_blocks_container{
+.ff_storyview_blocks_container{
     position: fixed;
     top: 0;
     left: 0;
@@ -131,7 +131,7 @@ by Ferenc Forgacs - @feriforgacs
     align-items: center;
 }
 
-#ff_storyview_blocks_indicator{
+.ff_storyview_blocks_indicator{
     position: absolute;
     height: 10px;
     top: 20px;
@@ -153,7 +153,7 @@ by Ferenc Forgacs - @feriforgacs
     margin-top: -2px;
 }
 
-#ff_storyview_close_button{
+.ff_storyview_close_button{
     border: none;
     background: 0 0;
     color: #fff;
@@ -169,7 +169,7 @@ by Ferenc Forgacs - @feriforgacs
     padding: 0;
 }
 
-#ff_storyview_blocks{
+.ff_storyview_blocks{
     position: relative;
     margin: 0 auto;
     width: 100%;
@@ -179,7 +179,7 @@ by Ferenc Forgacs - @feriforgacs
     max-height: 796px;
 }
 
-#ff_storyview_blocks_items_container{
+.ff_storyview_blocks_items_container{
     display: flex;
     flex-wrap: nowrap;
     padding: 40px 0 5px;
@@ -212,9 +212,16 @@ by Ferenc Forgacs - @feriforgacs
     display: none;
 }
 
-.ff_storyview_visible #ff_storyview_blocks_container{
+/* .ff_storyview_visible .ff_storyview_blocks_container{
     display: flex;
     margin: 0;
+} */
+
+.ff_storyview_blocks_container.visible{
+    display: flex;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 body.ff_storyview_visible{
@@ -223,7 +230,7 @@ body.ff_storyview_visible{
 
 /* button types */
 
-#ff_storyview_button{
+.entry .entry-content a.ff_storyview_button{
     text-decoration: none;
 }
 
@@ -278,7 +285,7 @@ body.ff_storyview_visible{
 /*
  * Button 1
  */
-#ff_storyview_button.ff_storyview_button_type_1{
+.ff_storyview_button.ff_storyview_button_type_1{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -291,7 +298,7 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-#ff_storyview_button.ff_storyview_button_type_1:hover, #ff_storyview_button.ff_storyview_button_type_1:focus, #ff_storyview_button.ff_storyview_button_type_1:active{
+.ff_storyview_button.ff_storyview_button_type_1:hover, .ff_storyview_button.ff_storyview_button_type_1:focus, .ff_storyview_button.ff_storyview_button_type_1:active{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -305,7 +312,7 @@ body.ff_storyview_visible{
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
 
-#ff_storyview_button.ff_storyview_button_type_1_i{
+.ff_storyview_button.ff_storyview_button_type_1_i{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -318,7 +325,7 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-#ff_storyview_button.ff_storyview_button_type_1_i:hover, #ff_storyview_button.ff_storyview_button_type_1_i:focus, #ff_storyview_button.ff_storyview_button_type_1_i:active{
+.ff_storyview_button.ff_storyview_button_type_1_i:hover, .ff_storyview_button.ff_storyview_button_type_1_i:focus, .ff_storyview_button.ff_storyview_button_type_1_i:active{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -331,7 +338,7 @@ body.ff_storyview_visible{
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
 
-#ff_storyview_button.ff_storyview_button_type_1 .ff_storyview_button_icon, #ff_storyview_button.ff_storyview_button_type_1_i .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_1 .ff_storyview_button_icon, .ff_storyview_button.ff_storyview_button_type_1_i .ff_storyview_button_icon{
     margin-right: 10px;
     border-radius: 2px;
 }
@@ -343,7 +350,7 @@ body.ff_storyview_visible{
 /*
  * Button 2
  */
- #ff_storyview_button.ff_storyview_button_type_2{
+ .ff_storyview_button.ff_storyview_button_type_2{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -356,7 +363,7 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-#ff_storyview_button.ff_storyview_button_type_2:hover, #ff_storyview_button.ff_storyview_button_type_2:focus, #ff_storyview_button.ff_storyview_button_type_2:active{
+.ff_storyview_button.ff_storyview_button_type_2:hover, .ff_storyview_button.ff_storyview_button_type_2:focus, .ff_storyview_button.ff_storyview_button_type_2:active{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -370,7 +377,7 @@ body.ff_storyview_visible{
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
 
-#ff_storyview_button.ff_storyview_button_type_2_i{
+.ff_storyview_button.ff_storyview_button_type_2_i{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -383,7 +390,7 @@ body.ff_storyview_visible{
     animation: pulse 2s infinite;
 }
 
-#ff_storyview_button.ff_storyview_button_type_2_i:hover, #ff_storyview_button.ff_storyview_button_type_2_i:focus, #ff_storyview_button.ff_storyview_button_type_2_i:active{
+.ff_storyview_button.ff_storyview_button_type_2_i:hover, .ff_storyview_button.ff_storyview_button_type_2_i:focus, .ff_storyview_button.ff_storyview_button_type_2_i:active{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -397,7 +404,7 @@ body.ff_storyview_visible{
     box-shadow: 0 0 20px rgba(173, 17, 166, .4);
 }
 
-#ff_storyview_button.ff_storyview_button_type_2 .ff_storyview_button_icon, #ff_storyview_button.ff_storyview_button_type_2_i .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_2 .ff_storyview_button_icon, .ff_storyview_button.ff_storyview_button_type_2_i .ff_storyview_button_icon{
     margin-right: 10px;
     border-radius: 30px;
 }
@@ -409,7 +416,7 @@ body.ff_storyview_visible{
 /*
  * Button 3
  */
- #ff_storyview_button.ff_storyview_button_type_3{
+ .ff_storyview_button.ff_storyview_button_type_3{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -425,7 +432,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_3:hover, #ff_storyview_button.ff_storyview_button_type_3:focus, #ff_storyview_button.ff_storyview_button_type_3:active{
+.ff_storyview_button.ff_storyview_button_type_3:hover, .ff_storyview_button.ff_storyview_button_type_3:focus, .ff_storyview_button.ff_storyview_button_type_3:active{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -442,7 +449,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_3_i{
+.ff_storyview_button.ff_storyview_button_type_3_i{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -458,7 +465,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_3_i:hover, #ff_storyview_button.ff_storyview_button_type_3_i:focus, #ff_storyview_button.ff_storyview_button_type_3_i:active{
+.ff_storyview_button.ff_storyview_button_type_3_i:hover, .ff_storyview_button.ff_storyview_button_type_3_i:focus, .ff_storyview_button.ff_storyview_button_type_3_i:active{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -475,14 +482,14 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_3 .ff_storyview_button_icon, #ff_storyview_button.ff_storyview_button_type_3_i .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_3 .ff_storyview_button_icon, .ff_storyview_button.ff_storyview_button_type_3_i .ff_storyview_button_icon{
     width: 108px;
     height: 108px;
     margin-bottom: 10px;
     border-radius: 2px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_3 .ff_storyview_button_text, #ff_storyview_button.ff_storyview_button_type_3_i .ff_storyview_button_text{
+.ff_storyview_button.ff_storyview_button_type_3 .ff_storyview_button_text, .ff_storyview_button.ff_storyview_button_type_3_i .ff_storyview_button_text{
     margin-bottom: 10px;
 }
 /*
@@ -492,7 +499,7 @@ body.ff_storyview_visible{
 /*
  * Button 4
  */
- #ff_storyview_button.ff_storyview_button_type_4{
+ .ff_storyview_button.ff_storyview_button_type_4{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -508,7 +515,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_4:hover, #ff_storyview_button.ff_storyview_button_type_4:focus, #ff_storyview_button.ff_storyview_button_type_4:active{
+.ff_storyview_button.ff_storyview_button_type_4:hover, .ff_storyview_button.ff_storyview_button_type_4:focus, .ff_storyview_button.ff_storyview_button_type_4:active{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -525,7 +532,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_4_i{
+.ff_storyview_button.ff_storyview_button_type_4_i{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -541,7 +548,7 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_4_i:hover, #ff_storyview_button.ff_storyview_button_type_4_i:focus, #ff_storyview_button.ff_storyview_button_type_4_i:active{
+.ff_storyview_button.ff_storyview_button_type_4_i:hover, .ff_storyview_button.ff_storyview_button_type_4_i:focus, .ff_storyview_button.ff_storyview_button_type_4_i:active{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -558,14 +565,14 @@ body.ff_storyview_visible{
     width: 110px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_4 .ff_storyview_button_icon, #ff_storyview_button.ff_storyview_button_type_4_i .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_4 .ff_storyview_button_icon, .ff_storyview_button.ff_storyview_button_type_4_i .ff_storyview_button_icon{
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
     border-radius: 50px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_4 .ff_storyview_button_text, #ff_storyview_button.ff_storyview_button_type_4_i .ff_storyview_button_text{
+.ff_storyview_button.ff_storyview_button_type_4 .ff_storyview_button_text, .ff_storyview_button.ff_storyview_button_type_4_i .ff_storyview_button_text{
     margin-bottom: 10px;
 }
 /*
@@ -575,7 +582,7 @@ body.ff_storyview_visible{
 /*
  * Button 5
  */
- #ff_storyview_button.ff_storyview_button_type_5{
+ .ff_storyview_button.ff_storyview_button_type_5{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -593,7 +600,7 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_5:hover, #ff_storyview_button.ff_storyview_button_type_5:focus, #ff_storyview_button.ff_storyview_button_type_5:active{
+.ff_storyview_button.ff_storyview_button_type_5:hover, .ff_storyview_button.ff_storyview_button_type_5:focus, .ff_storyview_button.ff_storyview_button_type_5:active{
     border: 2px solid #ad11a6;
     padding: 2px;
     background: #f7f7f7;
@@ -612,7 +619,7 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_5_i{
+.ff_storyview_button.ff_storyview_button_type_5_i{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -630,7 +637,7 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_5_i:hover, #ff_storyview_button.ff_storyview_button_type_5_i:focus, #ff_storyview_button.ff_storyview_button_type_5_i:active{
+.ff_storyview_button.ff_storyview_button_type_5_i:hover, .ff_storyview_button.ff_storyview_button_type_5_i:focus, .ff_storyview_button.ff_storyview_button_type_5_i:active{
     border: none;
     padding: 4px;
     background: linear-gradient(77.52deg,#b721ff 0,#21a1fd 100%);
@@ -649,7 +656,7 @@ body.ff_storyview_visible{
     padding: 10px 30px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_5 .ff_storyview_button_icon, #ff_storyview_button.ff_storyview_button_type_5_i .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_5 .ff_storyview_button_icon, .ff_storyview_button.ff_storyview_button_type_5_i .ff_storyview_button_icon{
     display: none;
 }
 /*
@@ -660,7 +667,7 @@ body.ff_storyview_visible{
  * Button 6
  */
 
- #ff_storyview_button.ff_storyview_button_type_6{
+ .ff_storyview_button.ff_storyview_button_type_6{
     padding: 0;
     background: #f7f7f7;
     border-radius: 50px;
@@ -677,7 +684,7 @@ body.ff_storyview_visible{
     position: relative;
 }
 
-#ff_storyview_button.ff_storyview_button_type_6:hover, #ff_storyview_button.ff_storyview_button_type_6:focus, #ff_storyview_button.ff_storyview_button_type_6:active{
+.ff_storyview_button.ff_storyview_button_type_6:hover, .ff_storyview_button.ff_storyview_button_type_6:focus, .ff_storyview_button.ff_storyview_button_type_6:active{
     padding: 0;
     background: #f7f7f7;
     border-radius: 50px;
@@ -695,13 +702,13 @@ body.ff_storyview_visible{
     position: relative;
 }
 
-#ff_storyview_button.ff_storyview_button_type_6 .ff_storyview_button_icon{
+.ff_storyview_button.ff_storyview_button_type_6 .ff_storyview_button_icon{
     width: 60px;
     height: 60px;
     border-radius: 50px;
 }
 
-#ff_storyview_button.ff_storyview_button_type_6 .ff_storyview_button_text{
+.ff_storyview_button.ff_storyview_button_type_6 .ff_storyview_button_text{
     position: absolute;
     top: 0;
     left: 0;
@@ -735,7 +742,7 @@ body.ff_storyview_visible{
     flex-wrap: wrap;
 }
 
-#ff_storyview_blocks a.code_block_previous, #ff_storyview_blocks a.code_block_next, #ff_storyview_blocks a.classic_block_previous, #ff_storyview_blocks a.classic_block_next{
+.ff_storyview_blocks a.code_block_previous, .ff_storyview_blocks a.code_block_next, .ff_storyview_blocks a.classic_block_previous, .ff_storyview_blocks a.classic_block_next{
     line-height: 60px;
     height: 60px;
     cursor: pointer;
@@ -746,12 +753,12 @@ body.ff_storyview_visible{
     transition: all 100ms ease;
 }
 
-#ff_storyview_blocks a.code_block_previous:active, #ff_storyview_blocks a.classic_block_previous:active{
+.ff_storyview_blocks a.code_block_previous:active, .ff_storyview_blocks a.classic_block_previous:active{
     opacity: .5;
     margin-left: -10px;
 }
 
-#ff_storyview_blocks a.code_block_next:active, #ff_storyview_blocks a.classic_block_next:active{
+.ff_storyview_blocks a.code_block_next:active, .ff_storyview_blocks a.classic_block_next:active{
     opacity: .5;
     margin-right: -10px;
 }
