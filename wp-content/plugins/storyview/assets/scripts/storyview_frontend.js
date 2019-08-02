@@ -37,16 +37,40 @@ if (ffStoryviewDisplayButton) {
 		} else {
 			// display story view
 			ffStoryviewBody.classList.add("ff_storyview_visible");
-			let currentStoryviewBlock = this.nextSibling;
+			let currentStoryviewBlock;
+			if(this.nextSibling && this.nextSibling.classList.contains("ff_storyview_blocks_container")){
+				currentStoryviewBlock = this.nextSibling;
+			} else {
+				currentStoryviewBlock = findClosestStoryviewBlock(this);
+			}
 
 			currentStoryviewBlock.classList.add("visible");
 
-			ffStoryviewCurrentStory = this.nextSibling.querySelector(".ff_storyview_block_indicator_item.activ").dataset.index;
+			ffStoryviewCurrentStory = currentStoryviewBlock.querySelector(".ff_storyview_block_indicator_item.activ").dataset.index;
 			
 			history.pushState("storyview", document.title + " Storyview", "#storyview");
 		}
 
 		setSizes();
+	}
+
+	function findClosestStoryviewBlock(elem){
+		// Get the closest matching element
+		for (; elem && elem !== document; elem = elem.parentNode) {
+			if (elem.classList.contains("ff_storyview_blocks_container")) {
+				return elem;
+			} else if(elem.nextSibling && elem.nextSibling.classList.contains("ff_storyview_blocks_container")){
+				return elem.nextSibling;
+			} else if(elem.nextSibling && elem.nextSibling.hasChildNodes()){
+				elem.childNodes.forEach(child => {
+					console.log(child);
+					if(child.classList.contains("ff_storyview_blocks_container")){
+						return child;
+					}
+				});
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -417,7 +441,6 @@ if (ffStoryviewDisplayButton) {
 	});
 
 	function getClosest(elem, selector) {
-		// Element.matches() polyfill
 		if (!Element.prototype.matches) {
 			Element.prototype.matches =
 				Element.prototype.matchesSelector ||
@@ -438,6 +461,5 @@ if (ffStoryviewDisplayButton) {
 			if (elem.matches(selector)) return elem;
 		}
 		return null;
-
 	};
 }
