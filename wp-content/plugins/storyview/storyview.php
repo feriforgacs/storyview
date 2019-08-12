@@ -383,7 +383,6 @@ function ff_storyview_display(){
                                 $storyview_blocks .= '</p>';
 
                                 /**
-                                 * TODO
                                  * Share story view
                                  */
                                 $storyview_share = "";
@@ -434,6 +433,30 @@ function ff_storyview_display(){
                 }
 
                 $storyview_blocks .= '</div>';
+
+                /**
+                 * Storyview Share Panel
+                 */
+                $storyview_share_panel = "";
+                if(1 || $storyview_share_enabled){
+                    $storyview_share_panel = '<div id="storyview_share_panel_container">';
+                        $storyview_share_panel .= '<div id="storyview_share_panel">';
+
+                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_link"><span class="icon"></span><span>Copy Link</span></a>';
+
+                            $storyview_share_panel .= '<a class="storyview_share_option" href="https://facebook.com/sharer.php?u=' . urlencode(get_permalink()) . '" target="_blank" id="storyview_share_option_facebook"><span class="icon"></span><span>Facebook</span></a>';
+
+                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_twitter"><span class="icon"></span><span>Twitter</span></a>';
+
+                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_whatsapp"><span class="icon"></span><span>WhatsApp</span></a>';
+
+                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_email"><span class="icon"></span><span>Email</span></a>';
+
+                        $storyview_share_panel .= '</div>';
+                    $storyview_share_panel .= '</div>';
+                }
+
+                $storyview_blocks .= $storyview_share_panel;
             }
             
             $storyview_blocks_indicator .= '</div>';
