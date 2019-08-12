@@ -258,6 +258,7 @@ function ff_storyview_display(){
                  */
                 $storyview_share_enabled = 0;
                 $storyview_share_class = "";
+
                 if(get_option('ff_storyview_default_share_enabled') == 1 || (isset($storyview_data->story_share_enabled) && $storyview_data->story_share_enabled == 1)){
                     $storyview_share_enabled = 1;
                     $storyview_share_class = "share_enabled";
@@ -438,7 +439,7 @@ function ff_storyview_display(){
                  * Storyview Share Panel
                  */
                 $storyview_share_panel = "";
-                if(1 || $storyview_share_enabled){
+                if($storyview_share_enabled){
                     $storyview_share_panel = '<div id="storyview_share_panel_container">';
                         $storyview_share_panel .= '<div id="storyview_share_panel">';
                             $storyview_share_panel .= '<div id="storyview_share_panel_link_copied">Link copied to clipboard!</div>';

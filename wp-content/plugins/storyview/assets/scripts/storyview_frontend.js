@@ -233,10 +233,12 @@ if (ffStoryviewDisplayButton) {
 		}
 	});
 
-	/* if (window.location.hash.includes("#storyview")) {
+	if (window.location.hash.includes("#storyview")) {
 		ffStoryviewBody.classList.add("ff_storyview_visible");
 		history.pushState("storyview", document.title + " Storyview", "#storyview");
-	} */
+		let ffStoryViewButtons = document.querySelectorAll(".ff_storyview_button");
+		ffStoryViewButtons[0].click();
+	}
 
 	class TinyGesture {
 		constructor(element, options) {
@@ -466,6 +468,21 @@ if (ffStoryviewDisplayButton) {
 	/**
 	 * Social share functions
 	 */
+	const ffStoryviewShareButtons = document.querySelectorAll(".storyview_share_button");
+	if(ffStoryviewShareButtons){
+		ffStoryviewShareButtons.forEach(shareButton => {
+			shareButton.addEventListener("click", ffToggleSharePanel);
+		});
+
+		function ffToggleSharePanel(){
+			if (ffStoryviewBody.classList.contains("ff_storyview_share_panel_visible")) {
+				ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
+			} else {
+				ffStoryviewBody.classList.add("ff_storyview_share_panel_visible");
+			}
+		}
+	}
+
 	const shareLinkButton = document.querySelector("#storyview_share_option_link");
 	if(shareLinkButton){
 		shareLinkButton.addEventListener("click", (e) => {
