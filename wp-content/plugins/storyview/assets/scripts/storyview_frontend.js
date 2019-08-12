@@ -63,7 +63,6 @@ if (ffStoryviewDisplayButton) {
 				return elem.nextSibling;
 			} else if(elem.nextSibling && elem.nextSibling.hasChildNodes()){
 				elem.childNodes.forEach(child => {
-					console.log(child);
 					if(child.classList.contains("ff_storyview_blocks_container")){
 						return child;
 					}
@@ -517,7 +516,6 @@ if (ffStoryviewDisplayButton) {
 	const ffStoryViewSharePanelContainer = document.querySelector("#storyview_share_panel_container");
 
 	ffStoryViewSharePanelContainer.addEventListener("click", (e) => {
-		console.log(e.target);
 		if(!ffStoryViewSharePanel.contains(e.target)){
 			ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
 		}
