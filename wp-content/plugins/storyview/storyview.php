@@ -151,6 +151,9 @@ function ff_storyview_save_storyview_data($post_id, $post) {
     // Story controllers data
     $storyview_data["display_controllers"] = intval($_POST["ff_storyview_display_controllers"]);
 
+    // Story share options
+    $storyview_data["story_share_enabled"] = intval($_POST["ff_storyview_enable_share"]);
+
     // process story blocks data
     $story_blocks_data = [];
     $story_block_ids = explode(",", $_POST["story_block_ids"]);

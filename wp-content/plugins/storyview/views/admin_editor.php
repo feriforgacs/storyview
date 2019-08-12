@@ -244,14 +244,28 @@ if(isset($storyview_data->button_type) && strlen($storyview_data->button_type) >
                     <div class="ff_storyview_col_md_6">
                         <div class="ff_storyview_player_settings">
                             <h4>Story View Player Settings</h4>
-                            <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" value="1" <?php
-                            if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
-                                ?>
-                                checked="checked"
-                                <?php
-                            }
-                            ?> />
-                            <label for="ff_storyview_display_controllers">Enable Story View Controllers for all story blocks <br /><small>By default, "Previous" and "Next" buttons are only visible for Custom Story Blocks. If you enable this setting, they will be visible for Classic Blocks as well.</small></label>
+
+                            <div class="ff_storyview_player_settings_section">
+                                <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" value="1" <?php
+                                if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
+                                    ?>
+                                    checked="checked"
+                                    <?php
+                                }
+                                ?> />
+                                <label for="ff_storyview_display_controllers">Enable Story View Controllers for all story blocks <br /><small>By default, "Previous" and "Next" buttons are only visible for Custom Story Blocks. If you enable this setting, they will be visible for Classic Blocks as well.</small></label>
+                            </div>
+                            
+                            <div class="ff_storyview_player_settings_section">
+                                <input type="checkbox" id="ff_storyview_enable_share" name="ff_storyview_enable_share" value="1" <?php
+                                if(isset($storyview_data->story_share_enabled) && $storyview_data->story_share_enabled == 1){
+                                    ?>
+                                    checked="checked"
+                                    <?php
+                                }
+                                ?> />
+                                <label for="ff_storyview_enable_share">Enable Share options for Story View <br /><small>If you turn this feature on, a small share icon will be visible at the bottom right corner of your stories and your visitors can share the story version of your post.<br />The sharing settings (image, title, description) will be the same as your normal posts, so make sure that those are correct.</small></label>
+                            </div>
                         </div>
                     </div>
                     <!-- end Story View controller settings -->
