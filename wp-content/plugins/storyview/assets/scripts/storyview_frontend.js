@@ -462,4 +462,32 @@ if (ffStoryviewDisplayButton) {
 		}
 		return null;
 	};
+
+	/**
+	 * Social share functions
+	 */
+	const shareLinkButton = document.querySelector("#storyview_share_option_link");
+	if(shareLinkButton){
+		shareLinkButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			const shareURL = e.target.closest("a").getAttribute("href")
+			copyToClipboard(shareURL);
+			const copyURLsuccessMessage = document.querySelector("#storyview_share_panel_link_copied");
+			copyURLsuccessMessage.style.display = "block";
+			setTimeout(() => {
+				copyURLsuccessMessage.style.display = "none";
+			}, 1000);
+			
+		});
+	}
+
+	function copyToClipboard(text) {
+		const textarea = document.createElement("textarea");
+		textarea.value = text;
+		document.body.appendChild(textarea);
+		textarea.select();
+		document.execCommand("copy");
+		document.body.removeChild(textarea);
+	}
+	
 }

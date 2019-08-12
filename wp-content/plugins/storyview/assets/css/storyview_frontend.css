@@ -817,13 +817,14 @@ body.ff_storyview_visible{
     border-radius: 3px 3px 0 0;
     display: flex;
     flex-wrap: wrap;
-    padding: 20px 0;
+    padding: 30px 0;
+    position: relative;
 }
 
 .storyview_share_option {
     flex: 0 0 20%;
     text-align: center;
-    font-family: Arial;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     cursor: pointer;
     text-decoration: none;
@@ -873,4 +874,18 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container{
 
 .entry .entry-content a.storyview_share_option{
     text-decoration: none;
+}
+
+#storyview_share_panel_link_copied{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 5px 0 0 17px;
+    background: #27ae60;
+    font-size: 11px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 3px;
+    padding: 0 10px;
+    display: none;
 }
