@@ -52,7 +52,7 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 == Changelog ==
 
 = 1.5.0 =
-* Social Share Settings
+* Social Share Functions
 
 = 1.4.1 =
 * Multiple Story View button support

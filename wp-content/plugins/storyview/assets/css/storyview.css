@@ -926,7 +926,7 @@ by Ferenc Forgacs - @feriforgacs
     padding: 0 1rem;
 }
 
-.ff_storyview_block_item_settings_block .ff_storyview_info{
+.ff_storyview_block_item_settings_block .ff_storyview_info, .ff_storyview_player_settings .ff_storyview_info{
     text-align: left;
     padding: 0;
 }
