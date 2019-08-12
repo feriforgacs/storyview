@@ -140,7 +140,13 @@ if (ffStoryviewDisplayButton) {
 			return;
 		}
 
+		// close button
 		if (event && event.target.classList.contains("ff_storyview_close_button")) {
+			return;
+		}
+
+		// share button
+		if (event && event.target.classList.contains("storyview_share_section_item")) {
 			return;
 		}
 
@@ -506,5 +512,15 @@ if (ffStoryviewDisplayButton) {
 		document.execCommand("copy");
 		document.body.removeChild(textarea);
 	}
+
+	const ffStoryViewSharePanel = document.querySelector("#storyview_share_panel");
+	const ffStoryViewSharePanelContainer = document.querySelector("#storyview_share_panel_container");
+
+	ffStoryViewSharePanelContainer.addEventListener("click", (e) => {
+		console.log(e.target);
+		if(!ffStoryViewSharePanel.contains(e.target)){
+			ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
+		}
+	});
 	
 }
