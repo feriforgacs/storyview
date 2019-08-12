@@ -19,6 +19,10 @@ if(isset($_GET["tab"])){
       $active_tab = "amp_settings";
       break;
 
+    case "share_settings":
+      $active_tab = "share_settings";
+      break;
+
     default:
       $active_tab = "general";
       break;
@@ -33,6 +37,7 @@ if(isset($_GET["tab"])){
     <h2 class="nav-tab-wrapper">
       <a href="admin.php?page=storyview_settings&tab=general" class="nav-tab <?php echo ($active_tab == "general") ? 'nav-tab-active' : ''; ?>">General</a>
       <a href="admin.php?page=storyview_settings&tab=amp_settings" class="nav-tab <?php echo ($active_tab == "amp_settings") ? 'nav-tab-active' : ''; ?>">AMP Settings</a>
+      <a href="admin.php?page=storyview_settings&tab=share_settings" class="nav-tab <?php echo ($active_tab == "share_settings") ? 'nav-tab-active' : ''; ?>">Share Settings</a>
     </h2>
   </div>
 
@@ -485,6 +490,36 @@ if(isset($_GET["tab"])){
         submit_button("Save AMP Story Default Settings");
         break;
       
+      case "share_settings":
+        /**
+         * Display form to edit default Share Settings
+         */
+        settings_fields("ff_storyview_share_options_group");
+        do_settings_sections("ff_storyview_share_options_group");
+        wp_enqueue_media();
+
+        ?>
+        <h3>Share Settings</h3>
+        <p>If you turn this on, social share functions will be enabled for all your Story Views. If you want to control the share feature at every story you create, don't turn this on.</p>
+        <hr />
+        <table class="form-table">
+          <tr valign="top">
+            <th scope="row">
+              <label for="ff_storyview_default_share_enabled">Enable Social Share for Story View</label>
+            </th>
+            <td>
+              <input type="checkbox" name="ff_storyview_default_share_enabled" id="ff_storyview_default_share_enabled" value="1" <?php
+              if(esc_attr( get_option('ff_storyview_default_share_enabled') ) == 1 ) {
+                ?> checked="checked" <?php
+              } ?>
+              />
+            </td>
+          </tr>
+          
+        </table>
+        <?php
+        submit_button("Save Share Settings");
+        break;
       
 
       

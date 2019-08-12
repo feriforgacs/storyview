@@ -264,7 +264,7 @@ if(isset($storyview_data->button_type) && strlen($storyview_data->button_type) >
                                     <?php
                                 }
                                 ?> />
-                                <label for="ff_storyview_enable_share">Enable Share options for Story View <br /><small>If you turn this feature on, a small share icon will be visible at the bottom right corner of your stories and your visitors can share the story version of your post.<br />The sharing settings (image, title, description) will be the same as your normal posts, so make sure that those are correct.</small></label>
+                                <label for="ff_storyview_enable_share">Enable social share for this Story View<br /><small>If you turn this feature on, a small share icon will be visible at the bottom right corner of your stories and your visitors can share the story version of your post.<br />The sharing settings (image, title, description) will be the same as your normal posts, so make sure that those are correct.</small></label>
                             </div>
                         </div>
                     </div>

@@ -591,6 +591,9 @@ function storyview_top_level_menu_display(){
 }
 
 function storyview_settings(){
+    // Share settings
+    register_setting("ff_storyview_share_options_group", "ff_storyview_default_share_enabled");
+
     // AMP settings
     register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_publisher_logo");
     register_setting("ff_storyview_amp_options_group", "ff_storyview_amp_author_name");
