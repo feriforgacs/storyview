@@ -446,11 +446,11 @@ function ff_storyview_display(){
 
                             $storyview_share_panel .= '<a class="storyview_share_option" href="https://facebook.com/sharer.php?u=' . urlencode(get_permalink()) . '" target="_blank" id="storyview_share_option_facebook"><span class="icon"></span><span>Facebook</span></a>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_twitter"><span class="icon"></span><span>Twitter</span></a>';
+                            $storyview_share_panel .= '<a class="storyview_share_option" href="https://twitter.com/share?text=' . urlencode(get_the_title()) . '&url=' . urlencode(get_permalink()) . '" target="_blank" id="storyview_share_option_twitter"><span class="icon"></span><span>Twitter</span></a>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_whatsapp"><span class="icon"></span><span>WhatsApp</span></a>';
+                            $storyview_share_panel .= '<a class="storyview_share_option" href="https://api.whatsapp.com/send?text=' . urlencode(get_the_title() . ' - ' . get_permalink()) . '" target="_blank" id="storyview_share_option_whatsapp"><span class="icon"></span><span>WhatsApp</span></a>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option" id="storyview_share_option_email"><span class="icon"></span><span>Email</span></a>';
+                            $storyview_share_panel .= '<a class="storyview_share_option" target="_blank" href="mailto:?subject=' . get_the_title() . '&body=' . get_the_title() . ' - ' . get_permalink() . '" id="storyview_share_option_email"><span class="icon"></span><span>Email</span></a>';
 
                         $storyview_share_panel .= '</div>';
                     $storyview_share_panel .= '</div>';
