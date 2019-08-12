@@ -253,6 +253,16 @@ function ff_storyview_display(){
             if(isset($storyview_data->story_blocks_data)){
                 $storyview_blocks .= '<div class="ff_storyview_blocks_items_container">';
 
+                /**
+                 * Check sharing settings
+                 */
+                $storyview_share_enabled = 0;
+                $storyview_share_class = "";
+                if(get_option('ff_storyview_default_share_enabled') == 1 || (isset($storyview_data->story_share_enabled) && $storyview_data->story_share_enabled == 1)){
+                    $storyview_share_enabled = 1;
+                    $storyview_share_class = "share_enabled";
+                }
+
                 $i = 0;
                 foreach($storyview_data->story_blocks_data as $storyview_block){
                     $block_type = isset($storyview_block->ff_storyview_block_type) ? $storyview_block->ff_storyview_block_type : "";
@@ -303,6 +313,7 @@ function ff_storyview_display(){
                                 }
 
                                 $storyview_blocks .= '<div class="ff_storyview_block_item_code_navigation"><a class="code_block_previous">' . $default_button_label_previous . '</a><a class="code_block_next">' . $default_button_label_next . '</a></div>';
+
                             $storyview_blocks .= '</div>';
                             break;
                         default:
@@ -315,7 +326,7 @@ function ff_storyview_display(){
                                 $display_controllers_class = "controllers_visible";
                             }
 
-                            $storyview_blocks .= '<div class="ff_storyview_block_item_container item"><div class="ff_storyview_block_item_content ' . $display_controllers_class . ' ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . '" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
+                            $storyview_blocks .= '<div class="ff_storyview_block_item_container item"><div class="ff_storyview_block_item_content ' . $display_controllers_class . ' ' . $storyview_block->ff_storyview_block_item_text_position . ' ' . $storyview_block->ff_storyview_block_item_text_align . ' ' . $storyview_share_class .'" style="background-image: url(\'' . urldecode($storyview_block->ff_storyview_block_image) . '\');">';
 
                                 $storyview_block_background_color = $storyview_block->ff_storyview_block_item_text_background_color;
                                 switch($storyview_block_background_color){
@@ -371,6 +382,17 @@ function ff_storyview_display(){
                                 $storyview_blocks .= $storyview_block->ff_storyview_block_item_text;
                                 $storyview_blocks .= '</p>';
 
+                                /**
+                                 * TODO
+                                 * Share story view
+                                 */
+                                $storyview_share = "";
+                                if($storyview_share_enabled){
+                                    $storyview_share = '<div class="storyview_share_button"><span class="storyview_share_button_text">Share this story</span></div>';
+                                }
+
+                                $storyview_blocks .= $storyview_share;
+
                                 // display controllers
                                 $storyview_blocks_controllers = "";
                                 if($display_controllers){
@@ -413,6 +435,7 @@ function ff_storyview_display(){
 
                 $storyview_blocks .= '</div>';
             }
+            
             $storyview_blocks_indicator .= '</div>';
 
             $storyview_blocks .= $storyview_blocks_indicator . '<button class="ff_storyview_close_button">&times;</button></div></div>';
@@ -464,11 +487,11 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=201908021546', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.css?v=201908121024', __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=201908021546', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.js?v=201908021546', __FILE__ ) ) . '"></script>';
 }
 
 // on activation
