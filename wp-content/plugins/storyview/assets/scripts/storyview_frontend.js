@@ -541,4 +541,22 @@ if (ffStoryviewDisplayButton) {
 			}
 		});
 	}
+
+	/**
+	 * End screen share
+	 */
+	const ffStoryviewEndScreenShareButtons = document.querySelectorAll(".ff_storyview_end_screen_share_button");
+	if(ffStoryviewEndScreenShareButtons){
+		ffStoryviewEndScreenShareButtons.forEach(shareButton => {
+			shareButton.addEventListener("click", ffToggleSharePanel);
+		});
+
+		function ffToggleSharePanel(){
+			if (ffStoryviewBody.classList.contains("ff_storyview_share_panel_visible")) {
+				ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
+			} else {
+				ffStoryviewBody.classList.add("ff_storyview_share_panel_visible");
+			}
+		}
+	}
 }

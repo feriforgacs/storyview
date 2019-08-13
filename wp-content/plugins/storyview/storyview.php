@@ -532,7 +532,7 @@ function ff_storyview_display(){
                  * Storyview Share Panel
                  */
                 $storyview_share_panel = "";
-                if($storyview_share_enabled){
+                if($storyview_share_enabled || (isset($storyview_data->end_screen_settings->share_enabled) && $storyview_data->end_screen_settings->share_enabled == 1)){
                     $storyview_share_panel = '<div id="storyview_share_panel_container" class="storyview_share_section_item">';
                         $storyview_share_panel .= '<div id="storyview_share_panel" class="storyview_share_section_item">';
                             $storyview_share_panel .= '<div id="storyview_share_panel_link_copied" class="storyview_share_section_item">Link copied to clipboard!</div>';

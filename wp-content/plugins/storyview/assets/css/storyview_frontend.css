@@ -905,6 +905,7 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container{
     display: flex;
     flex: 1;
     align-items: center;
+    padding: 20px;
 }
 
 .ff_storyview_end_screen_recommend{
@@ -912,6 +913,7 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: 20px;
 }
 
 .ff_storyview_end_screen_recommend h4{
