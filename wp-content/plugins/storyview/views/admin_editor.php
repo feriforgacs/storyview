@@ -454,6 +454,64 @@ if(isset($storyview_data->button_type) && strlen($storyview_data->button_type) >
             </p>
         </div>
     </div>
+
+    <hr />
+
+    <?php
+    $end_screen_recommended_article_enabled = 0;
+    $end_screen_recommended_article_title = "";
+    $end_screen_recommended_article_url = "";
+
+    $end_screen_share_enabled = 0;
+    $end_screen_share_button_text = "";
+
+    if(isset($storyview_data->end_screen_settings)){
+        /**
+         * Recommended article settings
+         */
+        $end_screen_recommended_article_enabled = $storyview_data->end_screen_settings->recommended_article_enabled;
+        $end_screen_recommended_article_title = $storyview_data->end_screen_settings->recommended_article_title;
+        $end_screen_recommended_article_url = $storyview_data->end_screen_settings->recommended_article_url;
+
+        /**
+         * End screen share settings
+         */
+        $end_screen_share_enabled = $storyview_data->end_screen_settings->share_enabled;
+        $end_screen_share_button_text = $storyview_data->end_screen_settings->share_button_text;
+    }
+    ?>
+
+    <h3 class="ff_storyview_block_header">End Screen Settings</h3>
+    <div class="ff_storyview_block">
+        <h4>Recommended article</h4>
+        <p>By turning this on, a recommended article will be visible at the end of your story.</p>
+        <div class="ff_storyview_block_content">
+            <input type="checkbox" name="ff_storyview_end_screen_recommended_article_enabled" id="ff_storyview_end_screen_recommended_article_enabled" value="1" <?php if($end_screen_recommended_article_enabled == 1){ ?> checked="checked" <?php } ?> />
+            <label for="ff_storyview_end_screen_recommended_article_enabled">Enable recommended article on the end screen</label>
+
+            <p></p>
+
+            <label class="ff_storyview_label" for="ff_storyview_recommended_article_title">Recommended article title</label>
+            <input type="text" name="ff_storyview_recommended_article_title" id="ff_storyview_recommended_article_title" class="components-textarea-control__input" value="<?php echo $end_screen_recommended_article_title; ?>" />
+
+            <label class="ff_storyview_label" for="ff_storyview_recommended_article_url">Recommended article URL</label>
+            <input type="text" name="ff_storyview_recommended_article_url" id="ff_storyview_recommended_article_url" class="components-textarea-control__input" value="<?php echo $end_screen_recommended_article_url; ?>" />
+        </div>
+
+        <h4>Share Story View</h4>
+        <p>By turning this on, a share button will be visible at the end of your story.</p>
+        <div class="ff_storyview_block_content">
+            <input type="checkbox" name="ff_storyview_end_screen_share_enabled" id="ff_storyview_end_screen_share_enabled" value="1" <?php if($end_screen_share_enabled == 1){ ?> checked="checked" <?php } ?> />
+            <label for="ff_storyview_end_screen_share_enabled">Enable share button on the end screen</label>
+
+            <p></p>
+
+            <label class="ff_storyview_label" for="ff_storyview_end_screen_share_button_text">Share button text</label>
+            <input type="text" name="ff_storyview_end_screen_share_button_text" id="ff_storyview_end_screen_share_button_text" class="components-textarea-control__input" value="<?php echo $end_screen_share_button_text; ?>" />
+        </div>
+    </div>
+
+
 </div><!-- end #ff_storyview_container -->
 
 <?php

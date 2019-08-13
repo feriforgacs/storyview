@@ -6,7 +6,7 @@
 Plugin Name: ⚡ Story View
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.4.1
+Version: 1.5.0
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -153,6 +153,15 @@ function ff_storyview_save_storyview_data($post_id, $post) {
 
     // Story share options
     $storyview_data["story_share_enabled"] = intval($_POST["ff_storyview_enable_share"]);
+
+    // Story End Screen settings - Recommended Article
+    $storyview_data["end_screen_settings"]["recommended_article_enabled"] = intval($_POST["ff_storyview_end_screen_recommended_article_enabled"]);
+    $storyview_data["end_screen_settings"]["recommended_article_title"] = sanitize_text_field($_POST["ff_storyview_recommended_article_title"]);
+    $storyview_data["end_screen_settings"]["recommended_article_url"] = sanitize_text_field($_POST["ff_storyview_recommended_article_url"]);
+
+    // Story End Screen settings - Share
+    $storyview_data["end_screen_settings"]["share_enabled"] = intval($_POST["ff_storyview_end_screen_share_enabled"]);
+    $storyview_data["end_screen_settings"]["share_button_text"] = sanitize_text_field($_POST["ff_storyview_end_screen_share_button_text"]);
 
     // process story blocks data
     $story_blocks_data = [];

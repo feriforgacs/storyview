@@ -53,6 +53,7 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 = 1.5.0 =
 * Social Share Functions
+* Recommendations screen at the end of stories
 
 = 1.4.1 =
 * Multiple Story View button support
