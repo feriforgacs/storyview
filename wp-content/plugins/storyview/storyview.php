@@ -156,6 +156,7 @@ function ff_storyview_save_storyview_data($post_id, $post) {
 
     // Story End Screen settings - Recommended Article
     $storyview_data["end_screen_settings"]["recommended_article_enabled"] = intval($_POST["ff_storyview_end_screen_recommended_article_enabled"]);
+    $storyview_data["end_screen_settings"]["recommended_section_title"] = sanitize_text_field($_POST["ff_storyview_recommended_section_title"]);
     $storyview_data["end_screen_settings"]["recommended_article_title"] = sanitize_text_field($_POST["ff_storyview_recommended_article_title"]);
     $storyview_data["end_screen_settings"]["recommended_article_url"] = sanitize_text_field($_POST["ff_storyview_recommended_article_url"]);
 
@@ -277,6 +278,7 @@ function ff_storyview_display(){
                 }
 
                 $i = 0;
+                $last_story_block_id = 0;
                 foreach($storyview_data->story_blocks_data as $storyview_block){
                     $block_type = isset($storyview_block->ff_storyview_block_type) ? $storyview_block->ff_storyview_block_type : "";
                     switch($block_type) {
@@ -442,7 +444,86 @@ function ff_storyview_display(){
                     }
                     $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item ' . $indicator_activ . ' ff_storyview_block_indicator_item_' . $storyview_block->ff_storyview_block_id . '" data-index=' . $storyview_block->ff_storyview_block_id . '></div>';
 
+                    $last_story_block_id = $storyview_block->ff_storyview_block_id;
+
                     $i++;
+                }
+
+                /**
+                 * Storyview end screen
+                 */
+                if(isset($storyview_data->end_screen_settings) && ($storyview_data->end_screen_settings->recommended_article_enabled == 1 || $storyview_data->end_screen_settings->share_enabled == 1)){
+                    /**
+                     * Add end screen to story
+                     */
+                    $storyview_blocks .= '<div class="ff_storyview_block_item_content_end_screen item end_screen">';
+
+                        $storyview_blocks .= '<div class="ff_storyview_block_item_end_screen end_screen">';
+
+                        /**
+                         * End screen share
+                         */
+                        if(isset($storyview_data->end_screen_settings->share_enabled) && $storyview_data->end_screen_settings->share_enabled == 1){
+                            $end_screen_share_button_text = "";
+                            if(isset($storyview_data->end_screen_settings->share_button_text)){
+                                $end_screen_share_button_text = $storyview_data->end_screen_settings->share_button_text;
+                            }
+                            
+                            $storyview_blocks .= '<div class="ff_storyview_end_screen_share end_screen">';
+                                
+                                $storyview_blocks .= '<div class="ff_storyview_end_screen_share_button storyview_share_section_item"><span class="ff_storyview_end_screen_share_button_text">' . $end_screen_share_button_text . '</span><span class="ff_storyview_end_screen_share_button_icon"></span></div>';
+
+                            $storyview_blocks .= '</div>';
+                        }
+
+                        /**
+                         * End screen recommendations
+                         */
+                        if(isset($storyview_data->end_screen_settings->recommended_article_enabled) && $storyview_data->end_screen_settings->recommended_article_enabled == 1){
+                            $end_screen_recommend_section_title = "";
+                            $end_screen_recommend_article_title = "";
+                            $end_screen_recommend_article_url = "";
+                            if(isset($storyview_data->end_screen_settings->recommended_section_title)){
+                                $end_screen_recommend_section_title = $storyview_data->end_screen_settings->recommended_section_title;
+                            }
+
+                            if(isset($storyview_data->end_screen_settings->recommended_article_title)){
+                                $end_screen_recommend_article_title = $storyview_data->end_screen_settings->recommended_article_title;
+                            }
+
+                            if(isset($storyview_data->end_screen_settings->recommended_article_url)){
+                                $end_screen_recommend_article_url = $storyview_data->end_screen_settings->recommended_article_url;
+                            }
+                            
+                            $storyview_blocks .= '<div class="ff_storyview_end_screen_recommend end_screen">';
+
+                                if(strlen($end_screen_recommend_section_title) >= 1) {
+                                    $storyview_blocks .= '<h4>' . $end_screen_recommend_section_title . '</h4>';
+                                }
+                                
+                                $storyview_blocks .= '<div class="ff_storyview_end_screen_recommend_button storyview_share_section_item"><a href="' . $end_screen_recommend_article_url . '">' . $end_screen_recommend_article_title . '</a></div>';
+
+                            $storyview_blocks .= '</div>';
+                        }
+
+                        $storyview_blocks .= '</div>';
+
+                        // check default values for controller labels
+                        $default_button_label_previous = "<span>&#10132;</span> Previous";
+                        
+                        if(strlen(esc_attr(get_option('ff_storyview_default_previous_button_label'))) > 0) {
+                            $default_button_label_previous = esc_attr(get_option('ff_storyview_default_previous_button_label'));
+                        }
+
+                        $storyview_blocks .= '<div class="ff_storyview_block_item_end_screen_navigation"><a class="code_block_previous">' . $default_button_label_previous . '</a><a class="code_block_next"></a></div>';
+
+                    $storyview_blocks .= '</div>';
+
+                    /**
+                     * Add extra item to indicator
+                     */
+                    $last_story_block_id++;
+                    $storyview_blocks_indicator .= '<div class="ff_storyview_block_indicator_item  ff_storyview_block_indicator_item_' . $last_story_block_id . '" data-index=' . $last_story_block_id . '></div>';
                 }
 
                 $storyview_blocks .= '</div>';
