@@ -471,7 +471,7 @@ function ff_storyview_display(){
                             
                             $storyview_blocks .= '<div class="ff_storyview_end_screen_share end_screen">';
                                 
-                                $storyview_blocks .= '<div class="ff_storyview_end_screen_share_button storyview_share_section_item"><span class="ff_storyview_end_screen_share_button_text">' . $end_screen_share_button_text . '</span><span class="ff_storyview_end_screen_share_button_icon"></span></div>';
+                                $storyview_blocks .= '<div class="ff_storyview_end_screen_share_button storyview_share_section_item end_screen"><span class="ff_storyview_end_screen_share_button_text end_screen">' . $end_screen_share_button_text . '</span><span class="ff_storyview_end_screen_share_button_icon end_screen"></span></div>';
 
                             $storyview_blocks .= '</div>';
                         }
@@ -498,10 +498,10 @@ function ff_storyview_display(){
                             $storyview_blocks .= '<div class="ff_storyview_end_screen_recommend end_screen">';
 
                                 if(strlen($end_screen_recommend_section_title) >= 1) {
-                                    $storyview_blocks .= '<h4>' . $end_screen_recommend_section_title . '</h4>';
+                                    $storyview_blocks .= '<h4 class="end_screen">' . $end_screen_recommend_section_title . '</h4>';
                                 }
                                 
-                                $storyview_blocks .= '<div class="ff_storyview_end_screen_recommend_button storyview_share_section_item"><a href="' . $end_screen_recommend_article_url . '">' . $end_screen_recommend_article_title . '</a></div>';
+                                $storyview_blocks .= '<div class="ff_storyview_end_screen_recommend_button end_screen"><a class="end_screen" href="' . $end_screen_recommend_article_url . '">' . $end_screen_recommend_article_title . '</a></div>';
 
                             $storyview_blocks .= '</div>';
                         }
@@ -515,7 +515,7 @@ function ff_storyview_display(){
                             $default_button_label_previous = esc_attr(get_option('ff_storyview_default_previous_button_label'));
                         }
 
-                        $storyview_blocks .= '<div class="ff_storyview_block_item_end_screen_navigation"><a class="code_block_previous">' . $default_button_label_previous . '</a><a class="code_block_next"></a></div>';
+                        $storyview_blocks .= '<div class="ff_storyview_block_item_end_screen_navigation end_screen"><a class="end_screen_previous">' . $default_button_label_previous . '</a><a class="code_block_next"></a></div>';
 
                     $storyview_blocks .= '</div>';
 
@@ -605,11 +605,11 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=201908121341', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.css?v=201908131208', __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=201908121341', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.js?v=201908131221', __FILE__ ) ) . '"></script>';
 }
 
 // on activation

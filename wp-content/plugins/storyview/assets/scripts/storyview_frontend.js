@@ -6,6 +6,7 @@ by Ferenc Forgacs - @feriforgacs
 
 const ffStoryviewGap = 40;
 const ffStoryviewCodeBlockBottomGap = 60;
+const ffStoryviewEndScreenBottomGap = 60;
 const ffStoryviewControllerBlockBottomGap = 60;
 let ffStoryviewCurrentStory = 0;
 
@@ -90,8 +91,9 @@ if (ffStoryviewDisplayButton) {
 			let ffStoryviewBlocksContainer = storyviewBlock.querySelectorAll(".ff_storyview_blocks_items_container");
 			let ffStoryviewBlockItems = storyviewBlock.querySelectorAll(".ff_storyview_block_item_content");
 			let ffStoryviewBlockCodeItems = storyviewBlock.querySelectorAll(".ff_storyview_block_item_content_code");
+			let ffStoryviewBlockEndScreen = storyviewBlock.querySelectorAll(".ff_storyview_block_item_content_end_screen");
 
-			let ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length + ffStoryviewBlockCodeItems.length;
+			let ffStoryviewBlockItemsCount = ffStoryviewBlockItems.length + ffStoryviewBlockCodeItems.length + ffStoryviewBlockEndScreen.length;
 
 			ffStoryviewBlockWidth = (window.innerWidth < 420) ? window.innerWidth : 420;
 			ffStoryviewBlockHeight = (window.innerHeight < 746) ? window.innerHeight : 746;
@@ -123,6 +125,18 @@ if (ffStoryviewDisplayButton) {
 				let codeBlockHeight = blockHeight - ffStoryviewCodeBlockBottomGap;
 				codeBlock.style.height = codeBlockHeight + "px";
 			});
+
+			// set sizes for end screen
+			ffStoryviewBlockEndScreen.forEach((ffStoryviewBlockItem) => {
+				ffStoryviewBlockItem.style.width = ffStoryviewBlockWidth + "px";
+
+				let blockHeight = ffStoryviewBlockHeight - ffStoryviewGap;
+				ffStoryviewBlockItem.style.height = blockHeight + "px";
+
+				let endScreen = ffStoryviewBlockItem.querySelector(".ff_storyview_block_item_end_screen");
+				let endScreenHeight = blockHeight - ffStoryviewEndScreenBottomGap;
+				endScreen.style.height = endScreenHeight + "px";
+			});
 		});
 	}
 
@@ -146,6 +160,11 @@ if (ffStoryviewDisplayButton) {
 
 		// share button
 		if (event && event.target.classList.contains("storyview_share_section_item")) {
+			return;
+		}
+
+		// end screen
+		if(event && event.target.classList.contains("end_screen")){
 			return;
 		}
 
@@ -515,10 +534,11 @@ if (ffStoryviewDisplayButton) {
 	const ffStoryViewSharePanel = document.querySelector("#storyview_share_panel");
 	const ffStoryViewSharePanelContainer = document.querySelector("#storyview_share_panel_container");
 
-	ffStoryViewSharePanelContainer.addEventListener("click", (e) => {
-		if(!ffStoryViewSharePanel.contains(e.target)){
-			ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
-		}
-	});
-	
+	if(ffStoryViewSharePanelContainer){
+		ffStoryViewSharePanelContainer.addEventListener("click", (e) => {
+			if(!ffStoryViewSharePanel.contains(e.target)){
+				ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
+			}
+		});
+	}
 }
