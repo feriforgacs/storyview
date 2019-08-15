@@ -263,6 +263,7 @@ function ff_storyview_display(){
 
             $storyview_blocks_indicator = '<div class="ff_storyview_blocks_indicator">';
             $storyview_button_icon_image = "";
+            $button_image_set = false;
             if(isset($storyview_data->story_blocks_data)){
                 $storyview_blocks .= '<div class="ff_storyview_blocks_items_container">';
 
@@ -430,7 +431,6 @@ function ff_storyview_display(){
                     }
 
                     $indicator_activ = "";
-                    $button_image_set = false;
 
                     if(!$button_image_set && isset($storyview_block->ff_storyview_block_image)){
                         $storyview_button_icon_image = urldecode($storyview_block->ff_storyview_block_image);
