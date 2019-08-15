@@ -54,6 +54,7 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 = 1.5.0 =
 * Social Share Functions
 * Recommendations screen at the end of stories
+* Button designer - Create your own buttons to embed your stories into your posts
 
 = 1.4.1 =
 * Multiple Story View button support

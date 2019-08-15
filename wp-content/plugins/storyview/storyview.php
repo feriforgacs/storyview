@@ -677,6 +677,7 @@ function storyview_top_level_menu(){
 }
 
 function storyview_top_level_menu_display(){
+    include_once("includes/button_designer/button_designer.php");
     include_once("views/admin_story_view_settings.php");
 }
 

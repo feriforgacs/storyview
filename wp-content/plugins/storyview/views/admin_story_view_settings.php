@@ -23,6 +23,10 @@ if(isset($_GET["tab"])){
       $active_tab = "share_settings";
       break;
 
+    case "button_designer":
+      $active_tab = "button_designer";
+      break;
+
     default:
       $active_tab = "general";
       break;
@@ -36,17 +40,23 @@ if(isset($_GET["tab"])){
   <div class="nav-tabs">
     <h2 class="nav-tab-wrapper">
       <a href="admin.php?page=storyview_settings&tab=general" class="nav-tab <?php echo ($active_tab == "general") ? 'nav-tab-active' : ''; ?>">General</a>
+
       <a href="admin.php?page=storyview_settings&tab=amp_settings" class="nav-tab <?php echo ($active_tab == "amp_settings") ? 'nav-tab-active' : ''; ?>">AMP Settings</a>
+
       <a href="admin.php?page=storyview_settings&tab=share_settings" class="nav-tab <?php echo ($active_tab == "share_settings") ? 'nav-tab-active' : ''; ?>">Share Settings</a>
+
+      <a href="admin.php?page=storyview_settings&tab=button_designer" class="nav-tab <?php echo ($active_tab == "button_designer") ? 'nav-tab-active' : ''; ?>">Button Designer</a>
     </h2>
   </div>
 
   <?php
   settings_errors();
-  ?>
-
-  <form method="post" action="options.php">
+  
+  if($active_tab != "button_designer"){
+    ?>
+    <form method="post" action="options.php">
     <?php
+  }
     switch($active_tab){
       case "general":
         /**
@@ -522,6 +532,19 @@ if(isset($_GET["tab"])){
         break;
       
 
+      case "button_designer":
+        /**
+         * Display form to create new button layout
+         */
+        ?>
+        <form method="POST">
+          <?php wp_nonce_field( 'ff_storyview_button_designer_nonce' ); ?>
+          <h3>Button Designer</h3>
+          <p>Create your own button layouts to embed your stories into your posts.</p>
+          <p class="submit"><input type="submit" name="ff_storyview_custom_button_save" id="submit" class="button button-primary" value="Save Button Design"></p>
+        </form>
+        <?php
+        break;
       
       default:
         /**
@@ -529,6 +552,11 @@ if(isset($_GET["tab"])){
          */
         break;
     }
+  
+  if($active_tab != "button_designer"){
     ?>
-  </form>
+    </form>
+    <?php
+  }
+  ?>
 </div>
