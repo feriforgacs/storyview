@@ -724,8 +724,8 @@ add_filter("plugin_action_links_" . plugin_basename(__FILE__), "storyview_settin
  */
 function ff_storyview_load_settings_style($hook) {
     if($hook == "toplevel_page_storyview_settings") {
-        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.min.css', __FILE__) );
-        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.min.js', __FILE__) );
+        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.css', __FILE__) );
+        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.js', __FILE__) );
 
         wp_enqueue_style( 'ff_storyview_settings_selectric_css', plugins_url('assets/css/selectric.min.css', __FILE__) );
         wp_enqueue_script( 'ff_storyview_settings_selectric_js', plugins_url('assets/scripts/jquery.selectric.min.js', __FILE__) );

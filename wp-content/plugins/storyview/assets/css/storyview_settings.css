@@ -612,3 +612,77 @@
 #ff_storyview_button_types_other{
   max-width: 600px;
 }
+
+
+#ff_storyview_button_designer_buttons_list table{
+  width: 100%;
+  max-width: 800px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+#ff_storyview_button_designer_buttons_list table th, #ff_storyview_button_designer_buttons_list table td{
+  padding: .5rem;
+}
+
+#ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_edit_button, #ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_delete_button{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: flex-end;
+  margin-left: 2rem;
+}
+
+.button_actions_header{
+  text-align: right;
+}
+
+#ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_edit_button .icon, #ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_delete_button .icon{
+  margin-right: .5rem;
+}
+
+#ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_edit_button .icon svg{
+  fill: #0073aa;
+}
+
+#ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_delete_button .icon svg{
+  fill: #c92c2c;
+}
+
+#ff_storyview_button_designer_buttons_list .ff_storyview_button_designer_delete_button{
+  color: #c92c2c;
+}
+
+#ff_storyview_button_designer_buttons_list .button_actions{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#ff_storyview_button_designer_container{
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 2rem;
+}
+
+#ff_storyview_button_designer{
+  display: flex;
+}
+
+#ff_storyview_button_designer_editor{
+  flex: 1;
+  border-right: 1px solid #ccc;
+  padding: .5rem;
+}
+
+#ff_storyview_button_designer_preview{
+  flex: 2;
+  padding: .5rem;
+}
+
+#ff_storyview_button_designer h4{
+  margin: 0;
+  padding: 0;
+}
