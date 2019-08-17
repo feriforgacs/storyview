@@ -45,7 +45,7 @@ if ( !function_exists( 'add_action' ) ) {
 
           <label for="button_background_type">Background Type</label>
           <select name="button_background_type" id="button_background_type">
-            <option value="color">color</option>
+            <option value="color">solid color</option>
             <option value="linear_gradient">linear gradient</option>
             <option value="radial_gradient">radial gradient</option>
           </select>
@@ -67,7 +67,7 @@ if ( !function_exists( 'add_action' ) ) {
 
           <label for="button_font_family">Font Family</label>
           <select name="button_font_family" id="button_font_family">
-            <option value="default">Default (same, as the font family for your posts)</option>
+            <option value="default">Default (the font family of your posts)</option>
             <option value="arial">Arial</option>
             <option value="courier">Courier</option>
             <option value="third">Third</option>
@@ -77,7 +77,9 @@ if ( !function_exists( 'add_action' ) ) {
           <label for="button_font_color">Font Color</label>
           <input type="text" name="button_font_color" id="button_font_color" value="#555555" />
 
-          <label for="button_font_size">Font Size</label>
+          <label for="button_font_size">Font Size<br />
+            <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
+          </label>
           <input type="text" name="button_font_size" id="button_font_size" placeholder="eg.: 14px, or 1rem, or .5rem" />
 
           <label for="button_text_alignment">Text Alignment</label>
@@ -87,19 +89,23 @@ if ( !function_exists( 'add_action' ) ) {
             <option value="right">Right</option>
           </select>
 
-          <label for="button_border_width">Border Width</label>
+          <label for="button_border_width">Border Width<br />
+            <small>The number you define here will be used as pixel values. If you insert 10, it will be 10px.</small>
+          </label>
           <input type="number" name="button_border_width" id="button_border_width" value="0" />
 
           <label for="button_border_color">Border Color</label>
           <input type="number" name="button_border_color" id="button_border_color" value="0" />
 
-          <label for="button_padding">Padding</label>
-          <input type="text" name="button_padding" id="button_padding" placeholder="eg.: 10 or 10px or 10px 5px 0 0" />
+          <label for="button_padding">Padding<br />
+            <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
+          </label>
+          <input type="text" name="button_padding" id="button_padding" />
 
           <label for="button_custom_css">Custom CSS<br />
             <small>This will be attached to your button as inline CSS</small>
           </label>
-          <textarea name="button_custom_css" id="button_custom_css" cols="30" rows="10"></textarea>
+          <textarea name="button_custom_css" id="button_custom_css" cols="30" rows="5"></textarea>
 
           <p class="submit"><input type="submit" name="ff_storyview_custom_button_save" id="submit" class="button button-primary" value="Save Button Design"></p>
         </form>

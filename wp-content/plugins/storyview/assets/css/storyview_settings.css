@@ -674,7 +674,7 @@
 #ff_storyview_button_designer_editor{
   flex: 1;
   border-right: 1px solid #ccc;
-  padding: .5rem;
+  padding: .5rem 1rem;
 }
 
 #ff_storyview_button_designer_preview{
@@ -685,4 +685,15 @@
 #ff_storyview_button_designer h4{
   margin: 0;
   padding: 0;
+}
+
+#ff_storyview_button_designer_editor label{
+  display: block;
+  margin: 1rem 0 .3rem;
+}
+
+#ff_storyview_button_designer_editor input[type="text"], #ff_storyview_button_designer_editor input[type="number"], #ff_storyview_button_designer_editor textarea, #ff_storyview_button_designer_editor select{
+  width: 100%;
+  max-width: 320px;
+  padding: 6px 8px;
 }
