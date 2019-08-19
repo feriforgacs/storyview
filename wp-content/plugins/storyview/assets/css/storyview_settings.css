@@ -674,7 +674,7 @@
 #ff_storyview_button_designer_editor{
   flex: 1;
   border-right: 1px solid #ccc;
-  padding: .5rem 1rem;
+  padding: .5rem;
 }
 
 #ff_storyview_button_designer_preview{
@@ -698,8 +698,36 @@
   padding: 6px 8px;
 }
 
-.button_layout_option input[type="radio"]:checked + label {
-  background: #000;
-  border-color: green;
-  color: white;
+#ff_storyview_button_designer_editor .button_layout_option input[type="radio"]:checked + label {
+  opacity: 1;
+}
+
+#button_layout_options{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.button_layout_option {
+  flex: 1;
+  max-width: 48%;
+}
+
+#ff_storyview_button_designer_editor .button_layout_option label{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  opacity: .3;
+}
+
+#ff_storyview_button_designer_editor .button_layout_option label:hover{
+  opacity: 1;
+}
+
+#button_layout_options .button_layout_name{
+  display: none;
+}
+
+#button_layout_options .button_layout_option input[type="radio"]{
+  display: none;
 }

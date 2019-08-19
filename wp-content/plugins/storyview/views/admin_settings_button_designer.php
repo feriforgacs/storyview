@@ -11,7 +11,7 @@ if ( !function_exists( 'add_action' ) ) {
 <form method="POST">
   <?php wp_nonce_field( 'ff_storyview_button_designer_nonce' ); ?>
   <h3>Button Designer</h3>
-  <p>Create your own button layouts to embed your stories into your posts.</p>
+  <p>Create your own button layouts for your stories.</p>
 
   <div id="ff_storyview_button_designer_container">
     <div id="ff_storyview_button_designer">
@@ -24,22 +24,29 @@ if ( !function_exists( 'add_action' ) ) {
 
           <label for="button_layout">Button Layout</label>
 
-          <?php
-          foreach($button_layout_types as $button_layout){
-            ?>
-            <div class="button_layout_option">
-              <input type="radio" name="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
-              if($button_layout == $button_data->button_layout){
-                ?>
-                checked="checked"
-                <?php
-              }
-              ?> />
-              <label for="button_layout_<?php echo $button_layout; ?>"><?php echo $button_layout_types_display_names[$button_layout]; ?></label>
-            </div>
+          <div id="button_layout_options">
             <?php
-          }
-          ?>
+            foreach($button_layout_types as $button_layout){
+              ?>
+              <div class="button_layout_option">
+                <input type="radio" name="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
+                if($button_layout == $button_data->button_layout){
+                  ?>
+                  checked="checked"
+                  <?php
+                }
+                ?> />
+                <label for="button_layout_<?php echo $button_layout; ?>">
+                  <span class="button_layout_name"><?php echo $button_layout_types_display_names[$button_layout]; ?></span>
+                  <span class="button_layout_image">
+                    <img src="<?php echo esc_url( plugins_url( '../assets/images/custom_buttons/button_layout_' . $button_layout . '.svg', __FILE__ ) ) ?>" />
+                  </span>
+                </label>
+              </div>
+              <?php
+            }
+            ?>
+          </div>
 
           <label for="button_background_type">Background Type</label>
           <select name="button_background_type" id="button_background_type">
