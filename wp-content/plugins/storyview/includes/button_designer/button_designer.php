@@ -126,6 +126,7 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
 /**
  * Get button designs from the db
  */
+$storyview_custom_buttons = $wpdb->get_results("SELECT storyview_button_id, storyview_button_name FROM " . $table_name . " ORDER BY storyview_button_id DESC");
 
 /**
  * Get selected button design data from the db
@@ -138,8 +139,4 @@ if(isset($_GET["btn"])){
   if(property_exists($button_data_temp, "storyview_button_settings")){
     $button_data = json_decode($button_data_temp->storyview_button_settings);
   }
-
-  echo "<pre>";
-  print_r($button_data);
-  echo "</pre>";
 }
