@@ -20,7 +20,7 @@ if ( !function_exists( 'add_action' ) ) {
 
         <form action="">
           <label for="button_name">Button name</label>
-          <input type="text" id="button_name" name="button_name" placeholder="eg.: My Custom Button" />
+          <input type="text" id="button_name" name="button_name" placeholder="eg.: My Custom Button" required="required" />
 
           <label for="button_layout">Button Layout</label>
           <label>
@@ -92,10 +92,10 @@ if ( !function_exists( 'add_action' ) ) {
           <label for="button_border_width">Border Width<br />
             <small>The number you define here will be used as pixel values. If you insert 10, it will be 10px.</small>
           </label>
-          <input type="number" name="button_border_width" id="button_border_width" value="0" />
+          <input type="text" name="button_border_width" id="button_border_width" value="0" />
 
           <label for="button_border_color">Border Color</label>
-          <input type="number" name="button_border_color" id="button_border_color" value="0" />
+          <input type="text" name="button_border_color" id="button_border_color" value="0" />
 
           <label for="button_padding">Padding<br />
             <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
