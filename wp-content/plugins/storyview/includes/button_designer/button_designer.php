@@ -8,6 +8,62 @@ if ( !function_exists( 'add_action' ) ) {
 global $wpdb;
 $table_name = $wpdb->prefix . "ff_storyview_buttons";
 
+$button_layout_types = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+$button_layout_types_display_names = [
+  "1" => "Layout 1",
+  "2" => "Layout 2",
+  "3" => "Layout 3",
+  "4" => "Layout 4",
+  "5" => "Layout 5",
+  "6" => "Layout 6",
+  "7" => "Layout 7",
+  "8" => "Layout 8",
+  "9" => "Layout 9",
+  "10" => "Layout 10"
+];
+
+$button_background_types = ["color", "linear_gradient", "radial_gradient"];
+$button_background_types_display_names = [
+  "color" => "Solid color",
+  "linear_gradient" => "Linear Gradient",
+  "radial_gradient" => "Radial Gradient"
+];
+
+$button_text_alignments = ["left", "center", "right"];
+
+$button_font_families = ["default", "arial", "courier", "roboto", "rounded", "lily", "montserrat"];
+$button_font_families_display_names = [
+  "default" => "Default (the font family of your posts)", 
+  "arial" => "Arial", 
+  "courier" => "Courier", 
+  "roboto" => "Roboto", 
+  "rounded" => "Rounded", 
+  "lily" => "Lily", 
+  "montserrat" => "Montserrat"
+];
+
+/**
+ * Default button data
+ */
+$button_data_default = [
+  "button_name" => "",
+  "button_layout" => 1,
+  "button_background_type" => "color",
+  "button_background_color" => "#21a1fd",
+  "button_background_gradient_start" => "#b721ff",
+  "button_background_gradient_end" => "#21a1fd",
+  "button_font_family" => "default",
+  "button_font_color" => "#ffffff",
+  "button_font_size" => "12px",
+  "button_text_alignment" => "left",
+  "button_border_width" => 0,
+  "button_border_color" => "#ad11a6",
+  "button_padding" => 0,
+  "button_custom_css" => ""
+];
+
+$button_data = json_decode(json_encode($button_data_default));
+
 /**
  * Save custom button settings
  */
@@ -46,13 +102,11 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
   $button_data["button_name"] = $_POST["button_name"];
   
   $button_data["button_layout"] = intval($_POST["button_layout"]);
-  $button_layout_types = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   if(!in_array($button_data["button_layout"], $button_layout_types)){
     $button_data["button_layout"] = 1;
   }
 
   $button_data["button_background_type"] = $_POST["button_background_type"];
-  $button_background_types = ["color", "linear_gradient", "radial_gradient"];
   if(!in_array($button_data["button_background_type"], $button_background_types)){
     $button_data["button_background_type"] = "color";
   }
@@ -65,7 +119,6 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
   $button_data["button_font_size"] = $_POST["button_font_size"];
   
   $button_data["button_text_alignment"] = $_POST["button_text_alignment"];
-  $button_text_alignments = ["left", "center", "right"];
   if(!in_array($button_data["button_text_alignment"], $button_text_alignments)){
     $button_data["button_text_alignment"] = "left";
   }
@@ -114,12 +167,12 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
 
   if(!$db_result){
     // db error, redirect
-    header("Location: admin.php?page=storyview_settings&tab=button_designer&result=db_error");
-    return;
+    wp_redirect("admin.php?page=storyview_settings&tab=button_designer&result=db_error");
+    exit();
   } else {
     // button data saved
-    header("Location: admin.php?page=storyview_settings&tab=button_designer&btn=" . $current_btn . "&result=success");
-    return;
+    wp_redirect("admin.php?page=storyview_settings&tab=button_designer&btn=" . $current_btn . "&result=success");
+    exit();
   }
 }
 

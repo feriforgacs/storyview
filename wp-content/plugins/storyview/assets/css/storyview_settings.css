@@ -697,3 +697,9 @@
   max-width: 320px;
   padding: 6px 8px;
 }
+
+.button_layout_option input[type="radio"]:checked + label {
+  background: #000;
+  border-color: green;
+  color: white;
+}

@@ -1,4 +1,6 @@
 <?php
+ob_start();
+ob_clean();
 /**
  * @package StoryView
  */

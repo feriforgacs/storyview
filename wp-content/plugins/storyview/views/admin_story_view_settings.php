@@ -33,7 +33,22 @@ if(isset($_GET["tab"])){
   }
 }
 
+/**
+ * Display system messages
+ */
+if(isset($_GET["result"]) && $_GET["result"] == "success"){
+  ?>
+  <div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"> 
+  <p><strong>Settings saved.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>
+  <?php
+} else if(isset($_GET["result"]) && $_GET["result"] == "db_error"){
+  ?>
+  <div id="setting-error-settings_updated" class="error settings-error notice is-dismissible"> 
+  <p><strong>There was a database error during the process. Please, wait a few seconds and try again.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>
+  <?php
+}
 ?>
+
 <div class="wrap">
   <h1>⚡ Story View Settings</h1>
 
