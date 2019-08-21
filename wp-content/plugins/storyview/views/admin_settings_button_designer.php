@@ -14,6 +14,14 @@ if ( !function_exists( 'add_action' ) ) {
   <h3>Button Designer</h3>
   <p>Create your own button layouts for your stories.</p>
 
+  <?php
+  if(isset($_GET["btn"])){
+    ?>
+    <div class="notice notice-warning"><p>👉 Currently editing "<strong><?php echo stripslashes_deep(esc_html($button_data->button_name)); ?></strong>" custom button. <a href="admin.php?page=storyview_settings&tab=button_designer">Click here</a> to create a new button. 👈</p></div>
+    <?php
+  }
+  ?>
+
   <div id="ff_storyview_button_designer_container">
     <div id="ff_storyview_button_designer">
       <div id="ff_storyview_button_designer_editor">

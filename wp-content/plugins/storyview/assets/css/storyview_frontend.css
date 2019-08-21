@@ -1279,4 +1279,5 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container{
     padding: 2px;
     line-height: 50px;
     animation: pulse 2s infinite;
+    box-sizing: content-box;
 }

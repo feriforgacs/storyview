@@ -8,7 +8,7 @@ if ( !function_exists( 'add_action' ) ) {
 global $wpdb;
 $table_name = FF_STORYVIEW_CUSTOM_BUTTONS_TABLE;
 
-$button_layout_types = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+$button_layout_types = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 $button_layout_types_display_names = [
   "1" => "Layout 1",
   "2" => "Layout 2",
