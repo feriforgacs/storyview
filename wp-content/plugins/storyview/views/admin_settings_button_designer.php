@@ -29,7 +29,7 @@ if ( !function_exists( 'add_action' ) ) {
             foreach($button_layout_types as $button_layout){
               ?>
               <div class="button_layout_option">
-                <input type="radio" name="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
+                <input type="radio" name="button_layout" class="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
                 if($button_layout == $button_data->button_layout){
                   ?>
                   checked="checked"
@@ -170,7 +170,7 @@ if ( !function_exists( 'add_action' ) ) {
         <h4>Button Preview</h4>
 
         <div id="button_container">
-          <div id="button" class="ff_storyview_button_layout_10">
+          <div id="button" class="ff_storyview_button_layout_<?php echo $button_data->button_layout; ?>">
             <div class="button_image">Image</div>
             <div class="button_text">Button Text</div>
           </div>

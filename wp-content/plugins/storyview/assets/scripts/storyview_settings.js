@@ -195,4 +195,12 @@ jQuery(document).ready(function($){
     preferredFormat: "rgb"
   });
 
+  /**
+   * Button layout change
+   */
+  $(".button_layout").on("change", function(e){
+    const selectedLayout = $(this).val();
+    $("#button").attr("class", `ff_storyview_button_layout_${selectedLayout}`);
+  });
+
 });
