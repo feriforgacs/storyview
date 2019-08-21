@@ -170,7 +170,7 @@ if ( !function_exists( 'add_action' ) ) {
         <h4>Button Preview</h4>
 
         <div id="button_container">
-          <div id="button" class="ff_storyview_button_layout_1">
+          <div id="button" class="ff_storyview_button_layout_3">
             <div class="button_image">Image</div>
             <div class="button_text">Button Text</div>
           </div>

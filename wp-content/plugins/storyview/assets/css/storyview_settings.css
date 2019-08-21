@@ -753,11 +753,14 @@
   line-height: 50px;
 }
 
-#button.ff_storyview_button_layout_1{
-  
+/**
+ * Button Layout 1
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_1{
+  color: #333333;
 }
 
-#button.ff_storyview_button_layout_1 .button_image{
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_1 .button_image{
   background-color: #eee;
   background-size: cover;
   background-position: center center;
@@ -769,6 +772,54 @@
   text-transform: uppercase;
 }
 
-#button.ff_storyview_button_layout_1 .button_text{
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_1 .button_text{
   padding-left: 10px;
+}
+
+/**
+ * Button Layout 2
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_2{
+  flex-direction: row-reverse;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_2 .button_image{
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  min-width: 50px;
+  min-height: 50px;
+  text-align: center;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_2 .button_text{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/**
+ * Button Layout 3
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_3{
+  border-radius: 50px;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_3 .button_image{
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  min-width: 50px;
+  min-height: 50px;
+  text-align: center;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_3 .button_text{
+  padding-left: 10px;
+  padding-right: 10px;
 }
