@@ -53,12 +53,12 @@ $button_data_default = [
   "button_background_gradient_start" => "#b721ff",
   "button_background_gradient_end" => "#21a1fd",
   "button_font_family" => "default",
-  "button_font_color" => "#ffffff",
-  "button_font_size" => "12px",
+  "button_font_color" => "#333333",
+  "button_font_size" => "14px",
   "button_text_alignment" => "left",
-  "button_border_width" => 0,
+  "button_border_width" => 1,
   "button_border_color" => "#ad11a6",
-  "button_padding" => 0,
+  "button_padding" => "2px",
   "button_custom_css" => ""
 ];
 

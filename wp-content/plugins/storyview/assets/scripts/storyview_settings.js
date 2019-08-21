@@ -57,7 +57,7 @@ jQuery(document).ready(function($){
       optionsItemBuilder: function(itemData) {
         return itemData.value.length ? '<span class="' + itemData.value +  '">' + itemData.text + '</span>' : itemData.text;
       }
-  });
+    });
 
   $("#ff_storyview_default_text_background_color").spectrum({
     clickoutFiresChange: true,
