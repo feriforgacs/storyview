@@ -823,3 +823,28 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+/**
+ * Button Layout 4
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_4{
+  border-radius: 50px;
+  flex-direction: row-reverse;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_4 .button_image{
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  min-width: 50px;
+  min-height: 50px;
+  text-align: center;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_4 .button_text{
+  padding-left: 10px;
+  padding-right: 10px;
+}
