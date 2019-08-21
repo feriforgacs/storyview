@@ -4,6 +4,7 @@ if ( !function_exists( 'add_action' ) ) {
 	echo "No direct access";
 	exit;
 }
+
 /**
  * Display form to create new button layout
  */
@@ -16,8 +17,6 @@ if ( !function_exists( 'add_action' ) ) {
   <div id="ff_storyview_button_designer_container">
     <div id="ff_storyview_button_designer">
       <div id="ff_storyview_button_designer_editor">
-        <h4>Button Editor</h4>
-
         <form action="" method="POST">
           <div class="ff_storyview_row">
             <div class="ff_storyview_col_md_6">

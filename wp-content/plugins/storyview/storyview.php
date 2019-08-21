@@ -729,6 +729,11 @@ function ff_storyview_load_settings_style($hook) {
         wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.css', __FILE__) );
         wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.js', __FILE__) );
 
+        wp_enqueue_style( 'ff_storyview_font_roboto', 'https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext', false );
+        wp_enqueue_style( 'ff_storyview_font_rounded', 'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext', false );
+        wp_enqueue_style( 'ff_storyview_font_lily', 'https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext', false );
+        wp_enqueue_style( 'ff_storyview_font_montserrat', 'https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext', false );
+
         wp_enqueue_style( 'ff_storyview_settings_selectric_css', plugins_url('assets/css/selectric.min.css', __FILE__) );
         wp_enqueue_script( 'ff_storyview_settings_selectric_js', plugins_url('assets/scripts/jquery.selectric.min.js', __FILE__) );
 

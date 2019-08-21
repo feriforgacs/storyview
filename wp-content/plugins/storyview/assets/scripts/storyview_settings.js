@@ -225,7 +225,9 @@ jQuery(document).ready(function($){
     }
 
     // font family
-    const fontFamily = "font-family: " + $("#button_font_family").val() + ";";
+    const fontFamily = $("#button_font_family").val();
+    $("#button").removeClass("default arial courier roboto rounded lily montserrat");
+    $("#button").addClass(fontFamily);
 
     // font color
     const fontColor = "color: " + $("#button_font_color").val() + ";";
@@ -260,7 +262,7 @@ jQuery(document).ready(function($){
     // custom css
     const customCSS = $("#button_custom_css").val().replace(/[\r\n\t]/g, "");
 
-    const buttonCSS = `${background} ${fontFamily} ${fontColor} ${fontSize} ${textAlignment} ${borderWidth} ${borderColor} ${padding} ${customCSS}`;
+    const buttonCSS = `${background} ${fontColor} ${fontSize} ${textAlignment} ${borderWidth} ${borderColor} ${padding} ${customCSS}`;
     $("#button").attr("style", buttonCSS);
   }
 
