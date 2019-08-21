@@ -848,3 +848,61 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+/**
+ * Button Layout 5
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_5{
+  border-radius: 3px;
+  flex-direction: column;
+  width: 130px;
+  text-align: center;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_5 .button_image{
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  min-width: 126px;
+  min-height: 126px;
+  line-height: 126px;
+  text-align: center;
+  border-radius: 2px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_5 .button_text{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/**
+ * Button Layout 6
+ */
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_6{
+  border-radius: 3px;
+  flex-direction: column-reverse;
+  width: 130px;
+  text-align: center;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_6 .button_image{
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  min-width: 126px;
+  min-height: 126px;
+  line-height: 126px;
+  text-align: center;
+  border-radius: 2px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+#ff_storyview_button_designer_preview #button_container #button.ff_storyview_button_layout_6 .button_text{
+  padding-left: 10px;
+  padding-right: 10px;
+}
