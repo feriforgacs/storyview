@@ -203,4 +203,69 @@ jQuery(document).ready(function($){
     $("#button").attr("class", `ff_storyview_button_layout_${selectedLayout}`);
   });
 
+  /**
+   * Update button preview on data change
+   */
+  function updateButtonPreview(){
+    // background type
+    const backgroundType = $("#button_background_type").val();
+    let background = "";
+
+    // background color or gradient
+    if(backgroundType == "color"){
+      const backgroundColor = $("#button_background_color").val();
+      background = `background: ${backgroundColor};`;
+    } else {
+      // get gradient type
+      const gradientType = (backgroundType == "linear_gradient") ? 'linear-gradient' : 'radial-gradient';
+      const gradientColorStart = $("#button_background_gradient_start").val();
+      const gradientColorEnd = $("#button_background_gradient_end").val();
+
+      background = `background: ${gradientType}(${gradientColorStart}, ${gradientColorEnd});`;
+    }
+
+    // font family
+    const fontFamily = "font-family: " + $("#button_font_family").val() + ";";
+
+    // font color
+    const fontColor = "color: " + $("#button_font_color").val() + ";";
+
+    // font size
+    const fontSizeTemp = $("#button_font_size").val();
+    let fontSize = "font-size: " + $("#button_font_size").val() + "px;";
+    if(fontSizeTemp.includes("p") || fontSizeTemp.includes("em") || fontSizeTemp.includes("%")){
+      fontSize = "font-size: " + $("#button_font_size").val() + ";";
+    }
+
+    // text alignment
+    const textAlignment = "text-align: " + $("#button_text_alignment").val() + ";";
+
+    // border width
+    const borderWidthTemp = $("#button_border_width").val();
+    let borderWidth = "border-width: " + $("#button_border_width").val() + "px;";
+    if(borderWidthTemp.includes("p") || borderWidthTemp.includes("em") || borderWidthTemp.includes("%")){
+      borderWidth = "border-width: " + $("#button_border_width").val() + ";";
+    }
+
+    // border color
+    const borderColor = "border-color: " + $("#button_border_color").val() + ";";
+
+    // padding
+    const paddingTemp = $("#button_padding").val();
+    let padding = "padding: " + $("#button_padding").val() + "px;";
+    if(paddingTemp.includes("p") || paddingTemp.includes("em") || paddingTemp.includes("%")){
+      padding = "padding: " + $("#button_padding").val() + ";";
+    }
+
+    // custom css
+    const customCSS = $("#button_custom_css").val().replace(/[\r\n\t]/g, "");
+
+    const buttonCSS = `${background} ${fontFamily} ${fontColor} ${fontSize} ${textAlignment} ${borderWidth} ${borderColor} ${padding} ${customCSS}`;
+    $("#button").attr("style", buttonCSS);
+  }
+
+  updateButtonPreview();
+
+  $(".button_custom_value").on("change", updateButtonPreview);
+
 });
