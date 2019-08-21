@@ -217,7 +217,7 @@ jQuery(document).ready(function($){
       background = `background: ${backgroundColor};`;
     } else {
       // get gradient type
-      const gradientType = (backgroundType == "linear_gradient") ? 'linear-gradient' : 'radial-gradient';
+      const gradientType = (backgroundType == "linear-gradient") ? 'linear-gradient' : 'radial-gradient';
       const gradientColorStart = $("#button_background_gradient_start").val();
       const gradientColorEnd = $("#button_background_gradient_end").val();
 

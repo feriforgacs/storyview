@@ -6,7 +6,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 global $wpdb;
-$table_name = $wpdb->prefix . "ff_storyview_buttons";
+$table_name = FF_STORYVIEW_CUSTOM_BUTTONS_TABLE;
 
 $button_layout_types = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 $button_layout_types_display_names = [
@@ -22,11 +22,11 @@ $button_layout_types_display_names = [
   "10" => "Layout 10"
 ];
 
-$button_background_types = ["color", "linear_gradient"];
+$button_background_types = ["color", "linear-gradient"];
 $button_background_types_display_names = [
   "color" => "Solid color",
-  "linear_gradient" => "Linear Gradient",
-  "radial_gradient" => "Radial Gradient"
+  "linear-gradient" => "Linear Gradient",
+  "radial-gradient" => "Radial Gradient"
 ];
 
 $button_text_alignments = ["left", "center", "right"];
@@ -117,6 +117,10 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
   $button_data["button_font_family"] = $_POST["button_font_family"];
   $button_data["button_font_color"] = $_POST["button_font_color"];
   $button_data["button_font_size"] = $_POST["button_font_size"];
+
+  if(strpos($button_data["button_font_size"], "p") === false && strpos($button_data["button_font_size"], "em") === false && strpos($button_data["button_font_size"], "%") === false){
+    $button_data["button_font_size"] = $button_data["button_font_size"] . "px";
+  }
   
   $button_data["button_text_alignment"] = $_POST["button_text_alignment"];
   if(!in_array($button_data["button_text_alignment"], $button_text_alignments)){
@@ -124,8 +128,16 @@ if(isset($_POST["ff_storyview_custom_button_save"])){
   }
 
   $button_data["button_border_width"] = $_POST["button_border_width"];
+  if(strpos($button_data["button_border_width"], "p") === false && strpos($button_data["button_border_width"], "em") === false && strpos($button_data["button_border_width"], "%") === false){
+    $button_data["button_border_width"] = $button_data["button_border_width"] . "px";
+  }
+
   $button_data["button_border_color"] = $_POST["button_border_color"];
   $button_data["button_padding"] = $_POST["button_padding"];
+  if(strpos($button_data["button_padding"], "p") === false && strpos($button_data["button_padding"], "em") === false && strpos($button_data["button_padding"], "%") === false){
+    $button_data["button_padding"] = $button_data["button_padding"] . "px";
+  }
+
   $button_data["button_custom_css"] = $_POST["button_custom_css"];
 
   $button_settings = json_encode($button_data, JSON_UNESCAPED_UNICODE|JSON_HEX_APOS|JSON_HEX_QUOT);
