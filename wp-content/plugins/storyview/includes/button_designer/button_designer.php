@@ -200,8 +200,8 @@ if(isset($_GET["btn"])){
   $current_btn = intval($_GET["btn"]);
   $button_data_temp = $wpdb->get_row("SELECT * FROM " . $table_name . " WHERE storyview_button_id = " . $current_btn);
 
-  $button_data = [];
-  if(property_exists($button_data_temp, "storyview_button_settings")){
+  if($button_data_temp && property_exists($button_data_temp, "storyview_button_settings")){
+    $button_data = [];
     $button_data = json_decode($button_data_temp->storyview_button_settings);
   }
 }

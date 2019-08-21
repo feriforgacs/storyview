@@ -1070,11 +1070,11 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 1
  */
 
-.ff_storyview_button_type_custom_layout_1 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_1 {
     color: #333333;
 }
 
-.ff_storyview_button_type_custom_layout_1 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_1 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1086,7 +1086,7 @@ by Ferenc Forgacs - @feriforgacs
     text-transform: uppercase;
 }
 
-.ff_storyview_button_type_custom_layout_1 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_1 .ff_storyview_button_text {
     padding-left: 10px;
 }
 
@@ -1094,11 +1094,11 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 2
  */
 
-.ff_storyview_button_type_custom_layout_2 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_2 {
     flex-direction: row-reverse;
 }
 
-.ff_storyview_button_type_custom_layout_2 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_2 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1110,7 +1110,7 @@ by Ferenc Forgacs - @feriforgacs
     text-transform: uppercase;
 }
 
-.ff_storyview_button_type_custom_layout_2 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_2 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1119,11 +1119,11 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 3
  */
 
-.ff_storyview_button_type_custom_layout_3 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_3 {
     border-radius: 50px;
 }
 
-.ff_storyview_button_type_custom_layout_3 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_3 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1135,7 +1135,7 @@ by Ferenc Forgacs - @feriforgacs
     text-transform: uppercase;
 }
 
-.ff_storyview_button_type_custom_layout_3 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_3 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1144,12 +1144,12 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 4
  */
 
-.ff_storyview_button_type_custom_layout_4 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_4 {
     border-radius: 50px;
     flex-direction: row-reverse;
 }
 
-.ff_storyview_button_type_custom_layout_4 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_4 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1161,7 +1161,7 @@ by Ferenc Forgacs - @feriforgacs
     text-transform: uppercase;
 }
 
-.ff_storyview_button_type_custom_layout_4 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_4 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1170,14 +1170,14 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 5
  */
 
-.ff_storyview_button_type_custom_layout_5 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_5 {
     border-radius: 3px;
     flex-direction: column;
     width: 130px;
     text-align: center;
 }
 
-.ff_storyview_button_type_custom_layout_5 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_5 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1191,7 +1191,7 @@ by Ferenc Forgacs - @feriforgacs
     overflow: hidden;
 }
 
-.ff_storyview_button_type_custom_layout_5 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_5 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1200,14 +1200,14 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 6
  */
 
-.ff_storyview_button_type_custom_layout_6 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_6 {
     border-radius: 3px;
     flex-direction: column-reverse;
     width: 130px;
     text-align: center;
 }
 
-.ff_storyview_button_type_custom_layout_6 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_6 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1221,7 +1221,7 @@ by Ferenc Forgacs - @feriforgacs
     overflow: hidden;
 }
 
-.ff_storyview_button_type_custom_layout_6 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_6 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1230,14 +1230,14 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 7
  */
 
-.ff_storyview_button_type_custom_layout_7 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_7 {
     border-radius: 3px;
     flex-direction: column;
     width: 130px;
     text-align: center;
 }
 
-.ff_storyview_button_type_custom_layout_7 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_7 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1251,7 +1251,7 @@ by Ferenc Forgacs - @feriforgacs
     overflow: hidden;
 }
 
-.ff_storyview_button_type_custom_layout_7 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_7 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1260,14 +1260,14 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 8
  */
 
-.ff_storyview_button_type_custom_layout_8 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_8 {
     border-radius: 3px;
     flex-direction: column-reverse;
     width: 130px;
     text-align: center;
 }
 
-.ff_storyview_button_type_custom_layout_8 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_8 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1281,7 +1281,7 @@ by Ferenc Forgacs - @feriforgacs
     overflow: hidden;
 }
 
-.ff_storyview_button_type_custom_layout_8 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_8 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1290,17 +1290,17 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 9
  */
 
-.ff_storyview_button_type_custom_layout_9 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_9 {
     border-radius: 3px;
     text-align: center;
     justify-content: center;
 }
 
-.ff_storyview_button_type_custom_layout_9 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_9 .ff_storyview_button_icon {
     display: none;
 }
 
-.ff_storyview_button_type_custom_layout_9 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_9 .ff_storyview_button_text {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1309,7 +1309,7 @@ by Ferenc Forgacs - @feriforgacs
  * Button Layout 10
  */
 
-.ff_storyview_button_type_custom_layout_10 {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_10 {
     border-radius: 3px;
     text-align: center;
     justify-content: center;
@@ -1320,7 +1320,7 @@ by Ferenc Forgacs - @feriforgacs
     position: relative;
 }
 
-.ff_storyview_button_type_custom_layout_10 .ff_storyview_button_icon {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_10 .ff_storyview_button_icon {
     background-color: #eee;
     background-size: cover;
     background-position: center center;
@@ -1337,7 +1337,7 @@ by Ferenc Forgacs - @feriforgacs
     font-weight: bold;
 }
 
-.ff_storyview_button_type_custom_layout_10 .ff_storyview_button_text {
+#ff_storyview_button_types_custom .ff_storyview_button.ff_storyview_button_type_custom_layout_10 .ff_storyview_button_text {
     position: absolute;
     top: 0;
     left: 0;

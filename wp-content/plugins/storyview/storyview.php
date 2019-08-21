@@ -577,6 +577,7 @@ function ff_storyview_display(){
             }
 
             if($storyview_data->button_type == "other"){
+                // custom button code
                 $button_custom_code = $storyview_data->button_other_code;
                 // replace button text shortcode
                 $button_custom_code = str_replace("{{button_text}}", $storyview_data->button_text, $button_custom_code);
@@ -587,7 +588,58 @@ function ff_storyview_display(){
                 $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= $button_custom_code;
                 $storyview_button .= '</a>';
+            } else if(strpos($storyview_data->button_type, "custom") !== false){
+                // custom designed button
+                // get custom code data from the database
+                $ff_storyview_custom_button_id = intval(str_replace("custom_", "", $storyview_data->button_type));
+                global $wpdb;
+                $ff_storyview_custom_button_data = $wpdb->get_row("SELECT * FROM " . FF_STORYVIEW_CUSTOM_BUTTONS_TABLE . " WHERE storyview_button_id = " . $ff_storyview_custom_button_id);
+
+                if($ff_storyview_custom_button_data && property_exists($ff_storyview_custom_button_data, "storyview_button_settings")){
+                    $ff_storyview_button_data = json_decode($ff_storyview_custom_button_data->storyview_button_settings);
+                    // create button css
+                    $ff_storyview_custom_button_css = "";
+                    // background color or gradient
+                    if($ff_storyview_button_data->button_background_type == "color"){
+                        $ff_storyview_custom_button_css .= "background: " . $ff_storyview_button_data->button_background_color . "; ";
+                    } else {
+                        $ff_storyview_custom_button_css .= "background: " . $ff_storyview_button_data->button_background_type . "(". $ff_storyview_button_data->button_background_gradient_start . ", " . $ff_storyview_button_data->button_background_gradient_end . "); ";
+                    }
+
+                    // font color
+                    $ff_storyview_custom_button_css .= "color: " . $ff_storyview_button_data->button_font_color . "; ";
+
+                    // font size
+                    $ff_storyview_custom_button_css .= "font-size: " . $ff_storyview_button_data->button_font_size . "; ";
+
+                    // text align
+                    $ff_storyview_custom_button_css .= "text-align: " . $ff_storyview_button_data->button_text_alignment . "; ";
+
+                    // border width
+                    $ff_storyview_custom_button_css .= "border-width: " . $ff_storyview_button_data->button_border_width . "; ";
+
+                    // border color
+                    $ff_storyview_custom_button_css .= "border-color: " . $ff_storyview_button_data->button_border_color . "; ";
+
+                    // padding
+                    $ff_storyview_custom_button_css .= "padding: " . $ff_storyview_button_data->button_padding . "; ";
+
+                    // custom css
+                    $ff_storyview_custom_button_css .= preg_replace('/\s+/S', " ", $ff_storyview_button_data->button_custom_css);
+
+                    // display custom button
+                    $storyview_button = '<a style="' . $ff_storyview_custom_button_css . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_custom_button ff_storyview_button_type_custom_layout_' . $ff_storyview_button_data->button_layout . ' ' . $ff_storyview_button_data->button_font_family . '">';
+                    $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
+                    $storyview_button .= '</a>';
+                } else {
+                    // fallback to default button
+                    $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_1">';
+                    $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
+                    $storyview_button .= '</a>';
+                }
+
             } else {
+                // default button
                 $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                 $storyview_button .= '</a>';
