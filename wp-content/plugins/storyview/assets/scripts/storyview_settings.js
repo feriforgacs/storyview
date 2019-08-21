@@ -123,4 +123,76 @@ jQuery(document).ready(function($){
     });
   });
 
+  /**
+   * Button designer scripts
+   */
+
+  // display colorpickers based on select value
+  $("#button_background_type").on("change", function(){
+    if($(this).val() == "color"){
+      // display colorpicker for solid color
+      $("#color").removeClass("hidden");
+      $("#gradient").addClass("hidden");
+    } else {
+      // display colorpickers for gradient
+      $("#color").addClass("hidden");
+      $("#gradient").removeClass("hidden");
+    }
+  });
+
+  // colorpickers - button background color
+  $("#button_background_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb"
+  });
+
+  // colorpickers - button background gradient start
+  $("#button_background_gradient_start").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb"
+  });
+
+  // colorpickers - button background gradient end
+  $("#button_background_gradient_end").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb"
+  });
+
+  // colorpicker - font color
+  $("#button_font_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb"
+  });
+
+  // colorpicker - border color
+  $("#button_border_color").spectrum({
+    clickoutFiresChange: true,
+    showInput: true,
+    showInitial: true,
+    allowEmpty: false,
+    showAlpha: true,
+    showPalette: true,
+    preferredFormat: "rgb"
+  });
+
 });

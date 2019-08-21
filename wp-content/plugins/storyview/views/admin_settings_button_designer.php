@@ -70,12 +70,20 @@ if ( !function_exists( 'add_action' ) ) {
           </select>
 
           <div id="background_colorpicker">
-            <div id="color">
+            <div id="color" <?php if($button_data->button_background_type != "color"){
+              ?>
+              class="hidden"
+              <?php
+            } ?> >
               <label for="button_background_color">Background Color</label>
               <input type="text" name="button_background_color" id="button_background_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_color)); ?>" />
             </div>
 
-            <div id="gradient">
+            <div id="gradient" <?php if($button_data->button_background_type == "color"){
+              ?>
+              class="hidden"
+              <?php
+            } ?>>
               <label for="button_background_gradient_start">Background Gradient Start Color</label>
               <input type="text" name="button_background_gradient_start" id="button_background_gradient_start" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_gradient_start)); ?>" />
 
