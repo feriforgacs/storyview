@@ -1,3 +1,14 @@
+.ff_storyview_row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.ff_storyview_col_md_6{
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
 .delete_block{
   text-align: right;
 }
@@ -616,7 +627,7 @@
 
 #ff_storyview_button_designer_buttons_list table{
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   text-align: left;
   background: #fff;
   border: 1px solid #ccc;
@@ -661,7 +672,7 @@
 
 #ff_storyview_button_designer_container{
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   background: #fff;
   border: 1px solid #ccc;
   margin-bottom: 2rem;
@@ -672,9 +683,14 @@
 }
 
 #ff_storyview_button_designer_editor{
-  flex: 1;
+  flex: 3;
   border-right: 1px solid #ccc;
   padding: .5rem;
+}
+
+#ff_storyview_button_designer_editor .ff_storyview_col_md_6{
+  max-width: 45%;
+  margin-right: 2.5%;
 }
 
 #ff_storyview_button_designer_preview{
@@ -709,8 +725,8 @@
 }
 
 .button_layout_option {
-  flex: 1;
-  max-width: 48%;
+  flex: 0 0 48%;
+  width: 48%;
 }
 
 #ff_storyview_button_designer_editor .button_layout_option label{
@@ -1027,4 +1043,9 @@
   overflow: hidden;
   font-weight: bold;
   color: #000;
+}
+
+#ff_storyview_button_designer p.submit{
+  margin: 10px 0;
+  padding: 0;
 }

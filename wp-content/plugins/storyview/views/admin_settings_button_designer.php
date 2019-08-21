@@ -18,144 +18,150 @@ if ( !function_exists( 'add_action' ) ) {
       <div id="ff_storyview_button_designer_editor">
         <h4>Button Editor</h4>
 
-        <form action="">
-          <label for="button_name">Button name</label>
-          <input type="text" id="button_name" name="button_name" placeholder="eg.: My Custom Button" required="required" value="<?php echo stripslashes_deep(esc_html($button_data->button_name)); ?>" />
+        <form action="" method="POST">
+          <div class="ff_storyview_row">
+            <div class="ff_storyview_col_md_6">
+              <label for="button_name">Button name</label>
+              <input type="text" id="button_name" name="button_name" placeholder="eg.: My Custom Button" required="required" value="<?php echo stripslashes_deep(esc_html($button_data->button_name)); ?>" />
 
-          <label for="button_layout">Button Layout</label>
+              <label for="button_layout">Button Layout</label>
 
-          <div id="button_layout_options">
-            <?php
-            foreach($button_layout_types as $button_layout){
-              ?>
-              <div class="button_layout_option">
-                <input type="radio" name="button_layout" class="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
-                if($button_layout == $button_data->button_layout){
+              <div id="button_layout_options">
+                <?php
+                foreach($button_layout_types as $button_layout){
                   ?>
-                  checked="checked"
+                  <div class="button_layout_option">
+                    <input type="radio" name="button_layout" class="button_layout" required="required" value="<?php echo $button_layout; ?>" id="button_layout_<?php echo $button_layout; ?>" <?php
+                    if($button_layout == $button_data->button_layout){
+                      ?>
+                      checked="checked"
+                      <?php
+                    }
+                    ?> />
+                    <label for="button_layout_<?php echo $button_layout; ?>">
+                      <span class="button_layout_name"><?php echo $button_layout_types_display_names[$button_layout]; ?></span>
+                      <span class="button_layout_image">
+                        <img src="<?php echo esc_url( plugins_url( '../assets/images/custom_buttons/button_layout_' . $button_layout . '.svg', __FILE__ ) ) ?>" />
+                      </span>
+                    </label>
+                  </div>
                   <?php
                 }
-                ?> />
-                <label for="button_layout_<?php echo $button_layout; ?>">
-                  <span class="button_layout_name"><?php echo $button_layout_types_display_names[$button_layout]; ?></span>
-                  <span class="button_layout_image">
-                    <img src="<?php echo esc_url( plugins_url( '../assets/images/custom_buttons/button_layout_' . $button_layout . '.svg', __FILE__ ) ) ?>" />
-                  </span>
-                </label>
+                ?>
               </div>
-              <?php
-            }
-            ?>
-          </div>
 
-          <label for="button_background_type">Background Type</label>
-          <select name="button_background_type" id="button_background_type" class="button_custom_value">
-            <?php
-            foreach($button_background_types as $background_type){
-              ?>
-              <option value="<?php echo $background_type; ?>" <?php
-              if($background_type == $button_data->button_background_type){
-                ?>
-                selected="selected"
-                <?php
-              }
-              ?>>
-                <?php
-                echo $button_background_types_display_names[$background_type];
-                ?>
-              </option>
-              <?php
-            }
-            ?>
-          </select>
-
-          <div id="background_colorpicker">
-            <div id="color" <?php if($button_data->button_background_type != "color"){
-              ?>
-              class="hidden"
-              <?php
-            } ?> >
-              <label for="button_background_color">Background Color</label>
-              <input type="text" name="button_background_color" class="button_custom_value" id="button_background_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_color)); ?>" />
+              <label for="button_custom_css">Custom CSS<br />
+                <small>This will be attached to your button as inline CSS</small>
+              </label>
+              <textarea name="button_custom_css" class="button_custom_value" id="button_custom_css" cols="30" rows="5"><?php echo stripslashes_deep(esc_html($button_data->button_custom_css)); ?></textarea>  
             </div>
 
-            <div id="gradient" <?php if($button_data->button_background_type == "color"){
-              ?>
-              class="hidden"
-              <?php
-            } ?>>
-              <label for="button_background_gradient_start">Background Gradient Start Color</label>
-              <input type="text" name="button_background_gradient_start" class="button_custom_value" id="button_background_gradient_start" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_gradient_start)); ?>" />
+            <div class="ff_storyview_col_md_6">
+              <label for="button_background_type">Background Type</label>
+              <select name="button_background_type" id="button_background_type" class="button_custom_value">
+                <?php
+                foreach($button_background_types as $background_type){
+                  ?>
+                  <option value="<?php echo $background_type; ?>" <?php
+                  if($background_type == $button_data->button_background_type){
+                    ?>
+                    selected="selected"
+                    <?php
+                  }
+                  ?>>
+                    <?php
+                    echo $button_background_types_display_names[$background_type];
+                    ?>
+                  </option>
+                  <?php
+                }
+                ?>
+              </select>
 
-              <label for="button_background_gradient_end">Background Gradient End Color</label>
-              <input type="text" name="button_background_gradient_end" class="button_custom_value" id="button_background_gradient_end" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_gradient_end)); ?>" />
+              <div id="background_colorpicker">
+                <div id="color" <?php if($button_data->button_background_type != "color"){
+                  ?>
+                  class="hidden"
+                  <?php
+                } ?> >
+                  <label for="button_background_color">Background Color</label>
+                  <input type="text" name="button_background_color" class="button_custom_value" id="button_background_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_color)); ?>" />
+                </div>
+
+                <div id="gradient" <?php if($button_data->button_background_type == "color"){
+                  ?>
+                  class="hidden"
+                  <?php
+                } ?>>
+                  <label for="button_background_gradient_start">Background Gradient Start Color</label>
+                  <input type="text" name="button_background_gradient_start" class="button_custom_value" id="button_background_gradient_start" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_gradient_start)); ?>" />
+
+                  <label for="button_background_gradient_end">Background Gradient End Color</label>
+                  <input type="text" name="button_background_gradient_end" class="button_custom_value" id="button_background_gradient_end" value="<?php echo stripslashes_deep(esc_html($button_data->button_background_gradient_end)); ?>" />
+                </div>
+              </div>
+
+              <label for="button_font_family">Font Family</label>
+              <select name="button_font_family" id="button_font_family" class="button_custom_value">
+                <?php
+                foreach($button_font_families as $button_font_family){
+                  ?>
+                  <option value="<?php echo $button_font_family; ?>" <?php
+                  if($button_font_family == $button_data->button_font_family){
+                    ?>
+                    selected="selected"
+                    <?php
+                  }
+                  ?>>
+                    <?php echo $button_font_families_display_names[$button_font_family]; ?>
+                  </option>
+                  <?php
+                }
+                ?>
+              </select>
+
+              <label for="button_font_color">Font Color</label>
+              <input type="text" name="button_font_color" class="button_custom_value" id="button_font_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_font_color)); ?>" />
+
+              <label for="button_font_size">Font Size<br />
+                <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
+              </label>
+              <input type="text" name="button_font_size" class="button_custom_value" id="button_font_size" placeholder="eg.: 14px, or 1rem, or .5rem" value="<?php echo stripslashes_deep(esc_html($button_data->button_font_size)); ?>" />
+
+              <label for="button_text_alignment">Text Alignment</label>
+              <select name="button_text_alignment" id="button_text_alignment" class="button_custom_value">
+                <?php
+                foreach($button_text_alignments as $button_text_alignment){
+                  ?>
+                  <option value="<?php echo $button_text_alignment ?>" <?php
+                  if($button_text_alignment == $button_data->button_text_alignment){
+                    ?>
+                    selected="selected"
+                    <?php
+                  }
+                  ?>>
+                    <?php echo ucfirst($button_text_alignment); ?>
+                  </option>
+                  <?php
+                }
+                ?>
+              </select>
+
+              <label for="button_border_width">Border Width<br />
+                <small>The number you define here will be used as pixel values. If you insert 10, it will be 10px.</small>
+              </label>
+              <input type="text" name="button_border_width" class="button_custom_value" id="button_border_width" value="<?php echo stripslashes_deep(esc_html($button_data->button_border_width)); ?>" />
+
+              <label for="button_border_color">Border Color</label>
+              <input type="text" name="button_border_color" class="button_custom_value" id="button_border_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_border_color)); ?>" />
+
+              <label for="button_padding">Padding<br />
+                <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
+              </label>
+              <input type="text" name="button_padding" class="button_custom_value" id="button_padding" value="<?php echo stripslashes_deep(esc_html($button_data->button_padding)); ?>" />  
             </div>
           </div>
-
-          <label for="button_font_family">Font Family</label>
-          <select name="button_font_family" id="button_font_family" class="button_custom_value">
-            <?php
-            foreach($button_font_families as $button_font_family){
-              ?>
-              <option value="<?php echo $button_font_family; ?>" <?php
-              if($button_font_family == $button_data->button_font_family){
-                ?>
-                selected="selected"
-                <?php
-              }
-              ?>>
-                <?php echo $button_font_families_display_names[$button_font_family]; ?>
-              </option>
-              <?php
-            }
-            ?>
-          </select>
-
-          <label for="button_font_color">Font Color</label>
-          <input type="text" name="button_font_color" class="button_custom_value" id="button_font_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_font_color)); ?>" />
-
-          <label for="button_font_size">Font Size<br />
-            <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
-          </label>
-          <input type="text" name="button_font_size" class="button_custom_value" id="button_font_size" placeholder="eg.: 14px, or 1rem, or .5rem" value="<?php echo stripslashes_deep(esc_html($button_data->button_font_size)); ?>" />
-
-          <label for="button_text_alignment">Text Alignment</label>
-          <select name="button_text_alignment" id="button_text_alignment" class="button_custom_value">
-            <?php
-            foreach($button_text_alignments as $button_text_alignment){
-              ?>
-              <option value="<?php echo $button_text_alignment ?>" <?php
-              if($button_text_alignment == $button_data->button_text_alignment){
-                ?>
-                selected="selected"
-                <?php
-              }
-              ?>>
-                <?php echo ucfirst($button_text_alignment); ?>
-              </option>
-              <?php
-            }
-            ?>
-          </select>
-
-          <label for="button_border_width">Border Width<br />
-            <small>The number you define here will be used as pixel values. If you insert 10, it will be 10px.</small>
-          </label>
-          <input type="text" name="button_border_width" class="button_custom_value" id="button_border_width" value="<?php echo stripslashes_deep(esc_html($button_data->button_border_width)); ?>" />
-
-          <label for="button_border_color">Border Color</label>
-          <input type="text" name="button_border_color" class="button_custom_value" id="button_border_color" value="<?php echo stripslashes_deep(esc_html($button_data->button_border_color)); ?>" />
-
-          <label for="button_padding">Padding<br />
-            <small>You can use numbers, or css values. Eg.: 10, 10px, 1rem, 10px 0 0 5px, etc</small>
-          </label>
-          <input type="text" name="button_padding" class="button_custom_value" id="button_padding" value="<?php echo stripslashes_deep(esc_html($button_data->button_padding)); ?>" />
-
-          <label for="button_custom_css">Custom CSS<br />
-            <small>This will be attached to your button as inline CSS</small>
-          </label>
-          <textarea name="button_custom_css" class="button_custom_value" id="button_custom_css" cols="30" rows="5"><?php echo stripslashes_deep(esc_html($button_data->button_custom_css)); ?></textarea>
-
+          
           <?php
           $button_label = "Save Button Design";
           if(isset($_GET["btn"])){

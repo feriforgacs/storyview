@@ -22,7 +22,7 @@ $button_layout_types_display_names = [
   "10" => "Layout 10"
 ];
 
-$button_background_types = ["color", "linear_gradient", "radial_gradient"];
+$button_background_types = ["color", "linear_gradient"];
 $button_background_types_display_names = [
   "color" => "Solid color",
   "linear_gradient" => "Linear Gradient",
