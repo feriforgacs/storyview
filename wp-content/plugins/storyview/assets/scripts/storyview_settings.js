@@ -268,4 +268,17 @@ jQuery(document).ready(function($){
 
   $(".button_custom_value").on("change", updateButtonPreview);
 
+  /**
+   * Delete button
+   */
+  $(".ff_storyview_button_designer_delete_button").on("click", function(e){
+    e.preventDefault();
+    const deleteURL = $(this).attr("href");
+    const c = confirm("Are you sure you want to delete the button? You can't undo that.");
+
+    if(c){
+      window.top.location = deleteURL;
+    }
+  });
+
 });

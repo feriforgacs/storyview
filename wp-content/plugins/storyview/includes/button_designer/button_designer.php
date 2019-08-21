@@ -193,3 +193,25 @@ if(isset($_GET["btn"])){
     $button_data = json_decode($button_data_temp->storyview_button_settings);
   }
 }
+
+/**
+ * Delete button
+ */
+if(isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["btn"])){
+  if (!current_user_can("manage_options")) {
+    wp_die("Unauthorized user");
+  }
+
+  $current_btn = intval($_GET["btn"]);
+  $db_result = $wpdb->delete($table_name, array("storyview_button_id" => $current_btn));
+
+  if(!$db_result){
+    // db error, redirect
+    wp_redirect("admin.php?page=storyview_settings&tab=button_designer&result=db_error");
+    exit();
+  } else {
+    // button data saved
+    wp_redirect("admin.php?page=storyview_settings&tab=button_designer&result=success");
+    exit();
+  }
+}
