@@ -5,6 +5,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 ?>
+<p><strong>Add story blocks to your story. You can use Classic Blocks for image and text stories, or you can use Custom Blocks to embed videos, forms, shortcodes or other kind of HTML.</strong></p>
 <div id="ff_storyview_blocks_list">
   <?php
   $storyview_blocks_count = 0;

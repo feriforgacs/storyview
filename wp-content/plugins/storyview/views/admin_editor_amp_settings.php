@@ -113,6 +113,7 @@ if(!isset($amp_cover_author_name) || strlen($amp_cover_author_name) < 1){
 <script>
 const ampCoverAuthorName = '<?php echo $amp_cover_author_name; ?>';
 </script>
+<p><strong>Boost your SEO by generating an AMP Story version of your story.</strong></p>
 
 <div id="ff_storyview_amp_story_settings" class="ff_storyview_block" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
     <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php

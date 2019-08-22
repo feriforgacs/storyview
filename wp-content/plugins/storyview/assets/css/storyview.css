@@ -319,7 +319,7 @@ by Ferenc Forgacs - @feriforgacs
     color: #fff;
 }
 
-#ff_storyview_blocks .selectric, .ff_storyview_amp_cover_settings_block .selectric {
+#ff_storyview_blocks_list .selectric, .ff_storyview_amp_cover_settings_block .selectric {
     border-color: #ccc;
     border-radius: 3px;
     background: #f7f7f7;
@@ -327,16 +327,16 @@ by Ferenc Forgacs - @feriforgacs
     width: 90%;
 }
 
-#ff_storyview_blocks .selectric .button, .ff_storyview_amp_cover_settings_block .selectric .button {
+#ff_storyview_blocks_list .selectric .button, .ff_storyview_amp_cover_settings_block .selectric .button {
     border: none;
 }
 
-#ff_storyview_blocks .selectric-items li.highlighted, .ff_storyview_amp_cover_settings_block .selectric-items li.highlighted {
+#ff_storyview_blocks_list .selectric-items li.highlighted, .ff_storyview_amp_cover_settings_block .selectric-items li.highlighted {
     background: #11a0d2;
     color: #fff;
 }
 
-#ff_storyview_blocks .selectric-items li, #ff_storyview_blocks .selectric-items ul, .ff_storyview_amp_cover_settings_block .selectric-items ul {
+#ff_storyview_blocks_list .selectric-items li, #ff_storyview_blocks_list .selectric-items ul, .ff_storyview_amp_cover_settings_block .selectric-items ul {
     font-size: 16px;
     line-height: 30px;
     min-height: 30px;
@@ -397,7 +397,7 @@ by Ferenc Forgacs - @feriforgacs
 }
 
 #ff_storyview_button_types_content {
-    max-height: 300px;
+    max-height: 600px;
     overflow-y: scroll;
     border: 1px solid #eee;
     padding: 10px;
@@ -934,7 +934,7 @@ by Ferenc Forgacs - @feriforgacs
 }
 
 .ff_storyview_info {
-    text-align: center;
+    text-align: left;
     padding: 0 1rem;
 }
 
@@ -1453,4 +1453,8 @@ by Ferenc Forgacs - @feriforgacs
     background: #fff;
     color: #000;
     margin-bottom: -1px;
+}
+
+.ff_storyview_add_actions{
+    display: flex;
 }
