@@ -16,7 +16,6 @@ by Ferenc Forgacs - @feriforgacs
 }
 
 .ff_storyview_block {
-    border-bottom: 2px solid #eee;
     padding: 0 0 2rem 0;
 }
 
@@ -928,10 +927,6 @@ by Ferenc Forgacs - @feriforgacs
     padding-right: 10px;
 }
 
-.ff_storyview_add_actions {
-    display: none;
-}
-
 /* Custom Blocks */
 
 .ff_sotryview_add_actions_button_block {
@@ -1393,4 +1388,69 @@ by Ferenc Forgacs - @feriforgacs
     padding: 2px;
     line-height: 50px;
     animation: pulse 2s infinite;
+}
+
+.visible{
+    display: block !important;
+}
+
+.visible--flex{
+    display: flex !important;
+}
+
+#storyview-settings-wrapper{
+    display: none;
+}
+
+#storyview-settings-wrapper__tab-contents .content{
+    display: none;
+}
+
+#storyview-settings-wrapper__tab-contents .content--active{
+    display: block;
+}
+
+#storyview-settings-wrapper__tabs{
+    border-bottom: 1px solid #ccc;
+    margin: 0;
+    padding-top: 9px;
+    padding-bottom: 0;
+    line-height: inherit;
+    color: #23282d;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#storyview-settings-wrapper__tabs::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#storyview-settings-wrapper__tabs .tab{
+    float: left;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    margin-left: .5em;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.71428571;
+    font-weight: 600;
+    background: #f1f1f1;
+    color: #555;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#storyview-settings-wrapper__tabs .tab:hover{
+    background-color: #fff;
+    color: #444;
+}
+
+#storyview-settings-wrapper__tabs .tab--active{
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    color: #000;
+    margin-bottom: -1px;
 }

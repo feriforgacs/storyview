@@ -228,7 +228,7 @@ function ff_storyview_css(){
 function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/spectrum.min.js', __FILE__ ) ) . '"></script>';
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.js', __FILE__ ) ) . '"></script>';
 }
 
 /**

@@ -266,7 +266,9 @@ jQuery(document).ready(function($){
     $("#button").attr("style", buttonCSS);
   }
 
-  updateButtonPreview();
+  if(document.querySelector("#ff_storyview_button_designer")){
+    updateButtonPreview();
+  }
 
   $(".button_custom_value").on("change", updateButtonPreview);
 

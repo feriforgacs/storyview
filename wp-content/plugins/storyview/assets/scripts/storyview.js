@@ -328,24 +328,12 @@ jQuery(document).ready(function($){
     /**
      * Toggle story view settings on activation
      */
-    const storyViewBasicSettings = $("#ff_storyview_basic_settings");
-    const storyViewBlocks = $("#ff_storyview_blocks");
-    const addBlockButton = $(".ff_storyview_add_actions");
-    const storyViewAmpSettings = $("#ff_storyview_amp_story_settings");
+    const storyviewSettingsWrapper = $("#storyview-settings-wrapper");
     $("#ff_storyview_activ").on("change", function(){
         if($(this).is(":checked")){
-            // show story view settings
-            storyViewBasicSettings.show();
-            storyViewBlocks.show();
-            addBlockButton.css({ "display": "flex" });
-            storyViewAmpSettings.show();
-
+            storyviewSettingsWrapper.addClass("visible");
         } else {
-            // hide story view settings
-            storyViewBasicSettings.hide();
-            storyViewBlocks.hide();
-            addBlockButton.hide();
-            storyViewAmpSettings.hide();
+            storyviewSettingsWrapper.removeClass("visible");
         }
     });
 
@@ -916,6 +904,22 @@ jQuery(document).ready(function($){
                 setAmpTextColor("rgba(0, 0, 0, 0)");
             }
         }
+    });
+
+    /**
+     * Toggle story editor tabs
+     */
+    $("#storyview-settings-wrapper__tabs .tab").on("click", function(){
+        if($(this).hasClass("tab--active")){
+            return;
+        }
+        const selectedTab = $(this).data("tabcontent");
+        
+        $("#storyview-settings-wrapper__tab-contents .content--active").removeClass("content--active");
+        $("#storyview-settings-wrapper__tabs .tab--active").removeClass("tab--active");
+
+        $(`#content-${selectedTab}`).addClass("content--active");
+        $(this).addClass("tab--active");
     });
 
 });

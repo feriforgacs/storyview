@@ -45,13 +45,20 @@ if(isset($storyview_data->button_type) && strlen($storyview_data->button_type) >
             ?> />
             <label for="ff_storyview_activ">Enable Story View for this post</label>
         </div>
+    </div>
 
-        <div class="ff_storyview_block_content" id="ff_storyview_basic_settings" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
-            <div class="ff_storyview_button_settings">
-                <h4>Shortcode</h4>
+    <div id="storyview-settings-wrapper" class="<?php if($storyview_activ){ ?>visible<?php } ?>">
+        <div id="storyview-settings-wrapper__tabs">
+            <div class="tab tab--active" data-tabcontent="button-settings">Button Settings</div>
+            <div class="tab" data-tabcontent="story-blocks">Story Blocks</div>
+            <div class="tab" data-tabcontent="amp-settings">AMP Story Settings</div>
+            <div class="tab" data-tabcontent="end-screen-settings">End Screen Settings</div>
+            <div class="tab" data-tabcontent="player-settings">Player Settings</div>
+        </div>
+        <div id="storyview-settings-wrapper__tab-contents">
+            <div class="content content--active" id="content-button-settings">
                 <p>Insert the following shortcode to your post to the place where you want to display the Story View button:</p>
                 <input type="text" class="components-text-control__input" value="[<?php echo FF_STORYVIEW_SHORTCODE; ?>]" onfocus="this.select();" />
-                <hr />
 
                 <div class="ff_storyview_row">
                     <!-- Story View button settings -->
@@ -320,283 +327,74 @@ if(isset($storyview_data->button_type) && strlen($storyview_data->button_type) >
                         </div>
                     </div>
                     <!-- end Story View button settings -->
+                </div>
+            </div><!-- end #content-button-settings -->
 
-                    <!-- Story View controller settings -->
-                    <div class="ff_storyview_col_md_6">
-                        <div class="ff_storyview_player_settings">
-                            <h4>Story View Player Settings</h4>
+            <div class="content" id="content-story-blocks">
+                <?php
+                // story blocks settings
+                include_once("admin_editor_storyview_blocks_settings.php");
+                ?>
+            </div><!-- end #content-story-blocks -->
 
-                            <div class="ff_storyview_player_settings_section">
-                                <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" value="1" <?php
-                                if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
-                                    ?>
-                                    checked="checked"
-                                    <?php
-                                }
-                                ?> />
-                                <label for="ff_storyview_display_controllers">Enable Story View Controllers for all story blocks <br /><small>By default, "Previous" and "Next" buttons are only visible for Custom Story Blocks. If you enable this setting, they will be visible for Classic Blocks as well.<br />
-                                To change the label of the buttons, go to the following page: <a href="/wp-admin/admin.php?page=storyview_settings&tab=general" target="_blank">Story View General Settings</a>
-                                </small></label>
-                            </div>
-                            
-                            <div class="ff_storyview_player_settings_section">
-                                <input type="checkbox" id="ff_storyview_enable_share" name="ff_storyview_enable_share" value="1" <?php
-                                if(isset($storyview_data->story_share_enabled) && $storyview_data->story_share_enabled == 1){
-                                    ?>
-                                    checked="checked"
-                                    <?php
-                                }
-                                ?> />
-                                <label for="ff_storyview_enable_share">Enable social share for this Story View<br /><small>If you turn this feature on, a small share icon will be visible at the bottom right corner of your stories and your visitors can share the story version of your post.<br />The sharing settings (image, title, description) will be the same as your normal posts, so make sure that those are correct.</small></label>
+            <div class="content" id="content-amp-settings">
+                <?php
+                // amp settings block
+                include_once("admin_editor_amp_settings.php");
+                ?>
+            </div><!-- end #content-amp-settings -->
 
-                                <?php
-                                if(esc_attr( get_option('ff_storyview_default_share_enabled') ) == 1 ) {
-                                    ?>
-                                    <p class="ff_storyview_info">
-                                        <i>i</i> Share feature has been turned on already for all Story Views. To turn it off, go to the following page: <a href="/wp-admin/admin.php?page=storyview_settings&tab=share_settings" target="_blank">Share settings</a>
-                                    </p>
-                                    <?php
-                                }
+            <div class="content" id="content-end-screen-settings">
+                <?php
+                // end screen settings block
+                include_once("admin_editor_end_screen_settings.php");
+                ?>
+            </div><!-- end #content-end-screen-settings -->
+
+            <div class="content" id="content-player-settings">
+                <!-- Story View controller settings -->
+                <div class="ff_storyview_col_md_6">
+                    <div class="ff_storyview_player_settings">
+                        <div class="ff_storyview_player_settings_section">
+                            <input type="checkbox" id="ff_storyview_display_controllers" name="ff_storyview_display_controllers" value="1" <?php
+                            if(isset($storyview_data->display_controllers) && $storyview_data->display_controllers == 1){
                                 ?>
-                            </div>
+                                checked="checked"
+                                <?php
+                            }
+                            ?> />
+                            <label for="ff_storyview_display_controllers">Enable Story View Controllers for all story blocks <br /><small>By default, "Previous" and "Next" buttons are only visible for Custom Story Blocks. If you enable this setting, they will be visible for Classic Blocks as well.<br />
+                            To change the label of the buttons, go to the following page: <a href="/wp-admin/admin.php?page=storyview_settings&tab=general" target="_blank">Story View General Settings</a>
+                            </small></label>
+                        </div>
+                        
+                        <div class="ff_storyview_player_settings_section">
+                            <input type="checkbox" id="ff_storyview_enable_share" name="ff_storyview_enable_share" value="1" <?php
+                            if(isset($storyview_data->story_share_enabled) && $storyview_data->story_share_enabled == 1){
+                                ?>
+                                checked="checked"
+                                <?php
+                            }
+                            ?> />
+                            <label for="ff_storyview_enable_share">Enable social share for this Story View<br /><small>If you turn this feature on, a small share icon will be visible at the bottom right corner of your stories and your visitors can share the story version of your post.<br />The sharing settings (image, title, description) will be the same as your normal posts, so make sure that those are correct.</small></label>
+
+                            <?php
+                            if(esc_attr( get_option('ff_storyview_default_share_enabled') ) == 1 ) {
+                                ?>
+                                <p class="ff_storyview_info">
+                                    <i>i</i> Share feature has been turned on already for all Story Views. To turn it off, go to the following page: <a href="/wp-admin/admin.php?page=storyview_settings&tab=share_settings" target="_blank">Share settings</a>
+                                </p>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
-                    <!-- end Story View controller settings -->
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <?php
-    // amp settings block
-    include_once("admin_editor_amp_settings.php");
-    ?>
-
-    <div id="ff_storyview_blocks" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
-        <h3 class="ff_storyview_block_header">Story View Blocks</h3>
-
-        <div id="ff_storyview_blocks_list">
-
-            <?php
-            $storyview_blocks_count = 0;
-            $storyview_block_id = 0;
-            if(isset($storyview_data->story_blocks_data) && count((array)$storyview_data->story_blocks_data) > 0){
-                $storyview_blocks_count = count((array)$storyview_data->story_blocks_data);
-            }
-
-            $storyview_block_ids = "";
-
-            $i = 0;
-            $j = $storyview_blocks_count;
-            if($storyview_blocks_count == 1){
-                $i = 0;
-                $j = 1;
-            }
-
-            for($i; $i < $j; $i++){
-                $storyview_block_id = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_id) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_id : 0;
-
-                $storyview_block_ids .= $storyview_block_id . ",";
-
-                $storyview_block_image = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_image) ? urldecode($storyview_data->story_blocks_data[$i]->ff_storyview_block_image) : null;
-
-                $storyview_block_item_text = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text : null;
-
-                $storyview_block_item_text_position = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_position) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_position : "ff_storyview_text_block_top";
-
-                $storyview_block_item_text_align = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_align) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_align : "ff_storyview_text_align_left";
-
-                $storyview_block_item_text_font_family = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_family) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_family : "arial";
-
-                $storyview_block_item_text_font_size = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_size : "f12";
-
-                // set custom background color for classic story block text
-                $storyview_block_item_text_background_color = "rgba(0, 0, 0, .8)";
-                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color)){
-                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color){
-                        case "ff_storyview_block_background_black":
-                            $storyview_block_item_text_background_color = "rgba(0, 0, 0, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_gray":
-                            $storyview_block_item_text_background_color = "rgba(51, 51, 51, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_red":
-                            $storyview_block_item_text_background_color = "rgba(201, 44, 44, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_white":
-                            $storyview_block_item_text_background_color = "rgba(255, 255, 255, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_transparent":
-                            $storyview_block_item_text_background_color = "rgba(255, 255, 255, 0)";
-                            break;
-
-                        default:
-                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color) > 1){
-                                $storyview_block_item_text_background_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_background_color;
-                            }
-                            break;
-                    }
-                }
-
-                // set custom font color for classic story block text
-                $storyview_block_item_text_font_color = "rgb(255, 255, 255)";
-                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color)){
-                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color){
-                        case "ff_storyview_block_color_black":
-                            $storyview_block_item_text_font_color = "rgb(0, 0, 0)";
-                            break;
-
-                        case "ff_storyview_block_color_gray":
-                            $storyview_block_item_text_font_color = "rgb(51, 51, 51)";
-                            break;
-
-                        case "ff_storyview_block_color_red":
-                            $storyview_block_item_text_font_color = "rgb(201, 44, 44)";
-                            break;
-
-                        case "ff_storyview_block_color_white":
-                            $storyview_block_item_text_font_color = "rgb(255, 255, 255)";
-                            break;
-                        
-                        default:
-                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color) > 1){
-                                $storyview_block_item_text_font_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_text_font_color;
-                            }
-                            break;
-                    }
-                }
-
-                /**
-                 * Custom story block settings
-                 */
-                $storyview_block_type = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_type) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_type : "";
-                
-                $storyview_block_content = isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_content) ? $storyview_data->story_blocks_data[$i]->ff_storyview_block_content : "";
-
-                // set custom background color for custom story block
-                $storyview_block_item_block_background_color = "rgba(0, 0, 0, .8)";
-                if(isset($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color)){
-                    switch($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color){
-                        case "ff_storyview_block_background_black":
-                            $storyview_block_item_block_background_color = "rgba(0, 0, 0, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_gray":
-                            $storyview_block_item_block_background_color = "rgba(51, 51, 51, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_red":
-                            $storyview_block_item_block_background_color = "rgba(201, 44, 44, .8)";
-                            break;
-
-                        case "ff_storyview_block_background_white":
-                            $storyview_block_item_block_background_color = "rgba(255, 255, 255, .8)";
-                            break;
-
-                        default:
-                            if(strlen($storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color) > 1){
-                                $storyview_block_item_block_background_color = $storyview_data->story_blocks_data[$i]->ff_storyview_block_item_block_background_color;
-                            }
-                            break;
-                    }
-                }
-
-                switch($storyview_block_type){
-                    case("code"):
-                        // display code storyview block editor
-                        include("story_block_custom_editor.php");
-                        break;
-                    default:
-                        // display classic storyview block editor
-                        include("story_block_classic_editor.php");
-                        break;
-                }
-            }
-            ?>
+                <!-- end Story View controller settings -->
+            </div><!-- end #content-player-settings -->
 
         </div>
     </div>
-    <div class="ff_storyview_add_actions" <?php if($storyview_activ){ ?> style="display: flex;" <?php } ?>>
-        <div class="ff_sotryview_add_actions_button_block">
-            <button class="button" id="ff_storyview_add_code_block_button"><strong>&plus;</strong> Add Custom Block</button>
-            <p class="ff_storyview_info">
-                <i>i</i> To <strong>embed forms, videos, custom HTML or shortcodes</strong>, use this block type.
-            </p>
-        </div>
-
-        <div class="ff_sotryview_add_actions_button_block">
-            <button class="button" id="ff_storyview_add_block_button"><strong>&plus;</strong> Add Classic Block</button>
-            <p class="ff_storyview_info">
-                <i>i</i> To display the <strong>classic image-text story block</strong>, use this block type.
-            </p>
-        </div>
-    </div>
-
-    <hr />
-
-    <?php
-    $end_screen_recommended_article_enabled = 0;
-    $end_screen_recommended_section_title = "";
-    $end_screen_recommended_article_title = "";
-    $end_screen_recommended_article_url = "";
-
-    $end_screen_share_enabled = 0;
-    $end_screen_share_button_text = "";
-
-    if(isset($storyview_data->end_screen_settings)){
-        /**
-         * Recommended article settings
-         */
-        $end_screen_recommended_article_enabled = $storyview_data->end_screen_settings->recommended_article_enabled;
-        $end_screen_recommended_section_title = $storyview_data->end_screen_settings->recommended_section_title;
-        $end_screen_recommended_article_title = $storyview_data->end_screen_settings->recommended_article_title;
-        $end_screen_recommended_article_url = $storyview_data->end_screen_settings->recommended_article_url;
-
-        /**
-         * End screen share settings
-         */
-        $end_screen_share_enabled = $storyview_data->end_screen_settings->share_enabled;
-        $end_screen_share_button_text = $storyview_data->end_screen_settings->share_button_text;
-    }
-    ?>
-
-    <h3 class="ff_storyview_block_header">End Screen Settings</h3>
-    <div class="ff_storyview_block">
-        <h4>Share Story View</h4>
-        <p>By turning this on, a share button will be visible at the end of your story.</p>
-        <div class="ff_storyview_block_content">
-            <input type="checkbox" name="ff_storyview_end_screen_share_enabled" id="ff_storyview_end_screen_share_enabled" value="1" <?php if($end_screen_share_enabled == 1){ ?> checked="checked" <?php } ?> />
-            <label for="ff_storyview_end_screen_share_enabled">Enable share button on the end screen</label>
-
-            <p></p>
-
-            <label class="ff_storyview_label" for="ff_storyview_end_screen_share_button_text">Share button text</label>
-            <input type="text" name="ff_storyview_end_screen_share_button_text" id="ff_storyview_end_screen_share_button_text" class="components-textarea-control__input" value="<?php echo $end_screen_share_button_text; ?>" />
-        </div>
-
-        <h4>Recommended article</h4>
-        <p>By turning this on, a recommended article will be visible at the end of your story.</p>
-        <div class="ff_storyview_block_content">
-            <input type="checkbox" name="ff_storyview_end_screen_recommended_article_enabled" id="ff_storyview_end_screen_recommended_article_enabled" value="1" <?php if($end_screen_recommended_article_enabled == 1){ ?> checked="checked" <?php } ?> />
-            <label for="ff_storyview_end_screen_recommended_article_enabled">Enable recommended article on the end screen</label>
-
-            <p></p>
-            <label class="ff_storyview_label" for="ff_storyview_recommended_section_title">Recommended section title (eg. Recommended for you)</label>
-            <input type="text" name="ff_storyview_recommended_section_title" id="ff_storyview_recommended_section_title" class="components-textarea-control__input" value="<?php echo $end_screen_recommended_section_title; ?>" />
-
-            <label class="ff_storyview_label" for="ff_storyview_recommended_article_title">Recommended article title</label>
-            <input type="text" name="ff_storyview_recommended_article_title" id="ff_storyview_recommended_article_title" class="components-textarea-control__input" value="<?php echo $end_screen_recommended_article_title; ?>" />
-
-            <label class="ff_storyview_label" for="ff_storyview_recommended_article_url">Recommended article URL</label>
-            <input type="text" name="ff_storyview_recommended_article_url" id="ff_storyview_recommended_article_url" class="components-textarea-control__input" value="<?php echo $end_screen_recommended_article_url; ?>" />
-        </div>
-    </div>
-
-
 </div><!-- end #ff_storyview_container -->
 
 <?php
