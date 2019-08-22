@@ -220,7 +220,7 @@ function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.css', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=1.5.0', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/spectrum.min.css', __FILE__ ) ) . '" />';
 }
@@ -228,7 +228,7 @@ function ff_storyview_css(){
 function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/spectrum.min.js', __FILE__ ) ) . '"></script>';
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.js', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js?v=1.5.0', __FILE__ ) ) . '"></script>';
 }
 
 /**
@@ -660,11 +660,11 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.css?v=201908131208', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=1.5.0', __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.js?v=201908131221', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=1.5.0', __FILE__ ) ) . '"></script>';
 }
 
 // on activation
@@ -779,8 +779,8 @@ add_filter("plugin_action_links_" . plugin_basename(__FILE__), "storyview_settin
  */
 function ff_storyview_load_settings_style($hook) {
     if($hook == "toplevel_page_storyview_settings") {
-        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.css', __FILE__) );
-        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.js', __FILE__) );
+        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.min.css?v=1.5.0', __FILE__) );
+        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.min.js?v=1.5.0', __FILE__) );
 
         wp_enqueue_style( 'ff_storyview_font_roboto', 'https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext', false );
         wp_enqueue_style( 'ff_storyview_font_rounded', 'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext', false );

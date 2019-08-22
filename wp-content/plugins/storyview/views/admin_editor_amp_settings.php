@@ -115,7 +115,7 @@ const ampCoverAuthorName = '<?php echo $amp_cover_author_name; ?>';
 </script>
 <p><strong>Boost your SEO by generating an AMP Story version of your story.</strong></p>
 
-<div id="ff_storyview_amp_story_settings" class="ff_storyview_block" <?php if($storyview_activ){ ?> style="display: block;" <?php } ?>>
+<div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
     <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php
     if(isset($amp_activ) && $amp_activ == 1){
         ?>checked="checked"<?php
