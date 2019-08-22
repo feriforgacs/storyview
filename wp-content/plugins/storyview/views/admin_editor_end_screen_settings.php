@@ -35,11 +35,13 @@ if(isset($storyview_data->end_screen_settings)){
   <div class="ff_storyview_block_content">
     <input type="checkbox" name="ff_storyview_end_screen_share_enabled" id="ff_storyview_end_screen_share_enabled" value="1" <?php if($end_screen_share_enabled == 1){ ?> checked="checked" <?php } ?> />
     <label for="ff_storyview_end_screen_share_enabled">Enable share button on the end screen</label>
-
     <p></p>
-
     <label class="ff_storyview_label" for="ff_storyview_end_screen_share_button_text">Share button text</label>
     <input type="text" name="ff_storyview_end_screen_share_button_text" id="ff_storyview_end_screen_share_button_text" class="components-textarea-control__input" value="<?php echo $end_screen_share_button_text; ?>" />
+
+    <p class="ff_storyview_info">
+        <i>i</i> The share settings will be the same as of your post so make sure those are ok. (<a href="https://developers.facebook.com/tools/debug/sharing/?q=<?php echo urlencode(get_permalink()); ?>" target="_blank">Click here to test with the Facebook debugger tool.</a>)
+    </p>
   </div>
 
   <h4>Recommended article</h4>

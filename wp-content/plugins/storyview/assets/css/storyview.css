@@ -1457,3 +1457,11 @@ by Ferenc Forgacs - @feriforgacs
 .ff_storyview_add_actions{
     display: flex;
 }
+
+#content-end-screen-settings .ff_storyview_info{
+    padding-left: 0;
+}
+
+#content-end-screen-settings .ff_storyview_block_content{
+    margin-bottom: 2rem;
+}
