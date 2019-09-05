@@ -51,54 +51,5 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
-= 1.5.0 =
-* Social Share Functions
-* Recommendations screen at the end of stories
-* Button designer - Create your own buttons to embed your stories into your posts
-* Admin UI enhancements
-
-= 1.4.2 =
-* Story View button image issue fix
-
-= 1.4.1 =
-* Multiple Story View button support
-
-= 1.4.0 =
-* Display / Hide story controllers - previous, next buttons
-* Default AMP Story settings
-* AMP Story Analytics tracking
-* Default story block settings
-
-= 1.3.1 =
-* Frontend issue fix
-
-= 1.3.0 =
-* Custom color picker support
-
-= 1.2.1 =
-* AMP Story editor layout changes
-
-= 1.2.0 =
-* AMP Story support
-
-= 1.1.3 =
-* Custom block saving issue fixes
-* Single quote error fixes
-
-= 1.1.2 =
-* Admin editor CSS fixes
-
-= 1.1.1 =
-* Background color support for custom story blocks
-
-= 1.1.0 =
-* Custom Story Block support
-
-= 1.0.2 =
-* Swipe gestures
-
-= 1.0.1 =
-* Mobile layout fixes
-
 = 1.0 =
 * Initial release

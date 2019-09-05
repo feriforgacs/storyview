@@ -28,68 +28,10 @@ if ( !function_exists( 'add_action' ) ) {
       <div id="ff_storyview_button_types_content">
         <h4>Your Custom Buttons</h4>
         <div id="ff_storyview_button_types_custom">
-          <?php
-          // get custom storyview buttons from the database
-          global $wpdb;
-          $storyview_custom_buttons = $wpdb->get_results("SELECT * FROM " . FF_STORYVIEW_CUSTOM_BUTTONS_TABLE . " ORDER BY storyview_button_id DESC");
-
-          if(count($storyview_custom_buttons)){
-            foreach($storyview_custom_buttons as $storyview_custom_button){
-              $button_data = json_decode($storyview_custom_button->storyview_button_settings);
-              // create button css
-              $custom_button_css = "";
-              
-              // background color or gradient
-              if($button_data->button_background_type == "color"){
-                $custom_button_css .= "background: " . $button_data->button_background_color . "; ";
-              } else {
-                $custom_button_css .= "background: " . $button_data->button_background_type . "(". $button_data->button_background_gradient_start . ", " . $button_data->button_background_gradient_end . "); ";
-              }
-
-              // font color
-              $custom_button_css .= "color: " . $button_data->button_font_color . "; ";
-
-              // font size
-              $custom_button_css .= "font-size: " . $button_data->button_font_size . "; ";
-
-              // text align
-              $custom_button_css .= "text-align: " . $button_data->button_text_alignment . "; ";
-
-              // border width
-              $custom_button_css .= "border-width: " . $button_data->button_border_width . "; ";
-
-              // border color
-              $custom_button_css .= "border-color: " . $button_data->button_border_color . "; ";
-
-              // padding
-              $custom_button_css .= "padding: " . $button_data->button_padding . "; ";
-
-              // custom css
-              $custom_button_css .= preg_replace('/\s+/S', " ", $button_data->button_custom_css);
-              ?>
-              <div class="ff_storyview_button_types_button_block">
-                <label class="ff_storyview_button_type_label">
-                  <input type="radio" name="ff_storyview_button_type" class="ff_storyview_button_type" value="custom_<?php echo $storyview_custom_button->storyview_button_id; ?>" <?php if($default_button_type == "custom_" . $storyview_custom_button->storyview_button_id){ ?>checked="checked"<?php } ?> />
-                  <i><?php echo stripslashes_deep($storyview_custom_button->storyview_button_name); ?></i>
-
-                  <!-- button #1 -->
-                  <button class="ff_storyview_button ff_storyview_button_type_custom_layout_<?php echo $button_data->button_layout; ?> <?php echo $button_data->button_font_family; ?>" style="<?php echo $custom_button_css; ?>">
-                    <i class="ff_storyview_button_icon"></i><span class="ff_storyview_button_text"><?php
-                      echo $default_button_text;
-                      ?></span>
-                  </button>
-                  <!-- end button #1 -->
-                </label>
-              </div>
-              <?php
-            }
-          } else {
-            // no custom buttons
-            ?>
-            <p>You don't have any custom buttons yet. You can create one <a href="admin.php?page=storyview_settings&tab=button_designer" target="_blank">here</a>.</p>
-            <?php
-          }
-          ?>
+          <div class="premium-info">
+            <p><span role="img" aria-label="Locket icon">🔒</span> This is a premium feature.</p>
+            <p><a href="https://storyviewplugin.com/premium-features.html" target="_blank">Click here to learn more</a> about the premium features of the plugin or visit the following URL to purchase the plugin: <a href="https://gum.co/storyview" target="_blank">https://gum.co/storyview</a></p>
+          </div>
         </div>
 
         <h4>Default Buttons</h4>

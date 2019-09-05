@@ -5,10 +5,10 @@ ob_clean();
  * @package StoryView
  */
 /*
-Plugin Name: ⚡ Story View Free
+Plugin Name: Story View
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.5.0
+Version: 1.0.0
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -795,10 +795,3 @@ function ff_storyview_load_settings_style($hook) {
     }
 }
 add_action("admin_enqueue_scripts", "ff_storyview_load_settings_style");
-
-require 'includes/updatechecker/plugin-update-checker.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://demo.storyviewplugin.com/updater/?action=get_metadata&slug=storyview',
-	__FILE__,
-	'storyview'
-);

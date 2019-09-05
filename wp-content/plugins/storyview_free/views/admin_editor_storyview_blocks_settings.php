@@ -152,10 +152,15 @@ if ( !function_exists( 'add_action' ) ) {
 
   <div class="ff_storyview_add_actions">
     <div class="ff_sotryview_add_actions_button_block">
-      <button class="button" id="ff_storyview_add_code_block_button"><strong>&plus;</strong> Add Custom Block</button>
+      <button class="button" id="ff_storyview_add_code_block_button" disabled="disabled"><strong>&plus;</strong> Add Custom Block</button>
       <p class="ff_storyview_info">
         <i>i</i> To <strong>embed forms, videos, custom HTML or shortcodes</strong>, use this block type.
       </p>
+
+      <div class="premium-info">
+        <p><span role="img" aria-label="Locket icon">🔒</span> This is a premium feature.</p>
+        <p><a href="https://storyviewplugin.com/premium-features.html" target="_blank">Click here to learn more</a> about the premium features of the plugin or visit the following URL to purchase the plugin: <a href="https://gum.co/storyview" target="_blank">https://gum.co/storyview</a></p>
+      </div>
     </div>
 
     <div class="ff_sotryview_add_actions_button_block">
