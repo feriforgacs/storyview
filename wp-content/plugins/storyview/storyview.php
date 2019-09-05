@@ -5,7 +5,7 @@ ob_clean();
  * @package StoryView
  */
 /*
-Plugin Name: ⚡ Story View
+Plugin Name: ⚡ Story View Pro
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
 Version: 1.5.0
