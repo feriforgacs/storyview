@@ -228,6 +228,9 @@ exit();
             amp-story-page {
                 background-color: #000;
             }
+            amp-story-grid-layer{
+                padding: 15px;
+            }
             h1 {
                 font-weight: bold;
                 font-size: 2.875em;
