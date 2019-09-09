@@ -771,7 +771,7 @@ body.ff_storyview_visible{
     margin-left: 10px;
 }
 
-.code_block_previous span, .classic_block_previous span{
+.code_block_previous span, .classic_block_previous span, .end_screen_previous span{
     transform: scaleX(-1);
     display: inline-block;
     margin-right: 10px;

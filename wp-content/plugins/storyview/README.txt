@@ -52,7 +52,7 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 == Changelog ==
 
 = 1.5.1 = 
-* AMP Story CSS updates
+* CSS updates
 * Tested with latest WordPress version
 
 = 1.5.0 =
