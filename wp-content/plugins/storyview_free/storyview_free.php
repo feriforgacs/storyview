@@ -21,6 +21,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+global $wpdb;
 define("FF_STORYVIEW_META_KEY", "ff_storyview_data");
 define("FF_STORYVIEW_SHORTCODE", "ff_storyview");
 define("FF_STORYVIEW_CUSTOM_BUTTONS_TABLE", $wpdb->prefix . "ff_storyview_buttons");
