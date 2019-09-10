@@ -1465,20 +1465,3 @@ by Ferenc Forgacs - @feriforgacs
 #content-end-screen-settings .ff_storyview_block_content{
     margin-bottom: 2rem;
 }
-
-.premium-info{
-    padding: 1rem;
-    border: 1px solid #e0e00f;
-    border-radius: 5px;
-    background: #ffffdc;
-    max-width: 695px;
-}
-
-.premium-info p{
-    padding: 0;
-    margin: 0 0 .5rem;
-}
-
-.premium-info p:nth-child(1){
-    font-weight: 800;
-}
