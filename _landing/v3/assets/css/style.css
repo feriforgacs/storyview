@@ -219,3 +219,27 @@ html, body{
   font-size: .8rem;
   font-weight: 700;
 }
+
+.example__item{
+  text-align: center;
+  position: relative;
+  margin: 1rem auto 2rem;
+}
+
+.example__item .image img{
+  width: 100%;
+  max-width: 310px;
+}
+
+.example__item .content{
+  position: absolute;
+  top: 0;
+  width: calc(100% - 4rem);
+  padding: 2rem;
+}
+
+.example__item .content h4{
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 4.5rem;
+}
