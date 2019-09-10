@@ -243,3 +243,86 @@ html, body{
   font-size: 2.5rem;
   line-height: 4.5rem;
 }
+
+#pricing{
+  margin: 0 -2rem;
+  padding: 2rem;
+  background-color: #2E1641;
+  background-image: url(../images/pricing-background.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+#pricing h3{
+  color: #fff;
+}
+
+#pricing h4{
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  text-align: center;
+  margin: 0 auto 2rem;
+  padding: 0;
+}
+
+#pricing h4 strong{
+  font-weight: 900;
+}
+
+.pricing__item{
+  background: #FFFFFF;
+  box-shadow: 0px 5px 60px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin: 2rem auto 0;
+  padding: 2rem;
+}
+
+#pricing .price {
+  border-bottom: 1px solid #eee;
+  padding: 0 0 1rem;
+}
+
+#pricing .price h4{
+  color: #555;
+  font-size: 2.6rem;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+#pricing .price p{
+  padding: 0;
+  margin: .5rem 0 0;
+}
+
+#pricing .pricing__features p{
+  margin: 0 0 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+#pricing .pricing__features ul, #pricing .pricing__features li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#free .pricing__features li{
+  background-image: url(../images/feature-item-free.svg);
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
+  margin: 0;
+  padding: 0 0 1rem 2.5rem;
+}
+
+#pro .pricing__features li{
+  background-image: url(../images/feature-item-pro.svg);
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
+  margin: 0;
+  padding: 0 0 1rem 2.5rem;
+}
