@@ -326,3 +326,16 @@ html, body{
   margin: 0;
   padding: 0 0 1rem 2.5rem;
 }
+
+#pro .pricing__features span{
+  color: #A2D60E;
+}
+
+#pro .price h4 del{
+  font-size: 1.5rem;
+}
+
+#pro .price h4 ins{
+  color: #8000FF;
+  text-decoration: none;
+}
