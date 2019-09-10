@@ -339,3 +339,29 @@ html, body{
   color: #8000FF;
   text-decoration: none;
 }
+
+#howto__list, #howto__list li{
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+#howto__list{
+  border-top: 1px solid #eee;
+}
+
+#howto__list li{
+  border-bottom: 1px solid #eee;
+  line-height: 2rem;
+  padding: 1rem 1rem 1rem 0;
+}
+
+#howto__list li a{
+  background-image: url(../images/howto-arrow.svg);
+  background-position: center right;
+  background-repeat: no-repeat;
+  color: #555;
+  display: block;
+  padding: 0 1.5rem 0 0;
+  text-decoration: none;
+}
