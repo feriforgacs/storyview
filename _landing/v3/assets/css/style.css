@@ -14,7 +14,7 @@ html, body{
   background: #fff;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
   max-width: 1300px;
-  padding: 2rem;
+  padding: 2rem 2rem 0;
 }
 
 #header__navigation{
@@ -364,4 +364,52 @@ html, body{
   display: block;
   padding: 0 1.5rem 0 0;
   text-decoration: none;
+}
+
+footer{
+  background: #2E1641;
+  color: #fff;
+  margin: 4rem -2rem 0;
+  padding: 2rem;
+}
+
+footer a{
+  color: #fff;
+}
+
+#contact-and-support h4{
+  padding: 0;
+  margin: 0 0 2rem 0;
+  font-size: 1.2rem;
+}
+
+#contact-and-support p{
+  color: #d0d0d0;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+#footer__navigation ul, #footer__navigation li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer__navigation a{
+  text-decoration: none;
+  line-height: 2.5rem;
+}
+
+#footer__bottom{
+  margin: 2rem 0 0;
+  padding: 2rem 0;
+  border-top: 2px solid #26073E;
+}
+
+#footer__bottom p{
+  color: #d0d0d0;
+  font-size: .8rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
