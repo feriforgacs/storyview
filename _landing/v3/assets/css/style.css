@@ -30,8 +30,10 @@ html, body{
   font-size: 2rem;
 }
 
-#header__logo{
+#header__logo a{
   display: flex;
+  text-decoration: none;
+  color: #555;
 }
 
 #header__logo .logo{
