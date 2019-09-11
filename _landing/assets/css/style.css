@@ -761,6 +761,12 @@ footer a{
   line-height: 2.5rem;
 }
 
+#subpage__content h4{
+  font-size: 1.5rem;
+  margin: 2rem 0;
+  line-height: 2.2rem;
+}
+
 #subpage__content img{
   width: 100%;
 }
