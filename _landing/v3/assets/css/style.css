@@ -70,6 +70,11 @@ html, body{
 #header__navigation li a{
   text-decoration: none;
   color: #555;
+  transition: 200ms all ease-in;
+}
+
+#header__navigation li a:hover{
+  color: #8000FF;
 }
 
 #header__cta{
@@ -270,7 +275,7 @@ html, body{
 }
 
 #pricing{
-  margin: 0 -2rem;
+  margin: 4rem -2rem 0;
   padding: 2rem;
   background-color: #2E1641;
   background-image: url(../images/pricing-background.png);

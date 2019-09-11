@@ -6,11 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Story View v3</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div id="container">
-    <header>
+    <header data-aos="flip-up">
       <nav id="header__navigation">
         <h1 id="header__logo">
           <span class="logo">
@@ -35,7 +36,7 @@
       </nav><!-- end #header__navigation -->
     </header>
 
-    <div id="hero">
+    <div id="hero" data-aos="fade-up" data-aos-delay="400">
       <div id="hero__text">
         <h2>Stories on your WordPress site</h2>
         <h3>Story View brings the story content format to your WordPress website.<br />
@@ -59,7 +60,7 @@
       <h3>Main Features</h3>
 
       <div id="features__items">
-        <div class="feature__item" id="classic-blocks">
+        <div class="feature__item" id="classic-blocks" data-aos="flip-left">
           <div class="feature__icon">
             <img src="assets/images/classic-block-icon.svg" alt="Classic Story Blocks icon">
           </div>
@@ -68,7 +69,7 @@
           <a href="" class="link">Learn more...</a>
         </div>
 
-        <div class="feature__item" id="custom-blocks">
+        <div class="feature__item" id="custom-blocks" data-aos="flip-left" data-aos-delay="200">
           <div class="feature__icon">
             <img src="assets/images/custom-block-icon.svg" alt="Custom Story Blocks icon">
           </div>
@@ -77,7 +78,7 @@
           <a href="" class="link">Learn more...</a>
         </div>
 
-        <div class="feature__item" id="amp-story">
+        <div class="feature__item" id="amp-story" data-aos="flip-left" data-aos-delay="400">
           <div class="feature__icon">
             <img src="assets/images/amp-story-icon.svg" alt="AMP Story Support icon">
           </div>
@@ -92,7 +93,7 @@
       <h3>Examples</h3>
 
       <div id="examples__items">
-        <div class="example__item">
+        <div class="example__item" data-aos="fade-up">
           <div class="image">
             <img src="assets/images/example-1.png" alt="Story View demo with custom blocks">
           </div>
@@ -102,7 +103,7 @@
           </div>
         </div>
 
-        <div class="example__item">
+        <div class="example__item" data-aos="fade-up" data-aos-delay="200">
           <div class="image">
             <img src="assets/images/example-2.png" alt="Story View demo with classic blocks - Recipe">
           </div>
@@ -112,7 +113,7 @@
           </div>
         </div>
 
-        <div class="example__item">
+        <div class="example__item" data-aos="fade-up" data-aos-delay="400">
           <div class="image">
             <img src="assets/images/example-3.png" alt="Story View demo with classic blocks - Cleaning tips">
           </div>
@@ -122,7 +123,7 @@
           </div>
         </div>
 
-        <div class="example__item">
+        <div class="example__item" data-aos="fade-up" data-aos-delay="600">
           <div class="image">
             <img src="assets/images/example-4.png" alt="Story View demo with classic blocks - Sporting event highlights">
           </div>
@@ -134,7 +135,7 @@
       </div>
     </div><!-- end #examples -->
 
-    <div id="pricing" class="section">
+    <div id="pricing" class="section" data-aos="zoom-in">
       <h3>Pricing</h3>
       <h4>Buy it once, use it as long as you want it.<br />
         <strong>One time purchase, no recurring fees.</strong></h4>
@@ -190,7 +191,7 @@
 
     <div id="howto" class="section">
       <h3>How to...</h3>
-      <ul id="howto__list">
+      <ul id="howto__list" data-aos="fade-up">
         <li><a href="http://" target="_blank"><strong>Install Story View</strong> on your WordPress site</a></li>
         <li><a href="http://" target="_blank"><strong>Create your first story</strong> with Story View and Classic story blocks</a></li>
         <li><a href="http://" target="_blank"><strong>Add a Contact form</strong> to your story with the help of <strong>Custom Story blocks</strong></a></li>
@@ -205,7 +206,7 @@
       </ul>
     </div><!-- end #howto -->
 
-    <footer>
+    <footer data-aos="fade-up">
       <div id="footer__top">
         <div id="contact-and-support">
           <h4>Contact and Support</h4>
@@ -235,5 +236,13 @@
 
     </footer>
   </div><!-- end #container -->
+
+  <script src="assets/scripts/aos.js"></script>
+  <script>
+    AOS.init({
+      easing: 'ease-out-back',
+      duration: 1000
+    });
+  </script>
 </body>
 </html>
