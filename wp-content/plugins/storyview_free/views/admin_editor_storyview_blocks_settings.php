@@ -6,6 +6,9 @@ if ( !function_exists( 'add_action' ) ) {
 }
 ?>
 <p><strong>Add story blocks to your story. You can use Classic Blocks for image and text stories, or you can use Custom Blocks to embed videos, forms, shortcodes or other kind of HTML.</strong></p>
+
+<p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/create-your-first-story.html" target="_blank">Learn how to create a story with Classic Blocks</a> or <span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/add-a-mailchimp-subscription-form-to-your-story-with-the-help-of-custom-story-blocks.html" target="_blank">Learn how to add a Mailchimp form to your story</a></p>
+
 <div id="ff_storyview_blocks_list">
   <?php
   $storyview_blocks_count = 0;

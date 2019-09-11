@@ -31,7 +31,11 @@ if(isset($storyview_data->end_screen_settings)){
 ?>
 <div class="ff_storyview_block">
   <h4>Share Story View</h4>
+  
+  <p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html" target="_blank">Learn more about these features</a></p>
+
   <p>By turning this on, a share button will be visible at the end of your story.</p>
+
   <div class="ff_storyview_block_content">
     <input type="checkbox" name="ff_storyview_end_screen_share_enabled" id="ff_storyview_end_screen_share_enabled" value="1" <?php if($end_screen_share_enabled == 1){ ?> checked="checked" <?php } ?> />
     <label for="ff_storyview_end_screen_share_enabled">Enable share button on the end screen</label>

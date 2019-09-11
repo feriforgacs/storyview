@@ -20,6 +20,8 @@ if ( !function_exists( 'add_action' ) ) {
       <label for="ff_storyview_display_controllers">Enable Story View Controllers for all story blocks <br /><small>By default, "Previous" and "Next" buttons are only visible for Custom Story Blocks. If you enable this setting, they will be visible for Classic Blocks as well.<br />
       To change the label of the buttons, go to the following page: <a href="/wp-admin/admin.php?page=storyview_settings&tab=general" target="_blank">Story View General Settings</a>
       </small></label>
+
+      <p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/enable-story-controllers-for-easier-navigation.html" target="_blank">Learn more about this feature</a></p>
     </div>
     
     <div class="ff_storyview_player_settings_section">
@@ -41,6 +43,8 @@ if ( !function_exists( 'add_action' ) ) {
         <?php
       }
       ?>
+
+      <p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/turn-on-social-share-for-all-your-story-blocks.html" target="_blank">Learn more about this feature</a></p>
     </div>
   </div>
 </div>

@@ -114,6 +114,7 @@ if(!isset($amp_cover_author_name) || strlen($amp_cover_author_name) < 1){
 const ampCoverAuthorName = '<?php echo $amp_cover_author_name; ?>';
 </script>
 <p><strong>Boost your SEO by generating an AMP Story version of your story.</strong></p>
+<p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/amp-story-wordpress-storyview.html" target="_blank">Learn more about this feature</a></p>
 
 <div id="ff_storyview_amp_story_settings" class="ff_storyview_block">
     <input id="ff_storyview_amp_activ" name="ff_storyview_amp_activ" class="components-checkbox-control__input" type="checkbox" value="1" <?php

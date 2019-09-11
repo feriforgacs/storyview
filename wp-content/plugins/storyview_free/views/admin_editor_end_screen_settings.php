@@ -7,6 +7,9 @@ if ( !function_exists( 'add_action' ) ) {
 ?>
 <div class="ff_storyview_block">
   <h4>Share Story View</h4>
+  
+  <p class="tutorial-info"><span role="img" aria-label="Pointing finger">👉</span> <a href="https://storyviewplugin.com/enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html" target="_blank">Learn more about these features</a></p>
+
   <p>By turning this on, a share button will be visible at the end of your story.</p>
   <div class="premium-info">
     <p><span role="img" aria-label="Locket icon">🔒</span> This is a premium feature.</p>
