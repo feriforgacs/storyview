@@ -755,6 +755,16 @@ footer a{
   color: #8000FF;
 }
 
+#subpage__content h3{
+  font-size: 1.5rem;
+  margin: 2rem 0;
+  line-height: 2.5rem;
+}
+
+#subpage__content img{
+  width: 100%;
+}
+
 .video-wrapper{
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
