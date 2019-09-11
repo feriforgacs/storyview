@@ -729,3 +729,41 @@ footer a{
   max-width: 150px;
   margin: 0 auto;
 }
+
+#subpage{
+  max-width: 500px;
+  margin: 4rem auto;
+}
+
+#subpage__header h3{
+  text-align: center;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin: 0 0 2rem;
+  padding: 0 0 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+#subpage__content{
+  margin-bottom: 4rem;
+}
+
+#subpage__content a{
+  font-weight: 700;
+  color: #8000FF;
+}
+
+.video-wrapper{
+  position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.video-wrapper iframe{
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
