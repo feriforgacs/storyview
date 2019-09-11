@@ -4,7 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Story View v3</title>
+  <title>Stories on your WordPress blog - Story View WordPress plugin - AMP Story for WordPress</title>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="assets/icons/site.webmanifest">
+  <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#8000ff">
+  <meta name="msapplication-config" content="assets/icons/browserconfig.xml">
+  <meta name="theme-color" content="#8000ff">
+
+  <meta property="og:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress">
+  <meta property="og:site_name" content="Story View WordPress plugin">
+  <meta property="og:url" content="storyviewplugin.com">
+  <meta property="og:description" content="Create and display stories on your WordPress website and grow engagement ✨">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://storyviewplugin.com/assets/icons/share-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@feriforgacs">
+  <meta name="twitter:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress">
+  <meta name="twitter:description" content="Create and display stories on your WordPress website and grow engagement ✨">
+  <meta name="twitter:image" content="https://storyviewplugin.com/assets/icons/twitter-share-image.png">
+  <meta name="twitter:image:alt" content="Story View WordPress plugin">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67236740-7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-67236740-7');
+  </script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -206,7 +241,7 @@
       </ul>
     </div><!-- end #howto -->
 
-    <footer data-aos="fade-up">
+    <footer data-aos="fade">
       <div id="footer__top">
         <div id="contact-and-support">
           <h4>Contact and Support</h4>
@@ -243,6 +278,39 @@
       easing: 'ease-out-back',
       duration: 1000
     });
+  </script>
+
+  <div id="cookie-alert">
+    <p>🍪 We are using cookies to ensure you get the best experience on our website. <a class="subpage-link"
+        href="privacy-policy.html">Learn more...</a></p>
+    <span><a id="cookie-alert-accept">I agree</a></span>
+  </div>
+
+  <script>
+    const body = document.querySelector("body");
+    
+    // cookie alert
+    const cookieAlert = document.querySelector("#cookie-alert");
+    const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
+
+    cookieAlertAgreeButton.addEventListener("click", toggleCookieAlert);
+
+    function toggleCookieAlert(show = false) {
+      if (show === true) {
+        cookieAlert.style.display = "flex";
+      } else {
+        const cookieExpires = new Date();
+        cookieExpires.setFullYear(cookieExpires.getFullYear() + 1);
+        document.cookie = "sv_cookie_accepted=1; expires=" + cookieExpires.toUTCString() + ";";
+
+        cookieAlert.style.display = "none";
+      }
+    }
+
+    if (!document.cookie.includes("sv_cookie_accepted=1")) {
+      toggleCookieAlert(true);
+    }
+
   </script>
 </body>
 </html>

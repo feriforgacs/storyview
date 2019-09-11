@@ -688,3 +688,44 @@ footer a{
     margin-right: 6rem;
   }
 }
+
+#cookie-alert {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(270deg, #8000ff 0, #ff7a00 100%), #fff;
+  text-align: center;
+  font-size: .8rem;
+  padding: .5rem;
+  line-height: 2rem;
+  color: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  display: none;
+  flex-direction: column;
+}
+
+#cookie-alert .subpage-link {
+  color: #eee;
+  text-decoration: underline;
+}
+
+#cookie-alert #cookie-alert-accept {
+  cursor: pointer;
+  color: #fff;
+}
+
+#cookie-alert p {
+  padding: 0;
+  margin: 0;
+  flex: 0 0 90%;
+}
+
+#cookie-alert span {
+  width: 100%;
+  text-align: center;
+  background: 0 0;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  max-width: 150px;
+  margin: 0 auto;
+}
