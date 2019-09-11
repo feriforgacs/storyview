@@ -765,6 +765,19 @@ footer a{
   width: 100%;
 }
 
+.question{
+  border-bottom: 1px solid #eee;
+  margin: 0 0 4rem 0;
+  padding: 0 0 2rem 0;
+}
+
+.question h4{
+  font-size: 1.3rem;
+  margin: 0 0 2rem 0;
+  line-height: 2.5rem;
+  padding: 0;
+}
+
 .video-wrapper{
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
