@@ -51,6 +51,9 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.6.0 =
+* Story widget to display your latest stories
+
 = 1.5.1 = 
 * CSS updates
 * Tested with latest WordPress version
