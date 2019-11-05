@@ -67,28 +67,25 @@ class FF_Storyview_Widget extends WP_Widget {
         }
         ?>
         <a
-          href="<?php echo $story["post_permalink"] ?>"
+          href="<?php echo $story["post_permalink"] ?>#storyview"
           title="<?php echo $story["post_title"] ?>"
-          class="ff_storyview_widget_story_item">
+          class="ff_storyview_widget_story_item <?php
+          if( $instance['hide_story_button_text'] && $instance['hide_story_button_text'] == 1 ){
+            echo "ff_storyview_widget_story_item_title_hidden";
+          }
+          ?>">
 
           <span
             style="background-image: url('<?php echo $story_item_thubnail_image; ?>');"
             class="ff_storyview_widget_story_item_thumbnail"
           >
-            <?php echo $story["post_title"]; ?>
           </span>
 
-          <?php 
-          if( !$instance['hide_story_button_text'] || $instance['hide_story_button_text'] != 1 ){
-            ?>
-            <span
-              class="ff_storyview_widget_story_item_title"
-              >
-              <?php echo $story["post_title"]; ?>
-            </span>
-            <?php
-          }
-          ?>
+          <span
+            class="ff_storyview_widget_story_item_title"
+            >
+            <?php echo mb_substr( $story["post_title"], 0, 25 ); ?>...
+          </span>
         </a>
         <?php
       }
