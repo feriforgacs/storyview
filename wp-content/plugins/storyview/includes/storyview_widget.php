@@ -54,7 +54,45 @@ class FF_Storyview_Widget extends WP_Widget {
     /**
      * Display latest stories
      */
-    
+    if( count( $stories ) > 0 ){
+      foreach( $stories as $story ){
+        // get thumbnail image
+        $story_blocks = $story["story_data"]->story_blocks_data;
+        $story_item_thubnail_image = "";
+        foreach( $story_blocks as $story_block ){
+          if( isset( $story_block->ff_storyview_block_image ) && $story_block->ff_storyview_block_image != "" ){
+            $story_item_thubnail_image = urldecode( $story_block->ff_storyview_block_image );
+            break;
+          }
+        }
+        ?>
+        <a
+          href="<?php echo $story["post_permalink"] ?>"
+          title="<?php echo $story["post_title"] ?>"
+          class="ff_storyview_widget_story_item">
+
+          <span
+            style="background-image: url('<?php echo $story_item_thubnail_image; ?>');"
+            class="ff_storyview_widget_story_item_thumbnail"
+          >
+            <?php echo $story["post_title"]; ?>
+          </span>
+
+          <?php 
+          if( !$instance['hide_story_button_text'] || $instance['hide_story_button_text'] != 1 ){
+            ?>
+            <span
+              class="ff_storyview_widget_story_item_title"
+              >
+              <?php echo $story["post_title"]; ?>
+            </span>
+            <?php
+          }
+          ?>
+        </a>
+        <?php
+      }
+    }
 
     echo $args['after_widget'];
   }
