@@ -796,3 +796,11 @@ function ff_storyview_load_settings_style($hook) {
     }
 }
 add_action("admin_enqueue_scripts", "ff_storyview_load_settings_style");
+
+/**
+ * Widget
+ */
+include_once("includes/storyview_widget.php");
+add_action("widgets_init", function(){
+    register_widget("FF_Storyview_Widget");
+});
