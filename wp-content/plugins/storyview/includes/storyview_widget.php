@@ -71,7 +71,11 @@ class FF_Storyview_Widget extends WP_Widget {
           title="<?php echo $story["post_title"] ?>"
           class="ff_storyview_widget_story_item <?php
           if( $instance['hide_story_button_text'] && $instance['hide_story_button_text'] == 1 ){
-            echo "ff_storyview_widget_story_item_title_hidden";
+            echo " ff_storyview_widget_story_item_title_hidden";
+          }
+
+          if( $instance['story_button_inverse'] && $instance['story_button_inverse'] == 1 ){
+            echo " ff_storyview_widget_story_item_inverse";
           }
           ?>">
 
@@ -155,6 +159,29 @@ class FF_Storyview_Widget extends WP_Widget {
         </small>
       </label>
     </p>
+
+    <p>
+      <input
+        type="checkbox"
+        id="<?php echo esc_attr( $this->get_field_id( "story_button_inverse" ) ); ?>"
+        name="<?php echo esc_attr( $this->get_field_name( "story_button_inverse" ) ); ?>"
+        <?php 
+        checked( ( $instance['story_button_inverse'] == 1 ) ? 1 : '', 1 );
+        ?>
+        class="checkbox"
+      />
+      <label for="<?php echo esc_attr( $this->get_field_id( "story_button_inverse" ) ); ?>">
+        <?php
+        esc_attr_e( "Display inverse story button", "text_domain" );
+        ?>
+        <br />
+        <small>
+        <?php
+        esc_attr_e( "Dark background with white font, like Button Type 2 Inverse" );
+        ?>
+        </small>
+      </label>
+    </p>
     <?php
   }
 
@@ -164,6 +191,7 @@ class FF_Storyview_Widget extends WP_Widget {
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
     $instance['story_count'] = ( ! empty( $new_instance['story_count'] ) ) ? intval( $new_instance['story_count'] ) : '';
     $instance['hide_story_button_text'] = ( ! empty( $new_instance['hide_story_button_text'] ) ) ? 1 : 0;
+    $instance['story_button_inverse'] = ( ! empty( $new_instance['story_button_inverse'] ) ) ? 1 : 0;
 
     return $instance;
   }
