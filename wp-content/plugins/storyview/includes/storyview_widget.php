@@ -28,11 +28,33 @@ class FF_Storyview_Widget extends WP_Widget {
     $story_count = ! empty( $instance['story_count'] ) ? intval( $instance['story_count'] ) : 5;
     $latest_stories = $wpdb->get_results("SELECT post_id, meta_value FROM " . $wpdb->prefix . "postmeta WHERE `meta_key` LIKE 'ff_storyview_data' AND `meta_value` LIKE '%\"activ\":1%' ORDER BY post_id DESC LIMIT " . $story_count);
 
-    ?>
-    <pre>
-    <?php print_r($latest_stories); ?>
-    </pre>
-    <?php
+    $story_post_IDs = array();
+    $stories = array();
+    if( count( $latest_stories ) ){
+      foreach( $latest_stories as $story ){
+        $stories[$story->post_id]["story_data"] = json_decode($story->meta_value);
+        $story_post_IDs[] = $story->post_id;
+      }
+    }
+
+    /**
+     * Get posts data for stories
+     */
+    if( count( $story_post_IDs ) > 0 ){
+      $story_posts = get_posts( array( "post__in" => $story_post_IDs ) );
+
+      if( count( $story_posts ) > 0 ) {
+        foreach( $story_posts as $story_post ){
+          $stories[$story_post->ID]["post_title"] = $story_post->post_title;
+          $stories[$story_post->ID]["post_permalink"] = get_permalink( $story_post->ID );
+        }
+      }
+    }
+
+    /**
+     * Display latest stories
+     */
+    
 
     echo $args['after_widget'];
   }
