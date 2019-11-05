@@ -21,22 +21,18 @@ class FF_Storyview_Widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
     }
 
-    if( ! empty( $instance['selected_posts'] ) && is_array( $instance['selected_posts'] ) ){ 
+    /**
+     * Get latest stories from the database
+     */
+    global $wpdb;
+    $story_count = ! empty( $instance['story_count'] ) ? intval( $instance['story_count'] ) : 5;
+    $latest_stories = $wpdb->get_results("SELECT post_id, meta_value FROM " . $wpdb->prefix . "postmeta WHERE `meta_key` LIKE 'ff_storyview_data' AND `meta_value` LIKE '%\"activ\":1%' ORDER BY post_id DESC LIMIT " . $story_count);
 
-      $selected_posts = get_posts( array( 'post__in' => $instance['selected_posts'] ) );
-      ?>
-      <ul>
-      <?php foreach ( $selected_posts as $post ) { ?>
-        <li><a href="<?php echo get_permalink( $post->ID ); ?>">
-        <?php echo $post->post_title; ?>
-        </a></li>		
-      <?php } ?>
-      </ul>
-      <?php 
-      
-    }else{
-      echo esc_html__( 'No posts selected!', 'text_domain' );	
-    }
+    ?>
+    <pre>
+    <?php print_r($latest_stories); ?>
+    </pre>
+    <?php
 
     echo $args['after_widget'];
   }
