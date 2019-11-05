@@ -43,36 +43,74 @@ class FF_Storyview_Widget extends WP_Widget {
 
   // widget form in admin widgets screen
   public function form( $instance ){
-    $posts = get_posts( array( 
-			'posts_per_page' => 20,
-			'offset' => 0
-		) );
-    $selected_posts = ! empty( $instance['selected_posts'] ) ? $instance['selected_posts'] : array();
+    $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Latest stories', 'text_domain' );
+    $story_count = ! empty( $instance['story_count'] ) ? $instance['story_count'] : 5;
     ?>
-    <div style="max-height: 120px; overflow: auto;">
-    <ul>
-    <?php foreach ( $posts as $post ) { ?>
+    <p>
+      <label for="<?php echo esc_attr( $this->get_field_id( "title" ) ); ?>">
+        <?php
+        esc_attr_e( "Widget title:", "text_domain" );
+        ?>
+      </label>
+      <input
+        type="text"
+        id="<?php echo esc_attr( $this->get_field_id( "title" ) ); ?>"
+        name="<?php echo esc_attr( $this->get_field_name( "title" ) ); ?>"
+        value="<?php echo esc_attr( $title ); ?>"
+        class="widefat"
+      />
+    </p>
 
-      <li><input 
-        type="checkbox" 
-        name="<?php echo esc_attr( $this->get_field_name( 'selected_posts' ) ); ?>[]" 
-        value="<?php echo $post->ID; ?>" 
-        <?php checked( ( in_array( $post->ID, $selected_posts ) ) ? $post->ID : '', $post->ID ); ?> />
-        <?php echo get_the_title( $post->ID ); ?></li>
+    <p>
+      <label for="<?php echo esc_attr( $this->get_field_id( "story_count" ) ); ?>">
+        <?php
+        esc_attr_e( "Number of stories to show", "text_domain" );
+        ?>
+      </label>
+      <input
+        type="number"
+        id="<?php echo esc_attr( $this->get_field_id( "story_count" ) ); ?>"
+        name="<?php echo esc_attr( $this->get_field_name( "story_count" ) ); ?>"
+        value="<?php echo esc_attr( $story_count ); ?>"
+        step="1"
+        min="1"
+        max="10"
+        size="3"
+        class="tiny-text"
+      />
+    </p>
 
-    <?php } ?>
-    </ul>
-    </div>
+    <p>
+      <input
+        type="checkbox"
+        id="<?php echo esc_attr( $this->get_field_id( "hide_story_button_text" ) ); ?>"
+        name="<?php echo esc_attr( $this->get_field_name( "hide_story_button_text" ) ); ?>"
+        <?php 
+        checked( ( $instance['hide_story_button_text'] == 1 ) ? 1 : '', 1 );
+        ?>
+        class="checkbox"
+      />
+      <label for="<?php echo esc_attr( $this->get_field_id( "hide_story_button_text" ) ); ?>">
+        <?php
+        esc_attr_e( "Hide story icon text", "text_domain" );
+        ?>
+        <br />
+        <small>
+        <?php
+        esc_attr_e( "The text will be generated from the title of the post the story was added to", "text_domain" );
+        ?>
+        </small>
+      </label>
+    </p>
     <?php
   }
 
   // save widget settings
   public function update( $new_instance, $old_instance ){
-    $instance = array();
+    $instance = $old_instance;
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-      
-    $selected_posts = ( ! empty ( $new_instance['selected_posts'] ) ) ? (array) $new_instance['selected_posts'] : array();
-    $instance['selected_posts'] = array_map( 'sanitize_text_field', $selected_posts );
+    $instance['story_count'] = ( ! empty( $new_instance['story_count'] ) ) ? intval( $new_instance['story_count'] ) : '';
+    $instance['hide_story_button_text'] = ( ! empty( $new_instance['hide_story_button_text'] ) ) ? 1 : 0;
 
     return $instance;
   }
