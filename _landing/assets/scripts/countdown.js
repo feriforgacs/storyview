@@ -3,7 +3,7 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("2019-12-31");
+const endDate = new Date("2020-01-30");
 
 function countdownTimer(){
   const now = new Date();
@@ -26,4 +26,4 @@ function addZero(value){
 
 setInterval(countdownTimer, 1000);
 
-dealinfo.textContent = "Save $10 (28%) with the 🎄 Holiday Deal until December 31.";
+dealinfo.textContent = "Save $15 (42%) with the 🎉 New Year Deal 🎉 until January 30.";
