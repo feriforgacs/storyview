@@ -3,7 +3,7 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("2020-02-15");
+const endDate = new Date("2020-04-12");
 
 function countdownTimer(){
   const now = new Date();
@@ -26,4 +26,4 @@ function addZero(value){
 
 setInterval(countdownTimer, 1000);
 
-dealinfo.textContent = "Save $15 (42%) with the 💖 Valentine's Day Deal 💖 until Febuary 14.";
+dealinfo.textContent = "Save $15 (42%) with the 🐣 Easter Deal 🐰 until April 12.";
