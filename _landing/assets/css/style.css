@@ -280,96 +280,49 @@ html, body{
   margin: 4rem -2rem 0;
   padding: 2rem;
   background-color: #2E1641;
-  background-image: url(../images/pricing-background.png);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: contain;
 }
 
 #pricing h3{
   color: #fff;
 }
 
-#pricing h4{
+#pricing h2{
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 2.5rem;
+  line-height: 3.5rem;
   text-align: center;
   margin: 0 auto 2rem;
   padding: 0;
 }
 
-#pricing h4 strong{
+#pricing h2 strong{
   font-weight: 900;
 }
 
-.pricing__item{
-  background: #FFFFFF;
-  box-shadow: 0px 5px 60px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  margin: 2rem auto 0;
-  padding: 2rem;
+#pricing p{
+  color: #fff;
+  text-align: center;
 }
 
-#pricing .price {
-  border-bottom: 1px solid #eee;
-  padding: 0 0 1rem;
+#pricing .vat-info{
+  opacity: .5;
 }
 
-#pricing .price h4{
-  color: #555;
-  font-size: 2.6rem;
-  font-weight: 900;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+#pricing .button{
+  border-radius: 3rem;
+  font-size: 1.2rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  margin: 2rem auto;
 }
 
-#pricing .price p{
-  padding: 0;
-  margin: .5rem 0 0;
+#pricing .button del{
+  font-size: .9rem;
 }
 
-#pricing .pricing__features p{
-  margin: 0 0 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-#pricing .pricing__features ul, #pricing .pricing__features li{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#free .pricing__features li{
-  background-image: url(../images/feature-item-free.svg);
-  background-repeat: no-repeat;
-  background-position: 0px 3px;
-  margin: 0;
-  padding: 0 0 1rem 2.5rem;
-}
-
-#pro .pricing__features li{
-  background-image: url(../images/feature-item-pro.svg);
-  background-repeat: no-repeat;
-  background-position: 0px 3px;
-  margin: 0;
-  padding: 0 0 1rem 2.5rem;
-}
-
-#pro .pricing__features span{
-  color: #A2D60E;
-}
-
-#pro .price h4 del{
-  font-size: 1.5rem;
-}
-
-#pro .price h4 ins{
-  color: #8000FF;
-  text-decoration: none;
+#pricing .button ins{
+  font-size: 1.4rem;
 }
 
 #howto__list, #howto__list li{
@@ -637,7 +590,7 @@ footer a{
     content: "";
     background-color: #2E1641;
     width: 100%;
-    height: 80%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -825,23 +778,9 @@ footer a{
   margin-left: 15px;
 }
 
-body{
-  padding-top: 80px;
-}
-
 @media only screen and (min-width: 768px){
   .announcement-bar{
     height: 50px;
-  }
-
-  body{
-    padding-top: 50px;
-  }
-}
-
-@media only screen and (min-width: 1024px){
-  header{
-    top: 50px;
   }
 }
 
@@ -924,4 +863,16 @@ body{
   max-width: 500px;
   padding: .5rem 1rem;
   text-align: center;
+}
+
+.vat-info{
+  color: #888;
+  font-size: .8rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+sup{
+  color: #E10B51;
 }
