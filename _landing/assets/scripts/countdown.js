@@ -26,4 +26,4 @@ function addZero(value){
 
 setInterval(countdownTimer, 1000);
 
-dealinfo.textContent = "Save $15 (42%) with the 🐣 Easter Deal 🐰 until April 12.";
+dealinfo.textContent = "Save $15 (42%) with the 🐣 Easter Deal 🐰";
