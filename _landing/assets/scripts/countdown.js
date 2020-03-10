@@ -3,21 +3,21 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("2020-04-12");
+const endDate = new Date("Mar 19, 2020 23:59:59");
 
 function countdownTimer(){
   const now = new Date();
-  const remainingTime = new Date(endDate.getTime() - now.getTime());
-
-  let remainingDays = remainingTime.getUTCDate() - 1;
-  let remainingHours = remainingTime.getUTCHours();
-  let remainingMinutes = remainingTime.getUTCMinutes();
-  let remainingSeconds = remainingTime.getUTCSeconds();
-
-  dayCounter.textContent = addZero(remainingDays);
+  const remainingTime = Math.abs(endDate - now) / 1000;
+  
+  let remainingSeconds = Math.floor(remainingTime  % 60);
+  let remainingMinutes = Math.floor(remainingTime / 60) % 60;
+  let remainingHours = Math.floor(remainingTime / 3600) % 24;
+  let remainingDays = Math.floor(remainingTime / 86400);
+  
+  secCounter.textContent = addZero(remainingSeconds % 60);
+  minCounter.textContent = addZero(remainingMinutes % 60);
   hourCounter.textContent = addZero(remainingHours);
-  minCounter.textContent = addZero(remainingMinutes);
-  secCounter.textContent = addZero(remainingSeconds);
+  dayCounter.textContent = addZero(remainingDays);
 }
 
 function addZero(value){
