@@ -222,6 +222,10 @@ html, body{
   color: #555;
 }
 
+.feature__item p a{
+  color: #8000FF;
+}
+
 .feature__icon{
   width: 90px;
   height: 90px;
@@ -695,7 +699,8 @@ footer a{
 }
 
 #subpage{
-  max-width: 500px;
+  line-height: 250%;
+  max-width: 600px;
   margin: 4rem auto;
 }
 
@@ -708,8 +713,18 @@ footer a{
   border-bottom: 1px solid #eee;
 }
 
+#subpage__header h1{
+  font-size: 2.5rem;
+  line-height: 4rem;
+}
+
 #subpage__content{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-bottom: 4rem;
+}
+
+#subpage__content li{
+  margin-bottom: 2rem;
 }
 
 #subpage__content a{
@@ -882,4 +897,40 @@ footer a{
 
 sup{
   color: #E10B51;
+}
+
+#the-power-of-stories{
+  background: linear-gradient(45deg, #FF7A00 0%, #8000FF 100%);
+  font-size: 1.8rem;
+  margin: 5rem -2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+#the-power-of-stories a{
+  color: #fff;
+  text-decoration: none;
+}
+
+#the-power-of-stories .button{
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.content-info{
+  color: #888;
+  font-style: italic;
+  font-size: .8rem;
+}
+
+#subpage__content .content-info a{
+  color: #888;
+  font-weight: normal;
+}
+
+#subpage__content .content-image{
+  display: block;
+  margin: 1rem auto;
+  max-height: 500px;
+  width: auto;
 }
