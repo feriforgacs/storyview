@@ -3,7 +3,7 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("May 14, 2020 23:59:59");
+const endDate = new Date("May 31, 2020 23:59:59");
 
 function countdownTimer(){
   const now = new Date();
