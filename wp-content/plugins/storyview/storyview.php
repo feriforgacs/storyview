@@ -8,7 +8,7 @@ ob_clean();
 Plugin Name: ⚡ Story View Pro
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.6.0
+Version: 1.6.1
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
