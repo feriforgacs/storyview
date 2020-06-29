@@ -207,8 +207,8 @@
 .ff_storyview_blocks_container.visible {
   display: flex;
   margin: 0;
-  width: 100%;
-  max-width: 100%
+  width: 100% !important;
+  max-width: 100% !important
 }
 
 body.ff_storyview_visible {
