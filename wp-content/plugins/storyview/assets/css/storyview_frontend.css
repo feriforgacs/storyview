@@ -663,8 +663,8 @@ body.ff_storyview_visible {
   top: 0;
   left: 0;
   border-radius: 55px;
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   line-height: 58px;
   background: rgba(0, 0, 0, .5);
   border: 2px solid #ad11a6;
@@ -864,6 +864,7 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container {
 
 .ff_storyview_end_screen_recommend h4 {
   border-bottom: 1px solid rgba(255, 255, 255, .1);
+  color: #fff;
   padding-bottom: 20px;
   margin: 40px 0 20px
 }
