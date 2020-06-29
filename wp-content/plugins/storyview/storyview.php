@@ -8,7 +8,7 @@ ob_clean();
 Plugin Name: ⚡ Story View Pro
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.6.1
+Version: 1.6.2
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -22,6 +22,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 global $wpdb;
+define("FF_STORYVIEW_PLUGIN_VERSION", "1.6.2");
 define("FF_STORYVIEW_META_KEY", "ff_storyview_data");
 define("FF_STORYVIEW_SHORTCODE", "ff_storyview");
 define("FF_STORYVIEW_CUSTOM_BUTTONS_TABLE", $wpdb->prefix . "ff_storyview_buttons");
@@ -221,7 +222,7 @@ function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=1.5.1', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/spectrum.min.css', __FILE__ ) ) . '" />';
 }
@@ -229,7 +230,7 @@ function ff_storyview_css(){
 function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/spectrum.min.js', __FILE__ ) ) . '"></script>';
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js?v=1.5.1', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
 }
 
 /**
@@ -661,11 +662,11 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=1.5.1', __FILE__ ) ) . '" />';
+    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=1.5.1', __FILE__ ) ) . '"></script>';
+    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
 }
 
 // on activation
@@ -780,8 +781,8 @@ add_filter("plugin_action_links_" . plugin_basename(__FILE__), "storyview_settin
  */
 function ff_storyview_load_settings_style($hook) {
     if($hook == "toplevel_page_storyview_settings") {
-        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.min.css?v=1.5.0', __FILE__) );
-        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.min.js?v=1.5.0', __FILE__) );
+        wp_enqueue_style( 'ff_storyview_settings_css', plugins_url('assets/css/storyview_settings.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__) );
+        wp_enqueue_script( 'ff_storyview_settings_js', plugins_url('assets/scripts/storyview_settings.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__) );
 
         wp_enqueue_style( 'ff_storyview_font_roboto', 'https://fonts.googleapis.com/css?family=Roboto:700&display=swap&subset=latin-ext', false );
         wp_enqueue_style( 'ff_storyview_font_rounded', 'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=latin-ext', false );
