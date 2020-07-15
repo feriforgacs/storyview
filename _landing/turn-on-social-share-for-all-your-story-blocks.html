@@ -1,213 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Turn on social share for all your story blocks - Story View WordPress plugin - AMP Story for WordPress</title>
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-  <link rel="manifest" href="assets/icons/site.webmanifest">
-  <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="assets/icons/favicon.ico">
-  <meta name="msapplication-TileColor" content="#8000ff">
-  <meta name="msapplication-config" content="assets/icons/browserconfig.xml">
-  <meta name="theme-color" content="#8000ff">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Turn on social share for all your story blocks - Story View WordPress plugin - AMP Story for WordPress</title>
 
-  <meta property="og:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress">
-  <meta property="og:site_name" content="Story View WordPress plugin">
-  <meta property="og:url" content="https://storyviewplugin.com/turn-on-social-share-for-all-your-story-blocks.html">
-  <meta property="og:description" content="Create and display stories on your WordPress website and grow engagement ✨">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://storyviewplugin.com/assets/icons/share-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+		<link rel="manifest" href="assets/icons/site.webmanifest" />
+		<link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5" />
+		<link rel="shortcut icon" href="assets/icons/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#8000ff" />
+		<meta name="msapplication-config" content="assets/icons/browserconfig.xml" />
+		<meta name="theme-color" content="#8000ff" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@feriforgacs">
-  <meta name="twitter:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress">
-  <meta name="twitter:description" content="Create and display stories on your WordPress website and grow engagement ✨">
-  <meta name="twitter:image" content="https://storyviewplugin.com/assets/icons/twitter-share-image.png">
-  <meta name="twitter:image:alt" content="Story View WordPress plugin">
+		<meta property="og:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress" />
+		<meta property="og:site_name" content="Story View WordPress plugin" />
+		<meta property="og:url" content="https://storyviewplugin.com/turn-on-social-share-for-all-your-story-blocks.html" />
+		<meta property="og:description" content="Create and display stories on your WordPress website and grow engagement ✨" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://storyviewplugin.com/assets/icons/share-image.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67236740-7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-67236740-7');
-  </script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@feriforgacs" />
+		<meta name="twitter:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress" />
+		<meta name="twitter:description" content="Create and display stories on your WordPress website and grow engagement ✨" />
+		<meta name="twitter:image" content="https://storyviewplugin.com/assets/icons/twitter-share-image.png" />
+		<meta name="twitter:image:alt" content="Story View WordPress plugin" />
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Story View for WordPress",
-      "applicationCategory": "WordPress Plugin",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "ratingCount": "17"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "24.99",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67236740-7"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "UA-67236740-7");
+		</script>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/style.css" />
 
-  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="ac88d6ed-7956-49c4-a385-f38ec0984311";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "SoftwareApplication",
+				"name": "Story View for WordPress",
+				"applicationCategory": "WordPress Plugin",
+				"aggregateRating": {
+					"@type": "AggregateRating",
+					"ratingValue": "5",
+					"ratingCount": "17"
+				},
+				"offers": {
+					"@type": "Offer",
+					"price": "24.99",
+					"priceCurrency": "USD"
+				}
+			}
+		</script>
 
-</head>
-<body>
-  <div id="container">
-    <header data-aos="flip-up">
-      <nav id="header__navigation">
-        <h2 id="header__logo">
-          <a href="index.html">
-            <span class="logo">
-              <img src="assets/images/logo.svg" alt="Story View Logo" />
-            </span>
-            <span class="text">
-              <strong>Story View</strong>
-              <small>for WordPress</small>
-            </span>
-          </a>
-        </h2>
+		<script type="text/javascript">
+			window.$crisp = [];
+			window.CRISP_WEBSITE_ID = "ac88d6ed-7956-49c4-a385-f38ec0984311";
+			(function () {
+				d = document;
+				s = d.createElement("script");
+				s.src = "https://client.crisp.chat/l.js";
+				s.async = 1;
+				d.getElementsByTagName("head")[0].appendChild(s);
+			})();
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<header data-aos="flip-up">
+				<nav id="header__navigation">
+					<h2 id="header__logo">
+						<a href="index.html">
+							<span class="logo">
+								<img src="assets/images/logo.svg" alt="Story View Logo" />
+							</span>
+							<span class="text">
+								<strong>Story View</strong>
+								<small>for WordPress</small>
+							</span>
+						</a>
+					</h2>
 
-        <ul>
-          <li><a href="index.html#features">Features</a></li>
-          <li><a href="index.html#examples">Examples</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="index.html#howto">How to...</a></li>
-        </ul>
+					<ul>
+						<li><a href="index.html#features">Features</a></li>
+						<li><a href="index.html#examples">Examples</a></li>
+						<li><a href="index.html#pricing">Pricing</a></li>
+						<li><a href="index.html#howto">How to...</a></li>
+					</ul>
 
-        <div id="header__cta">
-          <a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now</a>
-        </div>
-      </nav><!-- end #header__navigation -->
-    </header>
+					<div id="header__cta">
+						<a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now</a>
+					</div>
+				</nav>
+				<!-- end #header__navigation -->
+			</header>
 
-    <div id="subpage" data-aos="fade" data-aos-delay="300">
-      <div id="subpage__header">
-        <h1>Turn on social share for all your story blocks</h1>
-      </div>
+			<div id="subpage" data-aos="fade" data-aos-delay="300">
+				<div id="subpage__header">
+					<h1>Turn on social share for all your story blocks</h1>
+				</div>
 
-      <div id="subpage__content">
-        <p>If you want to drive more traffic to your site from social media, you can turn social share for your stories.</p>
-        <p>After you turn on this feature, a small share icon will become visible at the bottom right corner of your story.</p>
-        <p>The share settings (image, description, title) will be the same as of your original post, so make sure that those are correct.</p>
+				<div id="subpage__content">
+					<p>If you want to drive more traffic to your site from social media, you can turn social share for your stories.</p>
+					<p>After you turn on this feature, a small share icon will become visible at the bottom right corner of your story.</p>
+					<p>The share settings (image, description, title) will be the same as of your original post, so make sure that those are correct.</p>
 
-        <div class="video-wrapper">
-          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pITw8RfDHuY?start=29" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+					<div class="video-wrapper">
+						<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pITw8RfDHuY?start=29" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
 
-        <p>You can also turn on social share options just for the <a href="enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html">end screen</a> of your stories.</p>
-      </div>
-    </div>
+					<p>You can also turn on social share options just for the <a href="enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html">end screen</a> of your stories.</p>
+				</div>
+			</div>
 
-    <div id="pricing" class="section" data-aos="zoom-in">
-      <h3>Pricing</h3>
-      <h2>Buy it once, use it as long as you want it.<br />
-        <strong>One time purchase, no recurring fees.</strong></h2>
+			<div id="pricing" class="section" data-aos="zoom-in">
+				<h3>Pricing</h3>
+				<h2>
+					Buy it once, use it as long as you want it.<br />
+					<strong>One time purchase, no recurring fees.</strong>
+				</h2>
 
-      <p>You'll get updates and additional features for free.</p>
+				<p>You'll get updates and additional features for free.</p>
 
-      <div class="pricing__cta">
-        <a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now
-          <del>$34.99</del> <ins>$24.99</ins></a>
-        <p class="vat-info">*VAT not included</p>
-      </div>
-    </div><!-- end #pricing -->
+				<p class="deal-info"></p>
 
-    <div id="howto" class="section">
-      <h3>How to...</h3>
-      <ul id="howto__list" data-aos="fade-up">
-        <li><a href="install-story-view-on-your-wordpress-site.html"><strong>Install Story View</strong> on your WordPress site</a></li>
-        <li><a href="create-your-first-story.html"><strong>Create your first story</strong> with Story View and Classic story blocks</a></li>
-        <li><a href="add-a-contact-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a Contact form</strong> to your story with the help of <strong>Custom Story blocks</strong></a></li>
-        <li><a href="add-a-mailchimp-subscription-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a MailChimp subscription form</strong> to your story with the help of <strong>Custom Story blocks</strong></a></li>
-        <li><a href="embed-a-youtube-video-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Embed a YouTube video</strong> to your story with the help of <strong>Custom Story blocks</strong></a></li>
-        <li><a href="create-an-amp-story-from-your-story-view-story.html"><strong>Create an AMP Story</strong> from your Story View story</a></li>
-        <li><a href="enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html">Enable <strong>social share</strong> functions and <strong>recommended article</strong> on the end screen of your story</a></li>
-        <li><a href="turn-on-social-share-for-all-your-story-blocks.html"><strong>Turn on social share</strong> for all your story blocks</a></li>
-        <li><a href="enable-story-controllers-for-easier-navigation.html"><strong>Enable story controllers</strong> for easier navigation</a></li>
-        <li><a href="create-a-custom-button-that-better-fits-your-design.html"><strong>Create a custom button</strong> that better fits your design</a></li>
-        <li><a href="display-your-latest-stories-with-the-story-view-widget.html"><strong>Display your latest stories</strong> with the Story View widget</a></li>
-      </ul>
-    </div><!-- end #howto -->
+				<div id="hero-section__countdown" class="countdown">
+					<div id="countdown__day" class="countdown__section">
+						<span id="day__counter" class="countdown__counter">00</span>
+						<span id="day__label" class="countdown__label">days</span>
+					</div>
+					<div class="countdown__colon">:</div>
 
-    <footer data-aos="fade">
-      <div id="footer__top">
-        <div id="contact-and-support">
-          <h4>Contact and Support</h4>
-          <p>If you have any questions feel free to get in touch via email at <a href="mailto:feri@storyviewplugin.com" target="_blank">feri@storyviewplugin.com</a> or on Twitter <a href="https://twitter.com/feriforgacs" target="_blank">@feriforgacs</a></p>
-        </div>
-  
-        <nav id="footer__navigation">
-          <ul>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms-of-service.html">Terms and Conditions</a></li>
-            <li><a href="faq.html">Frequently Asked Questions</a></li>
-            <li><a href="4-reasons-the-story-format-is-so-popular-and-why-you-should-use-it-too.html">Why you should use the story format</a></li>
-          </ul>
-  
-          <ul>
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#examples">Examples</a></li>
-            <li><a href="index.html#pricing">Pricing</a></li>
-          </ul>
-        </nav>
-      </div>
+					<div id="countdown__hour" class="countdown__section">
+						<span id="hour__counter" class="countdown__counter">00</span>
+						<span id="hour__label" class="countdown__label">hours</span>
+					</div>
+					<div class="countdown__colon">:</div>
 
-      <div id="footer__bottom">
-        <div id="copy">
-          <p>All rights reserved (c) 2020</p>
-        </div>
-      </div>
+					<div id="countdown__min" class="countdown__section">
+						<span id="min__counter" class="countdown__counter">00</span>
+						<span id="min__label" class="countdown__label">minutes</span>
+					</div>
+					<div class="countdown__colon">:</div>
 
-    </footer>
-  </div><!-- end #container -->
+					<div id="countdown__sec" class="countdown__section">
+						<span id="sec__counter" class="countdown__counter">00</span>
+						<span id="sec__label" class="countdown__label">seconds</span>
+					</div>
+				</div>
+				<!-- end #hero-section__countdown -->
+				<script src="assets/scripts/countdown.js"></script>
 
-  <script src="https://gumroad.com/js/gumroad.js"></script>
+				<div class="pricing__cta">
+					<a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now <del>$34.99</del> <ins>$24.99</ins></a>
+					<p class="vat-info">*VAT not included</p>
+				</div>
+			</div>
+			<!-- end #pricing -->
 
-  <div id="cookie-alert">
-    <p>🍪 We are using cookies to ensure you get the best experience on our website. <a class="subpage-link"
-        href="privacy-policy.html">Learn more...</a></p>
-    <span><a id="cookie-alert-accept">I agree</a></span>
-  </div>
+			<div id="howto" class="section">
+				<h3>How to...</h3>
+				<ul id="howto__list" data-aos="fade-up">
+					<li>
+						<a href="install-story-view-on-your-wordpress-site.html"><strong>Install Story View</strong> on your WordPress site</a>
+					</li>
+					<li>
+						<a href="create-your-first-story.html"><strong>Create your first story</strong> with Story View and Classic story blocks</a>
+					</li>
+					<li>
+						<a href="add-a-contact-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a Contact form</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="add-a-mailchimp-subscription-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a MailChimp subscription form</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="embed-a-youtube-video-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Embed a YouTube video</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="create-an-amp-story-from-your-story-view-story.html"><strong>Create an AMP Story</strong> from your Story View story</a>
+					</li>
+					<li>
+						<a href="enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html">Enable <strong>social share</strong> functions and <strong>recommended article</strong> on the end screen of your story</a>
+					</li>
+					<li>
+						<a href="turn-on-social-share-for-all-your-story-blocks.html"><strong>Turn on social share</strong> for all your story blocks</a>
+					</li>
+					<li>
+						<a href="enable-story-controllers-for-easier-navigation.html"><strong>Enable story controllers</strong> for easier navigation</a>
+					</li>
+					<li>
+						<a href="create-a-custom-button-that-better-fits-your-design.html"><strong>Create a custom button</strong> that better fits your design</a>
+					</li>
+					<li>
+						<a href="display-your-latest-stories-with-the-story-view-widget.html"><strong>Display your latest stories</strong> with the Story View widget</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end #howto -->
 
-  <script>
-    const body = document.querySelector("body");
-    
-    // cookie alert
-    const cookieAlert = document.querySelector("#cookie-alert");
-    const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
+			<footer data-aos="fade">
+				<div id="footer__top">
+					<div id="contact-and-support">
+						<h4>Contact and Support</h4>
+						<p>If you have any questions feel free to get in touch via email at <a href="mailto:feri@storyviewplugin.com" target="_blank">feri@storyviewplugin.com</a> or on Twitter <a href="https://twitter.com/feriforgacs" target="_blank">@feriforgacs</a></p>
+					</div>
 
-    cookieAlertAgreeButton.addEventListener("click", toggleCookieAlert);
+					<nav id="footer__navigation">
+						<ul>
+							<li><a href="privacy-policy.html">Privacy Policy</a></li>
+							<li><a href="terms-of-service.html">Terms and Conditions</a></li>
+							<li><a href="faq.html">Frequently Asked Questions</a></li>
+							<li><a href="4-reasons-the-story-format-is-so-popular-and-why-you-should-use-it-too.html">Why you should use the story format</a></li>
+						</ul>
 
-    function toggleCookieAlert(show = false) {
-      if (show === true) {
-        cookieAlert.style.display = "flex";
-      } else {
-        const cookieExpires = new Date();
-        cookieExpires.setFullYear(cookieExpires.getFullYear() + 1);
-        document.cookie = "sv_cookie_accepted=1; expires=" + cookieExpires.toUTCString() + ";";
+						<ul>
+							<li><a href="index.html#features">Features</a></li>
+							<li><a href="index.html#examples">Examples</a></li>
+							<li><a href="index.html#pricing">Pricing</a></li>
+						</ul>
+					</nav>
+				</div>
 
-        cookieAlert.style.display = "none";
-      }
-    }
+				<div id="footer__bottom">
+					<div id="copy">
+						<p>All rights reserved (c) 2020</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- end #container -->
 
-    if (!document.cookie.includes("sv_cookie_accepted=1")) {
-      toggleCookieAlert(true);
-    }
+		<script src="https://gumroad.com/js/gumroad.js"></script>
 
-  </script>
-</body>
+		<div id="cookie-alert">
+			<p>🍪 We are using cookies to ensure you get the best experience on our website. <a class="subpage-link" href="privacy-policy.html">Learn more...</a></p>
+			<span><a id="cookie-alert-accept">I agree</a></span>
+		</div>
+
+		<script>
+			const body = document.querySelector("body");
+
+			// cookie alert
+			const cookieAlert = document.querySelector("#cookie-alert");
+			const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
+
+			cookieAlertAgreeButton.addEventListener("click", toggleCookieAlert);
+
+			function toggleCookieAlert(show = false) {
+				if (show === true) {
+					cookieAlert.style.display = "flex";
+				} else {
+					const cookieExpires = new Date();
+					cookieExpires.setFullYear(cookieExpires.getFullYear() + 1);
+					document.cookie = "sv_cookie_accepted=1; expires=" + cookieExpires.toUTCString() + ";";
+
+					cookieAlert.style.display = "none";
+				}
+			}
+
+			if (!document.cookie.includes("sv_cookie_accepted=1")) {
+				toggleCookieAlert(true);
+			}
+		</script>
+	</body>
 </html>
