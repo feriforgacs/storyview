@@ -3,7 +3,7 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("August 31, 2020 23:59:59");
+const endDate = new Date("September 14, 2020 23:59:59");
 
 function countdownTimer() {
 	const now = new Date();
@@ -26,4 +26,4 @@ function addZero(value) {
 
 setInterval(countdownTimer, 1000);
 
-dealinfo.textContent = "🎉 Purchase the plugin before 31st of August and Save $10 (30%) ✨";
+dealinfo.textContent = "🎒 Back To School Offer 👉 Save $10 (30%) ✨";
