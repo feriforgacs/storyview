@@ -1278,3 +1278,7 @@ body.ff_storyview_share_panel_visible #storyview_share_panel_container {
 .ff_storyview_widget .ff_storyview_widget_story_item.ff_storyview_widget_story_item_title_hidden .ff_storyview_widget_story_item_thumbnail{
   margin-right: 0;
 }
+
+.ff_storyview_root .ff_storyview_button{
+  display: none;
+}

@@ -51,6 +51,10 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.7.0 =
+* Add stories to pages
+* Display stories without redirect with the help of the Story View Widget
+
 = 1.6.2 =
 * Frontend layout bugfixes
 * Frontend functionality issue fixes

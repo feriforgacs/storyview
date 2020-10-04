@@ -41,10 +41,11 @@ class FF_Storyview_Widget extends WP_Widget {
      * Get posts data for stories
      */
     if( count( $story_post_IDs ) > 0 ){
-      $story_posts = get_posts( array( "post__in" => $story_post_IDs ) );
+      $story_posts = get_posts( array( "post__in" => $story_post_IDs, "post_type" => array( "post", "page" ) ) );
 
       if( count( $story_posts ) > 0 ) {
         foreach( $story_posts as $story_post ){
+          $stories[$story_post->ID]["story_id"] = $story_post->ID;
           $stories[$story_post->ID]["post_title"] = $story_post->post_title;
           $stories[$story_post->ID]["post_permalink"] = get_permalink( $story_post->ID );
         }
@@ -55,6 +56,11 @@ class FF_Storyview_Widget extends WP_Widget {
      * Display latest stories
      */
     if( count( $stories ) > 0 ){
+      ?>
+      <script type="text/javascript">
+        var ffStoryviewAjaxURL = "<?php echo admin_url( "admin-ajax.php" ); ?>";
+      </script>
+      <?php
       foreach( $stories as $story ){
         // get thumbnail image
         $story_blocks = $story["story_data"]->story_blocks_data;
@@ -69,6 +75,7 @@ class FF_Storyview_Widget extends WP_Widget {
         <a
           href="<?php echo $story["post_permalink"] ?>#storyview"
           title="<?php echo $story["post_title"] ?>"
+          data-story="<?php echo $story["story_id"]; ?>"
           class="ff_storyview_widget_story_item <?php
           if( $instance['hide_story_button_text'] && $instance['hide_story_button_text'] == 1 ){
             echo " ff_storyview_widget_story_item_title_hidden";
@@ -82,6 +89,7 @@ class FF_Storyview_Widget extends WP_Widget {
           <span
             style="background-image: url('<?php echo $story_item_thubnail_image; ?>');"
             class="ff_storyview_widget_story_item_thumbnail"
+            data-story="<?php echo $story["story_id"]; ?>"
           >
           </span>
 

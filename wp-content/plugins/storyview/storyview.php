@@ -8,7 +8,7 @@ ob_clean();
 Plugin Name: ⚡ Story View Pro
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.6.2
+Version: 1.7.0
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -22,7 +22,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 global $wpdb;
-define("FF_STORYVIEW_PLUGIN_VERSION", "1.6.2");
+define("FF_STORYVIEW_PLUGIN_VERSION", "1.7.0");
 define("FF_STORYVIEW_META_KEY", "ff_storyview_data");
 define("FF_STORYVIEW_SHORTCODE", "ff_storyview");
 define("FF_STORYVIEW_CUSTOM_BUTTONS_TABLE", $wpdb->prefix . "ff_storyview_buttons");
@@ -222,7 +222,12 @@ function ff_storyview_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
+    if( WP_DEBUG && WP_DEBUG === true ){
+        echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.css?v=' . date( "YmdHis" ), __FILE__ ) ) . '" />';
+    } else {
+        echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
+    }
+
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/selectric.min.css', __FILE__ ) ) . '" />';
     echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/spectrum.min.css', __FILE__ ) ) . '" />';
 }
@@ -230,7 +235,12 @@ function ff_storyview_css(){
 function ff_storyview_js(){
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/jquery.selectric.min.js', __FILE__ ) ) . '"></script>';
     echo '<script src="' . esc_url( plugins_url( 'assets/scripts/spectrum.min.js', __FILE__ ) ) . '"></script>';
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
+
+    if( WP_DEBUG && WP_DEBUG === true ){
+        echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.js?v=' . date( "YmdHis" ), __FILE__ ) ) . '"></script>';
+    } else {
+        echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
+    }
 }
 
 /**
@@ -246,8 +256,10 @@ add_action('wp_footer', 'ff_storyview_frontend_js');
 /**
  * Display story view on the frontend
  */
-function ff_storyview_display(){
-    $post_id = get_the_ID();
+function ff_storyview_display( $post_id = 0 ){
+    if( ! $post_id ){
+        $post_id = get_the_ID();
+    }
 
     if (!empty($post_id)) {
         $storyview_data = get_post_meta($post_id, FF_STORYVIEW_META_KEY, true);
@@ -587,7 +599,7 @@ function ff_storyview_display(){
                 // replace button image shortcode
                 $button_custom_code = str_replace("{{button_image}}", $storyview_button_icon_image, $button_custom_code);
 
-                $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a id="ff_storyview_button_' . $post_id . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= $button_custom_code;
                 $storyview_button .= '</a>';
             } else if(strpos($storyview_data->button_type, "custom") !== false){
@@ -630,26 +642,26 @@ function ff_storyview_display(){
                     $ff_storyview_custom_button_css .= preg_replace('/\s+/S', " ", $ff_storyview_button_data->button_custom_css);
 
                     // display custom button
-                    $storyview_button = '<a style="' . $ff_storyview_custom_button_css . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_custom_button ff_storyview_button_type_custom_layout_' . $ff_storyview_button_data->button_layout . ' ' . $ff_storyview_button_data->button_font_family . '">';
+                    $storyview_button = '<a id="ff_storyview_button_' . $post_id . '" style="' . $ff_storyview_custom_button_css . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_custom_button ff_storyview_button_type_custom_layout_' . $ff_storyview_button_data->button_layout . ' ' . $ff_storyview_button_data->button_font_family . '">';
                     $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                     $storyview_button .= '</a>';
                 } else {
                     // fallback to default button
-                    $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_1">';
+                    $storyview_button = '<a id="ff_storyview_button_' . $post_id . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_1">';
                     $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                     $storyview_button .= '</a>';
                 }
 
             } else {
                 // default button
-                $storyview_button = '<a href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
+                $storyview_button = '<a id="ff_storyview_button_' . $post_id . '" href="' . $story_url . '" class="ff_storyview_button ff_storyview_button_type_' . $storyview_data->button_type . '">';
                 $storyview_button .= '<i class="ff_storyview_button_icon" style="background-image: url(\'' . $storyview_button_icon_image . '\');"></i><span class="ff_storyview_button_text">' . $storyview_data->button_text . '</span>';
                 $storyview_button .= '</a>';
             }
 
-            $storyview_content = $storyview_button . $storyview_blocks;
+            return $storyview_button . $storyview_blocks;
 
-            return $storyview_content;
+            return;
         }
     }
 
@@ -662,11 +674,22 @@ function ff_storyview_frontend_css(){
     echo '<link href="https://fonts.googleapis.com/css?family=Lily+Script+One&display=swap&subset=latin-ext" rel="stylesheet">';
     echo '<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext" rel="stylesheet">';
 
-    echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
+    if( WP_DEBUG && WP_DEBUG === true ){
+        // display normal CSS in dev mode
+        echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.css?v=' . date( "YmdHis" ), __FILE__ ) ) . '" />';
+    } else {
+        // display minified CSS in production
+        echo '<link rel="stylesheet" href="' . esc_url( plugins_url( 'assets/css/storyview_frontend.min.css?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '" />';
+    }
+
 }
 
 function ff_storyview_frontend_js(){
-    echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
+    if( WP_DEBUG && WP_DEBUG === true ){
+        echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.js?v=' . date( "YmdHis" ), __FILE__ ) ) . '"></script>';
+    } else {
+        echo '<script src="' . esc_url( plugins_url( 'assets/scripts/storyview_frontend.min.js?v=' . FF_STORYVIEW_PLUGIN_VERSION, __FILE__ ) ) . '"></script>';
+    }
 }
 
 // on activation
@@ -805,6 +828,29 @@ include_once("includes/storyview_widget.php");
 add_action("widgets_init", function(){
     register_widget("FF_Storyview_Widget");
 });
+
+/**
+ * Process frontend ajax requests
+ */
+function storyview_ajax_action_frontend() {
+    $storyview_action = $_POST["storyviewAction"];
+  
+    switch ( $storyview_action ) {
+      case "display":
+        // display story
+        $storyview_content = ff_storyview_display( intval( $_POST["storyID"]) );
+        wp_send_json( array("story" => $storyview_content ) );
+        break;
+  
+      default:
+        break;
+    }
+    
+    wp_die();
+  }
+
+add_action( "wp_ajax_nopriv_storyview_ajax_frontend_action", "storyview_ajax_action_frontend" );
+add_action( "wp_ajax_storyview_ajax_frontend_action", "storyview_ajax_action_frontend" );
 
 require 'includes/updatechecker/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
