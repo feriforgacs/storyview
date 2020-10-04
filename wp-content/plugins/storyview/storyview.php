@@ -78,7 +78,7 @@ function ff_storyview_display_storyview_editor() {
         'ff_storyview-post-class',
         '⚡ Story View',
         'ff_storyview_post_class_meta_box',
-        'post',
+        ['post', 'page'],
         'normal',
         'high'
     );
