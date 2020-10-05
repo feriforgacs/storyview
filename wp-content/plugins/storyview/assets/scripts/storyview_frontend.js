@@ -32,6 +32,7 @@ const toggleStoryview = (e) => {
     });
     ffStoryviewBody.classList.remove("ff_storyview_visible");
     history.pushState("storyview", document.title, window.location.href.split('#')[0]);
+    ffToggleSharePanel();
   } else {
     // display story view
     ffStoryviewBody.classList.add("ff_storyview_visible");
@@ -216,8 +217,8 @@ window.addEventListener("resize", setSizes);
 /**
  * Toggle social share panel
  */
-const ffToggleSharePanel = () => {
-  if (ffStoryviewBody.classList.contains("ff_storyview_share_panel_visible")) {
+const ffToggleSharePanel = (action = "") => {
+  if (ffStoryviewBody.classList.contains("ff_storyview_share_panel_visible") || action === "hide") {
     ffStoryviewBody.classList.remove("ff_storyview_share_panel_visible");
   } else {
     ffStoryviewBody.classList.add("ff_storyview_share_panel_visible");
@@ -231,8 +232,9 @@ const ffToggleSharePanel = () => {
 const ffShareStoryURL = (event) => {
   event.preventDefault();
     const shareURL = event.target.closest("a").getAttribute("href")
+    const storyID = event.target.closest("a").dataset.story;
     copyToClipboard(shareURL);
-    const copyURLsuccessMessage = document.querySelector("#storyview_share_panel_link_copied");
+    const copyURLsuccessMessage = document.querySelector(`#storyview_share_panel_link_copied_${storyID}`);
     copyURLsuccessMessage.style.display = "block";
     setTimeout(() => {
       copyURLsuccessMessage.style.display = "none";
@@ -270,6 +272,7 @@ const ffStoryviewWidgetDisplayStory = (e) => {
   // display loading animation
   const storyThumbnail = document.getElementById(`ff_storyview_widget_story_item_thumbnail_${ffStoryviewWidgetStoryID}`);
   storyThumbnail.classList.add("loading");
+  e.target.classList.add("loading");
 
   // story doesn't exists on the page, get source and display it
   fetch(ffStoryviewAjaxURL, {
@@ -283,6 +286,7 @@ const ffStoryviewWidgetDisplayStory = (e) => {
       return response.json();
   }).then(data => {
     storyThumbnail.classList.remove("loading");
+    e.target.classList.remove("loading");
     if(data.story){
       // add story HTML to body
       let ffStoryviewStoryRoot = document.getElementById("ff_storyview_root");
@@ -340,15 +344,16 @@ ffStoryviewBody.addEventListener("click", (event) => {
   }
 
   // hide share panel
-  if(event.target.closest("#storyview_share_panel_container")){
-    let ffStoryViewSharePanel = event.target.closest("#storyview_share_panel_container").querySelector("#storyview_share_panel");
+  if(event.target.closest(".storyview_share_panel_container")){
+    let ffStoryviewShareStoryID = event.target.closest(".storyview_share_panel_container").dataset.story;
+    let ffStoryViewSharePanel = document.getElementById(`storyview_share_panel_${ffStoryviewShareStoryID}`);
     if(!ffStoryViewSharePanel.contains(event.target)){
       ffToggleSharePanel();
     }
   }
 
   // copy story link to clipboard
-  if(event.target.closest("#storyview_share_option_link")){
+  if(event.target.closest(".storyview_share_option_link")){
     ffShareStoryURL(event);
   }
 
@@ -375,6 +380,7 @@ window.addEventListener("keydown", e => {
         storyviewBlockContainer.classList.remove('visible');
       });
       history.pushState("storyview", document.title, window.location.href.split('#')[0]);
+      ffToggleSharePanel("hide");
     }
   } else if (e.code === "ArrowLeft" || e.code === "arowleft") {
     if (ffStoryviewBody.classList.contains("ff_storyview_visible")) {

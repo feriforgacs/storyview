@@ -550,19 +550,21 @@ function ff_storyview_display( $post_id = 0 ){
                  */
                 $storyview_share_panel = "";
                 if($storyview_share_enabled || (isset($storyview_data->end_screen_settings->share_enabled) && $storyview_data->end_screen_settings->share_enabled == 1)){
-                    $storyview_share_panel = '<div id="storyview_share_panel_container" class="storyview_share_section_item">';
-                        $storyview_share_panel .= '<div id="storyview_share_panel" class="storyview_share_section_item">';
-                            $storyview_share_panel .= '<div id="storyview_share_panel_link_copied" class="storyview_share_section_item">Link copied to clipboard!</div>';
+                    $storyview_share_panel = '<div data-story="' . $post_id . '" id="storyview_share_panel_container_' . $post_id . '" class="storyview_share_section_item storyview_share_panel_container">';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option storyview_share_section_item" id="storyview_share_option_link" href="' . get_permalink() . '#storyview"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Copy Link</span></a>';
+                        $storyview_share_panel .= '<div data-story="' . $post_id . '" id="storyview_share_panel_' . $post_id . '" class="storyview_share_section_item storyview_share_panel">';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option storyview_share_section_item" href="https://facebook.com/sharer.php?u=' . urlencode(get_permalink() . '#storyview') . '" target="_blank" id="storyview_share_option_facebook"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Facebook</span></a>';
+                            $storyview_share_panel .= '<div data-story="' . $post_id . '" id="storyview_share_panel_link_copied_' . $post_id . '" class="storyview_share_section_item storyview_share_panel_link_copied">Link copied to clipboard!</div>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option storyview_share_section_item" href="https://twitter.com/share?text=' . urlencode(get_the_title()) . '&url=' . urlencode(get_permalink() . '#storyview') . '" target="_blank" id="storyview_share_option_twitter"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Twitter</span></a>';
+                            $storyview_share_panel .= '<a data-story="' . $post_id . '" class="storyview_share_option storyview_share_section_item storyview_share_option_link" id="storyview_share_option_link_' . $post_id . '" href="' . get_permalink( $post_id ) . '#storyview"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Copy Link</span></a>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option storyview_share_section_item" href="https://api.whatsapp.com/send?text=' . urlencode(get_the_title() . ' - ' . get_permalink() . '#storyview') . '" target="_blank" id="storyview_share_option_whatsapp"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">WhatsApp</span></a>';
+                            $storyview_share_panel .= '<a data-story="' . $post_id . '" class="storyview_share_option storyview_share_section_item storyview_share_option_facebook" href="https://facebook.com/sharer.php?u=' . urlencode( get_permalink( $post_id ) . '#storyview' ) . '" target="_blank" id="storyview_share_option_facebook_' . $post_id . '"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Facebook</span></a>';
 
-                            $storyview_share_panel .= '<a class="storyview_share_option storyview_share_section_item" target="_blank" href="mailto:?subject=' . get_the_title() . '&body=' . get_the_title() . ' - ' . get_permalink() . '#storyview" id="storyview_share_option_email"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Email</span></a>';
+                            $storyview_share_panel .= '<a data-story="' . $post_id . '" class="storyview_share_option storyview_share_section_item storyview_share_option_twitter" href="https://twitter.com/share?text=' . urlencode( get_the_title( $post_id ) ) . '&url=' . urlencode( get_permalink( $post_id ) . '#storyview' ) . '" target="_blank" id="storyview_share_option_twitter_' . $post_id . '"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Twitter</span></a>';
+
+                            $storyview_share_panel .= '<a data-story="' . $post_id . '" class="storyview_share_option storyview_share_section_item storyview_share_option_whatsapp" href="https://api.whatsapp.com/send?text=' . urlencode( get_the_title( $post_id ) . ' - ' . get_permalink( $post_id ) . '#storyview' ) . '" target="_blank" id="storyview_share_option_whatsapp_' . $post_id . '"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">WhatsApp</span></a>';
+
+                            $storyview_share_panel .= '<a data-story="' . $post_id . '" class="storyview_share_option storyview_share_section_item storyview_share_option_email" target="_blank" href="mailto:?subject=' . get_the_title( $post_id ) . '&body=' . get_the_title( $post_id ) . ' - ' . get_permalink( $post_id ) . '#storyview" id="storyview_share_option_email_' . $post_id . '"><span class="icon storyview_share_section_item"></span><span class="storyview_share_section_item">Email</span></a>';
 
                         $storyview_share_panel .= '</div>';
                     $storyview_share_panel .= '</div>';
@@ -573,21 +575,21 @@ function ff_storyview_display( $post_id = 0 ){
             
             $storyview_blocks_indicator .= '</div>';
 
-            $storyview_blocks .= $storyview_blocks_indicator . '<button class="ff_storyview_close_button">&times;</button></div></div>';
+            $storyview_blocks .= $storyview_blocks_indicator . '<button class="ff_storyview_close_button" data-story=' . $post_id . '>&times;</button></div></div>';
 
             // create AMP URL
-            $post_url = parse_url(get_permalink());
+            $post_url = parse_url( get_permalink( $post_id ) );
             $story_url = "";
 
             if(isset($storyview_data->amp_settings) && $storyview_data->amp_settings->activ == 1){
                 if(array_key_exists("query", $post_url) && $post_url["query"] != ""){
                     // param already exists in the url
-                    $story_url = get_permalink() . "&storyview_amp=1";
+                    $story_url = get_permalink( $post_id ) . "&storyview_amp=1";
                 } else {
-                    $story_url = get_permalink() . "?storyview_amp=1";
+                    $story_url = get_permalink( $post_id ) . "?storyview_amp=1";
                 }
             } else {
-                $story_url = get_permalink() . "#storyview";
+                $story_url = get_permalink( $post_id ) . "#storyview";
             }
 
             if($storyview_data->button_type == "other"){
