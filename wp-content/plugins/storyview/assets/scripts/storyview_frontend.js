@@ -267,6 +267,10 @@ const ffStoryviewWidgetDisplayStory = (e) => {
     return;
   }
 
+  // display loading animation
+  const storyThumbnail = document.getElementById(`ff_storyview_widget_story_item_thumbnail_${ffStoryviewWidgetStoryID}`);
+  storyThumbnail.classList.add("loading");
+
   // story doesn't exists on the page, get source and display it
   fetch(ffStoryviewAjaxURL, {
       method: 'POST',
@@ -278,6 +282,7 @@ const ffStoryviewWidgetDisplayStory = (e) => {
   }).then(response => {
       return response.json();
   }).then(data => {
+    storyThumbnail.classList.remove("loading");
     if(data.story){
       // add story HTML to body
       let ffStoryviewStoryRoot = document.getElementById("ff_storyview_root");
@@ -293,6 +298,9 @@ const ffStoryviewWidgetDisplayStory = (e) => {
 
       // trigger click to display story
       ffStoryviewButton.click();
+    } else {
+      alert("There was an error during the process. Please, refresh the page and try again");
+      return;
     }
   });
 }

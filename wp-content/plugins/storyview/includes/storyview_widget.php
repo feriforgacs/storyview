@@ -89,6 +89,7 @@ class FF_Storyview_Widget extends WP_Widget {
           <span
             style="background-image: url('<?php echo $story_item_thubnail_image; ?>');"
             class="ff_storyview_widget_story_item_thumbnail"
+            id="ff_storyview_widget_story_item_thumbnail_<?php echo $story["story_id"]; ?>"
             data-story="<?php echo $story["story_id"]; ?>"
           >
           </span>
