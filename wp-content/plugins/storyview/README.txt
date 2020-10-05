@@ -1,7 +1,7 @@
 === Plugin Name ===
 Tags: story storyview
 Requires at least: 4.6
-Tested up to: 5.4.2
+Tested up to: 5.5.1
 Stable tag: 4.3
 Requires PHP: 5.2.4
 License: see LICENSE.txt
@@ -50,6 +50,9 @@ No, the informations of your stories are stored in the postmeta datatable and di
 It is possible that there are some CSS rules in your theme that overwrite the ones that are defined for Story Views. Probably, you'll need the help of a developer to fix these problems.
 
 == Changelog ==
+
+= 1.7.1 =
+* Share functions issue fix
 
 = 1.7.0 =
 * Add stories to pages

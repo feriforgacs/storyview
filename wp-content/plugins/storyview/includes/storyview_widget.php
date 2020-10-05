@@ -41,10 +41,14 @@ class FF_Storyview_Widget extends WP_Widget {
      * Get posts data for stories
      */
     if( count( $story_post_IDs ) > 0 ){
-      $story_posts = get_posts( array( "post__in" => $story_post_IDs, "post_type" => array( "post", "page" ) ) );
+      $story_posts = get_posts( 
+        array( "post__in" => $story_post_IDs, 
+        "post_type" => array( "post", "page" ), 
+        "post_status" => array( "publish", "private" ) ) );
 
       if( count( $story_posts ) > 0 ) {
         foreach( $story_posts as $story_post ){
+          $stories[$story_post->ID]["post_status"] = $story_post->post_status;
           $stories[$story_post->ID]["story_id"] = $story_post->ID;
           $stories[$story_post->ID]["post_title"] = $story_post->post_title;
           $stories[$story_post->ID]["post_permalink"] = get_permalink( $story_post->ID );
@@ -73,8 +77,13 @@ class FF_Storyview_Widget extends WP_Widget {
         }
         ?>
         <a
-          href="<?php echo $story["post_permalink"] ?>#storyview"
-          title="<?php echo $story["post_title"] ?>"
+          href="<?php if($story["post_status"] !== "publish"){
+            echo "/";
+          } else {
+            echo $story["post_permalink"];
+          }
+          ?>#storyview"
+          title="<?php echo $story["post_title"]; ?>"
           data-story="<?php echo $story["story_id"]; ?>"
           class="ff_storyview_widget_story_item <?php
           if( $instance['hide_story_button_text'] && $instance['hide_story_button_text'] == 1 ){
