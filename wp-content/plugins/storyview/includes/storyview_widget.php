@@ -26,7 +26,9 @@ class FF_Storyview_Widget extends WP_Widget {
      */
     global $wpdb;
     $story_count = ! empty( $instance['story_count'] ) ? intval( $instance['story_count'] ) : 5;
-    $latest_stories = $wpdb->get_results("SELECT post_id, meta_value FROM " . $wpdb->prefix . "postmeta WHERE `meta_key` LIKE 'ff_storyview_data' AND `meta_value` LIKE '%\"activ\":1%' ORDER BY post_id DESC LIMIT " . $story_count);
+    $story_query = "SELECT post_id, meta_value FROM " . $wpdb->prefix . "postmeta INNER JOIN " . $wpdb->prefix . "posts ON " . $wpdb->prefix . "posts.ID = " . $wpdb->prefix . "postmeta.post_id WHERE " . $wpdb->prefix . "postmeta.meta_key LIKE 'ff_storyview_data' AND " . $wpdb->prefix . "postmeta.meta_value LIKE '%\"activ\":1%' AND ( " . $wpdb->prefix . "posts.post_status = 'publish' OR " . $wpdb->prefix . "posts.post_status = 'private' ) ORDER BY " . $wpdb->prefix . "postmeta.post_id DESC LIMIT " . $story_count;
+
+    $latest_stories = $wpdb->get_results( $story_query );
 
     $story_post_IDs = array();
     $stories = array();
