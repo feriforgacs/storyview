@@ -51,6 +51,9 @@ It is possible that there are some CSS rules in your theme that overwrite the on
 
 == Changelog ==
 
+= 1.7.2 =
+* Bugfix - Hide stories added to deleted posts, pages
+
 = 1.7.1 =
 * Share functions issue fix
 

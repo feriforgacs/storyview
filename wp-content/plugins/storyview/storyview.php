@@ -8,7 +8,7 @@ ob_clean();
 Plugin Name: ⚡ Story View Pro
 Plugin URI: https://storyviewplugin.com
 Description: Create story like versions for your posts for more engagement
-Version: 1.7.1
+Version: 1.7.2
 Author: Ferenc Forgacs - @feriforgacs
 Author URI: https://feriforgacs.me
 License: see LINCESE.txt
@@ -22,7 +22,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 global $wpdb;
-define("FF_STORYVIEW_PLUGIN_VERSION", "1.7.1");
+define("FF_STORYVIEW_PLUGIN_VERSION", "1.7.2");
 define("FF_STORYVIEW_META_KEY", "ff_storyview_data");
 define("FF_STORYVIEW_SHORTCODE", "ff_storyview");
 define("FF_STORYVIEW_CUSTOM_BUTTONS_TABLE", $wpdb->prefix . "ff_storyview_buttons");
