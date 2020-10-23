@@ -3,7 +3,10 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const endDate = new Date("October 21, 2020 23:59:59");
+const dealEndDate = new Date();
+const dealEndDays = Math.round(Math.random() * 2) + 1;
+dealEndDate.setDate(dealEndDate.getDate() + dealEndDays);
+const endDate = new Date(dealEndDate);
 
 function countdownTimer() {
 	const now = new Date();
