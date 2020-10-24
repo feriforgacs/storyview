@@ -3,10 +3,19 @@ const hourCounter = document.querySelector("#hour__counter");
 const minCounter = document.querySelector("#min__counter");
 const secCounter = document.querySelector("#sec__counter");
 const dealinfo = document.querySelector(".deal-info");
-const dealEndDate = new Date();
+
+let dealEndDate = new Date();
 const dealEndDays = Math.round(Math.random() * 2) + 1;
 dealEndDate.setDate(dealEndDate.getDate() + dealEndDays);
-const endDate = new Date(dealEndDate);
+let now = Date.now();
+
+if (localStorage.getItem("countdownTimestamp") && localStorage.getItem("countdownTimestamp") > now) {
+	dealEndDate = new Date(localStorage.getItem("countdownEndDate"));
+} else {
+	localStorage.setItem("countdownTimestamp", dealEndDate.getTime());
+	localStorage.setItem("countdownEndDate", dealEndDate);
+}
+const endDate = dealEndDate;
 
 function countdownTimer() {
 	const now = new Date();
