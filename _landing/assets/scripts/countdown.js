@@ -38,4 +38,4 @@ function addZero(value) {
 
 setInterval(countdownTimer, 1000);
 
-dealinfo.textContent = "🎃 Halloween Offer 👉 Save $15 (43%) ✨";
+dealinfo.textContent = "🎃 Halloween Offer 👉 Save $20 (57%) ✨";
