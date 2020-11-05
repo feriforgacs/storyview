@@ -76,6 +76,140 @@
 				d.getElementsByTagName("head")[0].appendChild(s);
 			})();
 		</script>
+
+		<style>
+			#ff-whatsnew-root {
+				left: 0;
+				position: fixed;
+				top: 0;
+				z-index: 1000;
+			}
+
+			#ff-whatsnew-close {
+				background: none;
+				border: none;
+				color: #fff;
+				cursor: pointer;
+				display: block;
+				font-weight: 200;
+				font-size: 32px;
+				height: 40px;
+				margin: 0;
+				padding: 0;
+				width: 50px;
+			}
+
+			.ff-whatsnew-footer {
+				align-items: center;
+				background: #f7f7f7;
+				bottom: 0;
+				box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.05);
+				display: flex;
+				height: 40px;
+				justify-content: center;
+				left: 0;
+				position: absolute;
+				width: 100%;
+			}
+
+			.ff-whatsnew-footer a {
+				color: #8000ff;
+				font-size: 12px;
+				text-decoration: none;
+			}
+
+			.ff-whatsnew-background {
+				background: rgba(0, 0, 0, 0.5);
+				display: none;
+				height: 100vh;
+				left: 0;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				top: 0;
+				width: 100vw;
+			}
+
+			.ff-whatsnew-content {
+				background: #f7f7f7;
+				box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+				height: 100vh;
+				max-width: 450px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 100%;
+			}
+
+			.ff-whatsnew-header {
+				align-items: center;
+				background: linear-gradient(90deg, #ff7a00 0%, #8000ff 100%);
+				display: flex;
+				height: 60px;
+				justify-content: space-between;
+			}
+
+			.ff-whatsnew-header p {
+				color: #fff;
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0 0 0 20px;
+				padding: 0 20px 0 0;
+			}
+
+			.ff-whatsnew-body {
+				height: calc(100% - 20px - 60px - 40px);
+				overflow-y: scroll;
+				padding: 10px;
+			}
+
+			.ff-whatsnew-card {
+				background: #fff;
+				border-radius: 5px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				margin: 0 0 10px;
+				padding: 10px;
+			}
+
+			.ff-whatsnew-card:last-child {
+				margin-bottom: 0;
+			}
+
+			.ff-whatsnew-card__date {
+				border-bottom: 1px solid #f7f7f7;
+				color: #888;
+				font-size: 13px;
+				margin: 0;
+				padding: 0 0 5px 0;
+			}
+
+			.ff-whatsnew-card__title {
+				color: #c2398c;
+				font-size: 18px;
+				margin: 10px 0;
+				padding: 0;
+			}
+
+			.ff-whatsnew-card__content {
+				margin: 0;
+				padding: 10px 0;
+			}
+
+			.ff-whatsnew-card__cta a {
+				color: #8000ff;
+				text-decoration: none;
+				transition: all 200ms ease;
+			}
+
+			.ff-whatsnew-card__cta a:hover {
+				opacity: 0.8;
+				padding-left: 10px;
+			}
+
+			body.ff-whatsnew-visible .ff-whatsnew-background {
+				display: block;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -99,6 +233,7 @@
 						<li><a href="#examples">Examples</a></li>
 						<li><a href="#pricing">Pricing</a></li>
 						<li><a href="#howto">How to...</a></li>
+						<li><a href="javascript:FFWhatsnewShow();">What's new</a></li>
 					</ul>
 
 					<div id="header__cta">
@@ -502,5 +637,51 @@
 		</script>
 
 		<script src="assets/scripts/fslightbox.js"></script>
+
+		<div id="ff-whatsnew-root">
+			<div class="ff-whatsnew-background">
+				<div class="ff-whatsnew-content">
+					<div class="ff-whatsnew-header">
+						<p>What's new in Story View</p>
+						<button id="ff-whatsnew-close">&times;</button>
+					</div>
+					<div class="ff-whatsnew-body">
+						<div class="ff-whatsnew-card">
+							<p class="ff-whatsnew-card__date">2020.11.05.</p>
+							<p class="ff-whatsnew-card__title">Story View has been tested with the latest version of WordPress (5.5.3)</p>
+							<p class="ff-whatsnew-card__content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis laboriosam voluptatum numquam impedit sit veniam dolorem sint vero vel deleniti.</p>
+							<div class="ff-whatsnew-card__cta">
+								<a href="#">👉 Learn more</a>
+							</div>
+						</div>
+					</div>
+					<div class="ff-whatsnew-footer">
+						<a href="https://usewhatsnew.com?ref=widget-footer" target="_blank" rel="noopener noreferrer">Powered by ✨ What's New</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function FFWhatsnewShow() {
+				const ffWhatsnewBody = document.querySelector("body");
+				if (ffWhatsnewBody && ffWhatsnewBody.classList.contains("ff-whatsnew-visible")) {
+					// hide
+					ffWhatsnewBody.classList.remove("ff-whatsnew-visible");
+				} else {
+					// show
+					ffWhatsnewBody.classList.add("ff-whatsnew-visible");
+				}
+			}
+
+			const FFWhatsnewCloseButton = document.getElementById("ff-whatsnew-close");
+			if (FFWhatsnewCloseButton) {
+				FFWhatsnewCloseButton.addEventListener("click", FFWhatsnewClose);
+			}
+
+			function FFWhatsnewClose() {
+				const ffWhatsnewBody = document.querySelector("body");
+				ffWhatsnewBody.classList.remove("ff-whatsnew-visible");
+			}
+		</script>
 	</body>
 </html>
