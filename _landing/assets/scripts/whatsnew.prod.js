@@ -1,8 +1,9 @@
-const FFWhatsnewSettings = {
+"use strict";
+
+var FFWhatsnewSettings = {
 	title: "What's new in Story View",
 };
-
-const FFWhatsnewItems = [
+var FFWhatsnewItems = [
 	{
 		date: "2020.11.04.",
 		title: "Tested Story View with the latest version of WordPress",
@@ -83,106 +84,91 @@ const FFWhatsnewItems = [
 		cta_label: "👉 Get the plugin now",
 	},
 ];
-
 /**
  * Toggle What's New Panel
  */
-const FFWhatsnewToggle = () => {
-	const ffWhatsnewBody = document.querySelector("body");
+
+var FFWhatsnewToggle = function FFWhatsnewToggle() {
+	var ffWhatsnewBody = document.querySelector("body");
+
 	if (ffWhatsnewBody && ffWhatsnewBody.classList.contains("ff-whatsnew-visible")) {
 		// hide
 		ffWhatsnewBody.classList.remove("ff-whatsnew-visible");
 	} else {
 		// show
 		ffWhatsnewBody.classList.add("ff-whatsnew-visible");
-		const FFWhatsnewButton = document.querySelector(`a[href*="FFWhatsnewToggle"]`);
+		var FFWhatsnewButton = document.querySelector('a[href*="FFWhatsnewToggle"]');
+
 		if (FFWhatsnewButton) {
 			FFWhatsnewButton.classList.remove("undread-notification");
 		}
+
 		localStorage.setItem("FFWhatsnewPreviousVisit", Date.now());
 	}
 };
-
 /**
  * Close What's New Panel
  */
-document.addEventListener("click", (event) => {
+
+document.addEventListener("click", function (event) {
 	if (event.target.closest("#ff-whatsnew-close")) {
 		FFWhatsnewToggle();
 	}
 });
-
 /**
  * Init What's New Panel
  */
-const FFWhatsnewInit = () => {
-	const FFWhatsnewRoot = document.getElementById("ff-whatsnew-root");
+
+var FFWhatsnewInit = function FFWhatsnewInit() {
+	var FFWhatsnewRoot = document.getElementById("ff-whatsnew-root");
 
 	if (!FFWhatsnewRoot) {
 		return;
 	}
-
 	/**
 	 * Build What's New Panel - Items
 	 */
-	const FFWhatsnewPanelItems = FFWhatsnewItems.map((item) => {
-		let FFWhatsnewItemCardCTA = "";
+
+	var FFWhatsnewPanelItems = FFWhatsnewItems.map(function (item) {
+		var FFWhatsnewItemCardCTA = "";
 
 		if (item.cta_url) {
-			FFWhatsnewItemCardCTA = `<div class="ff-whatsnew-card__cta">
-      <a href="${item.cta_url}" target="_blank" rel="noopener noreferrer">${item.cta_label}</a>
-    </div>`;
+			FFWhatsnewItemCardCTA = '<div class="ff-whatsnew-card__cta">\n      <a href="'.concat(item.cta_url, '" target="_blank" rel="noopener noreferrer">').concat(item.cta_label, "</a>\n    </div>");
 		}
 
-		const FFWhatsnewItemCard = `<div class="ff-whatsnew-card">
-                                  <p class="ff-whatsnew-card__date">${item.date}</p>
-                                  <p class="ff-whatsnew-card__title">${item.title}</p>
-                                  <p class="ff-whatsnew-card__content">${item.content}</p>
-                                  ${FFWhatsnewItemCardCTA}
-                                </div>`;
+		var FFWhatsnewItemCard = '<div class="ff-whatsnew-card">\n                                  <p class="ff-whatsnew-card__date">'.concat(item.date, '</p>\n                                  <p class="ff-whatsnew-card__title">').concat(item.title, '</p>\n                                  <p class="ff-whatsnew-card__content">').concat(item.content, "</p>\n                                  ").concat(FFWhatsnewItemCardCTA, "\n                                </div>");
 		return FFWhatsnewItemCard;
 	}).join("");
-
 	/**
 	 * Build What's New Panel - Full panel
 	 */
-	const FFWhatsnewPanel = `<div class="ff-whatsnew-background">
-                            <div class="ff-whatsnew-content">
-                              <div class="ff-whatsnew-header">
-                                <p>${FFWhatsnewSettings.title}</p>
-                                <button id="ff-whatsnew-close">&times;</button>
-                              </div>
-                              <div class="ff-whatsnew-body">${FFWhatsnewPanelItems}</div>
-                              <div class="ff-whatsnew-footer">
-                                <a href="http://bit.ly/whatsnewlanding" target="_blank" rel="noopener noreferrer">Powered by ✨ What's New</a>
-                              </div>
-                            </div>
-                          </div>`;
 
+	var FFWhatsnewPanel = '<div class="ff-whatsnew-background">\n                            <div class="ff-whatsnew-content">\n                              <div class="ff-whatsnew-header">\n                                <p>'.concat(FFWhatsnewSettings.title, '</p>\n                                <button id="ff-whatsnew-close">&times;</button>\n                              </div>\n                              <div class="ff-whatsnew-body">').concat(FFWhatsnewPanelItems, '</div>\n                              <div class="ff-whatsnew-footer">\n                                <a href="http://bit.ly/whatsnewlanding" target="_blank" rel="noopener noreferrer">Powered by \u2728 What\'s New</a>\n                              </div>\n                            </div>\n                          </div>');
 	/**
 	 * Add panel to What's New root
 	 */
-	FFWhatsnewRoot.innerHTML = FFWhatsnewPanel;
 
+	FFWhatsnewRoot.innerHTML = FFWhatsnewPanel;
 	/**
 	 * Check if there is anything new since the last visit of the user
 	 * Display indicator, if there is
 	 */
-	const FFWhatsnewButton = document.querySelector(`a[href*="FFWhatsnewToggle"]`);
+
+	var FFWhatsnewButton = document.querySelector('a[href*="FFWhatsnewToggle"]');
 
 	if (!FFWhatsnewButton) {
 		return;
 	}
 
-	let FFWhatsnewPreviousVisit = localStorage.getItem("FFWhatsnewPreviousVisit");
-	let FFWhatsnewNewVisit = false;
+	var FFWhatsnewPreviousVisit = localStorage.getItem("FFWhatsnewPreviousVisit");
+	var FFWhatsnewNewVisit = false;
 
 	if (!FFWhatsnewPreviousVisit) {
 		FFWhatsnewNewVisit = true;
 		FFWhatsnewPreviousVisit = Date.now();
 	}
 
-	let FFWhatsnewLatestItemDate = 0;
+	var FFWhatsnewLatestItemDate = 0;
 
 	if (FFWhatsnewItems[0] && FFWhatsnewItems[0].date) {
 		FFWhatsnewLatestItemDate = Date.parse(FFWhatsnewItems[0].date);
