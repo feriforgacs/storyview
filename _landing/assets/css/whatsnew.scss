@@ -133,7 +133,7 @@ body.ff-whatsnew-visible #ff-whatsnew-root .ff-whatsnew-background {
 	display: block;
 }
 
-.ff-whatsnew-link {
+a[href*="FFWhatsnewToggle"] {
 	position: relative;
 
 	&.undread-notification::after {
