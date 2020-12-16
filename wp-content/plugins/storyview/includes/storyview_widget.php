@@ -66,6 +66,7 @@ class FF_Storyview_Widget extends WP_Widget {
       <script type="text/javascript">
         var ffStoryviewAjaxURL = "<?php echo admin_url( "admin-ajax.php" ); ?>";
       </script>
+      <div class="ff_storyview_widget">
       <?php
       foreach( $stories as $story ){
         // get thumbnail image
@@ -107,12 +108,16 @@ class FF_Storyview_Widget extends WP_Widget {
 
           <span
             class="ff_storyview_widget_story_item_title"
+            data-story="<?php echo $story["story_id"]; ?>"
             >
             <?php echo mb_substr( $story["post_title"], 0, 25 ); ?>...
           </span>
         </a>
         <?php
       }
+      ?>
+      </div>
+      <?php
     }
 
     echo $args['after_widget'];
