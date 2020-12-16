@@ -5,6 +5,11 @@ var FFWhatsnewSettings = {
 };
 var FFWhatsnewItems = [
 	{
+		date: "2020.12.16.",
+		title: "Better Elementor support",
+		content: "With the latest update of the plugin, the Story View Widget works better with Elementor",
+	},
+	{
 		date: "2020.11.04.",
 		title: "Tested Story View with the latest version of WordPress",
 		content: "The plugin was tested with the latest version of WordPress. No changes were necessary, every function works fine with WordPress 5.5.3",
