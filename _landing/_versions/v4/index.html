@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Stories on your WordPress blog - Story View WordPress plugin - AMP Story for WordPress</title>
+		<meta property="description" content="Create and display stories on your WordPress website and grow engagement ✨" />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+		<link rel="manifest" href="assets/icons/site.webmanifest" />
+		<link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5" />
+		<link rel="shortcut icon" href="assets/icons/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#8000ff" />
+		<meta name="msapplication-config" content="assets/icons/browserconfig.xml" />
+		<meta name="theme-color" content="#8000ff" />
+
+		<meta property="og:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress" />
+		<meta property="og:site_name" content="Story View WordPress plugin" />
+		<meta property="og:url" content="https://storyviewplugin.com" />
+		<meta property="og:description" content="Create and display stories on your WordPress website and grow engagement ✨" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://storyviewplugin.com/assets/icons/share-image.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@feriforgacs" />
+		<meta name="twitter:title" content="Stories on your WordPress blog - Story View for Wordpress - AMP Story for WordPress" />
+		<meta name="twitter:description" content="Create and display stories on your WordPress website and grow engagement ✨" />
+		<meta name="twitter:image" content="https://storyviewplugin.com/assets/icons/twitter-share-image.png" />
+		<meta name="twitter:image:alt" content="Story View WordPress plugin" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67236740-7"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "UA-67236740-7");
+		</script>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<link rel="stylesheet" href="assets/css/whatsnew.css" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "SoftwareApplication",
+				"name": "Story View for WordPress",
+				"applicationCategory": "WordPress Plugin",
+				"aggregateRating": {
+					"@type": "AggregateRating",
+					"ratingValue": "5",
+					"ratingCount": "24"
+				},
+				"offers": {
+					"@type": "Offer",
+					"price": "14.99",
+					"priceCurrency": "USD"
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="container">
+			<header data-aos="flip-up">
+				<nav id="header__navigation">
+					<h2 id="header__logo">
+						<a href="index.html">
+							<span class="logo">
+								<img src="assets/images/logo.svg" alt="Story View Logo" />
+							</span>
+							<span class="text">
+								<strong>Story View</strong>
+								<small>for WordPress</small>
+							</span>
+						</a>
+					</h2>
+
+					<ul>
+						<li><a href="#features">Features</a></li>
+						<li><a href="#examples">Examples</a></li>
+						<li><a href="#pricing">Pricing</a></li>
+						<li><a href="#howto">How to...</a></li>
+						<li><a href="javascript:FFWhatsnewToggle();">What's new</a></li>
+					</ul>
+
+					<div id="header__cta">
+						<a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now</a>
+					</div>
+				</nav>
+				<!-- end #header__navigation -->
+			</header>
+
+			<div id="hero" data-aos="fade-up" data-aos-delay="400">
+				<div id="hero__text">
+					<h2>Don't lose your short attention spanned visitors</h2>
+					<h1>Stories on your WordPress site</h1>
+					<h3>
+						Story View brings the well known story content format to your WordPress website.<br />
+						This new format can <strong>drive new visitors</strong> to your site and can help you to <strong>re-engage old ones</strong>.<br />
+						With the help of its basic functions, you can create <strong>story-like versions of your posts</strong> to grow engagement.<br />
+						The additional features make it possible to collect email addresses, or boost your position in search with the built-in <strong>AMP Story support</strong>.<br />
+					</h3>
+
+					<!-- <p class="deal-info"></p>
+
+					<div id="hero-section__countdown" class="countdown">
+						<div id="countdown__day" class="countdown__section">
+							<span id="day__counter" class="countdown__counter">00</span>
+							<span id="day__label" class="countdown__label">days</span>
+						</div>
+						<div class="countdown__colon">:</div>
+
+						<div id="countdown__hour" class="countdown__section">
+							<span id="hour__counter" class="countdown__counter">00</span>
+							<span id="hour__label" class="countdown__label">hours</span>
+						</div>
+						<div class="countdown__colon">:</div>
+
+						<div id="countdown__min" class="countdown__section">
+							<span id="min__counter" class="countdown__counter">00</span>
+							<span id="min__label" class="countdown__label">minutes</span>
+						</div>
+						<div class="countdown__colon">:</div>
+
+						<div id="countdown__sec" class="countdown__section">
+							<span id="sec__counter" class="countdown__counter">00</span>
+							<span id="sec__label" class="countdown__label">seconds</span>
+						</div>
+					</div> 
+					<script src="assets/scripts/countdown.js"></script> -->
+
+					<div id="hero__cta">
+						<a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now for $14.99</a>
+					</div>
+					<p class="vat-info">*VAT not included</p>
+				</div>
+				<!-- end #hero__text -->
+
+				<div id="hero__image">
+					<img src="assets/images/header-demo-image.png" alt="View Story View Demo" />
+					<a href="https://demo.storyviewplugin.com/2019/05/24/genius-house-cleaning-tricks/#storyview" target="_blank" class="button button--white">View Demo Story</a>
+				</div>
+				<!-- end #hero__image -->
+			</div>
+			<!-- end #hero -->
+
+			<div id="features" class="section">
+				<h3>Main Features</h3>
+
+				<div id="features__items">
+					<div class="feature__item" id="classic-blocks" data-aos="flip-left">
+						<div class="feature__icon">
+							<img src="assets/images/classic-block-icon.svg" alt="Classic Story Blocks icon" />
+						</div>
+						<h4>Add short stories to your posts to grow engagement...</h4>
+						<p>
+							Classic Story Blocks make it possible to create a classic story like version of your post.<br />
+							Besides, it's a <strong>mobile-first</strong> content format the advantage of stories that they <strong>make it easier to engage visitors with a short attention span</strong>. Users who don't like to read longer content will view the story format of it.
+						</p>
+						<a href="create-your-first-story.html" class="link">👉 How to create a classic story...</a>
+					</div>
+
+					<div class="feature__item" id="custom-blocks" data-aos="flip-left" data-aos-delay="200">
+						<div class="feature__icon">
+							<img src="assets/images/custom-block-icon.svg" alt="Custom Story Blocks icon" />
+						</div>
+						<h4>Collect emails, manage giveaways, grow your customers base...</h4>
+						<p><strong>Reconnecting with visitors</strong> who already viewed your content or product is really important for every content creator and marketer. Custom Story Blocks makes this easier by letting you <strong>embed</strong> almost any kind of HTML <strong>(subscription forms, links to social channels, YouTube videos, etc) to your stories</strong>.</p>
+						<a href="add-a-mailchimp-subscription-form-to-your-story-with-the-help-of-custom-story-blocks.html" class="link">👉 MailChimp form in your stories...</a>
+					</div>
+
+					<div class="feature__item" id="amp-story" data-aos="flip-left" data-aos-delay="400">
+						<div class="feature__icon">
+							<img src="assets/images/amp-story-icon.svg" alt="AMP Story Support icon" />
+						</div>
+						<h4>Drive more traffic and visitors to your website from search...</h4>
+						<p>Google has its <a href="everything-businesses-want-to-know-about-google-amp-stories.html">own version of the story format</a>, it's called AMP Stories. It's a relatively new technology that you can use to <strong>boost your position in search and drive more traffic to your website</strong> and Story View can help you with that as well.</p>
+						<a href="create-an-amp-story-from-your-story-view-story.html" class="link">👉 How to create an AMP Story...</a>
+					</div>
+				</div>
+
+				<div id="features__list">
+					<h4>More than 30 built-in features</h4>
+					<ul>
+						<li>
+							<a href="story-view-feature-list.html#button">Use custom text 📝 for your Story Button</a>
+						</li>
+
+						<li>
+							<a href="story-view-feature-list.html#custom-button">Create custom button designs 👨‍🎨 for your stories</a>
+						</li>
+
+						<li>
+							<a href="story-view-feature-list.html#images">Use static images or GIFs ✨ in your stories</a>
+						</li>
+
+						<li>
+							<a href="story-view-feature-list.html#story-content">Add emojis 🎉 to your stories</a>
+						</li>
+
+						<li>
+							<a href="story-view-feature-list.html#text-position">Set the position 👈 of the text in your stories</a>
+						</li>
+
+						<li>
+							<a href="story-view-feature-list.html#font-family">Use different fonts ✍️ for the text in your stories</a>
+						</li>
+					</ul>
+
+					<a href="story-view-feature-list.html" class="button">👉 View full feature list 👈</a>
+				</div>
+			</div>
+			<!-- end #features -->
+
+			<div id="the-power-of-stories" class="section">
+				<h4>
+					<a href="4-reasons-the-story-format-is-so-popular-and-why-you-should-use-it-too.html">4 reasons the ⚡ Story format is so popular and why you should use it too <span class="button button--white">👉 Learn more 👈</span></a>
+				</h4>
+			</div>
+
+			<div id="examples" class="section">
+				<h3>Examples</h3>
+
+				<div id="examples__items">
+					<div class="example__item" data-aos="fade-up">
+						<div class="image">
+							<img src="assets/images/example-1.png" alt="Story View demo with custom blocks" />
+						</div>
+						<div class="content">
+							<h4>Simple giveaway🎁 with custom blocks</h4>
+							<a href="https://demo.storyviewplugin.com/2019/06/11/custom-code-block-demo/#storyview" target="_blank" class="button button--white">View Demo</a>
+						</div>
+					</div>
+
+					<div class="example__item" data-aos="fade-up" data-aos-delay="200">
+						<div class="image">
+							<img src="assets/images/example-2.png" alt="Story View demo with classic blocks - Recipe" />
+						</div>
+						<div class="content">
+							<h4>Main steps of a recipe 👩‍🍳 as a story</h4>
+							<a href="https://demo.storyviewplugin.com/2019/05/23/homemade-bagels/#storyview" target="_blank" class="button button--white">View Demo</a>
+						</div>
+					</div>
+
+					<div class="example__item" data-aos="fade-up" data-aos-delay="400">
+						<div class="image">
+							<img src="assets/images/example-3.png" alt="Story View demo with classic blocks - Cleaning tips" />
+						</div>
+						<div class="content">
+							<h4>"Cleaning" 🛁 tips in a fun format</h4>
+							<a href="https://demo.storyviewplugin.com/2019/05/24/genius-house-cleaning-tricks/#storyview" target="_blank" class="button button--white">View Demo</a>
+						</div>
+					</div>
+
+					<div class="example__item" data-aos="fade-up" data-aos-delay="600">
+						<div class="image">
+							<img src="assets/images/example-4.png" alt="Story View demo with classic blocks - Sporting event highlights" />
+						</div>
+						<div class="content">
+							<h4>Sporting 💪 event highlights as a story</h4>
+							<a href="https://demo.storyviewplugin.com/2019/05/24/f1-highlights/#storyview" target="_blank" class="button button--white">View Demo</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end #examples -->
+
+			<div id="pricing" class="section" data-aos="zoom-in">
+				<h3>Pricing</h3>
+				<h2>
+					Buy it once, use it as long as you want it.<br />
+					<strong>One time purchase, no recurring fees.</strong>
+				</h2>
+
+				<p>You'll get updates and additional features for free.</p>
+
+				<div class="pricing__cta">
+					<a href="https://gum.co/storyview?wanted=true" target="_blank" class="button button--primary">Get it now for $14.99</a>
+					<p class="vat-info">*VAT not included</p>
+				</div>
+			</div>
+			<!-- end #pricing -->
+
+			<div id="gallery" class="section">
+				<h3>Screenshots</h3>
+
+				<div class="photos">
+					<a data-aos="flip-left" data-aos-delay="0" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_classic_block.png">
+						<img src="assets/images/screenshots/thumbs/frontend_classic_block_thumb.png" alt="Classic story block" />
+						<span class="photo__description">Classic story block</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="20" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_controllers_enabled.png">
+						<img src="assets/images/screenshots/thumbs/frontend_controllers_enabled_thumb.png" alt="Story controllers enabled" />
+						<span class="photo__description">Story controllers enabled</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="40" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_custom_block_width_mailchimp_form.png">
+						<img src="assets/images/screenshots/thumbs/frontend_custom_block_width_mailchimp_form_thumb.png" alt="Custom story block with MailChimp form" />
+						<span class="photo__description">Custom story block with MailChimp form</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="60" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_share_enabled.png">
+						<img src="assets/images/screenshots/thumbs/frontend_share_enabled_thumb.png" alt="Social share enabled for all story blocks" />
+						<span class="photo__description">Social share enabled for all story blocks</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="80" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_share_options.png">
+						<img src="assets/images/screenshots/thumbs/frontend_share_options_thumb.png" alt="Social share options" />
+						<span class="photo__description">Social share options</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="100" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_end_screen.png">
+						<img src="assets/images/screenshots/thumbs/frontend_end_screen_thumb.png" alt="Story end screen with social share and recommended article" />
+						<span class="photo__description">Story end screen with social share and recommended article</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="120" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_amp_story.png">
+						<img src="assets/images/screenshots/thumbs/frontend_amp_story_thumb.png" alt="AMP Story cover" />
+						<span class="photo__description">AMP Story cover</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="140" data-fslightbox="screenshots" href="assets/images/screenshots/frontend_amp_story_end_screen.png">
+						<img src="assets/images/screenshots/thumbs/frontend_amp_story_end_screen_thumb.png" alt="AMP Story end scree" />
+						<span class="photo__description">AMP Story end scree</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="160" data-fslightbox="screenshots" href="assets/images/screenshots/editor_button_settings.png">
+						<img src="assets/images/screenshots/thumbs/editor_button_settings_thumb.png" alt="Story button settings" />
+						<span class="photo__description">Story button settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="180" data-fslightbox="screenshots" href="assets/images/screenshots/editor_button_settings_2.png">
+						<img src="assets/images/screenshots/thumbs/editor_button_settings_2_thumb.png" alt="Story button settings" />
+						<span class="photo__description">Story button settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="200" data-fslightbox="screenshots" href="assets/images/screenshots/editor_block_settings.png">
+						<img src="assets/images/screenshots/thumbs/editor_block_settings_thumb.png" alt="Story block settings" />
+						<span class="photo__description">Story block settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="220" data-fslightbox="screenshots" href="assets/images/screenshots/editor_amp_story_settings.png">
+						<img src="assets/images/screenshots/thumbs/editor_amp_story_settings_thumb.png" alt="AMP Story settings" />
+						<span class="photo__description">AMP Story settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="240" data-fslightbox="screenshots" href="assets/images/screenshots/editor_end_screen_settings.png">
+						<img src="assets/images/screenshots/thumbs/editor_end_screen_settings_thumb.png" alt="Story end screen settings - Recommended article, Social share" />
+						<span class="photo__description">Story end screen settings - Recommended article, Social share</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="260" data-fslightbox="screenshots" href="assets/images/screenshots/editor_player_settings.png">
+						<img src="assets/images/screenshots/thumbs/editor_player_settings_thumb.png" alt="Story player settings - Controllers, Social share" />
+						<span class="photo__description">Story player settings - Controllers, Social share</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="280" data-fslightbox="screenshots" href="assets/images/screenshots/settings_general.png">
+						<img src="assets/images/screenshots/thumbs/settings_general_thumb.png" alt="Story View general settings" />
+						<span class="photo__description">Story View general settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="300" data-fslightbox="screenshots" href="assets/images/screenshots/settings_amp_settings.png">
+						<img src="assets/images/screenshots/thumbs/settings_amp_settings_thumb.png" alt="Story view default AMP settings" />
+						<span class="photo__description">Story view default AMP settings</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="320" data-fslightbox="screenshots" href="assets/images/screenshots/settings_share_settings.png">
+						<img src="assets/images/screenshots/thumbs/settings_share_settings_thumb.png" alt="Enable social share for all stories by default" />
+						<span class="photo__description">Enable social share for all stories by default</span>
+					</a>
+
+					<a data-aos="flip-left" data-aos-delay="340" data-fslightbox="screenshots" href="assets/images/screenshots/settings_button_designer.png">
+						<img src="assets/images/screenshots/thumbs/settings_button_designer_thumb.png" alt="Button designer" />
+						<span class="photo__description">Button designer</span>
+					</a>
+				</div>
+			</div>
+			<!-- end #gallery -->
+
+			<div id="howto" class="section">
+				<h3>How to...</h3>
+				<ul id="howto__list" data-aos="fade-up">
+					<li>
+						<a href="install-story-view-on-your-wordpress-site.html"><strong>Install Story View</strong> on your WordPress site</a>
+					</li>
+					<li>
+						<a href="create-your-first-story.html"><strong>Create your first story</strong> with Story View and Classic story blocks</a>
+					</li>
+					<li>
+						<a href="add-a-contact-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a Contact form</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="add-a-mailchimp-subscription-form-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Add a MailChimp subscription form</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="embed-a-youtube-video-to-your-story-with-the-help-of-custom-story-blocks.html"><strong>Embed a YouTube video</strong> to your story with the help of <strong>Custom Story blocks</strong></a>
+					</li>
+					<li>
+						<a href="create-an-amp-story-from-your-story-view-story.html"><strong>Create an AMP Story</strong> from your Story View story</a>
+					</li>
+					<li>
+						<a href="enable-social-share-functions-and-recommended-article-on-the-end-screen-of-your-story.html">Enable <strong>social share</strong> functions and <strong>recommended article</strong> on the end screen of your story</a>
+					</li>
+					<li>
+						<a href="turn-on-social-share-for-all-your-story-blocks.html"><strong>Turn on social share</strong> for all your story blocks</a>
+					</li>
+					<li>
+						<a href="enable-story-controllers-for-easier-navigation.html"><strong>Enable story controllers</strong> for easier navigation</a>
+					</li>
+					<li>
+						<a href="create-a-custom-button-that-better-fits-your-design.html"><strong>Create a custom button</strong> that better fits your design</a>
+					</li>
+					<li>
+						<a href="display-your-latest-stories-with-the-story-view-widget.html"><strong>Display your latest stories</strong> with the Story View widget</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end #howto -->
+
+			<footer data-aos="fade">
+				<div id="footer__top">
+					<div id="contact-and-support">
+						<h4>Contact and Support</h4>
+						<p>If you have any questions feel free to get in touch via email at <a href="mailto:feri@storyviewplugin.com" target="_blank">feri@storyviewplugin.com</a> or on Twitter <a href="https://twitter.com/feriforgacs" target="_blank">@feriforgacs</a></p>
+					</div>
+
+					<nav id="footer__navigation">
+						<ul>
+							<li><a href="privacy-policy.html">Privacy Policy</a></li>
+							<li><a href="terms-of-service.html">Terms and Conditions</a></li>
+							<li><a href="faq.html">Frequently Asked Questions</a></li>
+							<li><a href="4-reasons-the-story-format-is-so-popular-and-why-you-should-use-it-too.html">Why you should use the story format</a></li>
+						</ul>
+
+						<ul>
+							<li><a href="#features">Features</a></li>
+							<li><a href="#examples">Examples</a></li>
+							<li><a href="#pricing">Pricing</a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<div id="footer__bottom">
+					<div id="copy">
+						<p>All rights reserved (c) 2021</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- end #container -->
+
+		<script src="https://gumroad.com/js/gumroad.js"></script>
+
+		<div id="cookie-alert">
+			<p>🍪 We are using cookies to ensure you get the best experience on our website. <a class="subpage-link" href="privacy-policy.html">Learn more...</a></p>
+			<span><a id="cookie-alert-accept">I agree</a></span>
+		</div>
+
+		<script>
+			const body = document.querySelector("body");
+
+			// cookie alert
+			const cookieAlert = document.querySelector("#cookie-alert");
+			const cookieAlertAgreeButton = cookieAlert.querySelector("#cookie-alert-accept");
+
+			cookieAlertAgreeButton.addEventListener("click", toggleCookieAlert);
+
+			function toggleCookieAlert(show = false) {
+				if (show === true) {
+					cookieAlert.style.display = "flex";
+				} else {
+					const cookieExpires = new Date();
+					cookieExpires.setFullYear(cookieExpires.getFullYear() + 1);
+					document.cookie = "sv_cookie_accepted=1; expires=" + cookieExpires.toUTCString() + ";";
+
+					cookieAlert.style.display = "none";
+				}
+			}
+
+			if (!document.cookie.includes("sv_cookie_accepted=1")) {
+				toggleCookieAlert(true);
+			}
+		</script>
+
+		<script src="assets/scripts/fslightbox.js"></script>
+
+		<div id="ff-whatsnew-root"></div>
+		<script src="assets/scripts/whatsnew.prod.min.js"></script>
+	</body>
+</html>
